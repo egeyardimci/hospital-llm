@@ -35,3 +35,5 @@ build/
 doc.docx
 
 chroma_db/
+
+results.json

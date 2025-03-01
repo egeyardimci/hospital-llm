@@ -34,8 +34,13 @@ similar_vector_counts = [
     10,
 ]
 
-queries= [
-    "Ayakta tedavide kullanılan tıbbi malzemeler ne zaman kurum tarafından ödenir?",
+queries_and_expected_answers= [
+    {
+        "query": "Ayakta tedavide kullanılan tıbbi malzemeler ne zaman kurum tarafından ödenir?",
+        "answer": "Example answer."
+    },
 ]
 
 document_name = "doc.docx"
+
+test_results_output_file = "results.json"
