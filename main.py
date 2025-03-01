@@ -119,13 +119,13 @@ def add_test_result(llm_name, embedding_model_name, system_message, query_and_an
         "embedding_model": embedding_model_name,
         "system_message": system_message,
         "query": query_and_answer["query"],
-        "expected_answer": query_and_answer["answer"],
         "chunk_size": chunk_size,
         "chunk_overlap": chunk_overlap,
         "similar_vector_count" : similar_vector_count,
-        "retrieved_chunks": [chunk.page_content for chunk in retrieved_chunks],
+        "expected_answer": query_and_answer["answer"],
         "response": response.content,
-        "time_stamp" : str(datetime.datetime.now())
+        "time_stamp" : str(datetime.datetime.now()),
+        "retrieved_chunks": [chunk.page_content for chunk in retrieved_chunks],
     })
     
     # Write results to a JSON file (append mode)
