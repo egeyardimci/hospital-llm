@@ -1,4 +1,4 @@
-# Project Title
+# Hospital LLM
 
 This project is designed to run tests using various LLMs and embedding models on a given document. The results are saved in a JSON file.
 
