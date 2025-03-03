@@ -66,7 +66,7 @@ def load_vectordb(embedding_model_name,chunk_size,chunk_overlap):
         log(f"Loaded existing ChromaDB instance chroma_db_{embedding_model.model_name}_{chunk_size}_{chunk_overlap}")
         return vector_db
     
-def create_test_dbs(embedding_models,chunk_size=500,chunk_overlap=50):
+def create_test_dbs(embedding_models,chunk_sizes_and_chunk_overlaps):
     """
     Create ChromaDB instances for all embedding models and chunk sizes.
     
@@ -83,7 +83,7 @@ def create_test_dbs(embedding_models,chunk_size=500,chunk_overlap=50):
             embedding_model = HuggingFaceEmbeddings(model_name=embedding_model_name) # vector size kaç? embeding modllerini incele
             create_vectordb(embedding_model,chunk_size,chunk_overlap)
             
-def create_singe_test_db(embedding_model_name,chunk_size=500,chunk_overlap=50):
+def create_singe_test_db(embedding_model_name,chunk_size,chunk_overlap):
     """
     Create a single ChromaDB instance for a given embedding model and chunk size.
     
@@ -95,10 +95,9 @@ def create_singe_test_db(embedding_model_name,chunk_size=500,chunk_overlap=50):
     Returns:
         None
     """
-    for chunk_size, chunk_overlap in chunk_sizes_and_chunk_overlaps:
-        embedding_model = HuggingFaceEmbeddings(model_name=embedding_model_name) # vector size kaç? embeding modllerini incele
-        create_vectordb(embedding_model,chunk_size,chunk_overlap)
+    embedding_model = HuggingFaceEmbeddings(model_name=embedding_model_name) # vector size kaç? embeding modllerini incele
+    create_vectordb(embedding_model,chunk_size,chunk_overlap)
     
 if __name__ == "__main__":
-    create_test_dbs(embedding_model_names,500,50)
+    create_test_dbs(embedding_model_names,chunk_sizes_and_chunk_overlaps)
     #create_singe_test_db(embedding_model_names[0],500,50)
