@@ -12,10 +12,13 @@ document_name: Name of the document to be used for the tests and db creation.
 
 llm_names = [
     "deepseek-r1-distill-qwen-32b",
+   # "llama-3.3-70b-versatile"
 ]
 
 embedding_model_names = [
     "sentence-transformers/all-MiniLM-L6-v2",
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2", # Multilingual
+    "sentence-transformers/LaBSE"                 # Good for cross-lingual embeddings including Turkish
 ]
 
 system_messages = [
@@ -28,12 +31,14 @@ Use clear, structured responses with bullet points, numbered lists, or short par
 Communicate exclusively in Turkish, using formal and grammatically correct language unless the customer’s tone suggests informality.""",
 ]
 
-chunk_sizes_and_chunk_overlaps = [
-    (500, 50),
+chunk_sizes_and_chunk_overlaps = [  
+   # (500, 50),
+    (300, 75)    # Larger chunks with moderate overlap
+   # (200, 50)    # Smaller chunks with larger overlap
 ]
 
 similar_vector_counts = [
-    10,
+    10
 ]
 
 queries_and_expected_answers= [
