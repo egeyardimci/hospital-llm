@@ -45,7 +45,7 @@ This project is designed to run tests using various LLMs and embedding models on
 3. Check the results in the `results.json` file or run and go to "localhost:8000" :
 
    ```sh
-   python -m http.server 8000
+   uvicorn server:app --reload
    ```
 
 ## Project Structure

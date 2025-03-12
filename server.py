@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import json
 from main import run_one_test
@@ -39,12 +40,21 @@ class ChatRequest(BaseModel):
 @app.post("/chat")
 def chat_endpoint(request: ChatRequest):
     try:
-        result = run_one_test(request.llm, request.embedding_model, request.system_message, request.query,500,50,10)
+        result = run_one_test(
+            request.llm, 
+            request.embedding_model, 
+            request.system_message, 
+            request.query,
+            500, 50, 10
+        )
         
         response = {
             "role": "assistant",
-            "content": (result)
+            "content": result
         }
         return response
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing chat request: {e}")
+
+# Serve the React build folder
+app.mount("/", StaticFiles(directory="react_build", html=True), name="static")
