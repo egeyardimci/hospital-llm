@@ -47,7 +47,11 @@ def run_one_test(llm_name, embedding_model_name, system_message, query, chunk_si
     response = llm.invoke(messages)
     
     log(f"Response: {response.content}")
-    add_test_result(llm_name, embedding_model_name, system_message, query, chunk_size, chunk_overlap, similar_vector_count, response, retrieved_chunks)
+    try:
+        add_test_result(llm_name, embedding_model_name, system_message, query, chunk_size, chunk_overlap, similar_vector_count, response, retrieved_chunks)
+    except:
+        query = {"query": query, "answer": "No expected answer"}
+    return response.content
 
 # Run the query for every LLM and every embedding model
 def run_tests(llm_names, embedding_model_names, system_messages, queries_and_answers, similar_vector_counts):
@@ -144,8 +148,11 @@ def log_test(llm_name, embedding_model_name, system_message, query_and_answer, c
     log(f"Running test for LLM: {llm_name}")
     log(f"Embedding model: {embedding_model_name}")
     log(f"System message: {system_message}")
-    log(f"Query: {query_and_answer['query']}")
-    log(f"Exptected answer: {query_and_answer['answer']}")
+    try:
+        log(f"Query: {query_and_answer['query']}")
+        log(f"Exptected answer: {query_and_answer['answer']}")
+    except:
+        log(f"Query: {query_and_answer}")
     log(f"Chunk size: {chunk_size}")
     log(f"Chunk overlap: {chunk_overlap}")
     log(f"Similar vector count: {similar_vector_count}")
