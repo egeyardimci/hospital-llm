@@ -11,9 +11,50 @@ from data import load_test_cases, load_queries_expected_answers, add_test_result
 from logger import log
 import datetime
 from data import TestCase
+from sentence_transformers import CrossEncoder
 
 # Load environment variables
 load_dotenv()
+
+def rerank_with_cross_encoder(query, retrieved_chunks, cross_encoder_model_name, top_k=None):
+    """
+    Re-rank retrieved chunks using a cross-encoder.
+    
+    Args:
+        query: The query string
+        retrieved_chunks: List of retrieved document chunks
+        cross_encoder_model_name: Name of the cross-encoder model
+        top_k: Number of top chunks to return after re-ranking (default: return all)
+        
+    Returns:
+        List of re-ranked document chunks
+    """
+    cross_encoder = CrossEncoder(cross_encoder_model_name)
+
+    # Debug log
+    log(f"Original chunks count: {len(retrieved_chunks)}")
+    log(f"Cross-encoder top_k parameter: {top_k}")
+    
+    
+    # Prepare pairs of (query, chunk) for the cross-encoder
+    pairs = [(query, chunk.page_content) for chunk in retrieved_chunks]
+    
+    # Get relevance scores
+    scores = cross_encoder.predict(pairs)
+    
+    # Create list of (chunk, score) tuples
+    chunk_score_pairs = list(zip(retrieved_chunks, scores))
+    
+    # Sort by score in descending order
+    reranked_chunks = sorted(chunk_score_pairs, key=lambda x: x[1], reverse=True)
+    
+    # Return top_k chunks if specified, otherwise return all
+    if top_k is not None:
+        reranked_chunks = reranked_chunks[:top_k]
+    
+    # Return just the chunks, not the scores
+    return [chunk for chunk, _ in reranked_chunks]
+
 
 def run_one_test(test_case:TestCase, query_expeced_answer):
     """
@@ -33,8 +74,32 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
 
     # Querying the document
     retrieved_chunks = vector_db.similarity_search(query_expeced_answer["query"], test_case.similar_vector_count)  # Get top 20 relevant chunks
+    
+    cross_encoder_option = None
+    for option in test_case.options:
+        if option.name == "CE" and option.is_enabled:
+            cross_encoder_option = option
+            break
+    if cross_encoder_option:
+        cross_encoder_model_name = cross_encoder_option.data
+        top_k = 5  # Default to using all chunks
+        
+        # If data is a dictionary, check for top_k parameter
+        if isinstance(cross_encoder_option.data, dict):
+            cross_encoder_model_name = cross_encoder_option.data.get("model_name")
+            top_k = cross_encoder_option.data.get("top_k")
+        
+        log(f"Re-ranking with cross-encoder: {cross_encoder_model_name}")
+        retrieved_chunks = rerank_with_cross_encoder(
+            query_expeced_answer["query"], 
+            retrieved_chunks, 
+            cross_encoder_model_name,
+            top_k
+        )
+    
+    
     context = "\n\n".join([chunk.page_content for chunk in retrieved_chunks])
-
+    print("AAAAAAAAAA ",len(retrieved_chunks))
     # Use Groq API for response generation
     llm = ChatGroq(model=test_case.llm_name)  # Load Llama model
     messages = [
@@ -68,9 +133,32 @@ def run_tests(test_cases:list[TestCase], queryies_expeced_answers):
             # Querying the document
             retrieved_chunks = vector_db.similarity_search(query_expeced_answer["query"], test_case.similar_vector_count)  # Get top 20 relevant chunks
             
+
+            cross_encoder_option = None
+            for option in test_case.options:
+                if option.name == "CE" and option.is_enabled:
+                    cross_encoder_option = option
+                    break
+            if cross_encoder_option:
+                cross_encoder_model_name = cross_encoder_option.data
+                top_k = 5  # Default to using all chunks
+                
+                # If data is a dictionary, check for top_k parameter
+                if isinstance(cross_encoder_option.data, dict):
+                    cross_encoder_model_name = cross_encoder_option.data.get("model_name")
+                    top_k = cross_encoder_option.data.get("top_k")
+                    
+                log(f"Re-ranking with cross-encoder: {cross_encoder_model_name}")
+                retrieved_chunks = rerank_with_cross_encoder(
+                    query_expeced_answer["query"], 
+                    retrieved_chunks, 
+                    cross_encoder_model_name,
+                    top_k
+                )
+
             context = "\n\n".join([f'{chunk.page_content} Page Number: {chunk.metadata.get("page", "Unknown")}' for chunk in retrieved_chunks])
 
-
+            print("AAAAAAAAAA ",len(retrieved_chunks))
             # Use Groq API for response generation
             llm = ChatGroq(model=test_case.llm_name)  # Load Llama model
             messages = [
