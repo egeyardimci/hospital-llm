@@ -4,7 +4,7 @@ from langchain_community.document_loaders import UnstructuredWordDocumentLoader
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from dotenv import load_dotenv
-from data import embedding_model_names, document_name, chunk_sizes_and_chunk_overlaps
+from data import document_name
 from logger import log
 
 load_dotenv()
@@ -99,5 +99,8 @@ def create_singe_test_db(embedding_model_name,chunk_size,chunk_overlap):
     create_vectordb(embedding_model,chunk_size,chunk_overlap)
     
 if __name__ == "__main__":
-    create_test_dbs(embedding_model_names,chunk_sizes_and_chunk_overlaps)
-    #create_singe_test_db(embedding_model_names[0],500,50)
+    embedding_model_names = ["bert-base-uncased","gpt2","distilbert-base-uncased"]
+    chunk_sizes_and_chunk_overlaps = [(500,50),(1000,100),(2000,200)]
+    
+    #create_test_dbs(embedding_model_names,chunk_sizes_and_chunk_overlaps)
+    create_singe_test_db(embedding_model_names[2],500,50)

@@ -10,56 +10,111 @@ queries: List of queries to be used for the tests.
 document_name: Name of the document to be used for the tests and db creation.
 """
 
-llm_names = [
-    "deepseek-r1-distill-qwen-32b",
-   # "llama-3.3-70b-versatile"
-]
+import datetime
+import json
+import os
+from logger import log
 
-embedding_model_names = [
-    "sentence-transformers/all-MiniLM-L6-v2",
-    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2", # Multilingual
-    "sentence-transformers/LaBSE"                 # Good for cross-lingual embeddings including Turkish
-]
+class TestOption():
+    def __init__(self, is_enabled, name ,data):
+        self.is_enabled = is_enabled
+        self.name = ""
+        self.data = data
 
-system_messages = [
+class TestCase():
+    def __init__(self, llm_name, embedding_model_name, system_message, chunk_size, chunk_overlap, similar_vector_count):
+        self.llm_name = llm_name
+        self.embedding_model_name = embedding_model_name
+        self.system_message = system_message
+        self.chunk_size = chunk_size
+        self.chunk_overlap = chunk_overlap
+        self.similar_vector_count = similar_vector_count
+        
+        self.options = []
+        
+    def update_option(self, option_name, option_value, data):
+        for option in self.options:
+            if option.name == option_name:
+                option.is_enabled = option_value
+                option.data = data
+                return
+            
+        option = TestOption(option_name, option_value, data)
+        self.options.append(option)
+
+def load_test_cases():
     """
-You are a helpful assistant. Answer strictly based on the provided context and do NOT use any external knowledge.
-Do not assume or infer information that is not explicitly stated in the context.
-If the context does not contain enough information to answer, clearly state that you cannot provide an answer.
-Always cite the exact phrase or section from the context that supports your response. If multiple references exist, summarize them before answering.
-Use clear, structured responses with bullet points, numbered lists, or short paragraphs when applicable.
-Communicate exclusively in Turkish, using formal and grammatically correct language unless the customer’s tone suggests informality.""",
-]
+    Load test cases from the test_cases.json file.
+    
+    Returns:
+        List of TestCase objects
+    """
+    test_cases = []
+    with open(test_case_input_file, "r") as file:
+        data = json.load(file)
+        for case in data:
+            test_case = TestCase(case["llm_name"], case["embedding_model_name"], case["system_message"], case["chunk_size"], case["chunk_overlap"], case["similar_vector_count"])
+            test_cases.append(test_case)
+    
+    return test_cases
 
-chunk_sizes_and_chunk_overlaps = [  
-   # (500, 50),
-    (300, 75)    # Larger chunks with moderate overlap
-   # (200, 50)    # Smaller chunks with larger overlap
-]
+def load_queries_expected_answers():
+    """
+    Load queries and expected answers from the queries_expected_answers.json file.
+    
+    Returns:
+        List of dictionaries containing queries and expected answers
+    """
+    with open(queries_expected_answer_input_file, "r") as file:
+        return json.load(file)
 
-similar_vector_counts = [
-    10
-]
+# Function to load existing JSON data
+def load_existing_test_results():
+    """
+    Load existing results from the output file.
+        
+    Returns:
+        List: List of existing results
+    """
+    
+    if os.path.exists(test_results_output_file):
+        with open(test_results_output_file, "r", encoding="utf-8") as f:
+            try:
+                return json.load(f)  # Load existing results
+            except json.JSONDecodeError:
+                return []  # Return an empty list if JSON is corrupted
+    return []  # Return an empty list if file doesn't exist
 
-queries_and_expected_answers= [
-    {
-        "query": "Bir hasta, 520.021 kodlu Yeşil Alan Muayenesi kapsamında değerlendirildi ancak şiddetli karın ağrısı şikayeti vardı. Sonrasında acil servisten yapılan tetkikler sonucu apandisit tanısı aldı. Bu durumda hastadan ilave ücret alınır mı?",
-        "answer": "Başlangıçta 520.021 koduyla Yeşil Alan Muayenesi kapsamında değerlendirilen hastalar için ilave ücret alınabilir. Ancak, tetkikler sonucunda hastanın acil bir durumu (örneğin apandisit) olduğu tespit edilirse, bu durum acil sağlık hizmeti olarak kabul edilir ve ilave ücret alınamaz."
-    },
-    {
-        "query": "Yanık ünitesinde tedavi gören 9 yaşındaki bir çocuk için, sağlık kurulu raporu ile dermis iskeleti içermeyen deri benzeri kullanıldı. Yanık alanı yüzeysel ikinci derece ve vücudunun %15’ini kapsıyor. Bu durumda SGK malzeme ücretini karşılar mı?",
-        "answer": "SGK, dermis iskeleti içermeyen deri benzerlerini ancak %20’yi geçen ikinci derece veya üçüncü derece yanıklarda karşılar. Bu durumda yanık alanı %15 olduğu için geri ödeme yapılmaz ve malzeme ücreti hastaya aittir."
-    },
-    {
-        "query": "Yüksek doz radyoterapi sonrası oluşan femur kırığı nedeniyle total femur rezeksiyon protezi takılan bir hastanın sağlam kemik miktarı 140 mm ise, SGK bu protezin masraflarını karşılar mı?",
-        "answer": "Hayır, SGK total femur rezeksiyon protezini yalnızca hastanın sağlam kemik miktarı 130 mm’den az olduğunda karşılamaktadır. Eğer sağlam kemik miktarı 130 mm’den fazlaysa, SGK geri ödeme yapmaz ve protez masrafı hastaya ait olur."
-    },
-    {
-        "query": "65 yaşındaki bir hasta, birinci basamak sağlık hizmeti sunucusu tarafından sağlık kurulu raporu alarak değerlendirildikten sonra, ileri görüntüleme yöntemlerinin (MR, BT, DSA, PET-CT) uygulanabilmesi için radyo cerrahi yöntemlerine yönelik olarak ikinci veya üçüncü basamak resmi sağlık hizmeti sunucusuna sevk edilmiştir. Bu durumda, SGK’nın ödeme politikası kapsamında, sevk edilen hastanın bu görüntüleme işlemleri için herhangi bir ek ücret ödemesi gerekir mi?",
-        "answer": "Hayır, eğer hasta sağlık kurulu raporu ile sevk edilmişse, MR, BT, DSA ve PET-CT bedelleri faturalandırılamaz ve hasta herhangi bir ek ücret ödemez."
-    },
-]
+def add_test_result(test_case: TestCase ,query_expected_answer ,response, retrieved_chunks):
+    """
+    Add a test result to the existing results.
+    """
+    results = load_existing_test_results()  # List to store results
+    # Store results in a dictionary
+    results.append({
+        "llm": test_case.llm_name,
+        "embedding_model": test_case.embedding_model_name,
+        "system_message": test_case.system_message,
+        "query": query_expected_answer["query"],
+        "chunk_size": test_case.chunk_size,
+        "chunk_overlap": test_case.chunk_overlap,
+        "similar_vector_count" : test_case.similar_vector_count,
+        "expected_answer": query_expected_answer["answer"],
+        "response": response.content,
+        "time_stamp" : str(datetime.datetime.now()),
+        "retrieved_chunks": [chunk.page_content for chunk in retrieved_chunks],
+        "options": test_case.options
+    })
+    
+    # Write results to a JSON file (append mode)
+    with open(test_results_output_file, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=4, ensure_ascii=False)
+    
+    
+    log(f"Result saved to {test_results_output_file}")
+    
 
 document_name = "doc.docx"
-
 test_results_output_file = "results.json"
+test_case_input_file = "test_cases.json"
+queries_expected_answer_input_file = "queries_expected_answers.json"
