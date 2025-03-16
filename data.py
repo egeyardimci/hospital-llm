@@ -16,13 +16,16 @@ import os
 from logger import log
 
 class TestOption():
-    def __init__(self, is_enabled, name ,data):
+    def __init__(self, name,is_enabled ,data):
+        self.name = name
         self.is_enabled = is_enabled
-        self.name = ""
         self.data = data
+        
+    def __str__(self):
+        return f"Option: {self.name}, Enabled: {self.is_enabled}, Data: {self.data}"
 
 class TestCase():
-    def __init__(self, llm_name, embedding_model_name, system_message, chunk_size, chunk_overlap, similar_vector_count):
+    def __init__(self, llm_name, embedding_model_name, system_message, chunk_size, chunk_overlap, similar_vector_count,options):
         self.llm_name = llm_name
         self.embedding_model_name = embedding_model_name
         self.system_message = system_message
@@ -31,6 +34,12 @@ class TestCase():
         self.similar_vector_count = similar_vector_count
         
         self.options = []
+        self.load_options(options)
+        
+    def load_options(self, options):
+        for option in options:
+            option_obj = TestOption(option["name"], option["is_enabled"], option["data"])
+            self.options.append(option_obj)
         
     def update_option(self, option_name, option_value, data):
         for option in self.options:
@@ -50,10 +59,10 @@ def load_test_cases():
         List of TestCase objects
     """
     test_cases = []
-    with open(test_case_input_file, "r") as file:
+    with open(test_case_input_file, "r", encoding="utf-8") as file:
         data = json.load(file)
         for case in data:
-            test_case = TestCase(case["llm_name"], case["embedding_model_name"], case["system_message"], case["chunk_size"], case["chunk_overlap"], case["similar_vector_count"])
+            test_case = TestCase(case["llm_name"], case["embedding_model_name"], case["system_message"], case["chunk_size"], case["chunk_overlap"], case["similar_vector_count"],case["options"])
             test_cases.append(test_case)
     
     return test_cases
@@ -65,7 +74,7 @@ def load_queries_expected_answers():
     Returns:
         List of dictionaries containing queries and expected answers
     """
-    with open(queries_expected_answer_input_file, "r") as file:
+    with open(queries_expected_answer_input_file, "r", encoding="utf-8") as file:
         return json.load(file)
 
 # Function to load existing JSON data
@@ -103,7 +112,7 @@ def add_test_result(test_case: TestCase ,query_expected_answer ,response, retrie
         "response": response.content,
         "time_stamp" : str(datetime.datetime.now()),
         "retrieved_chunks": [chunk.page_content for chunk in retrieved_chunks],
-        "options": test_case.options
+        "options": [{"name": option.name, "is_enabled": option.is_enabled, "data": option.data} for option in test_case.options]
     })
     
     # Write results to a JSON file (append mode)
@@ -114,7 +123,7 @@ def add_test_result(test_case: TestCase ,query_expected_answer ,response, retrie
     log(f"Result saved to {test_results_output_file}")
     
 
-document_name = "doc.docx"
+document_name = "doc.pdf"
 test_results_output_file = "results.json"
 test_case_input_file = "test_cases.json"
 queries_expected_answer_input_file = "queries_expected_answers.json"
