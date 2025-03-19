@@ -26,6 +26,7 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
     Returns:
         None
     """
+    print("INSIDEEEEEE")
     log_test(test_case,query_expeced_answer)
     
     vector_db = load_vectordb(test_case.embedding_model_name, test_case.chunk_size, test_case.chunk_overlap)
@@ -87,15 +88,18 @@ def log_test(test_case:TestCase, quey_expected_answer):
     Log the test parameters.
     """
     
-    log(f"Running test for LLM: {test_case.llm_name}")
-    log(f"Embedding model: {test_case.embedding_model_name}")
-    log(f"System message: {test_case.system_message}")
-    log(f"Query: {quey_expected_answer['query']}")
-    log(f"Exptected answer: {quey_expected_answer['answer']}")
-    log(f"Chunk size: {test_case.chunk_size}")
-    log(f"Chunk overlap: {test_case.chunk_overlap}")
-    log(f"Similar vector count: {test_case.similar_vector_count}")
-    log(f"Options: {[str(option) for option in test_case.options]}")
+    try:
+        log(f"Running test for LLM: {test_case.llm_name}")
+        log(f"Embedding model: {test_case.embedding_model_name}")
+        log(f"System message: {test_case.system_message}")
+        log(f"Query: {quey_expected_answer['query']}")
+        log(f"Exptected answer: {quey_expected_answer['answer']}")
+        log(f"Chunk size: {test_case.chunk_size}")
+        log(f"Chunk overlap: {test_case.chunk_overlap}")
+        log(f"Similar vector count: {test_case.similar_vector_count}")
+        log(f"Options: {[str(option) for option in test_case.options]}")
+    except Exception as e:
+        log(f"Error logging test: {e}")
 
 if __name__ == "__main__":
     # Run all tests
