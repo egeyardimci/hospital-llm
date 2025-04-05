@@ -15,6 +15,8 @@ from data import TestCase
 # Load environment variables
 load_dotenv()
 
+vector_db_g = load_vectordb("LaBSE",500,50)
+
 def run_one_test(test_case:TestCase, query_expeced_answer):
     """
     Run a single test with the given parameters and save the results to a JSON file.
@@ -29,11 +31,11 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
     print("INSIDEEEEEE")
     log_test(test_case,query_expeced_answer)
     
-    vector_db = load_vectordb(test_case.embedding_model_name, test_case.chunk_size, test_case.chunk_overlap)
+    vector_db = vector_db_g
 
     # Querying the document
     retrieved_chunks = vector_db.similarity_search(query_expeced_answer["query"], test_case.similar_vector_count)  # Get top 20 relevant chunks
-    context = "\n\n".join([chunk.page_content for chunk in retrieved_chunks])
+    context = "\n\n".join([f'Page Number: {chunk.metadata.get("page", "Unknown")}: {chunk.page_content}\n' for chunk in retrieved_chunks])
 
     # Use Groq API for response generation
     llm = ChatGroq(model=test_case.llm_name)  # Load Llama model
