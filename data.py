@@ -95,7 +95,7 @@ def load_existing_test_results():
                 return []  # Return an empty list if JSON is corrupted
     return []  # Return an empty list if file doesn't exist
 
-def add_test_result(test_case: TestCase ,query_expected_answer ,response, retrieved_chunks):
+def add_test_result(test_case: TestCase ,query_expected_answer ,response, retrieved_chunks,evaluation):
     """
     Add a test result to the existing results.
     """
@@ -113,7 +113,8 @@ def add_test_result(test_case: TestCase ,query_expected_answer ,response, retrie
         "response": response.content,
         "time_stamp" : str(datetime.datetime.now()),
         "retrieved_chunks": [chunk.page_content for chunk in retrieved_chunks],
-        "options": [{"name": option.name, "is_enabled": option.is_enabled, "data": option.data} for option in test_case.options]
+        "options": [{"name": option.name, "is_enabled": option.is_enabled, "data": option.data} for option in test_case.options],
+        "evaluation": evaluation
     })
     
     # Write results to a JSON file (append mode)
