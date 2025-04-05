@@ -25,7 +25,8 @@ class TestOption():
         return f"Option: {self.name}, Enabled: {self.is_enabled}, Data: {self.data}"
 
 class TestCase():
-    def __init__(self, llm_name, embedding_model_name, system_message, chunk_size, chunk_overlap, similar_vector_count,options=None):
+    def __init__(self, test_id,llm_name, embedding_model_name, system_message, chunk_size, chunk_overlap, similar_vector_count,options=None):
+        self.test_id = test_id
         self.llm_name = llm_name
         self.embedding_model_name = embedding_model_name
         self.system_message = system_message
@@ -63,7 +64,7 @@ def load_test_cases():
     with open(test_case_input_file, "r", encoding="utf-8") as file:
         data = json.load(file)
         for case in data:
-            test_case = TestCase(case["llm_name"], case["embedding_model_name"], case["system_message"], case["chunk_size"], case["chunk_overlap"], case["similar_vector_count"],case["options"])
+            test_case = TestCase(case["test_id"],case["llm_name"], case["embedding_model_name"], case["system_message"], case["chunk_size"], case["chunk_overlap"], case["similar_vector_count"],case["options"])
             test_cases.append(test_case)
     
     return test_cases
@@ -102,6 +103,7 @@ def add_test_result(test_case: TestCase ,query_expected_answer ,response, retrie
     results = load_existing_test_results()  # List to store results
     # Store results in a dictionary
     results.append({
+        "test_id": test_case.test_id,
         "llm": test_case.llm_name,
         "embedding_model": test_case.embedding_model_name,
         "system_message": test_case.system_message,
@@ -114,8 +116,9 @@ def add_test_result(test_case: TestCase ,query_expected_answer ,response, retrie
         "time_stamp" : str(datetime.datetime.now()),
         "retrieved_chunks": [chunk.page_content for chunk in retrieved_chunks],
         "options": [{"name": option.name, "is_enabled": option.is_enabled, "data": option.data} for option in test_case.options],
-        "evaluation": evaluation
-    })
+        "evaluation": evaluation.output,
+        "evaluation_score": evaluation.score
+        })
     
     # Write results to a JSON file (append mode)
     with open(test_results_output_file, "w", encoding="utf-8") as f:

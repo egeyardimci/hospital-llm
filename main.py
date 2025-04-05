@@ -6,6 +6,7 @@ from langchain_groq import ChatGroq
 from langchain.schema import SystemMessage, HumanMessage
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from dotenv import load_dotenv
+from pydantic import BaseModel, Field
 from vectordb import load_vectordb
 from data import load_test_cases, load_queries_expected_answers, add_test_result
 from logger import log
@@ -16,98 +17,79 @@ from sentence_transformers import CrossEncoder
 # Load environment variables
 load_dotenv()
 
-
 vector_db_g = load_vectordb("LaBSE",500,50)
 
 
-def llm_as_a_judge(query: str, response: str, expected_answer: str,system_message:str) -> dict:
+class JudgeOutput(BaseModel):
+    """
+    The output of the LLM judge.
+    """
+    score: int = Field(
+        description="Score determined by the LLM judge"
+    )
+    output: str = Field(
+        description="The output of the LLM judge. It should be a string that all the output of the LLM judge"
+    )
+
+
+def llm_as_a_judge(query: str, response: str, expected_answer: str) -> str:
     """
     Turkish-specific LLM judge with language-aware evaluation.
     """
-    llm = ChatGroq(model="deepseek-r1-distill-qwen-32b")
+    instruction = """
+    You are a helpful assistant specializing in document analysis. Answer questions strictly based on the provided context and DO NOT use any external knowledge. Do not assume or infer information that is not explicitly stated in the context.
+
+    When responding:
+    1. If the context contains sufficient information, provide a clear and accurate answer based solely on that information.
+    2. If the context does not contain enough information, clearly state that you cannot provide an answer based on the available context.
+    3. Always cite your sources by referencing the exact page numbers using this format: <a href='yourfile.pdf#page=PAGENUMBER' target='_blank'>Sayfa PAGENUMBER</a>
+    4. When multiple references exist across different pages, summarize the collective information before providing your answer.
+    5. Structure your responses with bullet points, numbered lists, or short paragraphs as appropriate to the question.
+    6. Communicate exclusively in Turkish, using formal and grammatically correct language unless the user's tone suggests informality is appropriate.
+
+    Remember to analyze the context thoroughly before responding, as the context is formatted as:
+    Page Number: [page number]: [content of that page]
+    """
     
-    evaluation_prompt = """You are a judge evaluating the quality of an AI's response to a question.
-Please evaluate the response based on the following criteria:
-1. Accuracy: How well does the response match the expected answer?
-2. Completeness: Does the response contain all necessary information?
-3. Clarity: Is the response clear and well-structured?
-4. Relevance: Does the response directly address the question?
+    llm = ChatGroq(model="deepseek-r1-distill-llama-70b")
+    
+    evaluation_prompt = """###Task Description:
+    An instruction (might include an Input inside it), a response to evaluate, a reference answer that gets a score of 5, and a score rubric representing a evaluation criteria are given.
+    1. Write a detailed feedback that assess the quality of the response strictly based on the given score rubric, not evaluating in general.
+    2. After writing a feedback, write a score that is an integer between 1 and 5. You should refer to the score rubric.
+    3. Respond ONLY with a JSON object with the fields: `score` (integer, 1–5) and `output` the feedback (string).
 
-Rate each criterion on a scale of 0-10 and provide brief feedback for each.
-Then provide an overall score (0-100) and summary.
+    ###The instruction to evaluate:
+    {instruction}
 
-IMPORTANT: Your response must be a valid JSON object with exactly this structure:
-{{
-    "accuracy_score": <number between 0-10>,
-    "completeness_score": <number between 0-10>,
-    "clarity_score": <number between 0-10>,
-    "relevance_score": <number between 0-10>,
-    "overall_score": <number between 0-100>,
-    "feedback": {{
-        "accuracy": "<your feedback text>",
-        "completeness": "<your feedback text>",
-        "clarity": "<your feedback text>",
-        "relevance": "<your feedback text>"
-    }},
-    "summary": "<your overall summary>"
-}}
+    ###Response to evaluate:
+    {response}
 
-DO NOT include any text before or after the JSON object. Return ONLY the JSON object.
+    ###Reference Answer (Score 5):
+    {reference_answer}
 
-Query: {query}
-Expected Answer: {expected_answer}
-Response to Evaluate: {response}
-"""
+    ###Score Rubrics:
+    [Is the response correct, accurate, and factual based on the reference answer?]
+    Score 1: The response is completely incorrect, inaccurate, and/or not factual.
+    Score 2: The response is mostly incorrect, inaccurate, and/or not factual.
+    Score 3: The response is somewhat correct, accurate, and/or factual.
+    Score 4: The response is mostly correct, accurate, and factual.
+    Score 5: The response is completely correct, accurate, and factual.
+
+    ###Feedback:"""
 
     messages = [
-        SystemMessage(content="You are a precise JSON evaluator. Always respond with valid JSON only, no additional text."),
+        SystemMessage(content="You are an LLM as a judge being used in a RAG system."),
         HumanMessage(content=evaluation_prompt.format(
-            query=query,
-            expected_answer=expected_answer,
+            instruction=query,
+            reference_answer=expected_answer,
             response=response
         ))
     ]
     
-    try:
-        response = llm.invoke(messages)
-        # Clean the response content to ensure it's valid JSON
-        content = response.content.strip()
-        # Remove any markdown code block markers if present
-        if content.startswith('```json'):
-            content = content[7:]
-        if content.endswith('```'):
-            content = content[:-3]
-        content = content.strip()
-        
-        # Parse the JSON response
-        evaluation = json.loads(content)
-        
-        # Validate the required fields
-        required_fields = ["accuracy_score", "completeness_score", "clarity_score", 
-                         "relevance_score", "overall_score", "feedback", "summary"]
-        for field in required_fields:
-            if field not in evaluation:
-                raise ValueError(f"Missing required field: {field}")
-        
-        return evaluation
-    except (json.JSONDecodeError, AttributeError, ValueError) as e:
-        log(f"Error parsing LLM judge evaluation: {e}")
-        log(f"Raw response: {response.content if 'response' in locals() else 'No response'}")
-        return {
-            "accuracy_score": 0,
-            "completeness_score": 0,
-            "clarity_score": 0,
-            "relevance_score": 0,
-            "overall_score": 0,
-            "feedback": {
-                "accuracy": "Error evaluating response",
-                "completeness": "Error evaluating response",
-                "clarity": "Error evaluating response",
-                "relevance": "Error evaluating response"
-            },
-            "summary": "Failed to evaluate response"
-        }
-
+    llm = llm.with_structured_output(JudgeOutput)
+    evaluation = llm.invoke(messages)
+    return evaluation
 
 def rerank_with_cross_encoder(query, retrieved_chunks, cross_encoder_model_name, top_k=None):
     """
@@ -146,7 +128,6 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
     """
     Run a single test with the given parameters and save the results to a JSON file.
     """
-    print("INSIDEEEEEE")
     log_test(test_case,query_expeced_answer)
     
     vector_db = vector_db_g
@@ -194,10 +175,9 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
     )
     
     log(f"Response: {response.content}")
-    log(f"LLM Judge Evaluation: {json.dumps(evaluation, indent=2)}")
+    log(f"LLM Judge Evaluation: {evaluation.output}")
+    add_test_result(test_case,query_expeced_answer, response, retrieved_chunks,evaluation)
     
-    # Add evaluation results to test results
-    add_test_result(test_case, query_expeced_answer, response, retrieved_chunks, evaluation)
     return response.content, evaluation
 
 # Run the query for every LLM and every embedding model
@@ -215,7 +195,7 @@ def run_tests(test_cases:list[TestCase], queryies_expeced_answers):
         for query_expeced_answer in queryies_expeced_answers:
             log_test(test_case,query_expeced_answer)
             
-            vector_db = load_vectordb(test_case.embedding_model_name, test_case.chunk_size, test_case.chunk_overlap)
+            vector_db = vector_db_g
         
             # Querying the document
             retrieved_chunks = vector_db.similarity_search(query_expeced_answer["query"], test_case.similar_vector_count)  # Get top 20 relevant chunks
@@ -243,7 +223,7 @@ def run_tests(test_cases:list[TestCase], queryies_expeced_answers):
                     top_k
                 )
 
-            context = "\n\n".join([f'{chunk.page_content} Page Number: {chunk.metadata.get("page", "Unknown")}' for chunk in retrieved_chunks])
+            context = "\n\n".join([f'Page Number: {chunk.metadata.get("page", "Unknown")}: {chunk.page_content}\n' for chunk in retrieved_chunks])
 
 
             # Use Groq API for response generation
@@ -257,11 +237,11 @@ def run_tests(test_cases:list[TestCase], queryies_expeced_answers):
             evaluation = llm_as_a_judge(
                 query_expeced_answer["query"],
                 response.content,
-                query_expeced_answer["answer"],system_message=test_case.system_message
+                query_expeced_answer["answer"]
             )
                     
             log(f"Response: {response.content}")
-            log(f"LLM Judge Evaluation: {json.dumps(evaluation, indent=2)}")
+            log(f"LLM Judge Evaluation: {evaluation.output}")
             add_test_result(test_case,query_expeced_answer, response, retrieved_chunks,evaluation)
 
 
