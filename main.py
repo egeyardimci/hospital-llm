@@ -16,56 +16,132 @@ from sentence_transformers import CrossEncoder
 # Load environment variables
 load_dotenv()
 
+
+def llm_as_a_judge(query: str, response: str, expected_answer: str,system_message:str) -> dict:
+    """
+    Turkish-specific LLM judge with language-aware evaluation.
+    """
+    llm = ChatGroq(model="deepseek-r1-distill-qwen-32b")
+    
+    evaluation_prompt = """You are a judge evaluating the quality of an AI's response to a question.
+Please evaluate the response based on the following criteria:
+1. Accuracy: How well does the response match the expected answer?
+2. Completeness: Does the response contain all necessary information?
+3. Clarity: Is the response clear and well-structured?
+4. Relevance: Does the response directly address the question?
+
+Rate each criterion on a scale of 0-10 and provide brief feedback for each.
+Then provide an overall score (0-100) and summary.
+
+IMPORTANT: Your response must be a valid JSON object with exactly this structure:
+{{
+    "accuracy_score": <number between 0-10>,
+    "completeness_score": <number between 0-10>,
+    "clarity_score": <number between 0-10>,
+    "relevance_score": <number between 0-10>,
+    "overall_score": <number between 0-100>,
+    "feedback": {{
+        "accuracy": "<your feedback text>",
+        "completeness": "<your feedback text>",
+        "clarity": "<your feedback text>",
+        "relevance": "<your feedback text>"
+    }},
+    "summary": "<your overall summary>"
+}}
+
+DO NOT include any text before or after the JSON object. Return ONLY the JSON object.
+
+Query: {query}
+Expected Answer: {expected_answer}
+Response to Evaluate: {response}
+"""
+
+    messages = [
+        SystemMessage(content="You are a precise JSON evaluator. Always respond with valid JSON only, no additional text."),
+        HumanMessage(content=evaluation_prompt.format(
+            query=query,
+            expected_answer=expected_answer,
+            response=response
+        ))
+    ]
+    
+    try:
+        response = llm.invoke(messages)
+        # Clean the response content to ensure it's valid JSON
+        content = response.content.strip()
+        # Remove any markdown code block markers if present
+        if content.startswith('```json'):
+            content = content[7:]
+        if content.endswith('```'):
+            content = content[:-3]
+        content = content.strip()
+        
+        # Parse the JSON response
+        evaluation = json.loads(content)
+        
+        # Validate the required fields
+        required_fields = ["accuracy_score", "completeness_score", "clarity_score", 
+                         "relevance_score", "overall_score", "feedback", "summary"]
+        for field in required_fields:
+            if field not in evaluation:
+                raise ValueError(f"Missing required field: {field}")
+        
+        return evaluation
+    except (json.JSONDecodeError, AttributeError, ValueError) as e:
+        log(f"Error parsing LLM judge evaluation: {e}")
+        log(f"Raw response: {response.content if 'response' in locals() else 'No response'}")
+        return {
+            "accuracy_score": 0,
+            "completeness_score": 0,
+            "clarity_score": 0,
+            "relevance_score": 0,
+            "overall_score": 0,
+            "feedback": {
+                "accuracy": "Error evaluating response",
+                "completeness": "Error evaluating response",
+                "clarity": "Error evaluating response",
+                "relevance": "Error evaluating response"
+            },
+            "summary": "Failed to evaluate response"
+        }
+
+
 def rerank_with_cross_encoder(query, retrieved_chunks, cross_encoder_model_name, top_k=None):
     """
-    Re-rank retrieved chunks using a cross-encoder.
-    
-    Args:
-        query: The query string
-        retrieved_chunks: List of retrieved document chunks
-        cross_encoder_model_name: Name of the cross-encoder model
-        top_k: Number of top chunks to return after re-ranking (default: return all)
-        
-    Returns:
-        List of re-ranked document chunks
+    Improved re-ranking with robust error handling and fallback mechanisms.
     """
+  
     cross_encoder = CrossEncoder(cross_encoder_model_name)
-
-    # Debug log
-    log(f"Original chunks count: {len(retrieved_chunks)}")
-    log(f"Cross-encoder top_k parameter: {top_k}")
+    try:
+        # Prepare pairs of (query, chunk) for the cross-encoder
+        pairs = [(query, chunk.page_content) for chunk in retrieved_chunks]
+        
+        # Get relevance scores with error handling
+        scores = cross_encoder.predict(pairs)
+        
+        # Create list of (chunk, score) tuples
+        chunk_score_pairs = list(zip(retrieved_chunks, scores))
+        
+        # Sort by score in descending order
+        reranked_chunks = sorted(chunk_score_pairs, key=lambda x: x[1], reverse=True)
+        
+        # Return top_k chunks if specified, otherwise return all
+        if top_k is not None:
+            reranked_chunks = reranked_chunks[:top_k]
+        
+        # Add logging for re-ranking details
+        log(f"Re-ranking results: Original chunks={len(retrieved_chunks)}, Reranked chunks={len(reranked_chunks)}")
+        
+        return [chunk for chunk, _ in reranked_chunks]
     
-    
-    # Prepare pairs of (query, chunk) for the cross-encoder
-    pairs = [(query, chunk.page_content) for chunk in retrieved_chunks]
-    
-    # Get relevance scores
-    scores = cross_encoder.predict(pairs)
-    
-    # Create list of (chunk, score) tuples
-    chunk_score_pairs = list(zip(retrieved_chunks, scores))
-    
-    # Sort by score in descending order
-    reranked_chunks = sorted(chunk_score_pairs, key=lambda x: x[1], reverse=True)
-    
-    # Return top_k chunks if specified, otherwise return all
-    if top_k is not None:
-        reranked_chunks = reranked_chunks[:top_k]
-    
-    # Return just the chunks, not the scores
-    return [chunk for chunk, _ in reranked_chunks]
+    except Exception as e:
+        log(f"Cross-encoder re-ranking error: {e}")
+        return retrieved_chunks
 
 
 def run_one_test(test_case:TestCase, query_expeced_answer):
     """
     Run a single test with the given parameters and save the results to a JSON file.
-    
-    Args:
-        test_case: TestCase object
-        query_expeced_answer: Dictionary containing the query and expected
-        
-    Returns:
-        None
     """
     print("INSIDEEEEEE")
     log_test(test_case,query_expeced_answer)
@@ -73,7 +149,7 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
     vector_db = load_vectordb(test_case.embedding_model_name, test_case.chunk_size, test_case.chunk_overlap)
 
     # Querying the document
-    retrieved_chunks = vector_db.similarity_search(query_expeced_answer["query"], test_case.similar_vector_count)  # Get top 20 relevant chunks
+    retrieved_chunks = vector_db.similarity_search(query_expeced_answer["query"], test_case.similar_vector_count)
     
     cross_encoder_option = None
     for option in test_case.options:
@@ -82,12 +158,11 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
             break
     if cross_encoder_option:
         cross_encoder_model_name = cross_encoder_option.data
-        top_k = 5  # Default to using all chunks
+        top_k = 7  # Default
         
-        # If data is a dictionary, check for top_k parameter
         if isinstance(cross_encoder_option.data, dict):
             cross_encoder_model_name = cross_encoder_option.data.get("model_name")
-            top_k = cross_encoder_option.data.get("top_k")
+            top_k = cross_encoder_option.data.get("top_k", top_k)
         
         log(f"Re-ranking with cross-encoder: {cross_encoder_model_name}")
         retrieved_chunks = rerank_with_cross_encoder(
@@ -97,21 +172,29 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
             top_k
         )
     
-    
     context = "\n\n".join([chunk.page_content for chunk in retrieved_chunks])
-    print("AAAAAAAAAA ",len(retrieved_chunks))
+    
     # Use Groq API for response generation
-    llm = ChatGroq(model=test_case.llm_name)  # Load Llama model
+    llm = ChatGroq(model=test_case.llm_name)
     messages = [
         SystemMessage(content=test_case.system_message),
         HumanMessage(content=f"Context:\n{context}\n\nQuestion: {query_expeced_answer['query']}")
     ]
     response = llm.invoke(messages)
     
-    log(f"Response: {response.content}")
+    # Get LLM judge evaluation
+    evaluation = llm_as_a_judge(
+        query_expeced_answer["query"],
+        response.content,
+        query_expeced_answer["answer"],system_message=test_case.system_message
+    )
     
-    add_test_result(test_case, query_expeced_answer, response, retrieved_chunks)
-    return response.content
+    log(f"Response: {response.content}")
+    log(f"LLM Judge Evaluation: {json.dumps(evaluation, indent=2)}")
+    
+    # Add evaluation results to test results
+    add_test_result(test_case, query_expeced_answer, response, retrieved_chunks, evaluation)
+    return response.content, evaluation
 
 # Run the query for every LLM and every embedding model
 def run_tests(test_cases:list[TestCase], queryies_expeced_answers):
@@ -141,7 +224,7 @@ def run_tests(test_cases:list[TestCase], queryies_expeced_answers):
                     break
             if cross_encoder_option:
                 cross_encoder_model_name = cross_encoder_option.data
-                top_k = 5  # Default to using all chunks
+                top_k = 7  # Default to using all chunks
                 
                 # If data is a dictionary, check for top_k parameter
                 if isinstance(cross_encoder_option.data, dict):
@@ -158,7 +241,7 @@ def run_tests(test_cases:list[TestCase], queryies_expeced_answers):
 
             context = "\n\n".join([f'{chunk.page_content} Page Number: {chunk.metadata.get("page", "Unknown")}' for chunk in retrieved_chunks])
 
-            print("AAAAAAAAAA ",len(retrieved_chunks))
+
             # Use Groq API for response generation
             llm = ChatGroq(model=test_case.llm_name)  # Load Llama model
             messages = [
@@ -166,9 +249,16 @@ def run_tests(test_cases:list[TestCase], queryies_expeced_answers):
                 HumanMessage(content=f"Context:\n{context}\n\nQuestion: {query_expeced_answer['query']}")
             ]
             response = llm.invoke(messages)
+
+            evaluation = llm_as_a_judge(
+                query_expeced_answer["query"],
+                response.content,
+                query_expeced_answer["answer"],system_message=test_case.system_message
+            )
                     
             log(f"Response: {response.content}")
-            add_test_result(test_case,query_expeced_answer, response, retrieved_chunks)
+            log(f"LLM Judge Evaluation: {json.dumps(evaluation, indent=2)}")
+            add_test_result(test_case,query_expeced_answer, response, retrieved_chunks,evaluation)
 
 
 def log_test(test_case:TestCase, quey_expected_answer):
