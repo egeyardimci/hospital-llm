@@ -13,6 +13,7 @@ from logger import log
 import datetime
 from data import TestCase
 from sentence_transformers import CrossEncoder
+import sys
 
 # Load environment variables
 load_dotenv()
@@ -57,7 +58,6 @@ def llm_as_a_judge(query: str, response: str, expected_answer: str) -> str:
     An instruction (might include an Input inside it), a response to evaluate, a reference answer that gets a score of 5, and a score rubric representing a evaluation criteria are given.
     1. Write a detailed feedback that assess the quality of the response strictly based on the given score rubric, not evaluating in general.
     2. After writing a feedback, write a score that is an integer between 1 and 5. You should refer to the score rubric.
-    3. Respond ONLY with a JSON object with the fields: `score` (integer, 1–5) and `output` the feedback (string).
 
     ###The instruction to evaluate:
     {instruction}
@@ -76,7 +76,9 @@ def llm_as_a_judge(query: str, response: str, expected_answer: str) -> str:
     Score 4: The response is mostly correct, accurate, and factual.
     Score 5: The response is completely correct, accurate, and factual.
 
-    ###Feedback:"""
+    Respond ONLY with a JSON object with the fields: `score` (integer, 1–5) and `output` (string).
+    Do not include any explanations or other text!!! 
+    """
 
     messages = [
         SystemMessage(content="You are an LLM as a judge being used in a RAG system."),
@@ -166,17 +168,22 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
         HumanMessage(content=f"Context:\n{context}\n\nQuestion: {query_expeced_answer['query']}")
     ]
     response = llm.invoke(messages)
-    
-    # Get LLM judge evaluation
-    evaluation = llm_as_a_judge(
-        query_expeced_answer["query"],
-        response.content,
-        query_expeced_answer["answer"],system_message=test_case.system_message
-    )
-    
-    log(f"Response: {response.content}")
-    log(f"LLM Judge Evaluation: {evaluation.output}")
-    add_test_result(test_case,query_expeced_answer, response, retrieved_chunks,evaluation)
+    evaluation = None
+
+    try:
+        # Get LLM judge evaluation
+        evaluation = llm_as_a_judge(
+            query_expeced_answer["query"],
+            response.content,
+            query_expeced_answer["answer"]
+        )
+
+        add_test_result(test_case,query_expeced_answer, response, retrieved_chunks,evaluation)
+        
+        log(f"Response: {response.content}")
+        log(f"LLM Judge Evaluation: {evaluation.output}")
+    except Exception as e:
+        log(f"LLM judge evaluation error: {e}")
     
     return response.content, evaluation
 
@@ -266,12 +273,18 @@ def log_test(test_case:TestCase, quey_expected_answer):
 if __name__ == "__main__":
     # Run all tests
     
-    test_cases = load_test_cases()
-    queries_and_expected_answers = load_queries_expected_answers()
-    run_tests(test_cases, queries_and_expected_answers)
+    #test_cases = load_test_cases()
+    #queries_and_expected_answers = load_queries_expected_answers()
+    #run_tests(test_cases, queries_and_expected_answers)
     
     # If you want to run just one test use function bellow.
     #run_one_test(llm_names[0], embedding_model_names[0], system_messages[0], queries_and_expected_answers[0], chunk_sizes_and_chunk_overlaps[0][0], chunk_sizes_and_chunk_overlaps[0][1], similar_vector_counts[0])
     #test_case = TestCase("llama-3.3-70b-versatile", "sentence-transformers/all-MiniLM-L6-v2", "Hello, how can I help you today?", 500, 50, 10)
     #query_expeced_answer = {"query": "What is the capital of France?", "answer": "Paris"}
     #run_one_test(test_case, query_expeced_answer)
+
+    test_cases = load_test_cases()
+    queries_and_expected_answers = load_queries_expected_answers()
+    test_id = int(sys.argv[1])
+    for query in queries_and_expected_answers:
+        run_one_test(test_cases[test_id-1], query)
