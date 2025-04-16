@@ -53,7 +53,7 @@ class TestCase():
         option = TestOption(option_name, option_value, data)
         self.options.append(option)
 
-def load_test_cases():
+def load_test_cases() -> list[TestCase]:
     """
     Load test cases from the test_cases.json file.
     
