@@ -18,7 +18,7 @@ import sys
 # Load environment variables
 load_dotenv()
 
-vector_db_g = load_vectordb("LaBSE",500,50)
+vector_db_g = None
 
 
 class JudgeOutput(BaseModel):
@@ -132,7 +132,7 @@ def rerank_with_cross_encoder(query, retrieved_chunks, cross_encoder_model_name,
     Improved re-ranking with robust error handling and fallback mechanisms.
     """
   
-    cross_encoder = CrossEncoder(cross_encoder_model_name)
+    cross_encoder = CrossEncoder(cross_encoder_model_name, trust_remote_code=True)
     try:
         # Prepare pairs of (query, chunk) for the cross-encoder
         pairs = [(query, chunk.page_content) for chunk in retrieved_chunks]
@@ -321,5 +321,6 @@ if __name__ == "__main__":
     test_cases = load_test_cases()
     queries_and_expected_answers = load_queries_expected_answers()
     test_id = int(sys.argv[1])
+    vector_db_g = load_vectordb(test_cases[test_id-1].embedding_model_name,test_cases[test_id-1].chunk_size,test_cases[test_id-1].chunk_overlap)
     for query in queries_and_expected_answers:
         run_one_test(test_cases[test_id-1], query)
