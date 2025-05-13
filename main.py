@@ -14,6 +14,9 @@ import datetime
 from data import TestCase
 from sentence_transformers import CrossEncoder
 import sys
+# Hybrid retrieval imports
+from rank_bm25 import BM25Okapi
+import numpy as np
 
 # Load environment variables
 load_dotenv()
@@ -31,6 +34,30 @@ class JudgeOutput(BaseModel):
     output: str = Field(
         description="The output of the LLM judge. It should be a string that all the output of the LLM judge"
     )
+
+def evaluate_retrieval(query: str, retrieved_chunks: List, ground_truth_answer: str, k_precision=7, k_recall=20, cross_encoder_model="cross-encoder/ms-marco-MiniLM-L-6-v2"):
+    """
+    Evaluates retrieval using semantic Precision@k and Recall@k via a cross-encoder.
+    """
+    cross_encoder = CrossEncoder(cross_encoder_model, trust_remote_code=True)
+
+    # Pair the ground truth answer with each chunk
+    pairs = [(ground_truth_answer, chunk.page_content) for chunk in retrieved_chunks]
+    scores = cross_encoder.predict(pairs)
+
+    # Sort retrieved chunks by semantic similarity to ground truth answer
+    scored_chunks = sorted(zip(retrieved_chunks, scores), key=lambda x: x[1], reverse=True)
+
+    precision_hits = sum(1 for _, score in scored_chunks[:k_precision] if score > 0.5)
+    recall_hits = sum(1 for _, score in scored_chunks[:k_recall] if score > 0.5)
+
+    precision_at_k = precision_hits / k_precision
+    recall_at_k = recall_hits / k_recall
+
+    return {
+        "precision@3": round(precision_at_k, 3),
+        "recall@5": round(recall_at_k, 3)
+    }
 
 
 def llm_as_a_judge(query: str, response: str, expected_answer: str) -> str:
@@ -134,8 +161,38 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
     
     vector_db = vector_db_g
 
-    # Querying the document
-    retrieved_chunks = vector_db.similarity_search(query_expeced_answer["query"], test_case.similar_vector_count)
+    # Hybrid retrieve: vector + BM25
+    # Get top N vector results with scores
+    vector_results = vector_db.similarity_search_with_score(
+        query_expeced_answer["query"], 
+        max(test_case.similar_vector_count, 20)
+    )
+    retrieved_chunks, vector_scores = zip(*vector_results)
+
+    # Compute BM25 scores on these chunks
+    tokenized_texts = [
+        chunk.page_content.lower().split() for chunk in retrieved_chunks
+    ]
+    bm25 = BM25Okapi(tokenized_texts)
+    query_tokens = query_expeced_answer["query"].lower().split()
+    bm25_scores = bm25.get_scores(query_tokens)
+
+    # Normalize scores
+    v = np.array(vector_scores, dtype=float)
+    b = np.array(bm25_scores, dtype=float)
+    v_norm = (v - v.min()) / (v.max() - v.min() + 1e-8)
+    b_norm = (b - b.min()) / (b.max() - b.min() + 1e-8)
+
+    # Weighted hybrid score
+    alpha = 0.5
+    hybrid_scores = alpha * v_norm + (1 - alpha) * b_norm
+
+    # Sort and keep top 15
+    hybrid_pairs = sorted(
+        zip(retrieved_chunks, hybrid_scores),
+        key=lambda x: x[1], reverse=True
+    )
+    retrieved_chunks = [chunk for chunk, score in hybrid_pairs[:15]]
     
     cross_encoder_option = None
     for option in test_case.options:
@@ -185,6 +242,14 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
     except Exception as e:
         log(f"LLM judge evaluation error: {e}")
     
+        # Evaluate retrieval metrics before reranking/generation
+    retrieval_metrics = evaluate_retrieval(
+        query_expeced_answer["query"],
+        retrieved_chunks,
+        query_expeced_answer["answer"]
+    )
+    log(f"Retrieval evaluation: {retrieval_metrics}")
+
     return response.content, evaluation
 
 # Run the query for every LLM and every embedding model
