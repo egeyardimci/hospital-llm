@@ -14,6 +14,7 @@ import datetime
 from data import TestCase
 from sentence_transformers import CrossEncoder
 import sys
+from typing import List
 # Hybrid retrieval imports
 from rank_bm25 import BM25Okapi
 import numpy as np
@@ -215,9 +216,22 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
             top_k
         )
     
-    context = "\n\n".join([f'Page Number: {chunk.metadata.get("page", "Unknown")}: {chunk.page_content}\n' for chunk in retrieved_chunks])
-
+    # Extract parent documents using both doc_id and page, deduplicate by (doc_id, page)
+    parent_docs_by_page = {}
+    for chunk in retrieved_chunks:
+        doc_id = chunk.metadata.get("doc_id","unknown_doc_id")
+        page = chunk.metadata.get("page","unknown_page")
+        if doc_id and page:
+            key = (doc_id, page)
+            if key in parent_docs_by_page:
+                parent_docs_by_page[key] +=" "+ chunk.page_content
+            else:
+                parent_docs_by_page[key] = chunk.page_content
     
+    context = "\n\n".join(
+        f"Page Number: {page}: {content}" for (doc_id, page), content in sorted(parent_docs_by_page.items(), key=lambda x: x[0][1]))
+
+
     # Use Groq API for response generation
     llm = ChatGroq(model=test_case.llm_name)
     messages = [
