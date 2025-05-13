@@ -49,11 +49,20 @@ def create_vectordb(embedding_model, chunk_size, chunk_overlap):
         for i, doc in enumerate(docs):
             metadata = doc.metadata.copy() if doc.metadata else {}
             metadata["page"] = i + 1  # Assign page number starting at 1
+            metadata["doc_id"]=f"doc_{i}"
             updated_docs.append(Document(page_content=doc.page_content, metadata=metadata))
         
         # Split the pages into smaller chunks while retaining the metadata (including page number)
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
         chunks = text_splitter.split_documents(updated_docs)
+        for chunk in chunks:
+            if "doc_id" in chunk.metadata:
+                continue
+            parent_page=chunk.metadata.get("page")
+            for doc in updated_docs:
+                if doc.metadata.get("page")==parent_page:
+                    chunk.metadata["doc_id"]=doc.metadata.get("doc_id")
+                    break
         
         # Create the ChromaDB instance and store the embeddings
         vector_db = Chroma.from_documents(chunks, embedding_model, persist_directory=CHROMA_DB_PATH)
