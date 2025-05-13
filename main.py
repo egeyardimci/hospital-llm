@@ -33,7 +33,7 @@ class JudgeOutput(BaseModel):
     )
 
 
-def llm_as_a_judge(query: str, response: str, expected_answer: str) -> str:
+def llm_as_a_judge(query: str, response: str, expected_answer: str,chunks) -> str:
     """
     Turkish-specific LLM judge with language-aware evaluation.
     """
@@ -80,6 +80,29 @@ def llm_as_a_judge(query: str, response: str, expected_answer: str) -> str:
     Do not include any explanations or other text!!! 
     """
 
+    chunk_evaluation_prompt = """
+    You are evaluating the quality of a retrieved text chunk based on how well it answers a user query.
+
+    Please analyze the following:
+
+    Query:
+    {query}
+
+    Retrieved Chunk:
+    {chunks}
+
+    Rate how well the chunk answers the query using the following scale:
+    - 1 = Not relevant at all
+    - 2 = Slightly relevant
+    - 3 = Somewhat relevant
+    - 4 = Mostly relevant
+    - 5 = Completely relevant and useful
+
+    Respond ONLY with a JSON object with the fields: `score` (integer, 1–5) and `output` (string).
+    Do not include any explanations or other text!!! 
+
+    """
+
     messages = [
         SystemMessage(content="You are an LLM as a judge being used in a RAG system."),
         HumanMessage(content=evaluation_prompt.format(
@@ -91,7 +114,18 @@ def llm_as_a_judge(query: str, response: str, expected_answer: str) -> str:
     
     llm = llm.with_structured_output(JudgeOutput)
     evaluation = llm.invoke(messages)
-    return evaluation
+
+    chunk_evaluation_messages=[
+        SystemMessage(content="You are an LLM as a judge being used in a RAG system."),
+        HumanMessage(content=chunk_evaluation_prompt.format(
+            query=query,
+            chunks=chunks
+        ))
+    ]
+    
+    chunk_evaluation = llm.invoke(chunk_evaluation_messages)
+
+    return evaluation, chunk_evaluation
 
 def rerank_with_cross_encoder(query, retrieved_chunks, cross_encoder_model_name, top_k=None):
     """
@@ -172,13 +206,14 @@ def run_one_test(test_case:TestCase, query_expeced_answer):
 
     try:
         # Get LLM judge evaluation
-        evaluation = llm_as_a_judge(
+        evaluation, chunk_evaluation = llm_as_a_judge(
             query_expeced_answer["query"],
             response.content,
-            query_expeced_answer["answer"]
+            query_expeced_answer["answer"],
+            retrieved_chunks
         )
 
-        add_test_result(test_case,query_expeced_answer, response, retrieved_chunks,evaluation)
+        add_test_result(test_case,query_expeced_answer, response, retrieved_chunks,evaluation,chunk_evaluation)
         
         log(f"Response: {response.content}")
         log(f"LLM Judge Evaluation: {evaluation.output}")
