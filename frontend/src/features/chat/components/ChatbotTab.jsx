@@ -63,6 +63,7 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
           <div className="settings-group">
             <label>LLM Model</label>
             <select 
+              className="input-field"
               value={selectedModel} 
               onChange={(e) => dispatch(setSelectedModel(e.target.value))}
             >
@@ -75,6 +76,7 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
           <div className="settings-group">
             <label>Embedding Model</label>
             <select 
+              className="input-field"
               value={selectedEmbedding} 
               onChange={(e) => dispatch(setSelectedEmbedding(e.target.value))}
             >

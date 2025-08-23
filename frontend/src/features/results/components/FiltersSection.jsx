@@ -65,13 +65,18 @@ function FiltersSection() {
     dispatch(resetResultsFilters());
   };
 
+  // Consistent select styling
+  const selectClasses = "w-full px-3 py-2 text-sm border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none cursor-pointer";
+  const inputClasses = "w-full px-3 py-2 text-sm border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500";
+
   return (
     <div className="filters">
-      <h3>Filters</h3>
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">Filters</h3>
       <div className="filters-grid">
         <div className="filter-group">
-          <label className="filter-label">LLM Model</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">LLM Model</label>
           <select 
+            className={selectClasses}
             value={selectedLlm}
             onChange={e => dispatch(setSelectedLlm(e.target.value))}
           >
@@ -83,8 +88,9 @@ function FiltersSection() {
         </div>
         
         <div className="filter-group">
-          <label className="filter-label">Embedding Model</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Embedding Model</label>
           <select 
+            className={selectClasses}
             value={selectedEmbedding}
             onChange={e => dispatch(setSelectedEmbedding(e.target.value))}
           >
@@ -96,8 +102,9 @@ function FiltersSection() {
         </div>
         
         <div className="filter-group">
-          <label className="filter-label">Chunk Size</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Chunk Size</label>
           <select 
+            className={selectClasses}
             value={selectedChunkSize}
             onChange={e => dispatch(setSelectedChunkSize(e.target.value))}
           >
@@ -109,32 +116,44 @@ function FiltersSection() {
         </div>
         
         <div className="filter-group" ref={dropdownRef}>
-          <label className="filter-label">Options</label>
-          <div className="custom-dropdown">
+          <label className="block text-sm font-medium text-gray-700 mb-2">Options</label>
+          <div className="relative">
             <div 
-              className="dropdown-header" 
+              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 cursor-pointer flex items-center justify-between"
               onClick={() => setIsOptionsDropdownOpen(!isOptionsDropdownOpen)}
             >
-              {selectedOptions.length === 0 
-                ? "All Options" 
-                : `${selectedOptions.length} option(s) selected`}
-              <span className="dropdown-arrow">▼</span>
+              <span className={selectedOptions.length === 0 ? 'text-gray-500' : 'text-gray-900'}>
+                {selectedOptions.length === 0 
+                  ? "All Options" 
+                  : `${selectedOptions.length} option(s) selected`}
+              </span>
+              <svg 
+                className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
+                  isOptionsDropdownOpen ? 'transform rotate-180' : ''
+                }`}
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
             </div>
             
             {isOptionsDropdownOpen && (
-              <div className="dropdown-options">
+              <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
                 {filterOptions.options.map(option => (
                   <div 
                     key={option} 
-                    className="dropdown-option"
+                    className="px-3 py-2 text-sm cursor-pointer hover:bg-gray-50 flex items-center space-x-2"
                     onClick={() => toggleOption(option)}
                   >
                     <input 
                       type="checkbox" 
+                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                       checked={selectedOptions.includes(option)} 
                       onChange={() => {}} // Handled by div onClick
                     />
-                    <span>{option}</span>
+                    <span className="text-gray-700">{option}</span>
                   </div>
                 ))}
               </div>
@@ -143,8 +162,9 @@ function FiltersSection() {
         </div>
         
         <div className="filter-group">
-          <label className="filter-label">Search Query</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Search Query</label>
           <input
+            className={inputClasses}
             type="text"
             value={queryText}
             onChange={e => dispatch(setQueryText(e.target.value))}
@@ -153,8 +173,9 @@ function FiltersSection() {
         </div>
         
         <div className="filter-group">
-          <label className="filter-label">Start Date</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
           <input
+            className={inputClasses}
             type="date"
             value={startDate}
             onChange={e => dispatch(setStartDate(e.target.value))}
@@ -162,8 +183,9 @@ function FiltersSection() {
         </div>
         
         <div className="filter-group">
-          <label className="filter-label">End Date</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">End Date</label>
           <input
+            className={inputClasses}
             type="date"
             value={endDate}
             onChange={e => dispatch(setEndDate(e.target.value))}
@@ -171,11 +193,20 @@ function FiltersSection() {
         </div>
       </div>
       
-      <div className="filters-actions">
-        <button onClick={handleApplyFilters}>Apply Filters</button>
-        <button onClick={handleResetFilters}>Reset</button>
+      <div className="filters-actions mt-6 flex space-x-3">
+        <button 
+          className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+          onClick={handleApplyFilters}
+        >
+          Apply Filters
+        </button>
+        <button 
+          className="px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+          onClick={handleResetFilters}
+        >
+          Reset
+        </button>
       </div>
-      
     </div>
   );
 }

@@ -7,7 +7,7 @@ import { fetchResults } from './store/slices/resultsSlice';
 import { setFilterOptions } from './store/slices/filtersSlice';
 import { extractFilterOptions } from './utils/filterUtils';
 import { TABS } from './constants';
-import './App.css';
+import './styles/tailwind.css';
 import StatsSection from './features/dashboard/components/StatsSection';
 import FiltersSection from './features/results/components/FiltersSection';
 import ResultsContainer from './features/results/components/ResultsContainer';
@@ -35,7 +35,7 @@ function AppContent() {
 
   return (
     <div className="container">
-      <h1>LLM Question-Answer Testing Visualizer</h1>
+      <h1 className="text-2xl font-bold">LLM Question-Answer Testing Visualizer</h1>
 
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
