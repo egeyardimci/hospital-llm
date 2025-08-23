@@ -43,7 +43,7 @@ def chat_endpoint(request: ChatRequest):
     try:
         print(request)
         test_case = TestCase(request.llm, request.embedding_model, request.system_message, 500, 50, 10)
-        result = run_one_test(test_case,{"query": request.query, "answer": ""})
+        result, evaluation  = run_one_test(test_case,{"query": request.query, "answer": ""})
         response = {
             "role": "assistant",
             "content": result

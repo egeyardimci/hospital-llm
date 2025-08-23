@@ -1,0 +1,149 @@
+import React, { useState } from 'react';
+
+function ResultCard({ item, index }) {
+  const [showSystem, setShowSystem] = useState(false);
+  const [showChunks, setShowChunks] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+  const [showEvaluation, setShowEvaluation] = useState(false);
+
+  // Detect language (simple heuristic)
+  const isTurkish = /[çğıöşüÇĞİÖŞÜ]/.test(item.query) || /türk/i.test(item.query);
+
+  return (
+    <div className="card">
+      <div className="card-header">
+        <div>
+          <span className="test-id">{item.testId || `Test-${index + 1}`}</span>
+          {isTurkish && <span className="language-badge">Turkish</span>}
+        </div>
+        <span className="model-badge">{item.llm}</span>
+      </div>
+      
+      <div className="card-body">
+        <div className="section">
+          <div className="section-title">
+            <span>Query</span>
+          </div>
+          <div className="section-content">{item.query}</div>
+        </div>
+        
+        <div className="expected-vs-actual">
+          <div className="section-without-border">
+            <div className="section-title">
+              <span>Expected Answer</span>
+            </div>
+            <div className="section-content">
+              {item.expected_answer || "No expected answer provided"}
+            </div>
+          </div>
+          
+          <div className="section">
+            <div className="section-title">
+              <span>Actual Response</span>
+            </div>
+            <div className="section-content" dangerouslySetInnerHTML={{ __html: item.response }}></div>
+          </div>
+        </div>
+        
+        {/* New Evaluation Section */}
+        <div className="section">
+          <div className="section-title">
+            <span>Evaluation</span>
+            <button 
+              className="toggle-button" 
+              onClick={() => setShowEvaluation(!showEvaluation)}
+            >
+              Show/Hide
+            </button>
+          </div>
+          <div className={`section-content ${showEvaluation ? '' : 'hidden'}`}>
+            {"General evaluation: " + item.evaluation + " \nScore: " + item.evaluation_score + "\nChunk evaluation: " + item.chunk_evaluation + "\nScore: " + item.chunk_evaluation_score|| "No evaluation data available"}
+          </div>
+        </div>
+
+        <div className="section">
+          <div className="section-title">
+            <span>System Message</span>
+            <button 
+              className="toggle-button" 
+              onClick={() => setShowSystem(!showSystem)}
+            >
+              Show/Hide
+            </button>
+          </div>
+          <div className={`section-content ${showSystem ? '' : 'hidden'}`}>
+            {item.system_message}
+          </div>
+        </div>
+        
+        <div className="section">
+          <div className="section-title">
+            <span>Retrieved Chunks</span>
+            <button 
+              className="toggle-button" 
+              onClick={() => setShowChunks(!showChunks)}
+            >
+              Show/Hide
+            </button>
+          </div>
+          <div className={`section-content ${showChunks ? '' : 'hidden'}`}>
+            <ol>
+              {item.retrieved_chunks && item.retrieved_chunks.map((chunk, i) => (
+                <li key={i}>{chunk}</li>
+              ))}
+            </ol>
+          </div>
+        </div>
+        
+        {/* Options Section */}
+        <div className="section">
+          <div className="section-title">
+            <span>Options</span>
+            <button 
+              className="toggle-button" 
+              onClick={() => setShowOptions(!showOptions)}
+            >
+              Show/Hide
+            </button>
+          </div>
+          <div className={`section-content ${showOptions ? '' : 'hidden'}`}>
+            {item.options && item.options.length > 0 ? (
+              <ul>
+                {item.options.map((option, i) => (
+                  <li key={i}>{option.name}: {option.data}</li>
+                ))}
+              </ul>
+            ) : (
+              <span>No options available</span>
+            )}
+          </div>
+        </div>
+        
+        <div className="meta-info">
+          <div className="meta-item">
+            <span className="meta-label">Embedding Model</span>
+            <span className="meta-value">{item.embedding_model}</span>
+          </div>
+          <div className="meta-item">
+            <span className="meta-label">Chunk Size</span>
+            <span className="meta-value">{item.chunk_size || "N/A"}</span>
+          </div>
+          <div className="meta-item">
+            <span className="meta-label">Chunk Overlap</span>
+            <span className="meta-value">{item.chunk_overlap || "N/A"}</span>
+          </div>
+          <div className="meta-item">
+            <span className="meta-label">Similar Vector Count</span>
+            <span className="meta-value">{item.similar_vector_count || "N/A"}</span>
+          </div>
+          <div className="meta-item">
+            <span className="meta-label">Timestamp</span>
+            <span className="meta-value">{item.time_stamp}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ResultCard;

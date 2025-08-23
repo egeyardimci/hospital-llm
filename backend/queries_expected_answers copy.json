@@ -1,0 +1,34 @@
+[
+    {
+        "query": "65 yaşındaki bir hasta, birinci basamak sağlık hizmeti sunucusu tarafından sağlık kurulu raporu alarak değerlendirildikten sonra, ileri görüntüleme yöntemlerinin (MR, BT, DSA, PET-CT) uygulanabilmesi için radyo cerrahi yöntemlerine yönelik olarak ikinci veya üçüncü basamak resmi sağlık hizmeti sunucusuna sevk edilmiştir. Bu durumda, SGK’nın ödeme politikası kapsamında, sevk edilen hastanın bu görüntüleme işlemleri için herhangi bir ek ücret ödemesi gerekir mi?",
+        "answer": "Hayır, eğer hasta sağlık kurulu raporu ile sevk edilmişse, MR, BT, DSA ve PET-CT bedelleri faturalandırılamaz ve hasta herhangi bir ek ücret ödemez."
+    },
+    {
+        "query":"Bir hastaya, birinci basamak sağlık hizmeti sunucusunda reçete yazılıyor. Hasta, iki gün sonra bir özel hastaneye gidip aynı reçeteyi tekrar ettiriyor. Bu durumda ikinci reçete için katılım payı tahsil edilir mi? ",
+        "answer":"Bu maddede yer alan genel hükümler saklı kalmak kaydıyla; birinci basamak sağlık kuruluşları muayeneleri, Kurumca belirlenen kronik hastalıklar (Ek: RG- 21/03/2018- 30367/ 1md. Yürürlük: 21/04/2018), elektronik sevk formu ile sevk edilen hastalar ve acil haller hariç olmak üzere 10 gün içerisinde aynı uzmanlık dalında farklı sağlık hizmeti sunucusuna yapılan başvurularda bu maddede belirtilen ayakta tedavide hekim ve diş hekimi muayenesi katılım payı tutarları 5 (beş) TL artırılarak tahsil edilir. Artırılan 5 (beş) TL’lik tutar; Kurumdan gelir ve aylık alanlar ile bakmakla yükümlü oldukları kişiler için gelir ve aylıklarından, diğer kişiler için ise eczanelerce kişilerden tahsil edilir."   
+    },
+    {
+        "query":"SGK güvencesi olmayan, Türkiye’ye ilk kez gelen yabancı uyruklu kişi, trafik kazası nedeniyle üniversite hastanesine başvuruyor. Bu hizmetin bedeli SGK tarafından karşılanır mı?",
+        "answer":"Sadece Trafik kazasıyla ilgili olan kısım SGK tarafından karşılanır. 5510 sayılı Kanuna göre genel sağlık sigortalısı veya bakmakla yükümlü olunan kişi sayılmaması nedeniyle hasta takip numarası/provizyon alınamaması ancak kişinin müracaatının trafik kazası nedeniyle yapılmış olması halinde sadece söz konusu müracaat nedeni ile ilgili sağlık hizmeti bedelleri faturalandırılabilecektir."
+    },
+    {
+        "query":"SGK ile sözleşmesi olmayan özel bir göz hastanesinde yapılan katarakt ameliyatı sonrası, hasta sözleşmeli bir optik merkezinden gözlük almak istiyor. Gözlük bedelinin SGK tarafından karşılanması mümkün müdür?",
+        "answer":"Hayır ödeme yapmaz, ne kadar sözleşmeli yerden cam alınsa da alınan reçetenin SGK ile bir bağı olmadığından dolayı SGK alınanı ödemez."
+    },
+    {
+        "query":"Hasta, farklı hastanede farklı branşlarda iki muayene oluyor (örneğin göğüs hastalıkları ve kardiyoloji). Katılım payı ayrı ayrı mı alınır?",
+        "answer":"Farklı hastanede farklı değenlendiriliyor ancak aynı hastanede ikinci bir muayeneden katılım payı ayrı olarak alınmıyor. Hastanın, aynı gün içinde aynı sağlık hizmeti sunucusunda ilk muayenesini takip eden diğer uzmanlık dallarındaki ayakta tedavi kapsamında yer alan başvuruları, “ayakta tedavilerde ödeme” uygulaması kapsamında değerlendirilmez ve SUT eki EK-2/A Listesinde yer alan tutarlar faturalandırılamaz. Ancak SUT eki EK-2/B Listesindeki “normal poliklinik muayenesi” bedeli ve yapılması halinde SUT eki EK-2/A-2 Listesinde yer alan işlemlerin bedelleri faturalandırılacaktır."
+    },
+    {
+        "query":"Bir hastaya migren tedavisi için hem sumatriptan tablet hem de zolmitriptan burun spreyi aynı anda reçete ediliyor. SGK her iki ilacın da bedelini karşılar mı?",
+        "answer":"Hayır Triptan tipi ilaçlar ayrı ayrı reçete edilmelidir ve sgk tarafından biri karşılanır.Triptanlar, nöroloji uzman hekimleri tarafından reçete edilir. Bu grup ilaçlardan yalnız bir etken madde reçete edilebilir ve ayda en fazla 6 doz/adet yazılabilir. Aynı ilacın farklı farmasötik formlarının aynı anda reçete edilmesi halinde birisinin bedeli ödenir."
+    },
+    {
+        "query":"Hasta, glokom tanısıyla farklı formlarda (örneğin damla ve jel) iki ilaç almak istiyor. Reçetede her ikisi de yazılı. SGK bu ilaçların her ikisini de aynı anda karşılar mı?",
+        "answer":"İlki ödenir farklı şeyler ikincisinde biri ödenir sadece aynı şeyin farklı türü."
+    },
+    {
+        "query":"Bir hasta, özel hastanede yatarak tedavi görürken kullanılan bazı ilaçların bedelinin SGK tarafından karşılanmadığını öğreniyor. Hastane bu ilaçları fatura edebilir mi? Hasta ödeme yapmak zorunda kalır mı?",
+        "answer":"Evet ödemek zorunda kalır, evet fatura edebilir. Öncesinde hastane izin alıyor sonrasında fatura ediyor.  Sağlık hizmeti sunucusu, sunduğu sağlık hizmetleri öncesinde, alacağı ilave ücrete ilişkin olarak hasta veya hasta yakınının yazılı onayını alır. Bu yazılı onay alınmadan, işlemler sonrasında herhangi bir gerekçe ileri sürerek ilave ücret talebinde bulunamaz."
+    }
+]
