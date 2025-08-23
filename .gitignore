@@ -1,0 +1,42 @@
+# Byte-compiled / cached
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# macOS and Windows system files
+.DS_Store
+Thumbs.db
+
+# Python packaging
+dist/
+build/
+*.egg-info/
+
+# VS Code settings (optional)
+.vscode/
+
+# JetBrains IDE (PyCharm, etc.) settings (optional)
+.idea/
+
+doc.docx
+
+chroma_db/
+
+test_cases.json
+queries_expected_answers.json
+
+results.json

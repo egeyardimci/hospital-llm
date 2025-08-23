@@ -1,14 +1,36 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import { 
+  setSelectedLlm,
+  setSelectedEmbedding,
+  setSelectedChunkSize,
+  setSelectedOptions,
+  setQueryText,
+  setStartDate,
+  setEndDate,
+  resetAllFilters
+} from '../../../store/slices/filtersSlice';
+import { setFilteredData, resetFilters as resetResultsFilters } from '../../../store/slices/resultsSlice';
+import { applyResultsFilters } from '../../../utils/filterUtils';
 
-function FiltersSection({ filterOptions, applyFilters, resetFilters }) {
-  const [selectedLlm, setSelectedLlm] = useState('');
-  const [selectedEmbedding, setSelectedEmbedding] = useState('');
-  const [selectedChunkSize, setSelectedChunkSize] = useState('');
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const [queryText, setQueryText] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [isOptionsDropdownOpen, setIsOptionsDropdownOpen] = useState(false);
+function FiltersSection() {
+  const dispatch = useAppDispatch();
+  const filters = useAppSelector(state => state.filters);
+  const { allData } = useAppSelector(state => state.results);
+  
+  const {
+    selectedLlm,
+    selectedEmbedding,
+    selectedChunkSize,
+    selectedOptions,
+    queryText,
+    startDate,
+    endDate,
+    filterOptions
+  } = filters;
+  
+  const [isOptionsDropdownOpen, setIsOptionsDropdownOpen] = React.useState(false);
   
   const dropdownRef = useRef(null);
   
@@ -27,34 +49,20 @@ function FiltersSection({ filterOptions, applyFilters, resetFilters }) {
   }, []);
 
   const toggleOption = (optionName) => {
-    setSelectedOptions(prev => 
-      prev.includes(optionName)
-        ? prev.filter(name => name !== optionName)
-        : [...prev, optionName]
-    );
+    const newOptions = selectedOptions.includes(optionName)
+      ? selectedOptions.filter(name => name !== optionName)
+      : [...selectedOptions, optionName];
+    dispatch(setSelectedOptions(newOptions));
   };
   
   const handleApplyFilters = () => {
-    applyFilters({
-      selectedLlm,
-      selectedEmbedding,
-      selectedChunkSize,
-      selectedOptions,
-      queryText,
-      startDate,
-      endDate
-    });
+    const filteredData = applyResultsFilters(allData, filters);
+    dispatch(setFilteredData(filteredData));
   };
 
   const handleResetFilters = () => {
-    setSelectedLlm('');
-    setSelectedEmbedding('');
-    setSelectedChunkSize('');
-    setSelectedOptions([]);
-    setQueryText('');
-    setStartDate('');
-    setEndDate('');
-    resetFilters();
+    dispatch(resetAllFilters());
+    dispatch(resetResultsFilters());
   };
 
   return (
@@ -65,7 +73,7 @@ function FiltersSection({ filterOptions, applyFilters, resetFilters }) {
           <label className="filter-label">LLM Model</label>
           <select 
             value={selectedLlm}
-            onChange={e => setSelectedLlm(e.target.value)}
+            onChange={e => dispatch(setSelectedLlm(e.target.value))}
           >
             <option value="">All LLMs</option>
             {filterOptions.llms.map(model => (
@@ -78,7 +86,7 @@ function FiltersSection({ filterOptions, applyFilters, resetFilters }) {
           <label className="filter-label">Embedding Model</label>
           <select 
             value={selectedEmbedding}
-            onChange={e => setSelectedEmbedding(e.target.value)}
+            onChange={e => dispatch(setSelectedEmbedding(e.target.value))}
           >
             <option value="">All Embedding Models</option>
             {filterOptions.embeddingModels.map(model => (
@@ -91,7 +99,7 @@ function FiltersSection({ filterOptions, applyFilters, resetFilters }) {
           <label className="filter-label">Chunk Size</label>
           <select 
             value={selectedChunkSize}
-            onChange={e => setSelectedChunkSize(e.target.value)}
+            onChange={e => dispatch(setSelectedChunkSize(e.target.value))}
           >
             <option value="">All Chunk Sizes</option>
             {filterOptions.chunkSizes.map(size => (
@@ -139,7 +147,7 @@ function FiltersSection({ filterOptions, applyFilters, resetFilters }) {
           <input
             type="text"
             value={queryText}
-            onChange={e => setQueryText(e.target.value)}
+            onChange={e => dispatch(setQueryText(e.target.value))}
             placeholder="Search in queries..."
           />
         </div>
@@ -149,7 +157,7 @@ function FiltersSection({ filterOptions, applyFilters, resetFilters }) {
           <input
             type="date"
             value={startDate}
-            onChange={e => setStartDate(e.target.value)}
+            onChange={e => dispatch(setStartDate(e.target.value))}
           />
         </div>
         
@@ -158,7 +166,7 @@ function FiltersSection({ filterOptions, applyFilters, resetFilters }) {
           <input
             type="date"
             value={endDate}
-            onChange={e => setEndDate(e.target.value)}
+            onChange={e => dispatch(setEndDate(e.target.value))}
           />
         </div>
       </div>

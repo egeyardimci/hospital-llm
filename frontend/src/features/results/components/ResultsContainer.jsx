@@ -1,5 +1,5 @@
 import React from 'react';
-import ResultCard from './ResultCard';
+import ResultCard from '../../../components/ui/ResultCard';
 
 function ResultsContainer({ data }) {
   if (data.length === 0) {
