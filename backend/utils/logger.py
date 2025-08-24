@@ -3,6 +3,8 @@ from typing import Any
 import inspect
 import os
 
+from backend.ai.testing.models import TestCase
+
 # ANSI color codes
 COLORS = {
     'RED': '\033[91m',
@@ -55,10 +57,20 @@ def log(message: Any, level: str = 'INFO', show_line: bool = True) -> None:
     # Print the formatted log
     print(f"{COLORS['BOLD']}[{timestamp}]{COLORS['END']} {level_str} {caller_info}{message}")
 
-# Example usage
-if __name__ == "__main__":
-    log("Starting application...", "INFO")
-    log("Debug message here", "DEBUG")
-    log("Warning! Something looks wrong", "WARNING")
-    log("Error occurred!", "ERROR")
-    log({"key": "value", "numbers": [1,2,3]})  # Works with non-string types too
+def log_test(test_case:TestCase, query_expected_answer):
+    """
+    Log the test parameters.
+    """
+    
+    try:
+        log(f"Running test for LLM: {test_case.llm_name}")
+        log(f"Embedding model: {test_case.embedding_model_name}")
+        log(f"System message: {test_case.system_message}")
+        log(f"Query: {query_expected_answer['query']}")
+        log(f"Exptected answer: {query_expected_answer['answer']}")
+        log(f"Chunk size: {test_case.chunk_size}")
+        log(f"Chunk overlap: {test_case.chunk_overlap}")
+        log(f"Similar vector count: {test_case.similar_vector_count}")
+        log(f"Options: {[str(option) for option in test_case.options]}")
+    except Exception as e:
+        log(f"Error logging test: {e}")
