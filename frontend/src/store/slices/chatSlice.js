@@ -12,9 +12,8 @@ export const sendMessage = createAsyncThunk(
         },
         body: JSON.stringify({
           llm: selectedModel,
-          embedding_model: selectedEmbedding,
-          system_message: systemPrompt,
-          query: query
+          query: query,
+          options: []
         })
       });
       
