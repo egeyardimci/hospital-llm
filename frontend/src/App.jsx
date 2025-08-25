@@ -88,6 +88,16 @@ function AppContent() {
                 </div>
               </div>
             </div>
+          ) : activeTab === TABS.SETTINGS ? (
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Settings</h2>
+              <div className="bg-white rounded-lg shadow p-6">
+                <p className="text-gray-600">Manage your settings here.</p>
+                <div className="mt-4">
+                  <p className="text-sm text-gray-500">This feature is coming soon...</p>
+                </div>
+              </div>
+            </div>
           ) : null}
         </div>
       </div>

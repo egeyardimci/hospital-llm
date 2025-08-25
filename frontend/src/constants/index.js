@@ -12,6 +12,7 @@ export const TABS = {
   TEST_CONFIGURATOR: 'test-configurator',
   VECTORDB_EDITOR: 'vectordb-editor',
   QA_EDITOR: 'qa-editor',
+  SETTINGS: 'settings',
 };
 
 export const DEFAULT_MODELS = ['gpt-4', 'gpt-3.5-turbo', 'claude-2'];

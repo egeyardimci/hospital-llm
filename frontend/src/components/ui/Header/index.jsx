@@ -2,7 +2,10 @@ function Header() {
   return (
     <header className="w-full bg-primary p-4">
       <div className="flex items-center justify-between">
-      <span className="text-2xl text-white font-medium">SGK Compliance Verification Tool</span>
+      <div>
+        <span className="text-2xl text-white font-bold">SGK</span>
+        <span className="text-2xl text-white font-medium"> Compliance Verification Tool</span>
+      </div>
       <img src="/sabanci.svg" alt="Logo" className="h-12 inline-block mr-4" />
       </div>
     </header>
