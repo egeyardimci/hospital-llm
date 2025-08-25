@@ -50,7 +50,7 @@ function ResultCard({ item, index }) {
           <div className="section-title">
             <span>Evaluation</span>
             <button 
-              className="toggle-button" 
+              className="button toggle-button" 
               onClick={() => setShowEvaluation(!showEvaluation)}
             >
               Show/Hide
@@ -65,7 +65,7 @@ function ResultCard({ item, index }) {
           <div className="section-title">
             <span>System Message</span>
             <button 
-              className="toggle-button" 
+              className="button toggle-button" 
               onClick={() => setShowSystem(!showSystem)}
             >
               Show/Hide
@@ -80,7 +80,7 @@ function ResultCard({ item, index }) {
           <div className="section-title">
             <span>Retrieved Chunks</span>
             <button 
-              className="toggle-button" 
+              className="button toggle-button" 
               onClick={() => setShowChunks(!showChunks)}
             >
               Show/Hide
@@ -100,7 +100,7 @@ function ResultCard({ item, index }) {
           <div className="section-title">
             <span>Options</span>
             <button 
-              className="toggle-button" 
+              className="button toggle-button" 
               onClick={() => setShowOptions(!showOptions)}
             >
               Show/Hide

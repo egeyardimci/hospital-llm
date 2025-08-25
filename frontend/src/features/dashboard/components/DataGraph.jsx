@@ -112,16 +112,16 @@ export default function EvaluationScoreChart(testData) {
   // Get chart color based on metric
   const getChartColor = () => {
     const colors = {
-      'avgScore': '#3498db',
-      'avgChunkScore': '#f1c40f', // Added a color for avgChunkScore
-      'chunk_size': '#2ecc71',
-      'similar_vector_count': '#e74c3c',
-      'options': '#f39c12',
-      'llm': '#9b59b6',
-      'embedding_model': '#1abc9c',
-      'chunk_evaluation': '#34495e' // Added a color for chunk_evaluation
+      'avgScore': '#002776',
+      'avgChunkScore': '#002776', // Added a color for avgChunkScore
+      'chunk_size': '#002776',
+      'similar_vector_count': '#002776',
+      'options': '#002776',
+      'llm': '#002776',
+      'embedding_model': '#002776',
+      'chunk_evaluation': '#002776' // Added a color for chunk_evaluation
     };
-    return colors[viewMetric] || '#3498db';
+    return colors[viewMetric] || '#002776';
   };
 
   return (

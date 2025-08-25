@@ -87,7 +87,7 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
           </div>
           
           <div className="settings-group settings-actions">
-            <button onClick={handleClearConversation} className="clear-button">
+            <button onClick={handleClearConversation} className="button">
               Clear Chat
             </button>
           </div>
@@ -154,7 +154,7 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
           placeholder="Type your query here..."
           disabled={isLoading}
         />
-        <button type="submit" disabled={!userQuery.trim() || isLoading}>
+        <button className='button' type="submit" disabled={!userQuery.trim() || isLoading}>
           Send
         </button>
       </form>

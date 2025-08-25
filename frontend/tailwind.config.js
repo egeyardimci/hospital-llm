@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,21 +8,33 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#e3f2fd',
-          100: '#bbdefb',
-          500: '#3498db',
-          600: '#2980b9',
-          700: '#1976d2',
+          50: '#f0f4ff',
+          100: '#e0eaff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#4f46e5',
+          700: '#4338ca',
+          800: '#3730a3',
+          900: '#002776', // Your main color
+          950: '#001a5c',
         },
         secondary: {
-          50: '#ecf0f1',
-          100: '#bdc3c7',
-          500: '#7f8c8d',
-          700: '#2c3e50',
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
         },
-        success: '#2ecc71',
-        danger: '#e74c3c',
-        warning: '#f39c12',
+        success: '#10b981',
+        danger: '#ef4444',
+        warning: '#f59e0b',
       },
       fontFamily: {
         sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', '"Open Sans"', '"Helvetica Neue"', 'sans-serif'],
