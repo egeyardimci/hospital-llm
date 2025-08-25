@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function ResultCard({ item, index }) {
   const [showSystem, setShowSystem] = useState(false);

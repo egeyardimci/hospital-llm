@@ -1,4 +1,3 @@
-import React from 'react';
 import ResultCard from '../../../components/ui/ResultCard';
 
 function ResultsContainer({ data }) {

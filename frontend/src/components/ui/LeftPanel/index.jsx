@@ -1,13 +1,3 @@
-import React from 'react';
-import { TABS } from '../../../constants';
-import {
-  BarChart3,
-  MessageSquare,
-  LineChart,
-  Settings,
-  Database,
-  HelpCircle,
-} from "lucide-react";
 import LeftPanelProfile from './LeftPanelProfile';
 import LeftPanelNavigation from './LeftPanelNavigation';
 

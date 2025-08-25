@@ -1,11 +1,9 @@
-import React from 'react';
-
 function ChatMessage({ message }) {
   const { role, content } = message;
-  
+
   let avatarLabel;
   let messageClass;
-  
+
   switch (role) {
     case 'user':
       avatarLabel = 'You';
@@ -23,7 +21,7 @@ function ChatMessage({ message }) {
       avatarLabel = '?';
       messageClass = 'unknown-message';
   }
-  
+
   return (
     <div className={`chat-message ${messageClass}`}>
       <div className="message-avatar">

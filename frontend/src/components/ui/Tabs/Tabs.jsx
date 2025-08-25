@@ -1,4 +1,3 @@
-import React from 'react';
 import { TABS } from '../../../constants';
 
 function Tabs({ activeTab, setActiveTab }) {

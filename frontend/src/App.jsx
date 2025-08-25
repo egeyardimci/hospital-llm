@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { useAppDispatch } from './hooks/useAppDispatch';

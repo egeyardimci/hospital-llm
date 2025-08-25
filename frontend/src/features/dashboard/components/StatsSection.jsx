@@ -1,5 +1,3 @@
-import React from 'react';
-
 function StatsSection({ data }) {
   // Calculate stats
   const totalTests = data.length;

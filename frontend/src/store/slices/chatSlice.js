@@ -3,7 +3,7 @@ import { API_ENDPOINTS } from '../../constants';
 
 export const sendMessage = createAsyncThunk(
   'chat/sendMessage',
-  async ({ selectedModel, selectedEmbedding, systemPrompt, query }, { rejectWithValue }) => {
+  async ({ selectedModel, query }, { rejectWithValue }) => {
     try {
       const response = await fetch(API_ENDPOINTS.CHAT, {
         method: 'POST',
