@@ -180,7 +180,7 @@ const VectorDB = ({ logs = [] }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow flex flex-col">
+    <div className="page flex flex-col">
 
       {/* Main content area */}
       <div className="flex-1 p-6">
