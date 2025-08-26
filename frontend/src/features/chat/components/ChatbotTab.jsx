@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useAppSelector } from '../../../hooks/useAppSelector';
+import Select from 'react-select';
 import {
   sendMessage,
   setSelectedModel,
@@ -8,7 +9,7 @@ import {
   addUserMessage,
   clearConversation
 } from '../../../store/slices/chatSlice';
-import { DEFAULT_MODELS, DEFAULT_EMBEDDINGS } from '../../../constants';
+import { DEFAULT_MODELS, DEFAULT_EMBEDDINGS, customSelectTheme } from '../../../constants';
 import ChatMessage from '../../../components/ui/ChatMessage';
 import { Dot } from 'lucide-react';
 
@@ -69,29 +70,13 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
       <div className="chatbot-settings">
         <div className="settings-row">
           <div className="settings-group">
-            <label>LLM Model</label>
-            <select
-              className="input-field"
-              value={selectedModel}
-              onChange={(e) => dispatch(setSelectedModel(e.target.value))}
-            >
-              {models.map(model => (
-                <option key={model} value={model}>{model}</option>
-              ))}
-            </select>
+            <label className="block text-sm font-medium text-gray-700 mb-2">LLM Model</label>
+            <Select theme={customSelectTheme} value={{ value: selectedModel, label: selectedModel }} onChange={option => dispatch(setSelectedModel(option.value))} options={models.map(model => ({ value: model, label: model }))} />
           </div>
 
           <div className="settings-group">
-            <label>Embedding Model</label>
-            <select
-              className="input-field"
-              value={selectedEmbedding}
-              onChange={(e) => dispatch(setSelectedEmbedding(e.target.value))}
-            >
-              {embeddings.map(model => (
-                <option key={model} value={model}>{model}</option>
-              ))}
-            </select>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Embedding Model</label>
+            <Select theme={customSelectTheme} value={{ value: selectedEmbedding, label: selectedEmbedding }} onChange={option => dispatch(setSelectedEmbedding(option.value))} options={embeddings.map(model => ({ value: model, label: model }))} />
           </div>
 
           <div className="settings-group settings-actions">

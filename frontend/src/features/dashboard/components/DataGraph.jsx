@@ -1,10 +1,27 @@
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import Select from 'react-select';
+import { customSelectTheme } from '../../../constants';
 
 export default function EvaluationScoreChart(testData) {
   const [data, setData] = useState([]);
   const [groupBy, setGroupBy] = useState('test_id');
   const [viewMetric, setViewMetric] = useState('avgScore');
+
+  // Options for React Select
+  const groupByOptions = [
+    { value: 'llm', label: 'LLM' },
+    { value: 'embedding_model', label: 'Embedding Model' },
+    { value: 'test_id', label: 'Test ID' },
+    { value: 'chunk_size', label: 'Chunk Size' },
+    { value: 'similar_vector_count', label: 'Similar Vector Count' },
+    { value: 'chunk_evaluation', label: 'Chunk Evaluation' }
+  ];
+
+  const viewMetricOptions = [
+    { value: 'avgScore', label: 'Average Score' },
+    { value: 'avgChunkScore', label: 'Average Chunk Score' }
+  ];
 
   useEffect(() => {
     // Parse the raw data - this would normally come from an API or props
@@ -80,6 +97,11 @@ export default function EvaluationScoreChart(testData) {
     return displayNames[metric] || metric;
   };
 
+  // Helper functions to find selected options
+  const findSelectedOption = (value, options) => {
+    return options.find(option => option.value === value) || null;
+  };
+
   // Custom tooltip styles matching the provided CSS
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -138,30 +160,28 @@ export default function EvaluationScoreChart(testData) {
           <div className="filters-grid">
             <div className="filter-group">
               <label className="filter-label">Group by:</label>
-              <select
-                value={groupBy}
-                onChange={(e) => setGroupBy(e.target.value)}
-                className="px-3 py-2 border rounded"
-              >
-                <option value="llm">LLM</option>
-                <option value="embedding_model">Embedding Model</option>
-                <option value="test_id">Test ID</option>
-                <option value="chunk_size">Chunk Size</option>
-                <option value="similar_vector_count">Similar Vector Count</option>
-                <option value="chunk_evaluation">Chunk Evaluation</option>
-              </select>
+              <Select
+                theme={customSelectTheme}
+                value={findSelectedOption(groupBy, groupByOptions)}
+                onChange={(selectedOption) => setGroupBy(selectedOption ? selectedOption.value : 'test_id')}
+                options={groupByOptions}
+                placeholder="Select grouping..."
+                isSearchable={false}
+                isClearable
+              />
             </div>
 
             <div className="filter-group">
               <label className="filter-label">View Metric:</label>
-              <select
-                value={viewMetric}
-                onChange={(e) => setViewMetric(e.target.value)}
-                className="px-3 py-2 border rounded"
-              >
-                <option value="avgScore">Average Score</option>
-                <option value="avgChunkScore">Average Chunk Score</option>
-              </select>
+              <Select
+                theme={customSelectTheme}
+                value={findSelectedOption(viewMetric, viewMetricOptions)}
+                onChange={(selectedOption) => setViewMetric(selectedOption ? selectedOption.value : 'avgScore')}
+                options={viewMetricOptions}
+                placeholder="Select metric..."
+                isSearchable={false}
+                isClearable
+              />
             </div>
           </div>
         </div>
@@ -197,7 +217,6 @@ export default function EvaluationScoreChart(testData) {
             </ResponsiveContainer>
           </div>
         </div>
-
 
         <div className="section_without_border !mb-0 !pb-0">
           <div className="stats flex flex-wrap gap-4">

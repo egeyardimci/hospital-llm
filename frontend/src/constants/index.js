@@ -17,3 +17,14 @@ export const TABS = {
 
 export const DEFAULT_MODELS = ['gpt-4', 'gpt-3.5-turbo', 'claude-2'];
 export const DEFAULT_EMBEDDINGS = ['text-embedding-ada-002', 'text-embedding-3-small'];
+
+export const customSelectTheme = (theme) => ({
+    ...theme,
+    colors: {
+      ...theme.colors,
+      primary: '#002776',        // Your primary color for selected items and focus
+      primary75: '#002776bf',    // 75% opacity
+      primary50: '#00277680',    // 50% opacity  
+      primary25: '#00277640',    // 25% opacity for hover states
+    },
+  });
