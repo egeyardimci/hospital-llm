@@ -15,6 +15,10 @@ import ChatbotTab from './features/chat/components/ChatbotTab';
 import EvaluationScoreChart from './features/dashboard/components/DataGraph';
 import Header from './components/ui/Header';
 import LeftPanel from './components/ui/LeftPanel';
+import Testing from './features/testing';
+import VectorDB from './features/vectordb';
+import QaEditor from './features/qa-editor';
+import Settings from './features/settings';
 
 function AppContent() {
   const dispatch = useAppDispatch();
@@ -52,52 +56,20 @@ function AppContent() {
               )}
             </>
           ) : activeTab === TABS.CHATBOT ? (
-            <ChatbotTab 
-              availableModels={filterOptions.llms} 
-              embeddingModels={filterOptions.embeddingModels} 
+            <ChatbotTab
+              availableModels={filterOptions.llms}
+              embeddingModels={filterOptions.embeddingModels}
             />
           ) : activeTab === TABS.DATA ? (
             <EvaluationScoreChart testData={filteredData} />
           ) : activeTab === TABS.TEST_CONFIGURATOR ? (
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Test Configurator</h2>
-              <div className="bg-white rounded-lg shadow p-6">
-                <p className="text-gray-600">Configure your test settings here.</p>
-                <div className="mt-4">
-                  <p className="text-sm text-gray-500">This feature is coming soon...</p>
-                </div>
-              </div>
-            </div>
+            <Testing />
           ) : activeTab === TABS.VECTORDB_EDITOR ? (
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">VectorDB Editor</h2>
-              <div className="bg-white rounded-lg shadow p-6">
-                <p className="text-gray-600">Manage your vector database here.</p>
-                <div className="mt-4">
-                  <p className="text-sm text-gray-500">This feature is coming soon...</p>
-                </div>
-              </div>
-            </div>
+            <VectorDB />
           ) : activeTab === TABS.QA_EDITOR ? (
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">QA Editor</h2>
-              <div className="bg-white rounded-lg shadow p-6">
-                <p className="text-gray-600">Edit questions and answers here.</p>
-                <div className="mt-4">
-                  <p className="text-sm text-gray-500">This feature is coming soon...</p>
-                </div>
-              </div>
-            </div>
+            <QaEditor />
           ) : activeTab === TABS.SETTINGS ? (
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Settings</h2>
-              <div className="bg-white rounded-lg shadow p-6">
-                <p className="text-gray-600">Manage your settings here.</p>
-                <div className="mt-4">
-                  <p className="text-sm text-gray-500">This feature is coming soon...</p>
-                </div>
-              </div>
-            </div>
+            <Settings />
           ) : null}
         </div>
       </div>

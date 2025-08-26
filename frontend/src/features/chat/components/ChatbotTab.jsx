@@ -1,29 +1,30 @@
 import { useState, useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useAppSelector } from '../../../hooks/useAppSelector';
-import { 
-  sendMessage, 
-  setSelectedModel, 
-  setSelectedEmbedding, 
-  addUserMessage, 
-  clearConversation 
+import {
+  sendMessage,
+  setSelectedModel,
+  setSelectedEmbedding,
+  addUserMessage,
+  clearConversation
 } from '../../../store/slices/chatSlice';
 import { DEFAULT_MODELS, DEFAULT_EMBEDDINGS } from '../../../constants';
 import ChatMessage from '../../../components/ui/ChatMessage';
+import { Dot } from 'lucide-react';
 
 function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
   const dispatch = useAppDispatch();
-  const { 
-    conversation, 
-    selectedModel, 
-    selectedEmbedding, 
-    systemPrompt, 
-    isLoading 
+  const {
+    conversation,
+    selectedModel,
+    selectedEmbedding,
+    systemPrompt,
+    isLoading
   } = useAppSelector(state => state.chat);
-  
+
   const models = availableModels.length ? availableModels : DEFAULT_MODELS;
   const embeddings = embeddingModels.length ? embeddingModels : DEFAULT_EMBEDDINGS;
-  
+
   const [userQuery, setUserQuery] = useState('');
 
   useEffect(() => {
@@ -37,18 +38,18 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!userQuery.trim()) return;
-    
+
     dispatch(addUserMessage(userQuery));
-    
+
     await dispatch(sendMessage({
       selectedModel,
       selectedEmbedding,
       systemPrompt,
       query: userQuery
     }));
-    
+
     setUserQuery('');
   };
 
@@ -58,13 +59,20 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
 
   return (
     <div className="chatbot-container">
+      <div className="card-header rounded-t-[8px] h-[60px]">
+        <span>SGK Agent</span>
+        <span className="model-badge flex align-middle justify-center items-center">
+          <Dot color='#10b981' strokeWidth={3}></Dot>
+          Online
+        </span>
+      </div>
       <div className="chatbot-settings">
         <div className="settings-row">
           <div className="settings-group">
             <label>LLM Model</label>
-            <select 
+            <select
               className="input-field"
-              value={selectedModel} 
+              value={selectedModel}
               onChange={(e) => dispatch(setSelectedModel(e.target.value))}
             >
               {models.map(model => (
@@ -72,12 +80,12 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
               ))}
             </select>
           </div>
-          
+
           <div className="settings-group">
             <label>Embedding Model</label>
-            <select 
+            <select
               className="input-field"
-              value={selectedEmbedding} 
+              value={selectedEmbedding}
               onChange={(e) => dispatch(setSelectedEmbedding(e.target.value))}
             >
               {embeddings.map(model => (
@@ -85,15 +93,15 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
               ))}
             </select>
           </div>
-          
+
           <div className="settings-group settings-actions">
             <button onClick={handleClearConversation} className="button">
               Clear Chat
             </button>
           </div>
         </div>
-        
-{/*         <div className="system-prompt-container">
+
+        {/*         <div className="system-prompt-container">
           <div className="system-prompt-header">
             <h3>System Prompt</h3>
             <button 
@@ -123,7 +131,7 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
           )}
         </div> */}
       </div>
-      
+
       <div className="chat-messages">
         {conversation.length === 0 ? (
           <div className="empty-chat">
@@ -134,7 +142,7 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
             <ChatMessage key={index} message={message} />
           ))
         )}
-        
+
         {isLoading && (
           <div className="loading-message">
             <div className="typing-indicator">
@@ -145,7 +153,7 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
           </div>
         )}
       </div>
-      
+
       <form className="chat-input-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -158,7 +166,7 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
           Send
         </button>
       </form>
-    </div>
+    </div >
   );
 }
 
