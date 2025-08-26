@@ -148,10 +148,6 @@ export default function EvaluationScoreChart(testData) {
 
   return (
     <div className="visualization-container">
-      <div className="card-header rounded-t-[8px] h-[60px]">
-        <span>Result Visualization</span>
-        <span className="model-badge">{data.length} Groups</span>
-      </div>
       <div className="card-body">
         <div className="section">
           <div className="section-title">

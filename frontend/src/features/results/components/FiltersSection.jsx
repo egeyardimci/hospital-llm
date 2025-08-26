@@ -65,9 +65,6 @@ function FiltersSection() {
 
   return (
     <div className="filters">
-      <div className="card-header rounded-t-[8px] h-[60px] m-0">
-        <span>Test Results</span>
-      </div>
       <div className='p-[15px]'>
         <h3 className="text-lg font-semibold mb-4 text-gray-900">Filters</h3>
         <div className="filters-grid">
