@@ -9,3 +9,8 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     role: str
     content: str
+
+class VectorDBInfo(BaseModel):
+    name: str
+    chunk_size: str
+    chunk_overlap: str

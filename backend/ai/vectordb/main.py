@@ -3,6 +3,9 @@ from threading import Lock
 from backend.ai.vectordb.utils import load_vectordb
 from langchain_chroma import Chroma
 
+import os
+os.environ['ALLOW_RESET'] = 'TRUE'
+
 class VectorDB:
     _instance = None
     _lock = Lock()
@@ -17,10 +20,14 @@ class VectorDB:
     
     def get_db(self):
         return self.db
+    
+    def get_db_name(self):
+        return self.name
 
     def load_db(self, embedding_model, chunk_size, chunk_overlap):
         self.close()
         self.db = load_vectordb(embedding_model, chunk_size, chunk_overlap)
+        self.name = f"{embedding_model}_{chunk_size}_{chunk_overlap}"
 
     def close(self):
         if hasattr(self, 'db'):

@@ -67,4 +67,4 @@ if __name__ == "__main__":
     chunk_sizes_and_chunk_overlaps = [(500,50),(1000,100),(2000,200)]
     
     #create_multiple_vectordb(embedding_model_names,chunk_sizes_and_chunk_overlaps)
-    create_vectordb(embedding_model_names[0],700,70)
+    create_vectordb(embedding_model_names[0],1000,70)

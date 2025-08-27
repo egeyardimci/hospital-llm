@@ -6,7 +6,7 @@ import json
 from backend.common.paths import REACT_BUILD_PATH, TEST_RESULTS_PATH
 from backend.common.constants import *
 from backend.ai.llm.sgk_agent.agent import sgk_agent
-from backend.web.dtos import ChatRequest, ChatResponse
+from backend.web.dtos import ChatRequest, ChatResponse, VectorDBInfo
 from backend.ai.vectordb.main import GLOBAL_VECTOR_DB
 from backend.common.paths import *
 
@@ -44,7 +44,7 @@ def chat_endpoint(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processing chat request: {e}")
 
-@app.get("/vectordbs/list")
+@app.get("/vectordb/list")
 def get_vectordbs():
     try:
         vectordbs_info = []
@@ -84,5 +84,45 @@ def get_vectordbs():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error retrieving vector databases: {e}")
 
+@app.post("/vectordb/create")
+def create_vectordb_request(request: VectorDBInfo):
+    try:
+        from backend.ai.vectordb.utils import create_vectordb
+        create_vectordb(
+            embedding_model_name=request.name,
+            chunk_size=int(request.chunk_size),
+            chunk_overlap=int(request.chunk_overlap)
+        )
+        return {"detail": "Vector database created successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error creating vector database: {e}")
+
+@app.post("/vectordb/load")
+def load_vectordb_request(request: VectorDBInfo):
+    try:
+        GLOBAL_VECTOR_DB.load_db(
+            embedding_model=request.name,
+            chunk_size=request.chunk_size,
+            chunk_overlap=request.chunk_overlap
+        )
+        return {"detail": "Vector database loaded successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error loading vector database: {e}")
+
+
+@app.get("/vectordb/models")
+def get_vectordbs():
+    try:
+        return VECTOR_DB_EMBEDDING_MODELS
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error retrieving vector databases: {e}")
+
+@app.get("/vectordb/current")
+def get_current_vectordb():
+    try:
+        return GLOBAL_VECTOR_DB.get_db_name()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error retrieving vector databases: {e}")
+    
 # Serve the React build folder
 app.mount("/", StaticFiles(directory=REACT_BUILD_PATH, html=True), name="static")
