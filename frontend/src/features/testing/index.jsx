@@ -686,7 +686,18 @@ const Testing = () => {
       return <RunTests />;
     }
   };
-
+  const featureEnabled = false;
+  if (!featureEnabled) {
+    return (
+      <div className="page">
+        {/* Main content area */}
+        <div className="flex flex-1 p-6 items-center justify-center flex-col">
+          <Settings color="#002776" size={92} />
+          <span className='font-bold'>Coming soon...</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="page">
       {/* Header with back button when option is selected */}

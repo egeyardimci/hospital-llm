@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Settings as SettingsIcon, User, Save, LogOut, Edit, X } from 'lucide-react';
+import { User, Save, LogOut, Edit, X, UserCircle } from 'lucide-react';
 
 const Settings = () => {
   const [isEditingProfile, setIsEditingProfile] = useState(false);
@@ -86,7 +86,7 @@ const Settings = () => {
       <div className="flex gap-2 pt-4">
         <button
           onClick={handleSaveProfile}
-          className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md flex items-center gap-2"
+          className="px-4 py-2 bg-success hover:bg-success-dark text-white rounded-md flex items-center gap-2"
         >
           <Save size={16} />
           Save Changes
@@ -130,7 +130,7 @@ const Settings = () => {
       <div className="pt-4">
         <button
           onClick={handleEditProfile}
-          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md flex items-center gap-2"
+          className="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md flex items-center gap-2"
         >
           <Edit size={16} />
           Edit Profile
@@ -142,8 +142,8 @@ const Settings = () => {
   return (
     <div className="page">
       {/* Header */}
-      <div className="flex flex-col items-center space-y-6 mb-8">
-        <SettingsIcon color="#002776" size={92} />
+      <div className="flex flex-col items-center space-y-6 mb-8 p-6">
+        <UserCircle color="#002776" size={92} />
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Settings</h1>
           <p className="text-gray-600">Manage your account and application preferences</p>
@@ -154,7 +154,7 @@ const Settings = () => {
         {/* User Profile Section */}
         <div className="bg-white rounded-lg shadow p-6">
           <div className="flex items-center gap-2 mb-6">
-            <User size={20} className="text-blue-500" />
+            <User size={20} className="text-primary" />
             <h2 className="text-lg font-semibold text-gray-800">Profile Information</h2>
           </div>
 
@@ -166,14 +166,14 @@ const Settings = () => {
           <h2 className="text-lg font-semibold text-gray-800 mb-6">Account Actions</h2>
 
           <div className="space-y-4">
-            <div className="p-4 bg-gray-50 rounded-md">
+            <div className="bg-gray-50 rounded-md">
               <h3 className="font-medium text-gray-800 mb-2">Session Management</h3>
               <p className="text-sm text-gray-600 mb-4">
                 Log out from your current session. You will need to sign in again to access the application.
               </p>
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md flex items-center gap-2"
+                className="px-4 py-2 bg-danger hover:bg-danger-dark text-white rounded-md flex items-center gap-2"
               >
                 <LogOut size={16} />
                 Logout

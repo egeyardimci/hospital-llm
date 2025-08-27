@@ -5,37 +5,31 @@ import Select from 'react-select';
 import {
   sendMessage,
   setSelectedModel,
-  setSelectedEmbedding,
   addUserMessage,
   clearConversation
 } from '../../../store/slices/chatSlice';
-import { DEFAULT_MODELS, DEFAULT_EMBEDDINGS, customSelectTheme } from '../../../constants';
+import { DEFAULT_MODELS, customSelectTheme } from '../../../constants';
 import ChatMessage from '../../../components/ui/ChatMessage';
 import { Dot } from 'lucide-react';
+import { fetchCurrentVectorDB } from '../../../store/slices/vectordbSlice';
 
-function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
+function ChatbotTab({ availableModels = [] }) {
   const dispatch = useAppDispatch();
   const {
     conversation,
     selectedModel,
-    selectedEmbedding,
     systemPrompt,
     isLoading
   } = useAppSelector(state => state.chat);
 
   const models = availableModels.length ? availableModels : DEFAULT_MODELS;
-  const embeddings = embeddingModels.length ? embeddingModels : DEFAULT_EMBEDDINGS;
+  const currentVectorDB = useAppSelector(state => state.vectorDBs.currentVectorDB);
 
   const [userQuery, setUserQuery] = useState('');
 
   useEffect(() => {
-    if (!selectedModel && models.length > 0) {
-      dispatch(setSelectedModel(models[0]));
-    }
-    if (!selectedEmbedding && embeddings.length > 0) {
-      dispatch(setSelectedEmbedding(embeddings[0]));
-    }
-  }, [selectedModel, selectedEmbedding, models, embeddings, dispatch]);
+    dispatch(fetchCurrentVectorDB());
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +40,6 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
 
     await dispatch(sendMessage({
       selectedModel,
-      selectedEmbedding,
       systemPrompt,
       query: userQuery
     }));
@@ -64,7 +57,7 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
         <span>SGK Agent</span>
         <span className="model-badge flex align-middle justify-center items-center">
           <Dot color='#10b981' strokeWidth={3}></Dot>
-          Online
+          {currentVectorDB}
         </span>
       </div>
       <div className="chatbot-settings">
@@ -72,11 +65,6 @@ function ChatbotTab({ availableModels = [], embeddingModels = [] }) {
           <div className="settings-group">
             <label className="block text-sm font-medium text-gray-700 mb-2">LLM Model</label>
             <Select theme={customSelectTheme} value={{ value: selectedModel, label: selectedModel }} onChange={option => dispatch(setSelectedModel(option.value))} options={models.map(model => ({ value: model, label: model }))} />
-          </div>
-
-          <div className="settings-group">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Embedding Model</label>
-            <Select theme={customSelectTheme} value={{ value: selectedEmbedding, label: selectedEmbedding }} onChange={option => dispatch(setSelectedEmbedding(option.value))} options={embeddings.map(model => ({ value: model, label: model }))} />
           </div>
 
           <div className="settings-group settings-actions">

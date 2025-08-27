@@ -3,6 +3,11 @@ export const API_BASE_URL = 'http://127.0.0.1:8000';
 export const API_ENDPOINTS = {
   RESULTS: `${API_BASE_URL}/results`,
   CHAT: `${API_BASE_URL}/chat`,
+  VECTOR_DB_LIST: `${API_BASE_URL}/vectordb/list`,
+  VECTOR_DB_MODELS: `${API_BASE_URL}/vectordb/models`,
+  VECTOR_DB_CURRENT: `${API_BASE_URL}/vectordb/current`,
+  VECTOR_DB_LOAD: `${API_BASE_URL}/vectordb/load`,
+  VECTOR_DB_CREATE: `${API_BASE_URL}/vectordb/create`,
 };
 
 export const TABS = {

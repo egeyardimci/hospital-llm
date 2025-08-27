@@ -1,17 +1,21 @@
-import { Database, Plus, FolderOpen } from "lucide-react"
+import { Database, Plus, FolderOpen, ArrowLeft } from "lucide-react"
 import Select from "react-select"
-import { Terminal } from '@xterm/xterm';
-import { FitAddon } from '@xterm/addon-fit';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '@xterm/xterm/css/xterm.css';
 import { customSelectTheme } from "../../constants";
-
-// Mock data - replace with your actual hook
-const mockEmbeddingModels = ['text-embedding-ada-002', 'text-embedding-3-small', 'text-embedding-3-large'];
-const mockVectorDbs = ['ChromaDB-1', 'Pinecone-Production', 'Weaviate-Dev'];
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { createVectorDB, fetchEmbeddingModels, fetchVectorDBs, loadVectorDB, setSelectedVectorDB } from "../../store/slices/vectordbSlice";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 // Create New Vector DB Component
-const CreateVectorDB = ({ selectedModel, setSelectedModel }) => {
+const CreateVectorDB = () => {
+  const embeddingModels = useAppSelector(state => state.vectorDBs.embeddingModels);
+  const isLoading = useAppSelector(state => state.vectorDBs.loading);
+  const dispatch = useAppDispatch();
+  const [selectedModel, setSelectedModel] = useState(null);
+  const [chunkSize, setChunkSize] = useState('');
+  const [chunkOverlap, setChunkOverlap] = useState('');
+
   return (
     <div className="flex flex-col items-center space-y-6">
       <Database color="#002776" size={92} />
@@ -24,7 +28,7 @@ const CreateVectorDB = ({ selectedModel, setSelectedModel }) => {
           </label>
           <Select
             theme={customSelectTheme}
-            options={mockEmbeddingModels.map(model => ({ value: model, label: model }))}
+            options={embeddingModels.map(model => ({ value: model, label: model }))}
             value={selectedModel}
             onChange={setSelectedModel}
             placeholder="Choose an embedding model..."
@@ -34,17 +38,37 @@ const CreateVectorDB = ({ selectedModel, setSelectedModel }) => {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Database Name
+            Chunk Size
           </label>
           <input
-            type="text"
-            placeholder="Enter database name..."
+            type="number"
+            placeholder="Enter chunk size..."
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            value={chunkSize}
+            onChange={e => setChunkSize(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Chunk Overlap
+          </label>
+          <input
+            type="number"
+            placeholder="Enter chunk overlap..."
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            value={chunkOverlap}
+            onChange={e => setChunkOverlap(e.target.value)}
           />
         </div>
 
         <button
-          disabled={!selectedModel}
+          disabled={isLoading}
+          onClick={() => dispatch(createVectorDB({
+            embedding_model: selectedModel.value,
+            chunk_size: chunkSize,
+            chunk_overlap: chunkOverlap
+          }))}
           className="w-full bg-primary hover:bg-primary-dark disabled:bg-gray-400 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center space-x-2"
         >
           <Plus size={16} />
@@ -56,10 +80,15 @@ const CreateVectorDB = ({ selectedModel, setSelectedModel }) => {
 };
 
 // Load Existing Vector DB Component
-const LoadVectorDB = ({ selectedDb, setSelectedDb }) => {
+const LoadVectorDB = () => {
+  const dispatch = useAppDispatch();
+  const selectedDB = useAppSelector(state => state.vectorDBs.selectedVectorDB);
+  const vectorDbs = useAppSelector(state => state.vectorDBs.vectorDBs);
+  const isLoading = useAppSelector(state => state.vectorDBs.loading);
+
   return (
     <div className="flex flex-col items-center space-y-6">
-      <FolderOpen color="#002776" size={92} />
+      <Database color="#002776" size={92} />
       <h3 className="text-xl font-semibold text-gray-800">Load Existing Vector Database</h3>
 
       <div className="w-full max-w-md space-y-4">
@@ -69,16 +98,17 @@ const LoadVectorDB = ({ selectedDb, setSelectedDb }) => {
           </label>
           <Select
             theme={customSelectTheme}
-            options={mockVectorDbs.map(db => ({ value: db, label: db }))}
-            value={selectedDb}
-            onChange={setSelectedDb}
+            options={vectorDbs.map(db => ({ value: `${db.name}_${db.chunk_size}_${db.chunk_overlap}`, label: `${db.name}_${db.chunk_size}_${db.chunk_overlap}` }))}
+            value={{ value: selectedDB, label: selectedDB }}
+            onChange={option => dispatch(setSelectedVectorDB(option.value))}
             placeholder="Choose a vector database..."
             className="w-full"
           />
         </div>
 
         <button
-          disabled={!selectedDb}
+          disabled={isLoading}
+          onClick={() => dispatch(loadVectorDB({ value: selectedDB }))}
           className="w-full bg-primary hover:bg-primary-dark disabled:bg-gray-400 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center space-x-2"
         >
           <Database size={16} />
@@ -89,39 +119,17 @@ const LoadVectorDB = ({ selectedDb, setSelectedDb }) => {
   );
 };
 
-const VectorDB = ({ logs = [] }) => {
+const VectorDB = () => {
   const [selectedOption, setSelectedOption] = useState(null); // 'create' or 'load'
   const [selectedModel, setSelectedModel] = useState(null);
   const [selectedDb, setSelectedDb] = useState(null);
+  const dispatch = useAppDispatch();
 
-  const terminalRef = useRef();
-  const terminal = useRef();
-
-  useEffect(() => {
-    terminal.current = new Terminal({
-      cursorBlink: true,
-      fontSize: 14,
-      fontFamily: 'Consolas, Monaco, monospace',
-      theme: {
-        background: '#1e1e1e',
-        foreground: '#ffffff'
-      }
-    });
-
-    const fitAddon = new FitAddon();
-    terminal.current.loadAddon(fitAddon);
-    terminal.current.open(terminalRef.current);
-    fitAddon.fit();
-
-    return () => terminal.current?.dispose();
-  }, []);
 
   useEffect(() => {
-    if (terminal.current && logs.length > 0) {
-      const latestLog = logs[logs.length - 1];
-      terminal.current.write(latestLog + '\n');
-    }
-  }, [logs]);
+    dispatch(fetchVectorDBs());
+    dispatch(fetchEmbeddingModels());
+  }, [dispatch]);
 
   const renderContent = () => {
     if (!selectedOption) {
@@ -162,39 +170,49 @@ const VectorDB = ({ logs = [] }) => {
 
     if (selectedOption === 'create') {
       return (
-        <CreateVectorDB
-          selectedModel={selectedModel}
-          setSelectedModel={setSelectedModel}
-        />
+        <>
+          <div className="absolute top-4 left-4">
+            <div className="space-y-2">
+              <button onClick={() => setSelectedOption(null)} className="flex items-center justify-center w-11 h-11 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200 group" > <ArrowLeft size={20} style={{ color: '#002776' }} className="group-hover:scale-110 transition-transform" /> </button>
+            </div>
+
+          </div>
+          <CreateVectorDB
+            selectedModel={selectedModel}
+            setSelectedModel={setSelectedModel}
+          />
+        </>
       );
     }
 
     if (selectedOption === 'load') {
       return (
-        <LoadVectorDB
-          selectedDb={selectedDb}
-          setSelectedDb={setSelectedDb}
-        />
+        <>
+          <div className="absolute top-4 left-4">
+            <div className="space-y-2">
+              <button onClick={() => setSelectedOption(null)} className="flex items-center justify-center w-11 h-11 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200 group" > <ArrowLeft size={20} style={{ color: '#002776' }} className="group-hover:scale-110 transition-transform" /> </button>
+            </div>
+
+          </div>
+          <LoadVectorDB
+            selectedDb={selectedDb}
+            setSelectedDb={setSelectedDb}
+          />
+
+        </>
+
       );
     }
   };
 
   return (
-    <div className="page flex flex-col">
+    <div className="page flex flex-col relative">
 
       {/* Main content area */}
       <div className="flex-1 p-6">
         {renderContent()}
       </div>
 
-      {/* Fixed terminal at bottom */}
-      <div className="border-t border-gray-200 bg-gray-50 p-4">
-        <h4 className="text-sm font-medium text-gray-700 mb-2">Console Output</h4>
-        <div
-          ref={terminalRef}
-          style={{ height: '200px', width: '100%', overflow: 'hidden' }}
-        />
-      </div>
     </div>
   );
 };

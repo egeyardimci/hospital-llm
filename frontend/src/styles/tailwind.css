@@ -14,8 +14,14 @@
 
   /* Success / Danger / Warning (keep only the main shade) */
   --color-success: #10b981;
+  --color-success-dark: #059669; /* hover */
+
   --color-danger: #ef4444;
+  --color-danger-dark: #dc2626; /* hover */
+
   --color-warning: #f59e0b;
+  --color-warning-dark: #d97706; /* hover */
+
 
   /* Fonts */
   --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
