@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Save, X, HelpCircle, Search } from 'lucide-react';
+import { useAppSelector } from '../../hooks/useAppSelector';
 
 const QaEditor = () => {
-  const [qaPairs, setQaPairs] = useState([]);
+  const qaPairs = useAppSelector(state => state.qa.qaPairs);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredQaPairs, setFilteredQaPairs] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
-  const [newQaPair, setNewQaPair] = useState({ query: '', answer: '' });
-
-  useEffect(() => {
-    loadQaPairs();
-  }, []);
+  const [newQaPair] = useState({ query: '', answer: '' });
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
@@ -24,65 +21,6 @@ const QaEditor = () => {
       setFilteredQaPairs(filtered);
     }
   }, [searchTerm, qaPairs]);
-
-  const loadQaPairs = async () => {
-    try {
-      const response = await fetch('/queries_expected_answers.json');
-      const data = await response.json();
-      setQaPairs(data);
-    } catch (error) {
-      console.error('Error loading Q&A pairs:', error);
-    }
-  };
-
-  const saveQaPairs = async (pairs) => {
-    try {
-      const blob = new Blob([JSON.stringify(pairs, null, 4)], { type: 'application/json' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'queries_expected_answers.json';
-      link.click();
-      URL.revokeObjectURL(link.href);
-    } catch (error) {
-      console.error('Error saving Q&A pairs:', error);
-    }
-  };
-
-  const handleCreate = () => {
-    setNewQaPair({ query: '', answer: '' });
-    setIsCreating(true);
-  };
-
-  const handleSaveNew = () => {
-    if (newQaPair.query.trim() && newQaPair.answer.trim()) {
-      const updatedPairs = [...qaPairs, { ...newQaPair }];
-      setQaPairs(updatedPairs);
-      saveQaPairs(updatedPairs);
-      setIsCreating(false);
-      setNewQaPair({ query: '', answer: '' });
-    }
-  };
-
-  const handleEdit = (index) => {
-    setEditingIndex(index);
-  };
-
-  const handleSaveEdit = (index, updatedPair) => {
-    const updatedPairs = qaPairs.map((pair, i) =>
-      i === index ? updatedPair : pair
-    );
-    setQaPairs(updatedPairs);
-    saveQaPairs(updatedPairs);
-    setEditingIndex(null);
-  };
-
-  const handleDelete = (index) => {
-    if (window.confirm('Are you sure you want to delete this Q&A pair?')) {
-      const updatedPairs = qaPairs.filter((_, i) => i !== index);
-      setQaPairs(updatedPairs);
-      saveQaPairs(updatedPairs);
-    }
-  };
 
   const QaForm = ({ qaPair, onSave, onCancel }) => {
     const [formData, setFormData] = useState(qaPair);
@@ -119,7 +57,7 @@ const QaEditor = () => {
           <button
             onClick={() => onSave(formData)}
             disabled={!formData.query.trim() || !formData.answer.trim()}
-            className="px-4 py-2 bg-green-500 hover:bg-green-600 disabled:bg-gray-400 text-white rounded-md flex items-center gap-2"
+            className="px-4 py-2 bg-success hover:bg-success-light disabled:bg-gray-400 text-white rounded-md flex items-center gap-2"
           >
             <Save size={16} />
             Save
@@ -136,28 +74,27 @@ const QaEditor = () => {
     );
   };
 
-  const QaCard = ({ pair, index }) => {
-    const originalIndex = qaPairs.findIndex(p => p === pair);
+  const QaCard = ({ pair }) => {
 
     return (
       <div className="bg-white rounded-lg shadow p-6 mb-4">
         <div className="flex justify-between items-start mb-4">
           <div>
             <h3 className="text-lg font-semibold text-gray-800">
-              Q&A Pair #{index + 1}
+              Q&A Pair ({pair._id})
             </h3>
           </div>
           <div className="flex gap-2">
             <button
-              onClick={() => handleEdit(originalIndex)}
+              onClick={() => { }}
               className="p-2 text-yellow-500 hover:text-yellow-700"
               title="Edit"
             >
               <Edit size={16} />
             </button>
             <button
-              onClick={() => handleDelete(originalIndex)}
-              className="p-2 text-red-500 hover:text-red-700"
+              onClick={() => { }}
+              className="p-2 text-danger-dark hover:text-danger"
               title="Delete"
             >
               <Trash2 size={16} />
@@ -183,18 +120,6 @@ const QaEditor = () => {
       </div>
     );
   };
-  const featureEnabled = false;
-  if (!featureEnabled) {
-    return (
-      <div className="page">
-        {/* Main content area */}
-        <div className="flex flex-1 p-6 items-center justify-center flex-col">
-          <HelpCircle color="#002776" size={92} />
-          <span className='font-bold'>Coming soon...</span>
-        </div>
-      </div>
-    );
-  }
   return (
     <div className="page">
       {/* Header */}
@@ -205,8 +130,8 @@ const QaEditor = () => {
           <p className="text-gray-600">Manage question and answer pairs for testing</p>
         </div>
         <button
-          onClick={handleCreate}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2"
+          onClick={() => { }}
+          className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-light flex items-center gap-2"
         >
           <Plus size={16} />
           New Q&A Pair
@@ -234,7 +159,7 @@ const QaEditor = () => {
       {isCreating && (
         <QaForm
           qaPair={newQaPair}
-          onSave={() => handleSaveNew()}
+          onSave={() => { }}
           onCancel={() => setIsCreating(false)}
           isNew={true}
         />
@@ -243,13 +168,13 @@ const QaEditor = () => {
       {/* Q&A Pairs List */}
       <div className="space-y-4">
         {filteredQaPairs.map((pair, index) => {
-          const originalIndex = qaPairs.findIndex(p => p === pair);
+          const originalIndex = index
 
           return editingIndex === originalIndex ? (
             <QaForm
               key={originalIndex}
               qaPair={pair}
-              onSave={(updatedPair) => handleSaveEdit(originalIndex, updatedPair)}
+              onSave={() => { }}
               onCancel={() => setEditingIndex(null)}
             />
           ) : (

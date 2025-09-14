@@ -8,6 +8,8 @@ export const API_ENDPOINTS = {
   VECTOR_DB_CURRENT: `${API_BASE_URL}/vectordb/current`,
   VECTOR_DB_LOAD: `${API_BASE_URL}/vectordb/load`,
   VECTOR_DB_CREATE: `${API_BASE_URL}/vectordb/create`,
+  FETCH_QA: `${API_BASE_URL}/qa`,
+  FETCH_TESTS: `${API_BASE_URL}/tests`,
 };
 
 export const TABS = {

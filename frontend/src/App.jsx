@@ -19,6 +19,8 @@ import Testing from './features/testing';
 import VectorDB from './features/vectordb';
 import QaEditor from './features/qa-editor';
 import Settings from './features/settings';
+import { fetchQA } from './store/slices/qaSlice';
+import { fetchTests } from './store/slices/testsSlice';
 
 function AppContent() {
   const dispatch = useAppDispatch();
@@ -36,6 +38,11 @@ function AppContent() {
     };
 
     fetchData();
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchTests());
+    dispatch(fetchQA());
   }, [dispatch]);
 
   return (

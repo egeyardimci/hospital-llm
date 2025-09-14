@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Save, X, Copy, Settings, Play, Search } from 'lucide-react';
+import { Plus, Edit, Trash2, Save, X, Settings, Play, Search, ArrowLeft } from 'lucide-react';
+import { useAppSelector } from '../../hooks/useAppSelector';
 
 const Testing = () => {
   const [selectedOption, setSelectedOption] = useState(null); // 'configure' or 'run'
-  const [testConfigs, setTestConfigs] = useState([]);
+  const testConfigs = useAppSelector(state => state.tests.tests)
   const [isCreating, setIsCreating] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
@@ -52,9 +53,6 @@ const Testing = () => {
     'Alibaba-NLP/gte-multilingual-reranker-base'
   ];
 
-  useEffect(() => {
-    loadTestConfigs();
-  }, []);
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
@@ -69,16 +67,6 @@ const Testing = () => {
       setFilteredConfigs(filtered);
     }
   }, [searchTerm, testConfigs]);
-
-  const loadTestConfigs = async () => {
-    try {
-      const response = await fetch('/test_cases.json');
-      const data = await response.json();
-      setTestConfigs(data);
-    } catch (error) {
-      console.error('Error loading test configs:', error);
-    }
-  };
 
   const saveTestConfigs = async (configs) => {
     try {
@@ -108,7 +96,6 @@ const Testing = () => {
 
   const handleSaveNew = () => {
     const updatedConfigs = [...testConfigs, { ...newConfig }];
-    setTestConfigs(updatedConfigs);
     saveTestConfigs(updatedConfigs);
     setIsCreating(false);
     setNewConfig({
@@ -132,7 +119,6 @@ const Testing = () => {
     const updatedConfigs = testConfigs.map(c =>
       c.test_id === config.test_id ? config : c
     );
-    setTestConfigs(updatedConfigs);
     saveTestConfigs(updatedConfigs);
     setEditingId(null);
   };
@@ -140,21 +126,8 @@ const Testing = () => {
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this test configuration?')) {
       const updatedConfigs = testConfigs.filter(c => c.test_id !== id);
-      setTestConfigs(updatedConfigs);
       saveTestConfigs(updatedConfigs);
     }
-  };
-
-  const handleDuplicate = (config) => {
-    const nextId = Math.max(...testConfigs.map(c => c.test_id), 0) + 1;
-    const duplicated = {
-      ...config,
-      test_id: nextId,
-      test_description: config.test_description + ' (Copy)'
-    };
-    const updatedConfigs = [...testConfigs, duplicated];
-    setTestConfigs(updatedConfigs);
-    saveTestConfigs(updatedConfigs);
   };
 
   const addOption = (configSetter, config) => {
@@ -352,7 +325,7 @@ const Testing = () => {
             </label>
             <button
               onClick={() => addOption(setFormConfig, formConfig)}
-              className="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              className="px-3 py-2 bg-primary-light text-white rounded-md hover:bg-primary"
             >
               Add
             </button>
@@ -384,20 +357,13 @@ const Testing = () => {
       <div className="flex justify-between items-start mb-4">
         <div>
           <h3 className="text-lg font-semibold text-gray-800">
-            Test ID: {config.test_id}
+            Test ID: {config._id}
           </h3>
           {config.test_description && (
             <p className="text-sm text-gray-600">{config.test_description}</p>
           )}
         </div>
         <div className="flex gap-2">
-          <button
-            onClick={() => handleDuplicate(config)}
-            className="p-2 text-blue-500 hover:text-blue-700"
-            title="Duplicate"
-          >
-            <Copy size={16} />
-          </button>
           <button
             onClick={() => handleEdit(config)}
             className="p-2 text-yellow-500 hover:text-yellow-700"
@@ -472,7 +438,7 @@ const Testing = () => {
         Create and manage your AI test configurations
       </p>
 
-      <div className="w-full max-w-6xl">
+      <div className="w-full">
         <div className="flex justify-between items-center mb-6">
           <div>
             <h2 className="text-2xl font-bold text-gray-800">Test Configurations</h2>
@@ -480,7 +446,7 @@ const Testing = () => {
           </div>
           <button
             onClick={handleCreate}
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center gap-2"
+            className="px-4 py-2 bg-primary-light text-white rounded-md hover:bg-primary flex items-center gap-2"
           >
             <Plus size={16} />
             New Configuration
@@ -530,7 +496,7 @@ const Testing = () => {
         Select and execute test configurations to evaluate your AI models
       </p>
 
-      <div className="w-full max-w-6xl">
+      <div className="w-full">
         {/* Search and Selection Controls */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-4">
@@ -686,7 +652,7 @@ const Testing = () => {
       return <RunTests />;
     }
   };
-  const featureEnabled = false;
+  const featureEnabled = true;
   if (!featureEnabled) {
     return (
       <div className="page">
@@ -699,19 +665,14 @@ const Testing = () => {
     );
   }
   return (
-    <div className="page">
-      {/* Header with back button when option is selected */}
-      {selectedOption && (
-        <div className="border-b border-gray-200 p-4">
-          <button
-            onClick={() => setSelectedOption(null)}
-            className="text-blue-500 hover:text-blue-700 flex items-center gap-2"
-          >
-            <X size={16} />
-            Back to Main Menu
-          </button>
+    <div className="page relative">
+      {selectedOption !== null && (<div className="absolute top-4 left-4">
+        <div className="space-y-2">
+          <button onClick={() => setSelectedOption(null)} className="flex items-center justify-center w-11 h-11 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200 group" > <ArrowLeft size={20} style={{ color: '#002776' }} className="group-hover:scale-110 transition-transform" /> </button>
         </div>
-      )}
+
+      </div>)}
+
 
       {/* Main content area */}
       <div className="flex-1 p-6">
