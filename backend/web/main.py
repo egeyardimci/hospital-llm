@@ -5,7 +5,7 @@ from backend.common.paths import REACT_BUILD_PATH
 from backend.common.constants import ALLOWED_CORS_ORIGINS
 from backend.ai.vectordb.main import GLOBAL_VECTOR_DB
 from backend.common.constants import *
-from backend.web.routes import chat, vectordb, results
+from backend.web.routes import chat, vectordb, results, tests, qa
 
 # Initialize global vector DB
 GLOBAL_VECTOR_DB.load_db(
@@ -29,6 +29,8 @@ app.add_middleware(
 app.include_router(chat.router, prefix="/chat", tags=["chat"])
 app.include_router(vectordb.router, prefix="/vectordb", tags=["vectordb"])
 app.include_router(results.router, prefix="/results", tags=["results"])
+app.include_router(tests.router, prefix="/tests", tags=["tests"])
+app.include_router(qa.router, prefix="/qa", tags=["qa"])
 
 # Serve static files
 app.mount("/", StaticFiles(directory=REACT_BUILD_PATH, html=True), name="static")
