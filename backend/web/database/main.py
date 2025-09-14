@@ -19,7 +19,6 @@ class MongoDBClient:
         if self.client is None:
           load_dotenv()
           MONGO_DB_URI = os.getenv('MONGO_DB_URI')
-          print(MONGO_DB_URI, "MONGO_DB_URI")
           self.client = MongoClient(MONGO_DB_URI)
             
     def get_client(self):
