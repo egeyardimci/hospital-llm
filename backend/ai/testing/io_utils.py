@@ -29,7 +29,7 @@ def load_queries_expected_answers():
     Returns:
         List of dictionaries containing queries and expected answers
     """
-    collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()
+    collection = GLOBAL_MONGO_DB_CLIENT.get_queries_collection()
     documents = list(collection.find())
     return documents
 
@@ -74,3 +74,12 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
     collection.insert_one(result)
 
     log(f"Result saved to database.")
+
+if __name__ == "__main__":
+    test_cases = load_test_cases()
+    print(f"Loaded {len(test_cases)} test cases.")
+    queries_expected_answers = load_queries_expected_answers()
+    print(f"Loaded {len(queries_expected_answers)} queries and expected answers.")
+    existing_results = load_existing_test_results()
+    print(f"Loaded {len(existing_results)} existing results.")
+    print("test:", existing_results[0])
