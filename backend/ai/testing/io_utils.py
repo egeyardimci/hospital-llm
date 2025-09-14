@@ -1,11 +1,10 @@
 import datetime
-import json
-import os
 from backend.ai.llm.llm_as_a_judge.models import JudgeOutput
 from backend.utils.logger import log
 from backend.ai.testing.models import TestCase
 from backend.common.paths import TEST_CASES_PATH, TEST_RESULTS_PATH, TEST_QUERIES_AND_EXPECTED_ANSWERS_PATH
 from langchain_core.documents import Document
+from backend.web.database.main import GLOBAL_MONGO_DB_CLIENT
 
 def load_test_cases() -> list[TestCase]:
     """
@@ -15,11 +14,11 @@ def load_test_cases() -> list[TestCase]:
         List of TestCase objects
     """
     test_cases = []
-    with open(TEST_CASES_PATH, "r", encoding="utf-8") as file:
-        data = json.load(file)
-        for case in data:
-            test_case = TestCase(case["test_id"],case["llm_name"], case["embedding_model_name"], case["system_message"], case["chunk_size"], case["chunk_overlap"], case["similar_vector_count"],case["options"])
-            test_cases.append(test_case)
+    collection = GLOBAL_MONGO_DB_CLIENT.get_test_cases_collection()
+    documents = list(collection.find())
+    for case in documents:
+        test_case = TestCase(case["test_id"],case["llm_name"], case["embedding_model_name"], case["system_message"], case["chunk_size"], case["chunk_overlap"], case["similar_vector_count"],case["options"])
+        test_cases.append(test_case)
     
     return test_cases
 
@@ -30,8 +29,9 @@ def load_queries_expected_answers():
     Returns:
         List of dictionaries containing queries and expected answers
     """
-    with open(TEST_QUERIES_AND_EXPECTED_ANSWERS_PATH, "r", encoding="utf-8") as file:
-        return json.load(file)
+    collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()
+    documents = list(collection.find())
+    return documents
 
 # Function to load existing JSON data
 def load_existing_test_results():
@@ -41,22 +41,16 @@ def load_existing_test_results():
     Returns:
         List: List of existing results
     """
-
-    if os.path.exists(TEST_RESULTS_PATH):
-        with open(TEST_RESULTS_PATH, "r", encoding="utf-8") as f:
-            try:
-                return json.load(f)  # Load existing results
-            except json.JSONDecodeError:
-                return []  # Return an empty list if JSON is corrupted
-    return []  # Return an empty list if file doesn't exist
+    collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()
+    documents = list(collection.find())
+    return documents
 
 def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: str ,retrieved_chunks: list[Document] ,evaluation: JudgeOutput ,chunk_evaluation: JudgeOutput):
     """
     Add a test result to the existing results.
     """
-    results = load_existing_test_results()  # List to store results
     # Store results in a dictionary
-    results.append({
+    result = {
         "test_id": test_case.test_id,
         "llm": test_case.llm_name,
         "embedding_model": test_case.embedding_model_name,
@@ -74,11 +68,9 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
         "evaluation_score": evaluation.score,
         "chunk_evaluation": chunk_evaluation.output,
         "chunk_evaluation_score": chunk_evaluation.score
-        })
-    
-    # Write results to a JSON file (append mode)
-    with open(TEST_RESULTS_PATH, "w", encoding="utf-8") as f:
-        json.dump(results, f, indent=4, ensure_ascii=False)
+        }
 
+    collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()
+    collection.insert_one(result)
 
-    log(f"Result saved to {TEST_RESULTS_PATH}")
+    log(f"Result saved to database.")
