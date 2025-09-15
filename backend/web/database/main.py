@@ -38,6 +38,10 @@ class MongoDBClient:
     def get_test_cases_collection(self):
         db = self.get_hospital_db()
         return db['test_cases']
+    
+    def get_system_prompts_collection(self):
+        db = self.get_hospital_db()
+        return db['system_prompts']
 
 # Global instance
 GLOBAL_MONGO_DB_CLIENT = MongoDBClient()

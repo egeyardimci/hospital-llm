@@ -21,3 +21,10 @@ class QAInfo(BaseModel):
     answer: str
     class Config:
         populate_by_name = True
+
+class SystemPromptInfo(BaseModel):
+    id: str = Field(alias='_id')
+    title: str
+    content: str
+    class Config:
+        populate_by_name = True
