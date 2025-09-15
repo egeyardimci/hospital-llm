@@ -1,5 +1,5 @@
 from typing import Any
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class ChatRequest(BaseModel):
     llm: str
@@ -14,3 +14,10 @@ class VectorDBInfo(BaseModel):
     name: str
     chunk_size: str
     chunk_overlap: str
+    
+class QAInfo(BaseModel):
+    id: str = Field(alias='_id')
+    query: str
+    answer: str
+    class Config:
+        populate_by_name = True
