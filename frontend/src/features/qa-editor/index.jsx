@@ -111,7 +111,7 @@ const QaEditor = () => {
               Q&A Pair ({pair._id})
             </h3>
           </div>
-          <div className="flex gap-2">
+          <div className="flex">
             <button
               onClick={() => { setEditingId(pair._id); setIsCreating(false); }}
               className="p-2 text-yellow-500 hover:text-yellow-700"

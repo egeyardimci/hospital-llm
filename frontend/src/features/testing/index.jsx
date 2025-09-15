@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Save, X, Settings, Play, Search, ArrowLeft } from 'lucide-react';
+import { Plus, Edit, Trash2, Save, X, Settings, Play, Search } from 'lucide-react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 
 const Testing = () => {
-  const [selectedOption, setSelectedOption] = useState(null); // 'configure' or 'run'
+  const [selectedOption, setSelectedOption] = useState("configure"); // 'configure' or 'run'
   const testConfigs = useAppSelector(state => state.tests.tests)
   const [isCreating, setIsCreating] = useState(false);
   const [editingId, setEditingId] = useState(null);
@@ -363,7 +363,14 @@ const Testing = () => {
             <p className="text-sm text-gray-600">{config.test_description}</p>
           )}
         </div>
-        <div className="flex gap-2">
+        <div className="flex">
+          <button
+            onClick={() => handleDelete(config.test_id)}
+            className="p-2 text-success hover:text-success-dark"
+            title="Run"
+          >
+            <Play size={16} />
+          </button>
           <button
             onClick={() => handleEdit(config)}
             className="p-2 text-yellow-500 hover:text-yellow-700"
@@ -666,14 +673,6 @@ const Testing = () => {
   }
   return (
     <div className="page relative">
-      {selectedOption !== null && (<div className="absolute top-4 left-4">
-        <div className="space-y-2">
-          <button onClick={() => setSelectedOption(null)} className="flex items-center justify-center w-11 h-11 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200 group" > <ArrowLeft size={20} style={{ color: '#002776' }} className="group-hover:scale-110 transition-transform" /> </button>
-        </div>
-
-      </div>)}
-
-
       {/* Main content area */}
       <div className="flex-1 p-6">
         {renderContent()}
