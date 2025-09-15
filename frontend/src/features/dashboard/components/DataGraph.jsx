@@ -111,7 +111,7 @@ export default function EvaluationScoreChart(testData) {
         <div className="section-content" style={{ backgroundColor: 'white', padding: '10px', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)', borderRadius: '4px' }}>
           <p className="meta-label" style={{ fontWeight: 'bold', marginBottom: '5px' }}>{label}</p>
           <p className="meta-value">
-            <span style={{ color: '#3498db', fontWeight: 'bold' }}>
+            <span style={{ color: '#002776', fontWeight: 'bold' }}>
               {getMetricDisplayName(viewMetric)}: {payload[0].value}
             </span>
           </p>
