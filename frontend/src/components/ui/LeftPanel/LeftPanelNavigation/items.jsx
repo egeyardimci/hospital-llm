@@ -1,4 +1,4 @@
-import { BarChart3, Database, HelpCircle, LineChart, MessageSquare, Settings } from "lucide-react";
+import { BarChart3, Database, HelpCircle, LineChart, MessageSquare, Settings, FileText } from "lucide-react";
 import { TABS } from "../../../../constants";
 
 export const navigationItems = [
@@ -8,4 +8,5 @@ export const navigationItems = [
   { key: TABS.VECTORDB_EDITOR, label: 'VectorDB Editor', icon: <Database /> },
   { key: TABS.TEST_CONFIGURATOR, label: 'Test Configurator', icon: <Settings /> },
   { key: TABS.QA_EDITOR, label: 'QA Editor', icon: <HelpCircle /> },
+  { key: TABS.SYSTEM_PROMPTS, label: 'System Prompts', icon: <FileText /> },
 ];

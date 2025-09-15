@@ -18,9 +18,11 @@ import LeftPanel from './components/ui/LeftPanel';
 import Testing from './features/testing';
 import VectorDB from './features/vectordb';
 import QaEditor from './features/qa-editor';
+import SystemPrompts from './features/system-prompts';
 import Settings from './features/settings';
 import { fetchQA } from './store/slices/qaSlice';
 import { fetchTests } from './store/slices/testsSlice';
+import { fetchSystemPrompts } from './store/slices/systemPromptsSlice';
 
 function AppContent() {
   const dispatch = useAppDispatch();
@@ -43,6 +45,7 @@ function AppContent() {
   useEffect(() => {
     dispatch(fetchTests());
     dispatch(fetchQA());
+    dispatch(fetchSystemPrompts());
   }, [dispatch]);
 
   return (
@@ -75,6 +78,8 @@ function AppContent() {
             <VectorDB />
           ) : activeTab === TABS.QA_EDITOR ? (
             <QaEditor />
+          ) : activeTab === TABS.SYSTEM_PROMPTS ? (
+            <SystemPrompts />
           ) : activeTab === TABS.SETTINGS ? (
             <Settings />
           ) : null}

@@ -13,6 +13,10 @@ export const API_ENDPOINTS = {
   DELETE_QA: `${API_BASE_URL}/qa/delete`,
   UPDATE_QA: `${API_BASE_URL}/qa/update`,
   FETCH_TESTS: `${API_BASE_URL}/tests`,
+  FETCH_SYSTEM_PROMPTS: `${API_BASE_URL}/system-prompts`,
+  ADD_SYSTEM_PROMPT: `${API_BASE_URL}/system-prompts/add`,
+  DELETE_SYSTEM_PROMPT: `${API_BASE_URL}/system-prompts/delete`,
+  UPDATE_SYSTEM_PROMPT: `${API_BASE_URL}/system-prompts/update`,
 
 };
 
@@ -23,6 +27,7 @@ export const TABS = {
   TEST_CONFIGURATOR: 'test-configurator',
   VECTORDB_EDITOR: 'vectordb-editor',
   QA_EDITOR: 'qa-editor',
+  SYSTEM_PROMPTS: 'system-prompts',
   SETTINGS: 'settings',
 };
 

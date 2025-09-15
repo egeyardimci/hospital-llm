@@ -4,6 +4,7 @@ import chatReducer from './slices/chatSlice';
 import filtersReducer from './slices/filtersSlice';
 import vectorDBReducer from './slices/vectordbSlice';
 import qaReducer from './slices/qaSlice';
+import systemPromptsReducer from './slices/systemPromptsSlice';
 import testsReducer from './slices/testsSlice';
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     filters: filtersReducer,
     vectorDBs: vectorDBReducer,
     qa: qaReducer,
+    systemPrompts: systemPromptsReducer,
     tests: testsReducer,
   },
   middleware: (getDefaultMiddleware) =>
