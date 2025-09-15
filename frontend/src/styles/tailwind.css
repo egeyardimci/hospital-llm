@@ -12,15 +12,19 @@
   --color-secondary-light: #f5f7fa;
   --color-secondary-dark: #34495e;
 
-  /* Success / Danger / Warning (keep only the main shade) */
-  --color-success: #10b981;
-  --color-success-dark: #059669; /* hover */
+  /* Success / Danger / Warning (Lively + Light/Main/Dark) */
+  --color-success-light: #bbf7d0;  /* light minty green */
+  --color-success:       #22c55e;  /* main bright emerald */
+  --color-success-dark:  #16a34a;  /* deep hover green */
 
-  --color-danger: #ef4444;
-  --color-danger-dark: #dc2626; /* hover */
+  --color-danger-light:  #fecdd3;  /* light rosy pink */
+  --color-danger:        #f43f5e;  /* vibrant rose/red */
+  --color-danger-dark:   #e11d48;  /* deep hover crimson */
 
-  --color-warning: #f59e0b;
-  --color-warning-dark: #d97706; /* hover */
+  --color-warning-light: #fef3c7;  /* pale warm yellow */
+  --color-warning:       #facc15;  /* lively yellow */
+  --color-warning-dark:  #eab308;  /* golden hover */
+
 
 
   /* Fonts */

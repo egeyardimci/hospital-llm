@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Save, X, HelpCircle, Search } from 'lucide-react';
 import { useAppSelector } from '../../hooks/useAppSelector';
+import { useDispatch } from 'react-redux';
+import { addQA, deleteQA, updateQA } from '../../store/slices/qaSlice';
 
 const QaEditor = () => {
   const qaPairs = useAppSelector(state => state.qa.qaPairs);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredQaPairs, setFilteredQaPairs] = useState([]);
-  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingId, setEditingId] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
-  const [newQaPair] = useState({ query: '', answer: '' });
+  const [newQaPair, setNewQaPair] = useState({ query: '', answer: '' });
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
@@ -21,6 +24,30 @@ const QaEditor = () => {
       setFilteredQaPairs(filtered);
     }
   }, [searchTerm, qaPairs]);
+
+  const handleCreateNew = () => {
+    setIsCreating(true);
+    setEditingId(null);
+    setNewQaPair({ query: '', answer: '' });
+  }
+
+  const handleSave = (data) => {
+    if (editingId !== null) {
+      // Update existing Q&A pair
+      dispatch(updateQA({ ...data, _id: editingId }));
+    } else {
+      // Create new Q&A pair
+      dispatch(addQA({ ...data, _id: "" }));
+    }
+    setIsCreating(false);
+    setEditingId(null);
+    setNewQaPair({ query: '', answer: '' });
+  }
+
+  const handleDelete = (qaPair) => {
+    //dispatch action
+    dispatch(deleteQA(qaPair));
+  }
 
   const QaForm = ({ qaPair, onSave, onCancel }) => {
     const [formData, setFormData] = useState(qaPair);
@@ -57,7 +84,7 @@ const QaEditor = () => {
           <button
             onClick={() => onSave(formData)}
             disabled={!formData.query.trim() || !formData.answer.trim()}
-            className="px-4 py-2 bg-success hover:bg-success-light disabled:bg-gray-400 text-white rounded-md flex items-center gap-2"
+            className="px-4 py-2 bg-success hover:bg-success-dark disabled:bg-gray-400 text-white rounded-md flex items-center gap-2"
           >
             <Save size={16} />
             Save
@@ -86,14 +113,14 @@ const QaEditor = () => {
           </div>
           <div className="flex gap-2">
             <button
-              onClick={() => { }}
+              onClick={() => { setEditingId(pair._id); setIsCreating(false); }}
               className="p-2 text-yellow-500 hover:text-yellow-700"
               title="Edit"
             >
               <Edit size={16} />
             </button>
             <button
-              onClick={() => { }}
+              onClick={() => { handleDelete(pair) }}
               className="p-2 text-danger-dark hover:text-danger"
               title="Delete"
             >
@@ -130,7 +157,7 @@ const QaEditor = () => {
           <p className="text-gray-600">Manage question and answer pairs for testing</p>
         </div>
         <button
-          onClick={() => { }}
+          onClick={handleCreateNew}
           className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-light flex items-center gap-2"
         >
           <Plus size={16} />
@@ -159,7 +186,7 @@ const QaEditor = () => {
       {isCreating && (
         <QaForm
           qaPair={newQaPair}
-          onSave={() => { }}
+          onSave={handleSave}
           onCancel={() => setIsCreating(false)}
           isNew={true}
         />
@@ -168,17 +195,17 @@ const QaEditor = () => {
       {/* Q&A Pairs List */}
       <div className="space-y-4">
         {filteredQaPairs.map((pair, index) => {
-          const originalIndex = index
+          const id = pair._id;
 
-          return editingIndex === originalIndex ? (
+          return editingId === id ? (
             <QaForm
-              key={originalIndex}
+              key={id}
               qaPair={pair}
-              onSave={() => { }}
-              onCancel={() => setEditingIndex(null)}
+              onSave={handleSave}
+              onCancel={() => setEditingId(null)}
             />
           ) : (
-            <QaCard key={originalIndex} pair={pair} index={index} />
+            <QaCard key={id} pair={pair} index={index} />
           );
         })}
       </div>
@@ -193,16 +220,6 @@ const QaEditor = () => {
           <p className="text-gray-400 text-sm">
             {searchTerm ? 'Try a different search term' : 'Create your first Q&A pair to get started'}
           </p>
-        </div>
-      )}
-
-      {/* Stats */}
-      {qaPairs.length > 0 && (
-        <div className="mt-6 bg-blue-50 rounded-lg p-4">
-          <div className="flex items-center justify-between text-sm text-blue-800">
-            <span>Total Q&A Pairs: {qaPairs.length}</span>
-            <span>Filtered Results: {filteredQaPairs.length}</span>
-          </div>
         </div>
       )}
     </div>
