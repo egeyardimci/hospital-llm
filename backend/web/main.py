@@ -7,13 +7,6 @@ from backend.ai.vectordb.main import GLOBAL_VECTOR_DB
 from backend.common.constants import *
 from backend.web.routes import chat, vectordb, results, tests, qa, system_prompts
 
-# Initialize global vector DB
-GLOBAL_VECTOR_DB.load_db(
-    GLOBAL_VECTOR_DB_INITIAL_EMBEDDING_MODEL,
-    GLOBAL_VECTOR_DB_INITIAL_CHUNK_SIZE,
-    GLOBAL_VECTOR_DB_INITIAL_CHUNK_OVERLAP
-)
-
 app = FastAPI(title="Hospital LLM API", version="1.0.0")
 
 # CORS middleware
