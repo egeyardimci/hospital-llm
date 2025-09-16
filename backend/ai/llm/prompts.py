@@ -19,9 +19,6 @@ Score 2: The response is mostly incorrect, inaccurate, and/or not factual.
 Score 3: The response is somewhat correct, accurate, and/or factual.
 Score 4: The response is mostly correct, accurate, and factual.
 Score 5: The response is completely correct, accurate, and factual.
-
-Respond ONLY with a JSON object with the fields: `score` (integer, 1–5) and `output` (string).
-Do not include any explanations or other text!!! 
 """
 
 CHUNK_EVALUATION_PROMPT = """
@@ -41,10 +38,6 @@ Rate how well the chunk answers the query using the following scale:
 - 3 = Somewhat relevant
 - 4 = Mostly relevant
 - 5 = Completely relevant and useful
-
-Respond ONLY with a JSON object with the fields: `score` (integer, 1–5) and `output` (string).
-Do not include any explanations or other text!!! 
-
 """
 
 SGK_AGENT_SYSTEM_PROMPT = """

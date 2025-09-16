@@ -66,6 +66,6 @@ if __name__ == "__main__":
     test_cases = load_test_cases()
     queries_and_expected_answers = load_queries_expected_answers()
     test_id = int(sys.argv[1])
-    vector_db_g = load_vectordb(test_cases[test_id].embedding_model_name,test_cases[test_id].chunk_size,test_cases[test_id].chunk_overlap)
+    vector_db_g = load_vectordb(test_cases[test_id-1].embedding_model_name,test_cases[test_id-1].chunk_size,test_cases[test_id-1].chunk_overlap)
     for query in queries_and_expected_answers:
-        run_test(test_cases[test_id], query)
+        run_test(test_cases[test_id-1], query)
