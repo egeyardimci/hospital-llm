@@ -25,6 +25,3 @@ app.include_router(results.router, prefix="/results", tags=["results"])
 app.include_router(tests.router, prefix="/tests", tags=["tests"])
 app.include_router(qa.router, prefix="/qa", tags=["qa"])
 app.include_router(system_prompts.router, prefix="/system-prompts", tags=["system-prompts"])
-
-# Serve static files
-app.mount("/", StaticFiles(directory=REACT_BUILD_PATH, html=True), name="static")
