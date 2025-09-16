@@ -15,7 +15,7 @@ def load_test_cases() -> list[TestCase]:
     """
     test_cases = []
     collection = GLOBAL_MONGO_DB_CLIENT.get_test_cases_collection()
-    documents = list(collection.find())
+    documents = list(collection.find().sort("test_id", 1)) 
     for case in documents:
         test_case = TestCase(case["test_id"],case["llm_name"], case["embedding_model_name"], case["system_message"], case["chunk_size"], case["chunk_overlap"], case["similar_vector_count"],case["options"])
         test_cases.append(test_case)
