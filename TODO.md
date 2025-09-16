@@ -2,14 +2,20 @@
 
 ## Priority List
 
+### Critical
+
 - knowledge graph
 - already tested results come from db, however new tests cannot be produced
-- llm as a judge json donmuyor
+- concurrent olarak calismasi lazim agenta sorulan testlerin
 - q&a sorulari tek bir kategori gibi duruyor, farkli kategorilere ayirilmali
+- logging
+
+### Intermediate
+
 - duzgun README.md
 - vector db test calistirilinca otomatik olusturulmuyo
-- testler tek tek soru soru degil batch seklinde run olarak durmasi lazim
 - chunk evaluation ve direk answer evaluation ayni anda calisiyor bunlar ayirilmali
-- concurrent olarak calismasi lazim agenta sorulan testlerin
 
-## Techincal Debt
+### Ongoing
+
+- llm as a judge json donmuyor
