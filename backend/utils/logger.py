@@ -63,14 +63,16 @@ def log_test(test_case:TestCase, query_expected_answer):
     """
     
     try:
-        log(f"Running test for LLM: {test_case.llm_name}")
-        log(f"Embedding model: {test_case.embedding_model_name}")
-        log(f"System message: {test_case.system_message}")
+        log("\n---------------------------------------------------------")
+        #log(f"Running test for LLM: {test_case.llm_name}")
+        #log(f"Embedding model: {test_case.embedding_model_name}")
+        #log(f"System message: {test_case.system_message}")
         log(f"Query: {query_expected_answer['query']}")
         log(f"Exptected answer: {query_expected_answer['answer']}")
-        log(f"Chunk size: {test_case.chunk_size}")
-        log(f"Chunk overlap: {test_case.chunk_overlap}")
-        log(f"Similar vector count: {test_case.similar_vector_count}")
-        log(f"Options: {[str(option) for option in test_case.options]}")
+        #log(f"Chunk size: {test_case.chunk_size}")
+        #log(f"Chunk overlap: {test_case.chunk_overlap}")
+        #log(f"Similar vector count: {test_case.similar_vector_count}")
+        #log(f"Options: {[str(option) for option in test_case.options]}")
+        log("---------------------------------------------------------\n")
     except Exception as e:
         log(f"Error logging test: {e}")

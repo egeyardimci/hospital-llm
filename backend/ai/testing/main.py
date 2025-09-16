@@ -59,8 +59,10 @@ def run_test(test_case:TestCase, query_expeced_answer):
 
     add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation)
 
+    log("\n---------------------------------------------------------")
     log(f"RAG Response: {rag_response}")
-    log(f"LLM Judge Evaluation: {evaluation.output}")
+    log(f"LLM Judge Evaluation: {evaluation.feedback}")
+    log("---------------------------------------------------------\n")
 
 if __name__ == "__main__":
     test_cases = load_test_cases()

@@ -64,10 +64,12 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
         "time_stamp" : str(datetime.datetime.now()),
         "retrieved_chunks": [chunk.page_content for chunk in retrieved_chunks],
         "options": [{"name": option.name, "is_enabled": option.is_enabled, "data": option.data} for option in test_case.options],
-        "evaluation": evaluation.output,
+        "evaluation": evaluation.feedback,
         "evaluation_score": evaluation.score,
-        "chunk_evaluation": chunk_evaluation.output,
-        "chunk_evaluation_score": chunk_evaluation.score
+        "evaluation_reasoning": evaluation.reasoning,
+        "chunk_evaluation": chunk_evaluation.feedback,
+        "chunk_evaluation_score": chunk_evaluation.score,
+        "chunk_evaluation_reasoning": chunk_evaluation.reasoning,
         }
 
     collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()
