@@ -214,7 +214,7 @@ const Testing = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Embedding Model
+              Vector DB
             </label>
             <select
               value={formConfig.embedding_model_name}
@@ -225,28 +225,6 @@ const Testing = () => {
                 <option key={option} value={option}>{option}</option>
               ))}
             </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Chunk Size
-            </label>
-            <input
-              type="number"
-              value={formConfig.chunk_size}
-              onChange={(e) => setFormConfig({ ...formConfig, chunk_size: parseInt(e.target.value) })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Chunk Overlap
-            </label>
-            <input
-              type="number"
-              value={formConfig.chunk_overlap}
-              onChange={(e) => setFormConfig({ ...formConfig, chunk_overlap: parseInt(e.target.value) })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -314,15 +292,6 @@ const Testing = () => {
                 <option key={option} value={option}>{option}</option>
               ))}
             </select>
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={newOption.is_enabled}
-                onChange={(e) => setNewOption({ ...newOption, is_enabled: e.target.checked })}
-                className="rounded"
-              />
-              <span className="text-sm">Enabled</span>
-            </label>
             <button
               onClick={() => addOption(setFormConfig, formConfig)}
               className="px-3 py-2 bg-primary-light text-white rounded-md hover:bg-primary"
