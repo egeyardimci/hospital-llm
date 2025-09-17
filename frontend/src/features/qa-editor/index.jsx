@@ -1,22 +1,26 @@
 import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Save, X, HelpCircle, Search, ArrowLeft, Layers } from 'lucide-react';
+import Select from 'react-select';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useDispatch } from 'react-redux';
 import { addQA, deleteQA, updateQA, fetchQA } from '../../store/slices/qaSlice';
 import { addQABatch, deleteQABatch, updateQABatch, fetchQABatches } from '../../store/slices/qaBatchSlice';
+import { customSelectTheme } from '../../constants';
 
 // Q&A Pairs Component
 const QAPairsEditor = () => {
   const qaPairs = useAppSelector(state => state.qa.qaPairs);
+  const qaBatches = useAppSelector(state => state.qaBatches.qaBatches);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredQaPairs, setFilteredQaPairs] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
-  const [newQaPair, setNewQaPair] = useState({ query: '', answer: '' });
+  const [newQaPair, setNewQaPair] = useState({ query: '', answer: '', batch_id: '' });
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchQA());
+    dispatch(fetchQABatches());
   }, [dispatch]);
 
   useEffect(() => {
@@ -34,7 +38,7 @@ const QAPairsEditor = () => {
   const handleCreateNew = () => {
     setIsCreating(true);
     setEditingId(null);
-    setNewQaPair({ query: '', answer: '' });
+    setNewQaPair({ query: '', answer: '', batch_id: '' });
   }
 
   const handleSave = (data) => {
@@ -47,7 +51,7 @@ const QAPairsEditor = () => {
     }
     setIsCreating(false);
     setEditingId(null);
-    setNewQaPair({ query: '', answer: '' });
+    setNewQaPair({ query: '', answer: '', batch_id: '' });
   }
 
   const handleDelete = (qaPair) => {
@@ -58,8 +62,36 @@ const QAPairsEditor = () => {
   const QaForm = ({ qaPair, onSave, onCancel }) => {
     const [formData, setFormData] = useState(qaPair);
 
+    // Create options for batch selector
+    const batchOptions = [
+      { value: '', label: 'No batch selected' },
+      ...qaBatches.map(batch => ({
+        value: batch._id,
+        label: batch.title
+      }))
+    ];
+
+    // Find selected batch option
+    const selectedBatch = batchOptions.find(option => option.value === formData.batch_id) || batchOptions[0];
+
     return (
       <div className="bg-white rounded-lg shadow p-6 mb-4 border-2 border-blue-200">
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            QA Batch
+          </label>
+          <Select
+            theme={customSelectTheme}
+            options={batchOptions}
+            value={selectedBatch}
+            onChange={(option) => setFormData({ ...formData, batch_id: option.value })}
+            placeholder="Select a batch (optional)..."
+            className="w-full"
+            isClearable
+            isSearchable
+          />
+        </div>
+
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Question
@@ -108,6 +140,8 @@ const QAPairsEditor = () => {
   };
 
   const QaCard = ({ pair }) => {
+    // Find the batch for this Q&A pair
+    const associatedBatch = qaBatches.find(batch => batch._id === pair.batch_id);
 
     return (
       <div className="bg-white rounded-lg shadow p-6 mb-4">
@@ -116,6 +150,14 @@ const QAPairsEditor = () => {
             <h3 className="text-lg font-semibold text-gray-800">
               Q&A Pair ({pair._id})
             </h3>
+            {associatedBatch && (
+              <div className="mt-2">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  <Layers size={12} className="mr-1" />
+                  {associatedBatch.title}
+                </span>
+              </div>
+            )}
           </div>
           <div className="flex">
             <button
@@ -149,6 +191,15 @@ const QAPairsEditor = () => {
               {pair.answer}
             </div>
           </div>
+
+          {associatedBatch && (
+            <div>
+              <span className="font-medium text-gray-700">Batch Description:</span>
+              <div className="ml-2 text-gray-600 mt-1 bg-gray-50 p-3 rounded-md">
+                {associatedBatch.description}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
