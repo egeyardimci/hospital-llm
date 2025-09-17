@@ -37,3 +37,18 @@ class SystemPromptInfo(BaseModel):
     content: str
     class Config:
         populate_by_name = True
+
+class TestCase(BaseModel):
+    id: str = Field(alias='_id')
+    test_id: int
+    test_description: str
+    llm_name: str
+    system_message: str
+    qa_batch: str
+    similar_vector_count: int
+    chunk_size: int
+    chunk_overlap: int
+    embedding_model_name: str
+    options: Any
+    class Config:
+        populate_by_name = True
