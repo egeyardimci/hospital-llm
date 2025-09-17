@@ -63,7 +63,7 @@ def update_qa(request: QAInfo):
         Dictionary containing the test results data
     """
     try:
-        return QAService.update_qa_pair(request.id, request.query, request.answer)
+        return QAService.update_qa_pair(request.id, request.query, request.answer, request.batch_id)
     except Exception as e:
         raise HTTPException(
             status_code=500, 

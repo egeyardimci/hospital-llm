@@ -19,6 +19,7 @@ class QAInfo(BaseModel):
     id: str = Field(alias='_id')
     query: str
     answer: str
+    batch_id: str
     class Config:
         populate_by_name = True
         
