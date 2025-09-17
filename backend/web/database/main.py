@@ -35,6 +35,10 @@ class MongoDBClient:
         db = self.get_hospital_db()
         return db['queries']
     
+    def get_qa_batches_collection(self):
+        db = self.get_hospital_db()
+        return db['qa_batches']
+    
     def get_test_cases_collection(self):
         db = self.get_hospital_db()
         return db['test_cases']
