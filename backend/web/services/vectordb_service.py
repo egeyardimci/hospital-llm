@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 from typing import List, Dict, Any
 from backend.common.paths import CHROMA_DB_DIR
-from backend.common.constants import VECTOR_DB_EMBEDDING_MODELS
+from backend.common.config import VECTOR_DB_EMBEDDING_MODELS
 from backend.ai.vectordb.main import GLOBAL_VECTOR_DB
 from backend.web.dtos import VectorDBInfo
 

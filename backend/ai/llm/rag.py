@@ -1,7 +1,8 @@
 from langchain_groq import ChatGroq
 
 from backend.ai.llm.cross_encoder import rerank_with_cross_encoder
-from backend.common.constants import CROSS_ENCODER_K, CROSS_ENCODER_OPTION
+from backend.common.config import CROSS_ENCODER_K
+from backend.common.constants import CROSS_ENCODER_OPTION
 from backend.utils.logger import log
 from langchain.schema import SystemMessage, HumanMessage
 from backend.ai.testing.models import RagResponse, TestOption
