@@ -5,9 +5,10 @@
 ### Critical
 
 - knowledge graph
-- already tested results come from db, however new tests cannot be produced
 - concurrent olarak calismasi lazim agenta sorulan testlerin
 - logging
+- tests become runnable with the new qa batching, system prompt implementation
+- test should become runnable from web UI
 
 ### Intermediate
 
