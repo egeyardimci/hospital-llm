@@ -7,7 +7,6 @@
 - knowledge graph
 - already tested results come from db, however new tests cannot be produced
 - concurrent olarak calismasi lazim agenta sorulan testlerin
-- q&a sorulari tek bir kategori gibi duruyor, farkli kategorilere ayirilmali
 - logging
 
 ### Intermediate
@@ -18,4 +17,4 @@
 
 ### Ongoing
 
-- llm as a judge json donmuyor
+- llm as a judge json donmuyor (düzeldi gibi emin degiliz)
