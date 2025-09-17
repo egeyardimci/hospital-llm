@@ -21,6 +21,11 @@ export const API_ENDPOINTS = {
   ADD_SYSTEM_PROMPT: `${API_BASE_URL}/system-prompts/add`,
   DELETE_SYSTEM_PROMPT: `${API_BASE_URL}/system-prompts/delete`,
   UPDATE_SYSTEM_PROMPT: `${API_BASE_URL}/system-prompts/update`,
+  FETCH_CONFIG: `${API_BASE_URL}/config`,
+  ADD_TEST: `${API_BASE_URL}/tests/add`,
+  DELETE_TEST: `${API_BASE_URL}/tests/delete`,
+  UPDATE_TEST: `${API_BASE_URL}/tests/update`,
+  RUN_TEST: `${API_BASE_URL}/tests/run`,
 
 };
 

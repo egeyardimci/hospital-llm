@@ -23,6 +23,9 @@ import Settings from './features/settings';
 import { fetchQA } from './store/slices/qaSlice';
 import { fetchTests } from './store/slices/testsSlice';
 import { fetchSystemPrompts } from './store/slices/systemPromptsSlice';
+import { fetchQABatches } from './store/slices/qaBatchSlice';
+import { fetchConfig } from './store/slices/configSlice';
+import { fetchVectorDBs } from './store/slices/vectordbSlice';
 
 function AppContent() {
   const dispatch = useAppDispatch();
@@ -46,6 +49,9 @@ function AppContent() {
     dispatch(fetchTests());
     dispatch(fetchQA());
     dispatch(fetchSystemPrompts());
+    dispatch(fetchQABatches());
+    dispatch(fetchConfig());
+    dispatch(fetchVectorDBs());
   }, [dispatch]);
 
   return (
