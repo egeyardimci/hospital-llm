@@ -11,7 +11,7 @@ class TestOption():
         return f"Option: {self.name}, Enabled: {self.is_enabled}, Data: {self.data}"
 
 class TestCase():
-    def __init__(self, test_id,llm_name, embedding_model_name, system_message, chunk_size, chunk_overlap, similar_vector_count,options=None):
+    def __init__(self, test_id,llm_name, embedding_model_name, system_message, chunk_size, chunk_overlap, similar_vector_count,options=None, qa_batch=None):
         self.test_id = test_id
         self.llm_name = llm_name
         self.embedding_model_name = embedding_model_name
@@ -19,6 +19,7 @@ class TestCase():
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
         self.similar_vector_count = similar_vector_count
+        self.qa_batch = qa_batch
 
         self.options: list[TestOption] = []
         if options:

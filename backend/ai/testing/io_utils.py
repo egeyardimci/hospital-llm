@@ -22,6 +22,22 @@ def load_test_cases() -> list[TestCase]:
     
     return test_cases
 
+def load_test_case_by_test_id(test_id) -> TestCase:
+    """
+    Load a single test case by its ID from the database.
+    
+    Args:
+        test_id: ID of the test case to be loaded
+
+    Returns:
+        TestCase object
+    """
+    collection = GLOBAL_MONGO_DB_CLIENT.get_test_cases_collection()
+    document = collection.find_one({"test_id": test_id})
+    if document:
+        return TestCase(document["test_id"], document["llm_name"], document["embedding_model_name"], document["system_message"], document["chunk_size"], document["chunk_overlap"], document["similar_vector_count"], document["options"],document["qa_batch"])
+    return None
+
 def load_queries_expected_answers():
     """
     Load queries and expected answers from the queries_expected_answers.json file.
@@ -31,6 +47,11 @@ def load_queries_expected_answers():
     """
     collection = GLOBAL_MONGO_DB_CLIENT.get_queries_collection()
     documents = list(collection.find())
+    return documents
+
+def load_queries_expected_answers_batch_by_id(batch_id):
+    collection = GLOBAL_MONGO_DB_CLIENT.get_queries_collection()
+    documents = list(collection.find({"batch_id": batch_id}))
     return documents
 
 # Function to load existing JSON data

@@ -1,6 +1,9 @@
+from backend.ai.vectordb.utils import load_vectordb
 from backend.web.database.main import GLOBAL_MONGO_DB_CLIENT
 from backend.web.database.utils import from_mongo
 from bson import ObjectId
+from backend.ai.testing.io_utils import load_test_case_by_test_id, load_queries_expected_answers_batch_by_id
+from backend.ai.testing.main import run_test_case_by_test_id
 
 class TestService:
     @staticmethod
@@ -52,3 +55,13 @@ class TestService:
         """
         collection = GLOBAL_MONGO_DB_CLIENT.get_test_cases_collection()
         collection.delete_one({"_id": ObjectId(_id)})
+        
+    @staticmethod
+    def run_test_service(test_id):
+        """
+        Run a test case.
+
+        Args:
+            object_id: ID of the test case to be run
+        """
+        run_test_case_by_test_id(test_id)
