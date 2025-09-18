@@ -9,9 +9,10 @@ from backend.ai.testing.models import RagResponse, TestOption
 from langchain_chroma import Chroma
 
 def rag_invoke(llm_name: str, system_prompt: str, vector_db: Chroma, similarity_vector_k: int, query: str, options: list[TestOption]) -> str:
-  # Querying the document
-    retrieved_chunks = vector_db.similarity_search(query, similarity_vector_k)
 
+    retrieved_chunks = vector_db.similarity_search(query, similarity_vector_k)
+    log(f"Retrieved {len(retrieved_chunks)} chunks from vector DB.")
+    
     cross_encoder_option = None
     for option in options:
         if option.name == CROSS_ENCODER_OPTION and option.is_enabled:

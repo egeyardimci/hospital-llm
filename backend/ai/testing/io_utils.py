@@ -1,8 +1,9 @@
 import datetime
+
+from bson import ObjectId
 from backend.ai.llm.llm_as_a_judge.models import JudgeOutput
 from backend.utils.logger import log
 from backend.ai.testing.models import TestCase
-from backend.common.paths import TEST_CASES_PATH, TEST_RESULTS_PATH, TEST_QUERIES_AND_EXPECTED_ANSWERS_PATH
 from langchain_core.documents import Document
 from backend.web.database.main import GLOBAL_MONGO_DB_CLIENT
 
@@ -53,6 +54,11 @@ def load_queries_expected_answers_batch_by_id(batch_id):
     collection = GLOBAL_MONGO_DB_CLIENT.get_queries_collection()
     documents = list(collection.find({"batch_id": batch_id}))
     return documents
+
+def load_system_message_by_id(system_message_id):
+    collection = GLOBAL_MONGO_DB_CLIENT.get_system_prompts_collection()
+    document = collection.find_one({"_id": ObjectId(system_message_id)})
+    return document
 
 # Function to load existing JSON data
 def load_existing_test_results():

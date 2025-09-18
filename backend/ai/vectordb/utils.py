@@ -42,7 +42,7 @@ def create_vectordb(embedding_model_name, chunk_size, chunk_overlap):
         chunks = text_splitter.split_documents(updated_docs)
         
         # Create the ChromaDB instance and store the embeddings
-        Chroma.from_documents(chunks, embedding_model, persist_directory=str(db_path))
+        Chroma.from_documents(chunks, embedding_model, persist_directory=str(db_path), collection_name="sgk")
         log(f"Created and saved ChromaDB instance chroma_db_{embedding_model.model_name}_{chunk_size}_{chunk_overlap}")
 
 def load_vectordb(embedding_model_name,chunk_size,chunk_overlap):
@@ -51,7 +51,7 @@ def load_vectordb(embedding_model_name,chunk_size,chunk_overlap):
     embedding_model = HuggingFaceEmbeddings(model_name=embedding_model_name)
 
     if os.path.exists(db_path):
-        vector_db = Chroma(persist_directory=str(db_path), embedding_function=embedding_model)
+        vector_db = Chroma(persist_directory=str(db_path), embedding_function=embedding_model, collection_name="sgk")
         log(f"Loaded existing ChromaDB instance chroma_db_{embedding_model.model_name}_{chunk_size}_{chunk_overlap}")
         return vector_db
     else:
@@ -67,4 +67,4 @@ if __name__ == "__main__":
     chunk_sizes_and_chunk_overlaps = [(500,50),(1000,100),(2000,200)]
     
     #create_multiple_vectordb(embedding_model_names,chunk_sizes_and_chunk_overlaps)
-    create_vectordb(embedding_model_names[0],1000,70)
+    create_vectordb(embedding_model_names[0],700,70)
