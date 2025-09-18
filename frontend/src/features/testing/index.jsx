@@ -4,7 +4,7 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import ConfigCard from './ConfigCard';
 import ConfigForm from './ConfigForm';
 import { useDispatch } from 'react-redux';
-import { addTest, deleteTest, updateTest } from '../../store/slices/testsSlice';
+import { addTest, deleteTest, runTest, updateTest } from '../../store/slices/testsSlice';
 
 const Testing = () => {
   const testConfigs = useAppSelector(state => state.tests.tests)
@@ -55,6 +55,10 @@ const Testing = () => {
     dispatch(deleteTest(config));
   };
 
+  const handleRun = (config) => {
+    dispatch(runTest(config));
+  };
+
   return (
     <div className="page relative">
       {/* Main content area */}
@@ -103,7 +107,7 @@ const Testing = () => {
                     setFormConfig={setNewConfig}
                   />
                 ) : (
-                  <ConfigCard key={config.test_id} config={config} handleDelete={handleDelete} handleEdit={handleEdit} />
+                  <ConfigCard key={config.test_id} config={config} handleDelete={handleDelete} handleEdit={handleEdit} handleRun={handleRun} />
                 )
               ))}
             </div>

@@ -1,6 +1,6 @@
 import { Edit, Play, Trash2 } from "lucide-react";
 
-const ConfigCard = ({ config, handleDelete, handleEdit }) => (
+const ConfigCard = ({ config, handleDelete, handleEdit, handleRun }) => (
   <div className="bg-white rounded-lg shadow p-6 mb-4">
     <div className="flex justify-between items-start mb-4">
       <div>
@@ -13,7 +13,7 @@ const ConfigCard = ({ config, handleDelete, handleEdit }) => (
       </div>
       <div className="flex">
         <button
-          onClick={() => handleDelete(config._id)}
+          onClick={() => handleRun(config)}
           className="p-2 text-success hover:text-success-dark"
           title="Run"
         >

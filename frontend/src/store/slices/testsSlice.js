@@ -86,6 +86,28 @@ export const deleteTest = createAsyncThunk(
   }
 );
 
+export const runTest = createAsyncThunk(
+  'tests/runTest',
+  async (testData, { rejectWithValue }) => {
+    try {
+      const response = await fetch(API_ENDPOINTS.RUN_TEST, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({"test_id": testData.test_id}),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      await response.json();
+      return;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const testsSlice = createSlice({
   name: 'tests',
   initialState: {
