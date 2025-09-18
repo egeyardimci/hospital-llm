@@ -7,15 +7,15 @@
 - knowledge graph
 - concurrent olarak calismasi lazim agenta sorulan testlerin
 - logging
-- tests become runnable with the new qa batching, system prompt implementation
-- test should become runnable from web UI
+- llm as a judge json donmuyor (BAZEN HALA DEVAM EDIYOR RASTGELE)
 
 ### Intermediate
 
 - duzgun README.md
 - vector db test calistirilinca otomatik olusturulmuyo
 - chunk evaluation ve direk answer evaluation ayni anda calisiyor bunlar ayirilmali
+- testlere eklenen yeni fieldlar web ui a eklenmeli
+- test results kısmına pagination gelmeli
+- test results kısmına test_id ye göre filter gelmeli
 
 ### Ongoing
-
-- llm as a judge json donmuyor (düzeldi gibi emin degiliz)
