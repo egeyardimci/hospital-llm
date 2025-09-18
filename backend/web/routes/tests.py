@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from backend.web.services.tests_service import TestService
 from backend.web.database.utils import remove_objectid
-from backend.web.dtos import TestCase
+from backend.web.dtos import TestCase, ObjectIdRequest
 
 router = APIRouter()
 
@@ -37,9 +37,9 @@ def update_test(test_data: TestCase):
         )
 
 @router.post("/delete")
-def delete_test(test_data: TestCase):
+def delete_test(test_id: ObjectIdRequest ):
     try:
-        TestService.delete_test(test_data.id)
+        TestService.delete_test(test_id.id)
     except Exception as e:
         raise HTTPException(
             status_code=500, 
