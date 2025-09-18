@@ -8,6 +8,7 @@
 - concurrent olarak calismasi lazim agenta sorulan testlerin
 - logging
 - llm as a judge json donmuyor (BAZEN HALA DEVAM EDIYOR RASTGELE)
+- merge vectorDB and use collections for different embeddings
 
 ### Intermediate
 
