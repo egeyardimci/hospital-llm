@@ -73,7 +73,7 @@ export const deleteTest = createAsyncThunk(
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(testData),
+        body: JSON.stringify({"_id": testData._id}),
       });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
