@@ -5,6 +5,7 @@ export const applyResultsFilters = (allData, filters) => {
     selectedChunkSize,
     selectedOptions,
     queryText,
+    selectedTestId,
     startDate,
     endDate,
   } = filters;
@@ -19,6 +20,9 @@ export const applyResultsFilters = (allData, filters) => {
       : true;
     const queryMatch = queryText
       ? item.query?.toLowerCase().includes(queryText.toLowerCase())
+      : true;
+    const testIdMatch = selectedTestId
+      ? item.test_id === parseInt(selectedTestId, 10)
       : true;
     const startDateMatch = startDate
       ? new Date(item.time_stamp) >= new Date(startDate)
@@ -38,6 +42,7 @@ export const applyResultsFilters = (allData, filters) => {
       embeddingMatch &&
       chunkSizeMatch &&
       queryMatch &&
+      testIdMatch &&
       startDateMatch &&
       endDateMatch &&
       optionsMatch
@@ -49,12 +54,14 @@ export const extractFilterOptions = (data) => {
   const llms = [...new Set(data.map(item => item.llm))];
   const embeddingModels = [...new Set(data.map(item => item.embedding_model))];
   const chunkSizes = [...new Set(data.map(item => item.chunk_size))];
+  const testIds = [...new Set(data.map(item => item.test_id))];
   const options = [...new Set(data.flatMap(item => item.options.map(opt => opt.name)))];
 
   return {
     llms: llms.sort(),
     embeddingModels: embeddingModels.sort(),
     chunkSizes: chunkSizes.sort((a, b) => a - b),
+    testIds: testIds.sort((a, b) => a - b),
     options: options.sort()
   };
 };

@@ -17,6 +17,5 @@
 - chunk evaluation ve direk answer evaluation ayni anda calisiyor bunlar ayirilmali
 - testlere eklenen yeni fieldlar web ui a eklenmeli
 - test results kısmına pagination gelmeli
-- test results kısmına test_id ye göre filter gelmeli
 
 ### Ongoing

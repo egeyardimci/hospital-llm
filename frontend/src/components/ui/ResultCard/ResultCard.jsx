@@ -13,12 +13,12 @@ function ResultCard({ item, index }) {
     <div className="card">
       <div className="card-header">
         <div>
-          <span className="test-id">{item.testId || `Test-${index + 1}`}</span>
+          <span className="test-id">{`Test ID: ${item.test_id || `Test-${index + 1}`}`}</span>
           {isTurkish && <span className="language-badge">Turkish</span>}
         </div>
         <span className="model-badge">{item.llm}</span>
       </div>
-      
+
       <div className="card-body">
         <div className="section">
           <div className="section-title">
@@ -26,7 +26,7 @@ function ResultCard({ item, index }) {
           </div>
           <div className="section-content">{item.query}</div>
         </div>
-        
+
         <div className="expected-vs-actual">
           <div className="section-without-border">
             <div className="section-title">
@@ -36,7 +36,7 @@ function ResultCard({ item, index }) {
               {item.expected_answer || "No expected answer provided"}
             </div>
           </div>
-          
+
           <div className="section">
             <div className="section-title">
               <span>Actual Response</span>
@@ -44,28 +44,28 @@ function ResultCard({ item, index }) {
             <div className="section-content" dangerouslySetInnerHTML={{ __html: item.response }}></div>
           </div>
         </div>
-        
+
         {/* New Evaluation Section */}
         <div className="section">
           <div className="section-title">
             <span>Evaluation</span>
-            <button 
-              className="button toggle-button" 
+            <button
+              className="button toggle-button"
               onClick={() => setShowEvaluation(!showEvaluation)}
             >
               Show/Hide
             </button>
           </div>
           <div className={`section-content ${showEvaluation ? '' : 'hidden'}`}>
-            {"General evaluation: " + item.evaluation + " \nScore: " + item.evaluation_score + "\nChunk evaluation: " + item.chunk_evaluation + "\nScore: " + item.chunk_evaluation_score|| "No evaluation data available"}
+            {"General evaluation: " + item.evaluation + " \nScore: " + item.evaluation_score + "\nChunk evaluation: " + item.chunk_evaluation + "\nScore: " + item.chunk_evaluation_score || "No evaluation data available"}
           </div>
         </div>
 
         <div className="section">
           <div className="section-title">
             <span>System Message</span>
-            <button 
-              className="button toggle-button" 
+            <button
+              className="button toggle-button"
               onClick={() => setShowSystem(!showSystem)}
             >
               Show/Hide
@@ -75,12 +75,12 @@ function ResultCard({ item, index }) {
             {item.system_message}
           </div>
         </div>
-        
+
         <div className="section">
           <div className="section-title">
             <span>Retrieved Chunks</span>
-            <button 
-              className="button toggle-button" 
+            <button
+              className="button toggle-button"
               onClick={() => setShowChunks(!showChunks)}
             >
               Show/Hide
@@ -94,13 +94,13 @@ function ResultCard({ item, index }) {
             </ol>
           </div>
         </div>
-        
+
         {/* Options Section */}
         <div className="section">
           <div className="section-title">
             <span>Options</span>
-            <button 
-              className="button toggle-button" 
+            <button
+              className="button toggle-button"
               onClick={() => setShowOptions(!showOptions)}
             >
               Show/Hide
@@ -118,7 +118,7 @@ function ResultCard({ item, index }) {
             )}
           </div>
         </div>
-        
+
         <div className="meta-info">
           <div className="meta-item">
             <span className="meta-label">Embedding Model</span>

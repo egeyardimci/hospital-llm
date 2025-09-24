@@ -7,6 +7,7 @@ import {
   setSelectedChunkSize,
   setSelectedOptions,
   setQueryText,
+  setSelectedTestId,
   setStartDate,
   setEndDate,
   resetAllFilters
@@ -26,6 +27,7 @@ function FiltersSection() {
     selectedChunkSize,
     selectedOptions,
     queryText,
+    selectedTestId,
     startDate,
     endDate,
     filterOptions
@@ -61,6 +63,7 @@ function FiltersSection() {
   const llmOptions = filterOptions.llms.map(model => ({ value: model, label: model }));
   const embeddingOptions = filterOptions.embeddingModels.map(model => ({ value: model, label: model }));
   const chunkSizeOptions = filterOptions.chunkSizes.map(size => ({ value: size, label: size }));
+  const testIdOptions = filterOptions.testIds.map(id => ({ value: id, label: id }));
   const optionsOptions = filterOptions.options.map(option => ({ value: option, label: option }));
 
   return (
@@ -127,6 +130,18 @@ function FiltersSection() {
               value={queryText}
               onChange={e => dispatch(setQueryText(e.target.value))}
               placeholder="Search in queries..."
+            />
+          </div>
+
+          <div className="filter-group">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Test ID</label>
+            <Select
+              theme={customSelectTheme}
+              value={findSelectedOption(selectedTestId, testIdOptions)}
+              onChange={e => dispatch(setSelectedTestId(e ? e.value : null))}
+              options={testIdOptions}
+              placeholder="Select..."
+              isClearable
             />
           </div>
 
