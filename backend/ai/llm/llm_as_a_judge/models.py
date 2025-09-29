@@ -1,6 +1,6 @@
 
 from pydantic import BaseModel, Field, validator
-from typing import Optional
+from typing import Optional, List
 class JudgeOutput(BaseModel):
     """
     The output of the LLM judge evaluation.
@@ -9,7 +9,6 @@ class JudgeOutput(BaseModel):
         score: Numerical score from the judge (typically 1-5)
         feedback: Detailed explanation and reasoning from the judge
         reasoning: Optional step-by-step reasoning breakdown
-        criteria_met: Optional list of criteria that were satisfied
     """
     
     score: int = Field(
@@ -29,6 +28,11 @@ class JudgeOutput(BaseModel):
     reasoning: Optional[str] = Field(
         None,
         description="Step-by-step reasoning breakdown of how the score was determined"
+    )
+
+    criteria_met: Optional[List[str]] = Field(
+        None,
+        description="List of evaluation criteria that were met in the response"
     )
     
     
@@ -62,6 +66,5 @@ class JudgeOutput(BaseModel):
                 "score": 8,
                 "feedback": "The response adequately addresses most key points about medical participation fees, including specific information about different branches and relevant regulations. However, it could provide more detail about hospital-specific variations.",
                 "reasoning": "Response covered 4 out of 5 required criteria with good detail level",
-                "criteria_met": ["regulations_mentioned", "branch_specific_info", "clear_explanation", "factual_accuracy"]
             }
         }
