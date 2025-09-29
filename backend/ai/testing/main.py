@@ -43,7 +43,7 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
         rag_response = rag.content
         rag_metadata = rag.metadata
     except Exception as e:
-        log(f"RAG system error: {e}")
+        logger.error(f"RAG system error: {e}")
         return
 
     try:
@@ -55,7 +55,7 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
         )
 
     except Exception as e:
-        log(f"LLM judge evaluation error: {e}")
+        logger.error(f"LLM judge evaluation error: {e}")
         return
 
     add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count)
