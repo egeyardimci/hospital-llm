@@ -4,6 +4,9 @@ from backend.web.database.utils import from_mongo
 from bson import ObjectId
 from backend.ai.testing.io_utils import load_test_case_by_test_id, load_queries_expected_answers_batch_by_id
 from backend.ai.testing.main import run_test_case_by_test_id
+from backend.utils.logger2 import get_logger
+
+logger = get_logger()
 
 class TestService:
     @staticmethod
@@ -62,6 +65,21 @@ class TestService:
         Run a test case.
 
         Args:
-            object_id: ID of the test case to be run
+            test_id: ID of the test case to be run
+
+        Returns:
+            dict: Result with success status and message
+
+        Raises:
+            Exception: If test execution fails
         """
-        run_test_case_by_test_id(test_id)
+        logger.info(f"Starting test execution for test_id: {test_id}")
+
+        try:
+            run_test_case_by_test_id(test_id)
+            logger.info(f"Test case {test_id} completed successfully")
+            return {"success": True, "message": f"Test {test_id} completed successfully"}
+        except Exception as e:
+            logger.error(f"Test case {test_id} failed: {e}", exc_info=True)
+            # Re-raise so the API layer can handle it appropriately
+            raise Exception(f"Test execution failed for test_id {test_id}: {e}") from e

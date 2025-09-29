@@ -13,8 +13,11 @@ from backend.ai.llm.llm_as_a_judge.agent import llm_as_a_judge
 from backend.ai.llm.cross_encoder import rerank_with_cross_encoder
 import sys
 
+from backend.utils.logger2 import get_logger
+
 # Load environment variables
-load_dotenv()
+
+logger = get_logger()
 
 def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
     """
@@ -44,8 +47,6 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
         return
 
     try:
-        # Get LLM judge evaluation
-        #TODO: write a better system prompt this prompt fails to generate valid json often 
         evaluation, chunk_evaluation = llm_as_a_judge(
             query_expeced_answer["query"],
             rag_response,
@@ -65,17 +66,40 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
     log("---------------------------------------------------------\n")
 
 def run_test_case_by_test_id(test_id):
+    load_dotenv(override=True)
+
+    try:
+        logger.debug(f"Loading test case with ID: {test_id}")
         test_case = load_test_case_by_test_id(test_id)
         qa_batch_id = test_case.qa_batch
         queries_and_expected_answers = load_queries_expected_answers_batch_by_id(qa_batch_id)
+        logger.debug(f"Successfully loaded test case and {len(queries_and_expected_answers)} Q&A pairs")
+    except Exception as e:
+        logger.error(f"Failed to load test case or Q&A batch for test_id {test_id}: {e}")
+        raise Exception(f"Test case loading failed: {e}") from e
+
+    try:
+        logger.debug(f"Loading system message with ID: {test_case.system_message}")
         system_message = load_system_message_by_id(test_case.system_message)
         run_count = load_run_count()
         test_case.system_message = system_message["content"]
-        log(f"Running test case {test_case.test_id} with {len(queries_and_expected_answers)} queries.")
-        for query in queries_and_expected_answers:
+        logger.debug("Successfully loaded system message")
+    except Exception as e:
+        logger.error(f"Failed to load system message for test_id {test_id}: {e}")
+        raise Exception(f"System message loading failed: {e}") from e
+
+    logger.info(f"Running test case {test_case.test_id} with {len(queries_and_expected_answers)} queries.")
+
+    try:
+        for i, query in enumerate(queries_and_expected_answers, 1):
+            logger.debug(f"Processing query {i}/{len(queries_and_expected_answers)}")
             run_test(test_case, query, run_count)
         
         increment_run_count()
+        logger.info(f"Successfully completed all {len(queries_and_expected_answers)} tests")
+    except Exception as e:
+        logger.error(f"Test execution failed during query processing: {e}")
+        raise Exception(f"Test execution failed: {e}") from e
 
 if __name__ == "__main__":
     test_id = int(sys.argv[1])
