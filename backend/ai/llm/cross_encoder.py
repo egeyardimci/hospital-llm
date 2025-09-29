@@ -1,6 +1,8 @@
 
 from sentence_transformers import CrossEncoder
 from backend.utils.logger import log
+from backend.utils.logger2 import get_logger
+logger = get_logger()
 
 def rerank_with_cross_encoder(query, retrieved_chunks, cross_encoder_model_name, top_k=None):
     """
@@ -31,5 +33,5 @@ def rerank_with_cross_encoder(query, retrieved_chunks, cross_encoder_model_name,
         return [chunk for chunk, _ in reranked_chunks]
     
     except Exception as e:
-        log(f"Cross-encoder re-ranking error: {e}")
+        logger.error(f"Cross-encoder re-ranking error: {e}")
         return retrieved_chunks

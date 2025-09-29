@@ -6,6 +6,8 @@ from backend.utils.logger import log
 from backend.ai.testing.models import TestCase
 from langchain_core.documents import Document
 from backend.web.database.main import GLOBAL_MONGO_DB_CLIENT
+from backend.utils.logger2 import get_logger
+logger = get_logger()
 
 def load_test_cases() -> list[TestCase]:
     """
@@ -119,7 +121,7 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
     collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()
     collection.insert_one(result)
 
-    log(f"Result saved to database.")
+    logger.info(f"Result saved to database.")
 
 if __name__ == "__main__":
     test_cases = load_test_cases()
