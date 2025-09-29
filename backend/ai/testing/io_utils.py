@@ -60,6 +60,22 @@ def load_system_message_by_id(system_message_id):
     document = collection.find_one({"_id": ObjectId(system_message_id)})
     return document
 
+def load_run_count():
+    collection = GLOBAL_MONGO_DB_CLIENT.get_config_collection()
+    document = collection.find_one({"name": "run_count"})
+    run_count = document["data"]
+
+    return run_count
+
+def increment_run_count():
+    collection = GLOBAL_MONGO_DB_CLIENT.get_config_collection()
+    document = collection.find_one({"name": "run_count"})
+    run_count = document["data"]
+    run_count += 1
+    collection.update_one({"name": "run_count"}, {"$set": {"data": run_count}})
+    return run_count
+    
+
 # Function to load existing JSON data
 def load_existing_test_results():
     """
@@ -72,7 +88,7 @@ def load_existing_test_results():
     documents = list(collection.find())
     return documents
 
-def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: str ,retrieved_chunks: list[Document] ,evaluation: JudgeOutput ,chunk_evaluation: JudgeOutput):
+def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: str ,retrieved_chunks: list[Document] ,evaluation: JudgeOutput ,chunk_evaluation: JudgeOutput, run_count: int):
     """
     Add a test result to the existing results.
     """
@@ -97,6 +113,7 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
         "chunk_evaluation": chunk_evaluation.feedback,
         "chunk_evaluation_score": chunk_evaluation.score,
         "chunk_evaluation_reasoning": chunk_evaluation.reasoning,
+        "run_count" : run_count
         }
 
     collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()

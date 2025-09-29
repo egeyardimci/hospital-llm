@@ -46,6 +46,10 @@ class MongoDBClient:
     def get_system_prompts_collection(self):
         db = self.get_hospital_db()
         return db['system_prompts']
+    
+    def get_config_collection(self):
+        db = self.get_hospital_db()
+        return db['config']
 
 # Global instance
 GLOBAL_MONGO_DB_CLIENT = MongoDBClient()
