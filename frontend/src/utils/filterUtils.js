@@ -6,6 +6,7 @@ export const applyResultsFilters = (allData, filters) => {
     selectedOptions,
     queryText,
     selectedTestId,
+    selectedRunCount,
     startDate,
     endDate,
   } = filters;
@@ -23,6 +24,9 @@ export const applyResultsFilters = (allData, filters) => {
       : true;
     const testIdMatch = selectedTestId
       ? item.test_id === parseInt(selectedTestId, 10)
+      : true;
+    const runCountMatch = selectedRunCount
+      ? item.run_count === parseInt(selectedRunCount, 10)
       : true;
     const startDateMatch = startDate
       ? new Date(item.time_stamp) >= new Date(startDate)
@@ -43,6 +47,7 @@ export const applyResultsFilters = (allData, filters) => {
       chunkSizeMatch &&
       queryMatch &&
       testIdMatch &&
+      runCountMatch &&
       startDateMatch &&
       endDateMatch &&
       optionsMatch
@@ -55,6 +60,7 @@ export const extractFilterOptions = (data) => {
   const embeddingModels = [...new Set(data.map(item => item.embedding_model))];
   const chunkSizes = [...new Set(data.map(item => item.chunk_size))];
   const testIds = [...new Set(data.map(item => item.test_id))];
+  const runCounts = [...new Set(data.map(item => item.run_count).filter(count => count !== undefined && count !== null))];
   const options = [...new Set(data.flatMap(item => item.options.map(opt => opt.name)))];
 
   return {
@@ -62,6 +68,7 @@ export const extractFilterOptions = (data) => {
     embeddingModels: embeddingModels.sort(),
     chunkSizes: chunkSizes.sort((a, b) => a - b),
     testIds: testIds.sort((a, b) => a - b),
+    runCounts: runCounts.sort((a, b) => a - b),
     options: options.sort()
   };
 };

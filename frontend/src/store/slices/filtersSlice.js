@@ -9,6 +9,7 @@ const filtersSlice = createSlice({
     selectedOptions: [],
     queryText: '',
     selectedTestId: '',
+    selectedRunCount: '',
     startDate: '',
     endDate: '',
     filterOptions: {
@@ -16,6 +17,7 @@ const filtersSlice = createSlice({
       embeddingModels: [],
       chunkSizes: [],
       testIds: [],
+      runCounts: [],
       options: []
     },
   },
@@ -44,6 +46,9 @@ const filtersSlice = createSlice({
     setSelectedTestId: (state, action) => {
       state.selectedTestId = action.payload;
     },
+    setSelectedRunCount: (state, action) => {
+      state.selectedRunCount = action.payload;
+    },
     setFilterOptions: (state, action) => {
       state.filterOptions = action.payload;
     },
@@ -54,6 +59,7 @@ const filtersSlice = createSlice({
       state.selectedOptions = [];
       state.queryText = '';
       state.selectedTestId = '';
+      state.selectedRunCount = '';
       state.startDate = '';
       state.endDate = '';
     },
@@ -67,6 +73,7 @@ export const {
   setSelectedOptions,
   setQueryText,
   setSelectedTestId,
+  setSelectedRunCount,
   setStartDate,
   setEndDate,
   setFilterOptions,

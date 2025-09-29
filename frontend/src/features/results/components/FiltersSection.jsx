@@ -2,12 +2,9 @@ import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 import Select from 'react-select'
 import {
-  setSelectedLlm,
-  setSelectedEmbedding,
-  setSelectedChunkSize,
-  setSelectedOptions,
   setQueryText,
   setSelectedTestId,
+  setSelectedRunCount,
   setStartDate,
   setEndDate,
   resetAllFilters
@@ -22,12 +19,9 @@ function FiltersSection() {
   const { allData } = useAppSelector(state => state.results);
 
   const {
-    selectedLlm,
-    selectedEmbedding,
-    selectedChunkSize,
-    selectedOptions,
     queryText,
     selectedTestId,
+    selectedRunCount,
     startDate,
     endDate,
     filterOptions
@@ -53,74 +47,16 @@ function FiltersSection() {
     return options.find(option => option.value === value) || null;
   };
 
-  // Helper function to find multiple selected options
-  const findSelectedOptions = (values, options) => {
-    if (!Array.isArray(values)) return [];
-    return options.filter(option => values.includes(option.value));
-  };
 
   // Prepare options
-  const llmOptions = filterOptions.llms.map(model => ({ value: model, label: model }));
-  const embeddingOptions = filterOptions.embeddingModels.map(model => ({ value: model, label: model }));
-  const chunkSizeOptions = filterOptions.chunkSizes.map(size => ({ value: size, label: size }));
   const testIdOptions = filterOptions.testIds.map(id => ({ value: id, label: id }));
-  const optionsOptions = filterOptions.options.map(option => ({ value: option, label: option }));
+  const runCountOptions = filterOptions.runCounts.map(count => ({ value: count, label: count }));
 
   return (
     <div className="filters">
       <div className='p-[15px]'>
         <h3 className="text-lg font-semibold mb-4 text-gray-900">Filters</h3>
         <div className="filters-grid">
-          <div className="filter-group">
-            <label className="block text-sm font-medium text-gray-700 mb-2">LLM Model</label>
-            <Select
-              theme={customSelectTheme}
-              value={findSelectedOption(selectedLlm, llmOptions)}
-              onChange={e => dispatch(setSelectedLlm(e ? e.value : null))}
-              options={llmOptions}
-              placeholder="Select..."
-              isClearable
-            />
-          </div>
-
-          <div className="filter-group">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Embedding Model</label>
-            <Select
-              theme={customSelectTheme}
-              value={findSelectedOption(selectedEmbedding, embeddingOptions)}
-              onChange={e => dispatch(setSelectedEmbedding(e ? e.value : null))}
-              options={embeddingOptions}
-              placeholder="Select..."
-              isClearable
-            />
-          </div>
-
-          <div className="filter-group">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Chunk Size</label>
-            <Select
-              theme={customSelectTheme}
-              value={findSelectedOption(selectedChunkSize, chunkSizeOptions)}
-              onChange={e => dispatch(setSelectedChunkSize(e ? e.value : null))}
-              options={chunkSizeOptions}
-              placeholder="Select..."
-              isClearable
-            />
-          </div>
-
-          <div className="filter-group">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Options</label>
-            <Select
-              theme={customSelectTheme}
-              name="options"
-              isMulti
-              className="basic-multi-select"
-              classNamePrefix="select"
-              value={findSelectedOptions(selectedOptions, optionsOptions)}
-              onChange={e => dispatch(setSelectedOptions(e ? e.map(option => option.value) : []))}
-              options={optionsOptions}
-              placeholder="Select..."
-            />
-          </div>
 
           <div className="filter-group">
             <label className="block text-sm font-medium text-gray-700 mb-2">Search Query</label>
@@ -140,6 +76,18 @@ function FiltersSection() {
               value={findSelectedOption(selectedTestId, testIdOptions)}
               onChange={e => dispatch(setSelectedTestId(e ? e.value : null))}
               options={testIdOptions}
+              placeholder="Select..."
+              isClearable
+            />
+          </div>
+
+          <div className="filter-group">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Run Count</label>
+            <Select
+              theme={customSelectTheme}
+              value={findSelectedOption(selectedRunCount, runCountOptions)}
+              onChange={e => dispatch(setSelectedRunCount(e ? e.value : null))}
+              options={runCountOptions}
               placeholder="Select..."
               isClearable
             />
