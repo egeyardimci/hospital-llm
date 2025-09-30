@@ -6,14 +6,13 @@ from dotenv import load_dotenv
 from backend.ai.llm.llm_as_a_judge.models import JudgeOutput
 from backend.ai.llm.rag import rag_invoke
 from backend.ai.vectordb.utils import load_vectordb
-from backend.utils.logger import log, log_test
 from backend.ai.testing.io_utils import add_test_result, load_queries_expected_answers_batch_by_id, load_test_case_by_test_id, load_system_message_by_id, load_run_count, increment_run_count
 from backend.ai.testing.models import RagResponse, TestCase
 from backend.ai.llm.llm_as_a_judge.agent import llm_as_a_judge
 from backend.ai.llm.cross_encoder import rerank_with_cross_encoder
 import sys
 
-from backend.utils.logger2 import get_logger
+from backend.utils.logger import get_logger
 
 # Load environment variables
 
@@ -23,7 +22,6 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
     """
     Run a single test with the given parameters and save the results to a JSON file.
     """
-    log_test(test_case,query_expeced_answer)
     evaluation: None | JudgeOutput = None
     chunk_evaluation: None | JudgeOutput = None
     rag_response: None | str = None
@@ -59,11 +57,6 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
         return
 
     add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count)
-
-    log("\n---------------------------------------------------------")
-    log(f"RAG Response: {rag_response}")
-    log(f"LLM Judge Evaluation: {evaluation.feedback}")
-    log("---------------------------------------------------------\n")
 
 def run_test_case_by_test_id(test_id):
     load_dotenv(override=True)

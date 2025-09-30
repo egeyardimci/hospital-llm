@@ -2,11 +2,10 @@ import datetime
 
 from bson import ObjectId
 from backend.ai.llm.llm_as_a_judge.models import JudgeOutput
-from backend.utils.logger import log
 from backend.ai.testing.models import TestCase
 from langchain_core.documents import Document
 from backend.web.database.main import GLOBAL_MONGO_DB_CLIENT
-from backend.utils.logger2 import get_logger
+from backend.utils.logger import get_logger
 logger = get_logger()
 
 def load_test_cases() -> list[TestCase]:

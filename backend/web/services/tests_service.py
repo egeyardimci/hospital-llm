@@ -4,7 +4,7 @@ from backend.web.database.utils import from_mongo
 from bson import ObjectId
 from backend.ai.testing.io_utils import load_test_case_by_test_id, load_queries_expected_answers_batch_by_id
 from backend.ai.testing.main import run_test_case_by_test_id
-from backend.utils.logger2 import get_logger
+from backend.utils.logger import get_logger
 
 logger = get_logger()
 

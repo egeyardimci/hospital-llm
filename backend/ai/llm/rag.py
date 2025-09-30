@@ -3,11 +3,10 @@ from langchain_groq import ChatGroq
 from backend.ai.llm.cross_encoder import rerank_with_cross_encoder
 from backend.common.config import CROSS_ENCODER_K
 from backend.common.constants import CROSS_ENCODER_OPTION
-from backend.utils.logger import log
 from langchain.schema import SystemMessage, HumanMessage
 from backend.ai.testing.models import RagResponse, TestOption
 from langchain_chroma import Chroma
-from backend.utils.logger2 import get_logger
+from backend.utils.logger import get_logger
 logger = get_logger()
 
 def rag_invoke(llm_name: str, system_prompt: str, vector_db: Chroma, similarity_vector_k: int, query: str, options: list[TestOption]) -> str:

@@ -5,10 +5,9 @@ from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from dotenv import load_dotenv
 from langchain.docstore.document import Document
-from backend.utils.logger import log
 from backend.common.paths import SGK_DOCUMENT_PATH, construct_db_path
 from backend.common.constants import LABSE
-from backend.utils.logger2 import get_logger
+from backend.utils.logger import get_logger
 logger = get_logger()
 
 load_dotenv()

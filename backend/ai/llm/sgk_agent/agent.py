@@ -2,7 +2,6 @@ from backend.ai.llm.prompts import SGK_AGENT_SYSTEM_PROMPT
 from backend.ai.testing.models import RagResponse
 from backend.common.config import SKG_AGENT_SIMILAR_VECTOR_K
 from backend.ai.vectordb.main import GLOBAL_VECTOR_DB
-from backend.utils.logger import log
 from backend.ai.llm.rag import rag_invoke
 
 def sgk_agent(llm_name, query, options):
