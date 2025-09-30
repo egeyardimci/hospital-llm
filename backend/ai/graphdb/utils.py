@@ -1,6 +1,6 @@
 from neo4j import GraphDatabase
-from backend.common.config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, NEO4J_DATABASE
 from backend.utils.logger import get_logger
+import os
 
 logger = get_logger()
 
@@ -18,11 +18,14 @@ class Neo4jConnection:
         """Get or create Neo4j driver"""
         if self._driver is None:
             try:
+                URI = os.getenv("NEO4J_URI")
+                AUTH = (os.getenv("NEO4J_USERNAME"), os.getenv("NEO4J_PASSWORD"))
                 self._driver = GraphDatabase.driver(
-                    NEO4J_URI,
-                    auth=(NEO4J_USER, NEO4J_PASSWORD)
+                    URI,
+                    auth=AUTH
                 )
-                logger.info(f"Connected to Neo4j at {NEO4J_URI}")
+                self._driver.verify_connectivity()
+                logger.info("Connection established.")
             except Exception as e:
                 logger.error(f"Failed to connect to Neo4j: {e}")
                 raise
@@ -66,7 +69,7 @@ def neo4j_graph_search(search_query: str, limit: int = 10):
 
     try:
         logger.info(f"Searching Neo4j for...")
-        with driver.session(database=NEO4J_DATABASE) as session:
+        with driver.session(database="neo4j") as session:
             result = session.run(cypher_query, search_text=search_query, limit=limit)
             records = []
 

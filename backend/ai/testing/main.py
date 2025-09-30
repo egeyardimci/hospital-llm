@@ -39,7 +39,7 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
             test_case.similar_vector_count,
             query_expeced_answer["query"],
             test_case.options,
-            #use_graph_db=True
+            use_graph_db=True
         )
         rag_response = rag.content
         rag_metadata = rag.metadata
