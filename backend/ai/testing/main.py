@@ -29,6 +29,8 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
 
     vector_db = load_vectordb(test_case.embedding_model_name,test_case.chunk_size,test_case.chunk_overlap)
 
+
+    
     try:
         rag: RagResponse = rag_invoke(
             test_case.llm_name,
@@ -36,7 +38,8 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
             vector_db,
             test_case.similar_vector_count,
             query_expeced_answer["query"],
-            test_case.options
+            test_case.options,
+            #use_graph_db=True
         )
         rag_response = rag.content
         rag_metadata = rag.metadata
