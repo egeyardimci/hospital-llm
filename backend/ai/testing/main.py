@@ -1,15 +1,12 @@
-from bson import ObjectId
-from langchain_chroma import Chroma
-from langchain_groq import ChatGroq
-from langchain.schema import SystemMessage, HumanMessage
 from dotenv import load_dotenv
+from langchain_chroma import Chroma
 from backend.ai.llm.llm_as_a_judge.models import JudgeOutput
 from backend.ai.llm.rag import rag_invoke
 from backend.ai.vectordb.utils import load_vectordb
 from backend.ai.testing.io_utils import add_test_result, load_queries_expected_answers_batch_by_id, load_test_case_by_test_id, load_system_message_by_id, load_run_count, increment_run_count
 from backend.ai.testing.models import RagResponse, TestCase
 from backend.ai.llm.llm_as_a_judge.agent import llm_as_a_judge
-from backend.ai.llm.cross_encoder import rerank_with_cross_encoder
+from concurrent.futures import ThreadPoolExecutor
 import sys
 
 from backend.utils.logger import get_logger
@@ -18,7 +15,7 @@ from backend.utils.logger import get_logger
 
 logger = get_logger()
 
-def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
+def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db: Chroma):
     """
     Run a single test with the given parameters and save the results to a JSON file.
     """
@@ -27,10 +24,6 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
     rag_response: None | str = None
     rag_metadata: None | dict = None
 
-    vector_db = load_vectordb(test_case.embedding_model_name,test_case.chunk_size,test_case.chunk_overlap)
-
-
-    
     try:
         rag: RagResponse = rag_invoke(
             test_case.llm_name,
@@ -39,7 +32,7 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
             test_case.similar_vector_count,
             query_expeced_answer["query"],
             test_case.options,
-            use_graph_db=True
+            use_graph_db=False
         )
         rag_response = rag.content
         rag_metadata = rag.metadata
@@ -70,6 +63,8 @@ def run_test_case_by_test_id(test_id):
         qa_batch_id = test_case.qa_batch
         queries_and_expected_answers = load_queries_expected_answers_batch_by_id(qa_batch_id)
         logger.debug(f"Successfully loaded test case and {len(queries_and_expected_answers)} Q&A pairs")
+        vector_db = load_vectordb(test_case.embedding_model_name,test_case.chunk_size,test_case.chunk_overlap)
+    
     except Exception as e:
         logger.error(f"Failed to load test case or Q&A batch for test_id {test_id}: {e}")
         raise Exception(f"Test case loading failed: {e}") from e
@@ -86,16 +81,21 @@ def run_test_case_by_test_id(test_id):
 
     logger.info(f"Running test case {test_case.test_id} with {len(queries_and_expected_answers)} queries.")
 
-    try:
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        # Submit all tasks
+        futures = []
         for i, query in enumerate(queries_and_expected_answers, 1):
-            logger.debug(f"Processing query {i}/{len(queries_and_expected_answers)}")
-            run_test(test_case, query, run_count)
+            logger.debug(f"Submitting query {i}/{len(queries_and_expected_answers)}")
+            future = executor.submit(run_test, test_case, query, run_count, vector_db)
+            futures.append((future, i))
         
-        increment_run_count()
-        logger.info(f"Successfully completed all {len(queries_and_expected_answers)} tests")
-    except Exception as e:
-        logger.error(f"Test execution failed during query processing: {e}")
-        raise Exception(f"Test execution failed: {e}") from e
+        # Collect results as they complete
+        for future, i in futures:
+            try:
+                future.result()  # Wait for completion
+                logger.debug(f"Query {i} completed")
+            except Exception as e:
+                logger.error(f"Query {i} failed: {e}")
 
 if __name__ == "__main__":
     test_id = int(sys.argv[1])
