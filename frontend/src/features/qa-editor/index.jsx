@@ -15,7 +15,7 @@ const QAPairsEditor = () => {
   const [filteredQaPairs, setFilteredQaPairs] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
-  const [newQaPair, setNewQaPair] = useState({ query: '', answer: '', batch_id: '' });
+  const [newQaPair, setNewQaPair] = useState({ query: '', answer: '', batch_id: '', path: '' });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +29,8 @@ const QAPairsEditor = () => {
     } else {
       const filtered = qaPairs.filter(pair =>
         pair.query.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        pair.answer.toLowerCase().includes(searchTerm.toLowerCase())
+        pair.answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (pair.path && pair.path.toLowerCase().includes(searchTerm.toLowerCase()))
       );
       setFilteredQaPairs(filtered);
     }
@@ -38,7 +39,7 @@ const QAPairsEditor = () => {
   const handleCreateNew = () => {
     setIsCreating(true);
     setEditingId(null);
-    setNewQaPair({ query: '', answer: '', batch_id: '' });
+    setNewQaPair({ query: '', answer: '', batch_id: '', path: '' });
   }
 
   const handleSave = (data) => {
@@ -51,7 +52,7 @@ const QAPairsEditor = () => {
     }
     setIsCreating(false);
     setEditingId(null);
-    setNewQaPair({ query: '', answer: '', batch_id: '' });
+    setNewQaPair({ query: '', answer: '', batch_id: '', path: '' });
   }
 
   const handleDelete = (qaPair) => {
@@ -115,6 +116,18 @@ const QAPairsEditor = () => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows={4}
             placeholder="Enter the expected answer..."
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Path <span className="text-gray-500 text-xs">(for tracing expected answer finding)</span>
+          </label>
+          <input
+            value={formData.path || ''}
+            onChange={(e) => setFormData({ ...formData, path: e.target.value })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter path for tracing expected answer..."
           />
         </div>
 
@@ -192,11 +205,11 @@ const QAPairsEditor = () => {
             </div>
           </div>
 
-          {associatedBatch && (
+          {pair.path && (
             <div>
-              <span className="font-medium text-gray-700">Batch Description:</span>
-              <div className="ml-2 text-gray-600 mt-1 bg-gray-50 p-3 rounded-md">
-                {associatedBatch.description}
+              <span className="font-medium text-gray-700">Path:</span>
+              <div className="ml-2 text-gray-600 mt-1 bg-gray-50 p-3 rounded-md font-mono text-sm">
+                {pair.path}
               </div>
             </div>
           )}
@@ -226,7 +239,7 @@ const QAPairsEditor = () => {
             <Search size={20} className="text-gray-500" />
             <input
               type="text"
-              placeholder="Search questions and answers..."
+              placeholder="Search questions, answers, and paths..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"

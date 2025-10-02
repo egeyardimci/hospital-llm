@@ -29,7 +29,7 @@ def add_qa(request: QAInfo):
         Dictionary containing the test results data
     """
     try:
-        id = QAService.add_qa_pair(request.query, request.answer)
+        id = QAService.add_qa_pair(request.query, request.answer,request.batch_id, request.path)
         return {"status": "success", "_id": id}
     except Exception as e:
         raise HTTPException(
@@ -63,7 +63,7 @@ def update_qa(request: QAInfo):
         Dictionary containing the test results data
     """
     try:
-        return QAService.update_qa_pair(request.id, request.query, request.answer, request.batch_id)
+        return QAService.update_qa_pair(request.id, request.query, request.answer, request.batch_id, request.path)
     except Exception as e:
         raise HTTPException(
             status_code=500, 

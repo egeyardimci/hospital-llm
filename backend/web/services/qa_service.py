@@ -16,9 +16,9 @@ class QAService:
         return from_mongo(documents)
 
     @staticmethod
-    def add_qa_pair(query, answer, batch_id=None):
+    def add_qa_pair(query, answer, batch_id=None , path=None):
         collection = GLOBAL_MONGO_DB_CLIENT.get_queries_collection()
-        result = collection.insert_one({"query": query, "answer": answer, "batch_id": batch_id})
+        result = collection.insert_one({"query": query, "answer": answer, "batch_id": batch_id, "path": path})
         return str(result.inserted_id)
     
     @staticmethod
@@ -27,6 +27,6 @@ class QAService:
         collection.delete_one({"_id": ObjectId(_id)})
 
     @staticmethod
-    def update_qa_pair(_id, query, answer, batch_id):
+    def update_qa_pair(_id, query, answer, batch_id,path):
         collection = GLOBAL_MONGO_DB_CLIENT.get_queries_collection()
-        collection.update_one({"_id": ObjectId(_id)}, {"$set": {"query": query, "answer": answer, "batch_id": batch_id}})
+        collection.update_one({"_id": ObjectId(_id)}, {"$set": {"query": query, "answer": answer, "batch_id": batch_id, "path": path}})
