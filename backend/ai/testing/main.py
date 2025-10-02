@@ -18,7 +18,7 @@ from backend.utils.logger import get_logger
 
 logger = get_logger()
 
-def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
+def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db:Chroma):
     """
     Run a single test with the given parameters and save the results to a JSON file.
     """
@@ -27,10 +27,6 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
     rag_response: None | str = None
     rag_metadata: None | dict = None
 
-    vector_db = load_vectordb(test_case.embedding_model_name,test_case.chunk_size,test_case.chunk_overlap)
-
-
-    
     try:
         rag: RagResponse = rag_invoke(
             test_case.llm_name,
@@ -39,7 +35,7 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int):
             test_case.similar_vector_count,
             query_expeced_answer["query"],
             test_case.options,
-            use_graph_db=True
+            use_graph_db=False
         )
         rag_response = rag.content
         rag_metadata = rag.metadata
@@ -69,6 +65,7 @@ def run_test_case_by_test_id(test_id):
         test_case = load_test_case_by_test_id(test_id)
         qa_batch_id = test_case.qa_batch
         queries_and_expected_answers = load_queries_expected_answers_batch_by_id(qa_batch_id)
+        vector_db = load_vectordb(test_case.embedding_model_name,test_case.chunk_size,test_case.chunk_overlap)  
         logger.debug(f"Successfully loaded test case and {len(queries_and_expected_answers)} Q&A pairs")
     except Exception as e:
         logger.error(f"Failed to load test case or Q&A batch for test_id {test_id}: {e}")
@@ -89,7 +86,7 @@ def run_test_case_by_test_id(test_id):
     try:
         for i, query in enumerate(queries_and_expected_answers, 1):
             logger.debug(f"Processing query {i}/{len(queries_and_expected_answers)}")
-            run_test(test_case, query, run_count)
+            run_test(test_case, query, run_count,vector_db)
         
         increment_run_count()
         logger.info(f"Successfully completed all {len(queries_and_expected_answers)} tests")
