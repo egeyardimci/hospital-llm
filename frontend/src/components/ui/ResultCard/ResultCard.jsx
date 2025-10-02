@@ -1,10 +1,17 @@
 import { useState } from 'react';
+import { useAppSelector } from '../../../hooks/useAppSelector';
 
 function ResultCard({ item, index }) {
   const [showSystem, setShowSystem] = useState(false);
   const [showChunks, setShowChunks] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
   const [showEvaluation, setShowEvaluation] = useState(false);
+
+  const tests = useAppSelector(state => state.tests.tests);
+  const test = tests.find(t => t.test_id === item.test_id) || {};
+
+  const qaBatches = useAppSelector(state => state.qaBatches.qaBatches);
+  const qaBatch = qaBatches.find(batch => batch._id === test.qa_batch) || {}.title || "N/A";
 
   // Detect language (simple heuristic)
   const isTurkish = /[çğıöşüÇĞİÖŞÜ]/.test(item.query) || /türk/i.test(item.query);
@@ -135,6 +142,10 @@ function ResultCard({ item, index }) {
           <div className="meta-item">
             <span className="meta-label">Similar Vector Count</span>
             <span className="meta-value">{item.similar_vector_count || "N/A"}</span>
+          </div>
+          <div className="meta-item">
+            <span className="meta-label">QA Batch</span>
+            <span className="meta-value">{qaBatch.title || "N/A"}</span>
           </div>
           <div className="meta-item">
             <span className="meta-label">Timestamp</span>
