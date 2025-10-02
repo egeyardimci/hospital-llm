@@ -37,6 +37,14 @@ function FiltersSection() {
     dispatch(resetResultsFilters());
   };
 
+  const handleFilterLatestRun = () => {
+    const maxRunCount = Math.max(...filterOptions.runCounts);
+    dispatch(setSelectedRunCount(maxRunCount));
+    const updatedFilters = { ...filters, selectedRunCount: maxRunCount };
+    const filteredData = applyResultsFilters(allData, updatedFilters);
+    dispatch(setFilteredData(filteredData));
+  };
+
   console.log(filters);
 
   // Consistent select styling
@@ -114,12 +122,18 @@ function FiltersSection() {
           </div>
         </div>
 
-        <div className="filters-actions mt-6 flex">
+        <div className="filters-actions mt-6 flex gap-2">
           <button
             className="button px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
             onClick={handleApplyFilters}
           >
             Apply Filters
+          </button>
+          <button
+            className="button px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+            onClick={handleFilterLatestRun}
+          >
+            Latest Run
           </button>
           <button
             className="button px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
