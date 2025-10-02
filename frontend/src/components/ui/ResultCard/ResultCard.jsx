@@ -21,6 +21,7 @@ function ResultCard({ item, index }) {
       <div className="card-header">
         <div>
           <span className="test-id">{`Test ID: ${item.test_id || `Test-${index + 1}`}`}</span>
+          <span className="test-id">{`Run Count: ${item.run_count || "N/A"}`}</span>
           {isTurkish && <span className="language-badge">Turkish</span>}
         </div>
         <span className="model-badge">{item.llm}</span>
