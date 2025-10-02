@@ -6,6 +6,7 @@ import { customSelectTheme } from "../../constants";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { createVectorDB, fetchEmbeddingModels, fetchVectorDBs, loadVectorDB, setSelectedVectorDB } from "../../store/slices/vectordbSlice";
 import { useAppSelector } from "../../hooks/useAppSelector";
+import { toast } from "../../utils/toast";
 
 // Create New Vector DB Component
 const CreateVectorDB = () => {
@@ -64,11 +65,18 @@ const CreateVectorDB = () => {
 
         <button
           disabled={isLoading}
-          onClick={() => dispatch(createVectorDB({
-            embedding_model: selectedModel.value,
-            chunk_size: chunkSize,
-            chunk_overlap: chunkOverlap
-          }))}
+          onClick={async () => {
+            try {
+              await dispatch(createVectorDB({
+                embedding_model: selectedModel.value,
+                chunk_size: chunkSize,
+                chunk_overlap: chunkOverlap
+              })).unwrap();
+              toast.success('Vector database created successfully');
+            } catch (error) {
+              toast.error(`Failed to create vector database: ${error}`);
+            }
+          }}
           className="w-full bg-primary hover:bg-primary-dark disabled:bg-gray-400 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center space-x-2"
         >
           <Plus size={16} />
@@ -108,7 +116,14 @@ const LoadVectorDB = () => {
 
         <button
           disabled={isLoading}
-          onClick={() => dispatch(loadVectorDB({ value: selectedDB }))}
+          onClick={async () => {
+            try {
+              await dispatch(loadVectorDB({ value: selectedDB })).unwrap();
+              toast.success('Vector database loaded successfully');
+            } catch (error) {
+              toast.error(`Failed to load vector database: ${error}`);
+            }
+          }}
           className="w-full bg-primary hover:bg-primary-dark disabled:bg-gray-400 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center space-x-2"
         >
           <Database size={16} />

@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addQA, deleteQA, updateQA, fetchQA } from '../../store/slices/qaSlice';
 import { addQABatch, deleteQABatch, updateQABatch, fetchQABatches } from '../../store/slices/qaBatchSlice';
 import { customSelectTheme } from '../../constants';
+import { toast } from '../../utils/toast';
 
 // Q&A Pairs Component
 const QAPairsEditor = () => {
@@ -42,22 +43,30 @@ const QAPairsEditor = () => {
     setNewQaPair({ query: '', answer: '', batch_id: '', path: '' });
   }
 
-  const handleSave = (data) => {
-    if (editingId !== null) {
-      // Update existing Q&A pair
-      dispatch(updateQA({ ...data, _id: editingId }));
-    } else {
-      // Create new Q&A pair
-      dispatch(addQA({ ...data, _id: "" }));
+  const handleSave = async (data) => {
+    try {
+      if (editingId !== null) {
+        await dispatch(updateQA({ ...data, _id: editingId })).unwrap();
+        toast.success('Q&A pair updated successfully');
+      } else {
+        await dispatch(addQA({ ...data, _id: "" })).unwrap();
+        toast.success('Q&A pair created successfully');
+      }
+      setIsCreating(false);
+      setEditingId(null);
+      setNewQaPair({ query: '', answer: '', batch_id: '', path: '' });
+    } catch (error) {
+      toast.error(`Failed to save Q&A pair: ${error}`);
     }
-    setIsCreating(false);
-    setEditingId(null);
-    setNewQaPair({ query: '', answer: '', batch_id: '', path: '' });
   }
 
-  const handleDelete = (qaPair) => {
-    //dispatch action
-    dispatch(deleteQA(qaPair));
+  const handleDelete = async (qaPair) => {
+    try {
+      await dispatch(deleteQA(qaPair)).unwrap();
+      toast.success('Q&A pair deleted successfully');
+    } catch (error) {
+      toast.error(`Failed to delete Q&A pair: ${error}`);
+    }
   }
 
   const QaForm = ({ qaPair, onSave, onCancel }) => {
@@ -327,21 +336,30 @@ const QABatchesEditor = () => {
     setNewQABatch({ title: '', description: '' });
   }
 
-  const handleSave = (data) => {
-    if (editingId !== null) {
-      // Update existing QA Batch
-      dispatch(updateQABatch({ ...data, _id: editingId }));
-    } else {
-      // Create new QA Batch
-      dispatch(addQABatch({ ...data, _id: "" }));
+  const handleSave = async (data) => {
+    try {
+      if (editingId !== null) {
+        await dispatch(updateQABatch({ ...data, _id: editingId })).unwrap();
+        toast.success('QA batch updated successfully');
+      } else {
+        await dispatch(addQABatch({ ...data, _id: "" })).unwrap();
+        toast.success('QA batch created successfully');
+      }
+      setIsCreating(false);
+      setEditingId(null);
+      setNewQABatch({ title: '', description: '' });
+    } catch (error) {
+      toast.error(`Failed to save QA batch: ${error}`);
     }
-    setIsCreating(false);
-    setEditingId(null);
-    setNewQABatch({ title: '', description: '' });
   }
 
-  const handleDelete = (qaBatch) => {
-    dispatch(deleteQABatch(qaBatch));
+  const handleDelete = async (qaBatch) => {
+    try {
+      await dispatch(deleteQABatch(qaBatch)).unwrap();
+      toast.success('QA batch deleted successfully');
+    } catch (error) {
+      toast.error(`Failed to delete QA batch: ${error}`);
+    }
   }
 
   const QABatchForm = ({ qaBatch, onSave, onCancel }) => {

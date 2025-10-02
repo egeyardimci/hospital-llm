@@ -5,6 +5,7 @@ import ConfigCard from './ConfigCard';
 import ConfigForm from './ConfigForm';
 import { useDispatch } from 'react-redux';
 import { addTest, deleteTest, runTest, updateTest } from '../../store/slices/testsSlice';
+import { toast } from '../../utils/toast';
 
 const Testing = () => {
   const testConfigs = useAppSelector(state => state.tests.tests)
@@ -32,10 +33,15 @@ const Testing = () => {
     setIsCreating(true);
   };
 
-  const handleSaveNew = () => {
-    dispatch(addTest(newConfig));
-    setIsCreating(false);
-    setNewConfig(null);
+  const handleSaveNew = async () => {
+    try {
+      await dispatch(addTest(newConfig)).unwrap();
+      toast.success('Test configuration created successfully');
+      setIsCreating(false);
+      setNewConfig(null);
+    } catch (error) {
+      toast.error(`Failed to create test: ${error}`);
+    }
   };
 
   const handleEdit = (config) => {
@@ -44,18 +50,33 @@ const Testing = () => {
     setIsCreating(false);
   };
 
-  const handleSaveEdit = (config) => {
-    dispatch(updateTest(config));
-    setEditingId(null);
-    setNewConfig(null);
+  const handleSaveEdit = async (config) => {
+    try {
+      await dispatch(updateTest(config)).unwrap();
+      toast.success('Test configuration updated successfully');
+      setEditingId(null);
+      setNewConfig(null);
+    } catch (error) {
+      toast.error(`Failed to update test: ${error}`);
+    }
   };
 
-  const handleDelete = (config) => {
-    dispatch(deleteTest(config));
+  const handleDelete = async (config) => {
+    try {
+      await dispatch(deleteTest(config)).unwrap();
+      toast.success('Test configuration deleted successfully');
+    } catch (error) {
+      toast.error(`Failed to delete test: ${error}`);
+    }
   };
 
-  const handleRun = (config) => {
-    dispatch(runTest(config));
+  const handleRun = async (config) => {
+    try {
+      await dispatch(runTest(config)).unwrap();
+      toast.success('Test run started successfully');
+    } catch (error) {
+      toast.error(`Failed to run test: ${error}`);
+    }
   };
 
   return (

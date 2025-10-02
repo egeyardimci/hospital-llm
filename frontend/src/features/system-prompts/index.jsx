@@ -3,6 +3,7 @@ import { Plus, Edit, Trash2, Save, X, Settings, Search } from 'lucide-react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useDispatch } from 'react-redux';
 import { addSystemPrompt, deleteSystemPrompt, updateSystemPrompt } from '../../store/slices/systemPromptsSlice';
+import { toast } from '../../utils/toast';
 
 const SystemPrompts = () => {
   const systemPrompts = useAppSelector(state => state.systemPrompts.systemPrompts);
@@ -31,21 +32,30 @@ const SystemPrompts = () => {
     setNewSystemPrompt({ title: '', content: '' });
   }
 
-  const handleSave = (data) => {
-    if (editingId !== null) {
-      // Update existing system prompt
-      dispatch(updateSystemPrompt({ ...data, _id: editingId }));
-    } else {
-      // Create new system prompt
-      dispatch(addSystemPrompt({ ...data, _id: "" }));
+  const handleSave = async (data) => {
+    try {
+      if (editingId !== null) {
+        await dispatch(updateSystemPrompt({ ...data, _id: editingId })).unwrap();
+        toast.success('System prompt updated successfully');
+      } else {
+        await dispatch(addSystemPrompt({ ...data, _id: "" })).unwrap();
+        toast.success('System prompt created successfully');
+      }
+      setIsCreating(false);
+      setEditingId(null);
+      setNewSystemPrompt({ title: '', content: '' });
+    } catch (error) {
+      toast.error(`Failed to save system prompt: ${error}`);
     }
-    setIsCreating(false);
-    setEditingId(null);
-    setNewSystemPrompt({ title: '', content: '' });
   }
 
-  const handleDelete = (systemPrompt) => {
-    dispatch(deleteSystemPrompt(systemPrompt));
+  const handleDelete = async (systemPrompt) => {
+    try {
+      await dispatch(deleteSystemPrompt(systemPrompt)).unwrap();
+      toast.success('System prompt deleted successfully');
+    } catch (error) {
+      toast.error(`Failed to delete system prompt: ${error}`);
+    }
   }
 
   const SystemPromptForm = ({ systemPrompt, onSave, onCancel }) => {
