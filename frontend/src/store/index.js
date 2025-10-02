@@ -8,6 +8,7 @@ import qaBatchReducer from './slices/qaBatchSlice';
 import systemPromptsReducer from './slices/systemPromptsSlice';
 import testsReducer from './slices/testsSlice';
 import configReducer from './slices/configSlice';
+import toastReducer from './slices/toastSlice';
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
     systemPrompts: systemPromptsReducer,
     tests: testsReducer,
     config: configReducer,
+    toast: toastReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -41,7 +41,6 @@ const Testing = () => {
   const handleEdit = (config) => {
     setEditingId(config.test_id);
     setNewConfig(config);
-    console.log(config);
     setIsCreating(false);
   };
 

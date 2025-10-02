@@ -26,6 +26,7 @@ import { fetchSystemPrompts } from './store/slices/systemPromptsSlice';
 import { fetchQABatches } from './store/slices/qaBatchSlice';
 import { fetchConfig } from './store/slices/configSlice';
 import { fetchVectorDBs } from './store/slices/vectordbSlice';
+import { ToastContainer } from './components/ui/Toast';
 
 function AppContent() {
   const dispatch = useAppDispatch();
@@ -91,6 +92,7 @@ function AppContent() {
           ) : null}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
