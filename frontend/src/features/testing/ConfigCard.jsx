@@ -1,8 +1,13 @@
 import { Edit, Play, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 const ConfigCard = ({ config, handleDelete, handleEdit, handleRun }) => {
   const [isRunning, setIsRunning] = useState(false);
+  const systemMessages = useAppSelector(state => state.systemPrompts.systemPrompts);
+  const systemMessage = systemMessages.find(msg => msg._id === config.system_message);
+  const qaBatches = useAppSelector(state => state.qaBatches.qaBatches);
+  const qaBatch = qaBatches.find(batch => batch._id === config.qa_batch);
 
   const onRunClick = async (config) => {
     setIsRunning(true);
@@ -25,11 +30,10 @@ const ConfigCard = ({ config, handleDelete, handleEdit, handleRun }) => {
         <div className="flex">
           <button
             onClick={() => onRunClick(config)}
-            className={`p-2 rounded transition-colors ${
-              isRunning
-                ? 'bg-green-500 text-white'
-                : 'text-green-600 hover:text-green-700 hover:bg-green-50'
-            }`}
+            className={`p-2 rounded transition-colors ${isRunning
+              ? 'bg-green-500 text-white'
+              : 'text-green-600 hover:text-green-700 hover:bg-green-50'
+              }`}
             title="Run"
             disabled={isRunning}
           >
@@ -75,11 +79,11 @@ const ConfigCard = ({ config, handleDelete, handleEdit, handleRun }) => {
         </div>
         <div>
           <span className="font-medium text-gray-700">System Prompt:</span>
-          <span className="ml-2 text-gray-600">{config.system_message}</span>
+          <span className="ml-2 text-gray-600">{systemMessage?.title}</span>
         </div>
         <div>
           <span className="font-medium text-gray-700">QA Batch:</span>
-          <span className="ml-2 text-gray-600">{config.qa_batch}</span>
+          <span className="ml-2 text-gray-600">{qaBatch?.title}</span>
         </div>
         <div>
           <span className="font-medium text-gray-700">Options:</span>
@@ -96,9 +100,8 @@ const ConfigCard = ({ config, handleDelete, handleEdit, handleRun }) => {
             {config.options.map((option, index) => (
               <div key={index} className="text-xs bg-gray-50 p-2 rounded">
                 <span className="font-medium">{option.name}:</span> {option.data}
-                <span className={`ml-2 px-2 py-1 rounded ${
-                  option.is_enabled ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                }`}>
+                <span className={`ml-2 px-2 py-1 rounded ${option.is_enabled ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                  }`}>
                   {option.is_enabled ? 'Enabled' : 'Disabled'}
                 </span>
               </div>
