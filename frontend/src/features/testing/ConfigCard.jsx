@@ -82,6 +82,10 @@ const ConfigCard = ({ config, handleDelete, handleEdit, handleRun }) => {
           <span className="ml-2 text-gray-600">{systemMessage?.title}</span>
         </div>
         <div>
+          <span className="font-medium text-gray-700">Database:</span>
+          <span className="ml-2 text-gray-600">{config.rag_database ? config.rag_database : "N/A"}</span>
+        </div>
+        <div>
           <span className="font-medium text-gray-700">QA Batch:</span>
           <span className="ml-2 text-gray-600">{qaBatch?.title}</span>
         </div>

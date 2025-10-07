@@ -37,7 +37,7 @@ def load_test_case_by_test_id(test_id) -> TestCase:
     collection = GLOBAL_MONGO_DB_CLIENT.get_test_cases_collection()
     document = collection.find_one({"test_id": test_id})
     if document:
-        return TestCase(document["test_id"], document["llm_name"], document["embedding_model_name"], document["system_message"], document["chunk_size"], document["chunk_overlap"], document["similar_vector_count"], document["options"],document["qa_batch"])
+        return TestCase(document["test_id"], document["llm_name"], document["embedding_model_name"], document["system_message"], document["chunk_size"], document["chunk_overlap"], document["similar_vector_count"], document["options"],document["qa_batch"], document.get("rag_database", None))
     return None
 
 def load_queries_expected_answers():
@@ -114,7 +114,8 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
         "chunk_evaluation": chunk_evaluation.feedback,
         "chunk_evaluation_score": chunk_evaluation.score,
         "chunk_evaluation_reasoning": chunk_evaluation.reasoning,
-        "run_count" : run_count
+        "run_count" : run_count,
+        "rag_database": test_case.rag_database
         }
 
     collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()

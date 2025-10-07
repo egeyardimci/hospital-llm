@@ -10,6 +10,7 @@ from backend.ai.testing.io_utils import add_test_result, load_queries_expected_a
 from backend.ai.testing.models import RagResponse, TestCase
 from backend.ai.llm.llm_as_a_judge.agent import llm_as_a_judge
 from backend.ai.llm.cross_encoder import rerank_with_cross_encoder
+from backend.common.constants import HYBRID_DB_OPTION, VECTOR_DB_OPTION, GRAPH_DB_OPTION
 import sys
 
 from backend.utils.logger import get_logger
@@ -35,7 +36,7 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db:
             test_case.similar_vector_count,
             query_expeced_answer["query"],
             test_case.options,
-            use_graph_db=False
+            test_case.rag_database
         )
         rag_response = rag.content
         rag_metadata = rag.metadata
@@ -65,7 +66,10 @@ def run_test_case_by_test_id(test_id):
         test_case = load_test_case_by_test_id(test_id)
         qa_batch_id = test_case.qa_batch
         queries_and_expected_answers = load_queries_expected_answers_batch_by_id(qa_batch_id)
-        vector_db = load_vectordb(test_case.embedding_model_name,test_case.chunk_size,test_case.chunk_overlap)  
+        if(test_case.rag_database in [VECTOR_DB_OPTION, HYBRID_DB_OPTION]):
+            vector_db = load_vectordb(test_case.embedding_model_name,test_case.chunk_size,test_case.chunk_overlap)  
+        else:
+            vector_db = None
         logger.debug(f"Successfully loaded test case and {len(queries_and_expected_answers)} Q&A pairs")
     except Exception as e:
         logger.error(f"Failed to load test case or Q&A batch for test_id {test_id}: {e}")

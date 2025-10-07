@@ -12,7 +12,9 @@ const ConfigForm = ({ formConfig, setFormConfig, onSave, onCancel }) => {
   const vectorDBs = useAppSelector(state => state.vectorDBs.vectorDBs)
   const ragOptionsState = useAppSelector(state => state.config.config.RAG_OPTIONS)
   const qaBatches = useAppSelector(state => state.qaBatches.qaBatches)
+  const ragDBOptionsState = useAppSelector(state => state.config.config.RAG_DB_OPTIONS)
 
+  const ragDBOptions = ragDBOptionsState.map(option => ({ value: option, label: option }))
   const llmOptions = llmModels.map(option => ({ value: option, label: option }))
   const systemPromptOptions = systemPrompts.map(option => ({ value: option._id, label: option.title }))
   const vectorDBOptions = vectorDBs.map(option => ({ value: option.name + '_' + option.chunk_size + '_' + option.chunk_overlap, label: option.name + '_' + option.chunk_size + '_' + option.chunk_overlap }))
@@ -128,10 +130,7 @@ const ConfigForm = ({ formConfig, setFormConfig, onSave, onCancel }) => {
             className="w-full h-[38px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-
-      </div>
-
-      <div>
+        <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           System Message
         </label>
@@ -143,6 +142,23 @@ const ConfigForm = ({ formConfig, setFormConfig, onSave, onCancel }) => {
           placeholder="Select..."
         />
       </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Database
+        </label>
+        <Select
+          theme={customSelectTheme}
+          value={findSelectedOption(formConfig.rag_database, ragDBOptions)}
+          onChange={(e) => setFormConfig({ ...formConfig, rag_database: e.value })}
+          options={ragDBOptions}
+          placeholder="Select..."
+        />
+      </div>
+
+      </div>
+
+
 
       <div className="mb-4 mt-4">
         <label className="block text-sm font-medium text-gray-700 mb-2">

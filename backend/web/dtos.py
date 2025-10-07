@@ -45,6 +45,7 @@ class TestCase(BaseModel):
     test_description: str
     llm_name: str
     system_message: str
+    rag_database: str
     qa_batch: str
     similar_vector_count: int
     chunk_size: int

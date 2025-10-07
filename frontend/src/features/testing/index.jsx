@@ -29,6 +29,7 @@ const Testing = () => {
       qa_batch: '',
       options: [],
       test_id: nextId,
+      rag_database : ''
     });
     setIsCreating(true);
   };
@@ -52,6 +53,7 @@ const Testing = () => {
 
   const handleSaveEdit = async (config) => {
     try {
+      console.log(config);
       await dispatch(updateTest(config)).unwrap();
       toast.success('Test configuration updated successfully');
       setEditingId(null);

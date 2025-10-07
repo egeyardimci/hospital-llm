@@ -8,24 +8,26 @@ from backend.ai.testing.models import RagResponse, TestOption
 from langchain_chroma import Chroma
 from backend.ai.graphdb.utils import neo4j_graph_search, format_graph_to_context
 from backend.utils.logger import get_logger
+from backend.common.constants import GRAPH_DB_OPTION, VECTOR_DB_OPTION, HYBRID_DB_OPTION
+
 logger = get_logger()
 
-def rag_invoke(llm_name: str, system_prompt: str, db, similarity_vector_k: int, query: str, options: list[TestOption], use_graph_db: bool = False) -> str:
+def rag_invoke(llm_name: str, system_prompt: str, db: Chroma|None, similarity_vector_k: int, query: str, options: list[TestOption], rag_database: str) -> str:
 
-    if use_graph_db:
+    if rag_database == GRAPH_DB_OPTION:
         # Use Neo4j graph database
         logger.info("Using Neo4j graph database for retrieval")
         graph_results = neo4j_graph_search(query, similarity_vector_k)
         context = format_graph_to_context(graph_results)
         retrieved_chunks = []  # No chunks for graph DB, context is pre-formatted
-    else:
+    elif rag_database == VECTOR_DB_OPTION:
         # Use traditional vector database
         logger.info("Using vector database for retrieval")
         retrieved_chunks = db.similarity_search(query, similarity_vector_k)
         logger.info(f"Retrieved {len(retrieved_chunks)} chunks from vector DB.")
     
     # Cross-encoder re-ranking (only for vector DB)
-    if not use_graph_db:
+    if not rag_database == GRAPH_DB_OPTION:
         cross_encoder_option = None
         for option in options:
             if option.name == CROSS_ENCODER_OPTION and option.is_enabled:
