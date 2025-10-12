@@ -20,7 +20,7 @@ class QAInfo(BaseModel):
     query: str
     answer: str
     batch_id: str
-    path: str
+    path: str | None = None
     class Config:
         populate_by_name = True
         
