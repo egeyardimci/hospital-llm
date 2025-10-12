@@ -28,14 +28,19 @@ const QAPairsEditor = () => {
     if (searchTerm.trim() === '') {
       setFilteredQaPairs(qaPairs);
     } else {
-      const filtered = qaPairs.filter(pair =>
-        pair.query.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        pair.answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (pair.path && pair.path.toLowerCase().includes(searchTerm.toLowerCase()))
-      );
+      const filtered = qaPairs.filter(pair => {
+        // Find the associated batch for this QA pair
+        const associatedBatch = qaBatches.find(batch => batch._id === pair.batch_id);
+        const batchTitle = associatedBatch ? associatedBatch.title.toLowerCase() : '';
+
+        return pair.query.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          pair.answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (pair.path && pair.path.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          batchTitle.includes(searchTerm.toLowerCase());
+      });
       setFilteredQaPairs(filtered);
     }
-  }, [searchTerm, qaPairs]);
+  }, [searchTerm, qaPairs, qaBatches]);
 
   const handleCreateNew = () => {
     setIsCreating(true);
@@ -248,7 +253,7 @@ const QAPairsEditor = () => {
             <Search size={20} className="text-gray-500" />
             <input
               type="text"
-              placeholder="Search questions, answers, and paths..."
+              placeholder="Search questions, answers, paths, and batch names..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
