@@ -27,6 +27,8 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db:
     chunk_evaluation: None | JudgeOutput = None
     rag_response: None | str = None
     rag_metadata: None | dict = None
+    error_message: str = ''
+
 
     try:
         rag: RagResponse = rag_invoke(
@@ -41,7 +43,9 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db:
         rag_response = rag.content
         rag_metadata = rag.metadata
     except Exception as e:
-        logger.error(f"RAG system error: {e}")
+        error_message = (f"RAG system error: {e}")
+        logger.error(error_message)
+        add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count, error_message)
         return
 
     try:
@@ -53,10 +57,12 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db:
         )
 
     except Exception as e:
-        logger.error(f"LLM judge evaluation error: {e}")
+        error_message = (f"LLM judge evaluation error: {e}")
+        logger.error(error_message)
+        add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count, error_message)
         return
 
-    add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count)
+    add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count, error_message)
 
 def run_test_case_by_test_id(test_id):
     load_dotenv(override=True)

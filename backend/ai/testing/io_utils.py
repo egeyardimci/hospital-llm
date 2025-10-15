@@ -89,7 +89,7 @@ def load_existing_test_results():
     documents = list(collection.find())
     return documents
 
-def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: str ,retrieved_chunks: list[Document] ,evaluation: JudgeOutput ,chunk_evaluation: JudgeOutput, run_count: int):
+def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: str ,retrieved_chunks: list[Document] ,evaluation: JudgeOutput ,chunk_evaluation: JudgeOutput, run_count: int, error: str = ""):
     """
     Add a test result to the existing results.
     """
@@ -108,14 +108,15 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
         "time_stamp" : str(datetime.datetime.now()),
         "retrieved_chunks": [chunk.page_content for chunk in retrieved_chunks],
         "options": [{"name": option.name, "is_enabled": option.is_enabled, "data": option.data} for option in test_case.options],
-        "evaluation": evaluation.feedback,
-        "evaluation_score": evaluation.score,
-        "evaluation_reasoning": evaluation.reasoning,
-        "chunk_evaluation": chunk_evaluation.feedback,
-        "chunk_evaluation_score": chunk_evaluation.score,
-        "chunk_evaluation_reasoning": chunk_evaluation.reasoning,
+        "evaluation": evaluation.feedback if evaluation is not None else '',
+        "evaluation_score": evaluation.score if evaluation is not None else '',
+        "evaluation_reasoning": evaluation.reasoning if evaluation is not None else '',
+        "chunk_evaluation": chunk_evaluation.feedback if chunk_evaluation is not None else '',
+        "chunk_evaluation_score": chunk_evaluation.score if chunk_evaluation is not None else '',
+        "chunk_evaluation_reasoning": chunk_evaluation.reasoning if chunk_evaluation is not None else '',
         "run_count" : run_count,
-        "rag_database": test_case.rag_database
+        "rag_database": test_case.rag_database,
+        "error": error if error else ''
         }
 
     collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()

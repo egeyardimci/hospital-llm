@@ -5,6 +5,7 @@ function ResultCard({ item, index }) {
   const [showSystem, setShowSystem] = useState(false);
   const [showChunks, setShowChunks] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
+  const [showError, setShowError] = useState(false);
   const [showEvaluation, setShowEvaluation] = useState(false);
 
   const tests = useAppSelector(state => state.tests.tests);
@@ -15,6 +16,7 @@ function ResultCard({ item, index }) {
 
   // Detect language (simple heuristic)
   const isTurkish = /[çğıöşüÇĞİÖŞÜ]/.test(item.query) || /türk/i.test(item.query);
+  const hasError = item.error !== undefined && item.error !== null && item.error !== '';
 
   return (
     <div className="card">
@@ -27,7 +29,7 @@ function ResultCard({ item, index }) {
         <span className="model-badge">{item.llm}</span>
       </div>
 
-      <div className="card-body">
+      <div className={`${hasError ? 'error-card-body' : 'card-body'}`}>
         <div className="section">
           <div className="section-title">
             <span>Query</span>
@@ -126,6 +128,24 @@ function ResultCard({ item, index }) {
             )}
           </div>
         </div>
+
+        {/* Options Section */}
+        {hasError &&
+          <div className="section">
+            <div className="section-title">
+              <span>Error</span>
+              <button
+                className="button toggle-button"
+                onClick={() => setShowError(!showError)}
+              >
+                Show/Hide
+              </button>
+            </div>
+            <div className={`section-content ${showError ? '' : 'hidden'}`}>
+              {item.error}
+            </div>
+          </div>
+        }
 
         <div className="meta-info">
           <div className="meta-item">
