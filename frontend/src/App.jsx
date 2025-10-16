@@ -31,7 +31,6 @@ import { ToastContainer } from './components/ui/Toast';
 function AppContent() {
   const dispatch = useAppDispatch();
   const { filteredData, loading } = useAppSelector(state => state.results);
-  const { filterOptions } = useAppSelector(state => state.filters);
   const [activeTab, setActiveTab] = useState(TABS.CHATBOT);
 
   useEffect(() => {
@@ -73,10 +72,7 @@ function AppContent() {
               )}
             </>
           ) : activeTab === TABS.CHATBOT ? (
-            <ChatbotTab
-              availableModels={filterOptions.llms}
-              embeddingModels={filterOptions.embeddingModels}
-            />
+            <ChatbotTab />
           ) : activeTab === TABS.DATA ? (
             <EvaluationScoreChart testData={filteredData} />
           ) : activeTab === TABS.TEST_CONFIGURATOR ? (

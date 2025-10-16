@@ -13,7 +13,7 @@ import ChatMessage from '../../../components/ui/ChatMessage';
 import { Dot } from 'lucide-react';
 import { fetchCurrentVectorDB } from '../../../store/slices/vectordbSlice';
 
-function ChatbotTab({ availableModels = [] }) {
+function ChatbotTab() {
   const dispatch = useAppDispatch();
   const {
     conversation,
@@ -22,6 +22,7 @@ function ChatbotTab({ availableModels = [] }) {
     isLoading
   } = useAppSelector(state => state.chat);
 
+  const availableModels = useAppSelector(state => state.config.config.LLM_MODELS || []);
   const models = availableModels.length ? availableModels : DEFAULT_MODELS;
   const currentVectorDB = useAppSelector(state => state.vectorDBs.currentVectorDB);
 
