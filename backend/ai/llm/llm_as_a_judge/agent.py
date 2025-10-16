@@ -2,14 +2,14 @@ from langchain_groq import ChatGroq
 from langchain.schema import SystemMessage, HumanMessage
 from backend.ai.llm.llm_as_a_judge.models import JudgeOutput
 from backend.ai.llm.prompts import EVALUATION_PROMPT, CHUNK_EVALUATION_PROMPT
-from backend.common.constants import DEEPSEEK_R1_DISTILL_LLAMA_70B
+from backend.common.constants import OPENAI_GPT_OSS_120B
 
 def llm_as_a_judge(query: str, response: str, expected_answer: str,chunks) -> str:
     """
     Turkish-specific LLM judge with language-aware evaluation.
     """
 
-    llm = ChatGroq(model=DEEPSEEK_R1_DISTILL_LLAMA_70B)
+    llm = ChatGroq(model=OPENAI_GPT_OSS_120B)
 
     messages = [
         SystemMessage(content="You are an LLM as a judge being used in a RAG system."),

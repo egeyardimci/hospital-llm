@@ -1,6 +1,6 @@
 
-from pydantic import BaseModel, Field, validator
-from typing import Optional, List
+from pydantic import BaseModel, Field, field_validator
+from typing import Optional, List, Union
 class JudgeOutput(BaseModel):
     """
     The output of the LLM judge evaluation.
@@ -25,7 +25,7 @@ class JudgeOutput(BaseModel):
         description="Detailed explanation and reasoning from the LLM judge"
     )
     
-    reasoning: Optional[str] = Field(
+    reasoning: Optional[Union[str, List[str]]] = Field(
         None,
         description="Step-by-step reasoning breakdown of how the score was determined"
     )
@@ -36,7 +36,8 @@ class JudgeOutput(BaseModel):
     )
     
     
-    @validator('score')
+    @field_validator('score')
+    @classmethod
     def validate_score(cls, v):
         """Ensure score is within valid range."""
         if not isinstance(v, int):
@@ -45,12 +46,24 @@ class JudgeOutput(BaseModel):
             raise ValueError('Score must be between 1 and 5')
         return v
     
-    @validator('feedback')
+    @field_validator('feedback')
+    @classmethod
     def validate_feedback(cls, v):
         """Ensure feedback is meaningful and not empty."""
         if not v or v.strip() == "":
             raise ValueError('Feedback cannot be empty or whitespace only')
         return v.strip()
+    
+    @field_validator('reasoning', mode='before')
+    @classmethod
+    def normalize_reasoning(cls, v):
+        """Normalize reasoning to always be a string."""
+        if v is None:
+            return None
+        if isinstance(v, list):
+            # Join list items with newlines for better readability
+            return "\n".join(str(item) for item in v)
+        return str(v)
     
     class Config:
         """Pydantic configuration."""
@@ -63,7 +76,7 @@ class JudgeOutput(BaseModel):
         # Example for JSON schema generation
         json_schema_extra = {
             "example": {
-                "score": 8,
+                "score": 2,
                 "feedback": "The response adequately addresses most key points about medical participation fees, including specific information about different branches and relevant regulations. However, it could provide more detail about hospital-specific variations.",
                 "reasoning": "Response covered 4 out of 5 required criteria with good detail level",
             }

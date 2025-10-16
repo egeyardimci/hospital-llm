@@ -20,11 +20,12 @@ ALLOWED_CORS_ORIGINS = [
 ]
 
 # LLM Models
-DEEPSEEK_R1_DISTILL_LLAMA_70B = "deepseek-r1-distill-llama-70b"
+DEEPSEEK_R1_DISTILL_LLAMA_70B = "deepseek-r1-distill-llama-70b" 
 LLAMA_3_2_90B_VISION_PREVIEW = "llama-3.2-90b-vision-preview"
 LLAMA_3_3_70B_VERSATILE = "llama-3.3-70b-versatile"
 META_LLAMA_LLAMA_4_MAVERICK_17B_128E_INSTRUCT = "meta-llama/llama-4-maverick-17b-128e-instruct"
 MISTRAL_SABA_24B = "mistral-saba-24b"
+OPENAI_GPT_OSS_120B = "openai/gpt-oss-120b"
 
 # Embedding Models
 BAAI_BGE_M3 = "BAAI/bge-m3"
