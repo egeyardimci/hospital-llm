@@ -9,6 +9,7 @@ import systemPromptsReducer from './slices/systemPromptsSlice';
 import testsReducer from './slices/testsSlice';
 import configReducer from './slices/configSlice';
 import toastReducer from './slices/toastSlice';
+import runsReducer from './slices/runsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     tests: testsReducer,
     config: configReducer,
     toast: toastReducer,
+    runs: runsReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

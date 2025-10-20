@@ -26,6 +26,7 @@ export const API_ENDPOINTS = {
   DELETE_TEST: `${API_BASE_URL}/tests/delete`,
   UPDATE_TEST: `${API_BASE_URL}/tests/update`,
   RUN_TEST: `${API_BASE_URL}/tests/run`,
+  FETCH_RUNS: `${API_BASE_URL}/runs`,
 
 };
 

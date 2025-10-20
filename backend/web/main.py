@@ -5,7 +5,7 @@ from backend.common.paths import REACT_BUILD_PATH
 from backend.common.constants import ALLOWED_CORS_ORIGINS
 from backend.ai.vectordb.main import GLOBAL_VECTOR_DB
 from backend.common.constants import *
-from backend.web.routes import chat, vectordb, results, tests, system_prompts, qa_batches, config
+from backend.web.routes import chat, vectordb, results, tests, system_prompts, qa_batches, config, runs
 from backend.web.routes import qa
 
 app = FastAPI(title="Hospital LLM API", version="1.0.0")
@@ -28,3 +28,4 @@ app.include_router(qa.router, prefix="/qa", tags=["qa"])
 app.include_router(system_prompts.router, prefix="/system-prompts", tags=["system-prompts"])
 app.include_router(qa_batches.router, prefix="/qa-batches", tags=["batches"])
 app.include_router(config.router, prefix="/config", tags=["config"])
+app.include_router(runs.router, prefix="/runs", tags=["runs"])

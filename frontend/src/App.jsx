@@ -27,6 +27,7 @@ import { fetchQABatches } from './store/slices/qaBatchSlice';
 import { fetchConfig } from './store/slices/configSlice';
 import { fetchVectorDBs } from './store/slices/vectordbSlice';
 import { ToastContainer } from './components/ui/Toast';
+import { fetchRuns } from './store/slices/runsSlice';
 
 function AppContent() {
   const dispatch = useAppDispatch();
@@ -52,6 +53,7 @@ function AppContent() {
     dispatch(fetchQABatches());
     dispatch(fetchConfig());
     dispatch(fetchVectorDBs());
+    dispatch(fetchRuns());
   }, [dispatch]);
 
   return (
