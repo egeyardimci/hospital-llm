@@ -1,18 +1,22 @@
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Select from 'react-select';
+import { useAppSelector } from '../../../hooks/useAppSelector';
 import { customSelectTheme } from '../../../constants';
 
 export default function EvaluationScoreChart(testData) {
   const [data, setData] = useState([]);
-  const [groupBy, setGroupBy] = useState('test_id');
+  const [groupBy, setGroupBy] = useState('run_count');
   const [viewMetric, setViewMetric] = useState('avgScore');
+
+  // Get run attributes from Redux store
+  const runs = useAppSelector(state => state.runs.runs);
 
   // Options for React Select
   const groupByOptions = [
     { value: 'llm', label: 'LLM' },
     { value: 'embedding_model', label: 'Embedding Model' },
-    { value: 'test_id', label: 'Test ID' },
+    { value: 'run_count', label: 'Run Count' },
     { value: 'chunk_size', label: 'Chunk Size' },
     { value: 'similar_vector_count', label: 'Similar Vector Count' },
     { value: 'chunk_evaluation', label: 'Chunk Evaluation' }
@@ -27,8 +31,11 @@ export default function EvaluationScoreChart(testData) {
     // Parse the raw data - this would normally come from an API or props
     const rawData = testData.testData;
 
-    calculateAverages(rawData, groupBy);
-  }, [groupBy, testData.testData]);
+    // Filter out tests without run_count
+    const filteredData = rawData.filter(item => item.run_count !== undefined && item.run_count !== null);
+
+    calculateAverages(filteredData, groupBy);
+  }, [groupBy, testData.testData, runs]);
 
   const calculateAverages = (rawData, groupField) => {
     const groups = {};
@@ -48,6 +55,8 @@ export default function EvaluationScoreChart(testData) {
           llm: item.llm,
           embedding_model: item.embedding_model,
           chunk_evaluation: item.chunk_evaluation, // Added new field
+          run_count: item.run_count, // Added run_count field
+          rag_database: item.rag_database, // Added rag_database field
         };
       }
       groups[key].totalScore += item.evaluation_score;
@@ -63,6 +72,8 @@ export default function EvaluationScoreChart(testData) {
       groups[key].llm = item.llm;
       groups[key].embedding_model = item.embedding_model;
       groups[key].chunk_evaluation = item.chunk_evaluation;
+      groups[key].run_count = item.run_count;
+      groups[key].rag_database = item.rag_database;
     });
 
     // Calculate average for each group
@@ -76,10 +87,11 @@ export default function EvaluationScoreChart(testData) {
       llm: group.llm,
       embedding_model: group.embedding_model,
       chunk_evaluation: group.chunk_evaluation,
+      run_count: group.run_count,
+      rag_database: group.rag_database,
     }));
 
     setData(result);
-    console.log("res", result);
   };
 
   // Get display name for metrics
@@ -115,10 +127,12 @@ export default function EvaluationScoreChart(testData) {
               {getMetricDisplayName(viewMetric)}: {payload[0].value}
             </span>
           </p>
+          <p className="meta-value">Run Count: {item.run_count}</p>
           <p className="meta-value">LLM: {item.llm}</p>
           <p className="meta-value">Embedding Model: {item.embedding_model}</p>
           <p className="meta-value">Chunk Size: {item.chunk_size}</p>
           <p className="meta-value">Similar Vector Count: {item.similar_vector_count}</p>
+          <p className="meta-value">RAG Database: {item.rag_database}</p>
         </div>
       );
     }
@@ -159,7 +173,7 @@ export default function EvaluationScoreChart(testData) {
               <Select
                 theme={customSelectTheme}
                 value={findSelectedOption(groupBy, groupByOptions)}
-                onChange={(selectedOption) => setGroupBy(selectedOption ? selectedOption.value : 'test_id')}
+                onChange={(selectedOption) => setGroupBy(selectedOption ? selectedOption.value : 'run_count')}
                 options={groupByOptions}
                 placeholder="Select grouping..."
                 isSearchable={false}
@@ -224,10 +238,12 @@ export default function EvaluationScoreChart(testData) {
                 <div className="stat-value text-lg">{item.avgChunkScore}</div>
                 <div className="stat-label text-sm">Average Chunk Score</div>
                 <div className="mt-2 text-xs">
+                  <div>Run Count: {item.run_count}</div>
                   <div>Chunk Size: {item.chunk_size}</div>
                   <div>Vectors: {item.similar_vector_count}</div>
                   <div>LLM: {item.llm}</div>
                   <div>Embedding: {item.embedding_model}</div>
+                  <div>RAG Database: {item.rag_database}</div>
                   <div>
                     {item.options.map((option, index) => (
                       <p key={index} style={{ margin: 0 }}>{option.data}</p>
