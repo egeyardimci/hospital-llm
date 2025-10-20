@@ -2,3 +2,5 @@
 .venv/
 venv/
 Neo*
+.claude/
+__pycache__/

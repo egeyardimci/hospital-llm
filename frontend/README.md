@@ -1,70 +1,209 @@
-# Getting Started with Create React App
+# Hospital LLM - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React-based web application providing an intuitive interface for RAG testing, evaluation, data visualization, and interactive document Q&A.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The frontend is a single-page application (SPA) built with React and Vite, offering:
 
-### `npm start`
+- **Interactive Dashboard**: Visualize test results with charts and statistics
+- **Test Management**: Configure and run tests through a web UI
+- **Q&A Editor**: Create and manage question-answer pairs
+- **Chat Interface**: Real-time document Q&A with configurable settings
+- **Results Explorer**: Filter and analyze test execution results
+- **Vector DB Manager**: Create and manage vector databases
+- **System Prompts**: Template management for LLM system messages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+- Node.js 16 or higher (tested with Node v22.13.1)
+- npm 7+ (tested with npm 10.9.2)
+- Backend server running at `http://127.0.0.1:8000`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Running the Application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Development server with hot reload:**
+```bash
+npm run dev
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The application will be available at `http://localhost:5173`
 
-### `npm run eject`
+**Build for production:**
+```bash
+npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Lint code:**
+```bash
+npm run lint
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Auto-fix linting issues:**
+```bash
+npm run lint:fix
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 1. Dashboard (Data Visualization)
 
-## Learn More
+- Visualize test results with interactive bar charts
+- Group data by run count, LLM model, embedding model, chunk size, etc.
+- View average evaluation scores and chunk scores
+- Detailed tooltips with run attributes
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Important:** Dashboard automatically filters out tests without `run_count` field.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2. Results Explorer
 
-### Code Splitting
+- Browse all test execution results
+- Filter by LLM model, embedding model, run count, scores
+- View responses, retrieved chunks, evaluations
+- Export filtered results
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 3. Interactive Chat
 
-### Analyzing the Bundle Size
+- Real-time document Q&A
+- Configure LLM model and retrieval settings
+- View AI responses and retrieved chunks
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 4. Test Configurator
 
-### Making a Progressive Web App
+- Create and manage test cases
+- Configure LLM, embeddings, chunking parameters
+- Run tests directly from UI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 5. Q&A Editor
 
-### Advanced Configuration
+- Create question-answer pairs
+- Organize into batches
+- Associate with test cases
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 6. Vector Database Manager
 
-### Deployment
+- List and manage vector databases
+- Create new databases with custom embeddings
+- Load specific databases
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 7. System Prompts
 
-### `npm run build` fails to minify
+- Create and manage system prompt templates
+- Use templates in test configurations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Architecture
+
+### Project Structure
+
+```
+src/
+├── App.jsx              # Main application component
+├── components/          # Shared UI components
+├── features/            # Feature modules (dashboard, chat, testing, etc.)
+├── store/               # Redux store and slices
+├── hooks/               # Custom React hooks
+├── utils/               # Utility functions
+├── constants/           # Application constants
+└── styles/              # Global styles
+```
+
+### Redux Store
+
+The application uses Redux Toolkit for state management with the following slices:
+
+- **results**: Test execution results
+- **runs**: Run attributes indexed by run_count
+- **tests**: Test configurations
+- **qa** / **qaBatches**: Q&A data
+- **systemPrompts**: System prompts
+- **vectorDBs**: Vector database management
+- **config**: Application configuration
+- **filters**: Filter state
+- **chat**: Chat interface state
+- **toast**: Notifications
+
+### Custom Hooks
+
+```javascript
+import { useAppDispatch } from './hooks/useAppDispatch';
+import { useAppSelector } from './hooks/useAppSelector';
+
+const dispatch = useAppDispatch();
+const results = useAppSelector(state => state.results.filteredData);
+```
+
+## API Configuration
+
+API endpoint is configured in `src/constants/index.js`:
+
+```javascript
+export const API_BASE_URL = 'http://127.0.0.1:8000';
+```
+
+## Styling
+
+The application uses Tailwind CSS for styling. Global styles are in `src/styles/tailwind.css`.
+
+## Working with the Dashboard
+
+The dashboard filters test data to only show tests with `run_count`:
+
+```javascript
+const filteredData = rawData.filter(
+  item => item.run_count !== undefined && item.run_count !== null
+);
+```
+
+## Development
+
+### Adding a New Feature
+
+1. Create feature directory in `src/features/`
+2. Create Redux slice in `src/store/slices/`
+3. Add reducer to `src/store/index.js`
+4. Add route/tab in `src/constants/index.js`
+5. Integrate in `src/App.jsx`
+
+## Troubleshooting
+
+### Build Errors
+- Delete `node_modules` and reinstall: `rm -rf node_modules && npm install`
+- Clear Vite cache: `rm -rf node_modules/.vite`
+
+### Runtime Errors
+- Verify backend is running at correct URL
+- Check Redux state in Redux DevTools
+- Verify API endpoint configuration
+
+### Empty Dashboard
+- Ensure test data has `run_count` field
+- Check backend connectivity
+- Verify data is being fetched
+
+## Dependencies
+
+### Core
+- **react** (^18.2.0)
+- **@reduxjs/toolkit** (^2.8.2)
+- **react-redux** (^9.2.0)
+- **recharts** (^2.15.2)
+- **react-select** (^5.10.2)
+- **tailwindcss** (^4.1.12)
+
+### Development
+- **vite** (^7.1.3)
+- **eslint**
+
+## Related Documentation
+
+- [../README.md](../README.md) - Overall project documentation
+- [../backend/README.md](../backend/README.md) - Backend documentation
+- [../CLAUDE.md](../CLAUDE.md) - Architecture guidance
