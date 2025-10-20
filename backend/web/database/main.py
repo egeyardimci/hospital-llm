@@ -31,6 +31,10 @@ class MongoDBClient:
         db = self.get_hospital_db()
         return db['results']
     
+    def get_runs_collection(self):
+        db = self.get_hospital_db()
+        return db['runs']
+    
     def get_queries_collection(self):
         db = self.get_hospital_db()
         return db['queries']

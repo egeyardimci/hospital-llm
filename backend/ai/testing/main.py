@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from backend.ai.llm.llm_as_a_judge.models import JudgeOutput
 from backend.ai.llm.rag import rag_invoke
 from backend.ai.vectordb.utils import load_vectordb
-from backend.ai.testing.io_utils import add_test_result, load_queries_expected_answers_batch_by_id, load_test_case_by_test_id, load_system_message_by_id, load_run_count, increment_run_count
+from backend.ai.testing.io_utils import add_test_result, load_queries_expected_answers_batch_by_id, load_test_case_by_test_id, load_system_message_by_id, load_run_count, increment_run_count, add_run_record
 from backend.ai.testing.models import RagResponse, TestCase
 from backend.ai.llm.llm_as_a_judge.agent import llm_as_a_judge
 from backend.ai.llm.cross_encoder import rerank_with_cross_encoder
@@ -28,7 +28,6 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db:
     rag_response: None | str = None
     rag_metadata: None | dict = None
     error_message: str = ''
-
 
     try:
         rag: RagResponse = rag_invoke(
@@ -92,11 +91,12 @@ def run_test_case_by_test_id(test_id):
         raise Exception(f"System message loading failed: {e}") from e
 
     logger.info(f"Running test case {test_case.test_id} with {len(queries_and_expected_answers)} queries.")
+    add_run_record(run_count, test_case, qa_batch_id)
 
     try:
         for i, query in enumerate(queries_and_expected_answers, 1):
             logger.debug(f"Processing query {i}/{len(queries_and_expected_answers)}")
-            run_test(test_case, query, run_count,vector_db)
+            run_test(test_case, query, run_count, vector_db)
         
         increment_run_count()
         logger.info(f"Successfully completed all {len(queries_and_expected_answers)} tests")

@@ -124,6 +124,30 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
 
     logger.info(f"Result saved to database.")
 
+def add_run_record(run_count: int, test_case: TestCase, qa_batch_id: str | None = None):
+    """
+    Add a run record to the runs collection.
+    """
+    run_record = {
+        "test_id": test_case.test_id,
+        "llm": test_case.llm_name,
+        "embedding_model": test_case.embedding_model_name,
+        "system_message": test_case.system_message,
+        "chunk_size": test_case.chunk_size,
+        "chunk_overlap": test_case.chunk_overlap,
+        "similar_vector_count" : test_case.similar_vector_count,
+        "time_stamp" : str(datetime.datetime.now()),
+        "options": [{"name": option.name, "is_enabled": option.is_enabled, "data": option.data} for option in test_case.options],
+        "run_count" : run_count,
+        "rag_database": test_case.rag_database,
+        "qa_batch_id": qa_batch_id
+        }
+
+    collection = GLOBAL_MONGO_DB_CLIENT.get_runs_collection()
+    collection.insert_one(run_record)
+
+    logger.info(f"Run record for run {run_count} added to database.")
+
 if __name__ == "__main__":
     test_cases = load_test_cases()
     print(f"Loaded {len(test_cases)} test cases.")
