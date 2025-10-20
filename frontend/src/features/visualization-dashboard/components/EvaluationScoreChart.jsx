@@ -1,47 +1,59 @@
-import { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import Select from 'react-select';
-import { useAppSelector } from '../../../hooks/useAppSelector';
-import { customSelectTheme } from '../../../constants';
+import { useState, useEffect } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import Select from "react-select";
+import { useAppSelector } from "../../../hooks/useAppSelector";
+import { customSelectTheme } from "../../../constants";
 
-export default function EvaluationScoreChart(testData) {
+export default function EvaluationScoreChart() {
+  const { filteredData: testData } = useAppSelector((state) => state.results);
   const [data, setData] = useState([]);
-  const [groupBy, setGroupBy] = useState('run_count');
-  const [viewMetric, setViewMetric] = useState('avgScore');
+  const [groupBy, setGroupBy] = useState("run_count");
+  const [viewMetric, setViewMetric] = useState("avgScore");
 
   // Get run attributes from Redux store
-  const runs = useAppSelector(state => state.runs.runs);
+  const runs = useAppSelector((state) => state.runs.runs);
 
   // Options for React Select
   const groupByOptions = [
-    { value: 'llm', label: 'LLM' },
-    { value: 'embedding_model', label: 'Embedding Model' },
-    { value: 'run_count', label: 'Run Count' },
-    { value: 'chunk_size', label: 'Chunk Size' },
-    { value: 'similar_vector_count', label: 'Similar Vector Count' },
-    { value: 'chunk_evaluation', label: 'Chunk Evaluation' }
+    { value: "llm", label: "LLM" },
+    { value: "embedding_model", label: "Embedding Model" },
+    { value: "run_count", label: "Run Count" },
+    { value: "chunk_size", label: "Chunk Size" },
+    { value: "similar_vector_count", label: "Similar Vector Count" },
+    { value: "chunk_evaluation", label: "Chunk Evaluation" },
   ];
 
   const viewMetricOptions = [
-    { value: 'avgScore', label: 'Average Score' },
-    { value: 'avgChunkScore', label: 'Average Chunk Score' }
+    { value: "avgScore", label: "Average Score" },
+    { value: "avgChunkScore", label: "Average Chunk Score" },
   ];
 
   useEffect(() => {
     // Parse the raw data - this would normally come from an API or props
-    const rawData = testData.testData;
+    const rawData = testData;
 
     // Filter out tests without run_count
-    const filteredData = rawData.filter(item => item.run_count !== undefined && item.run_count !== null);
+    const filteredData = rawData.filter(
+      (item) => item.run_count !== undefined && item.run_count !== null
+    );
 
     calculateAverages(filteredData, groupBy);
-  }, [groupBy, testData.testData, runs]);
+  }, [groupBy, testData, runs]);
 
   const calculateAverages = (rawData, groupField) => {
     const groups = {};
 
     // Group data by the selected field
-    rawData.forEach(item => {
+    rawData.forEach((item) => {
       const key = item[groupField];
       if (!groups[key]) {
         groups[key] = {
@@ -77,10 +89,12 @@ export default function EvaluationScoreChart(testData) {
     });
 
     // Calculate average for each group
-    const result = Object.values(groups).map(group => ({
+    const result = Object.values(groups).map((group) => ({
       name: group.name,
       avgScore: parseFloat((group.totalScore / group.count).toFixed(2)),
-      avgChunkScore: parseFloat((group.totalChunkScore / group.count).toFixed(2)), // Add average chunk score
+      avgChunkScore: parseFloat(
+        (group.totalChunkScore / group.count).toFixed(2)
+      ), // Add average chunk score
       options: group.options,
       chunk_size: group.chunk_size,
       similar_vector_count: group.similar_vector_count,
@@ -97,21 +111,21 @@ export default function EvaluationScoreChart(testData) {
   // Get display name for metrics
   const getMetricDisplayName = (metric) => {
     const displayNames = {
-      'avgScore': 'Average Score',
-      'avgChunkScore': 'Average Chunk Score', // Added display name for chunk score
-      'chunk_size': 'Chunk Size',
-      'similar_vector_count': 'Similar Vector Count',
-      'options': 'Options',
-      'llm': 'LLM',
-      'embedding_model': 'Embedding Model',
-      'chunk_evaluation': 'Chunk Evaluation' // Added display name for chunk evaluation
+      avgScore: "Average Score",
+      avgChunkScore: "Average Chunk Score", // Added display name for chunk score
+      chunk_size: "Chunk Size",
+      similar_vector_count: "Similar Vector Count",
+      options: "Options",
+      llm: "LLM",
+      embedding_model: "Embedding Model",
+      chunk_evaluation: "Chunk Evaluation", // Added display name for chunk evaluation
     };
     return displayNames[metric] || metric;
   };
 
   // Helper functions to find selected options
   const findSelectedOption = (value, options) => {
-    return options.find(option => option.value === value) || null;
+    return options.find((option) => option.value === value) || null;
   };
 
   // Custom tooltip styles matching the provided CSS
@@ -120,10 +134,23 @@ export default function EvaluationScoreChart(testData) {
       const item = payload[0].payload;
 
       return (
-        <div className="section-content" style={{ backgroundColor: 'white', padding: '10px', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)', borderRadius: '4px' }}>
-          <p className="meta-label" style={{ fontWeight: 'bold', marginBottom: '5px' }}>{label}</p>
+        <div
+          className="section-content"
+          style={{
+            backgroundColor: "white",
+            padding: "10px",
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+            borderRadius: "4px",
+          }}
+        >
+          <p
+            className="meta-label"
+            style={{ fontWeight: "bold", marginBottom: "5px" }}
+          >
+            {label}
+          </p>
           <p className="meta-value">
-            <span style={{ color: '#002776', fontWeight: 'bold' }}>
+            <span style={{ color: "#002776", fontWeight: "bold" }}>
               {getMetricDisplayName(viewMetric)}: {payload[0].value}
             </span>
           </p>
@@ -131,7 +158,9 @@ export default function EvaluationScoreChart(testData) {
           <p className="meta-value">LLM: {item.llm}</p>
           <p className="meta-value">Embedding Model: {item.embedding_model}</p>
           <p className="meta-value">Chunk Size: {item.chunk_size}</p>
-          <p className="meta-value">Similar Vector Count: {item.similar_vector_count}</p>
+          <p className="meta-value">
+            Similar Vector Count: {item.similar_vector_count}
+          </p>
           <p className="meta-value">RAG Database: {item.rag_database}</p>
         </div>
       );
@@ -141,23 +170,24 @@ export default function EvaluationScoreChart(testData) {
 
   // Get the appropriate domain for the Y-axis based on the metric
   const getYAxisDomain = () => {
-    if (viewMetric === 'avgScore' || viewMetric === 'avgChunkScore') return [0, 5];
-    return 'auto';
+    if (viewMetric === "avgScore" || viewMetric === "avgChunkScore")
+      return [0, 5];
+    return "auto";
   };
 
   // Get chart color based on metric
   const getChartColor = () => {
     const colors = {
-      'avgScore': '#002776',
-      'avgChunkScore': '#002776', // Added a color for avgChunkScore
-      'chunk_size': '#002776',
-      'similar_vector_count': '#002776',
-      'options': '#002776',
-      'llm': '#002776',
-      'embedding_model': '#002776',
-      'chunk_evaluation': '#002776' // Added a color for chunk_evaluation
+      avgScore: "#002776",
+      avgChunkScore: "#002776", // Added a color for avgChunkScore
+      chunk_size: "#002776",
+      similar_vector_count: "#002776",
+      options: "#002776",
+      llm: "#002776",
+      embedding_model: "#002776",
+      chunk_evaluation: "#002776", // Added a color for chunk_evaluation
     };
-    return colors[viewMetric] || '#002776';
+    return colors[viewMetric] || "#002776";
   };
 
   return (
@@ -173,7 +203,11 @@ export default function EvaluationScoreChart(testData) {
               <Select
                 theme={customSelectTheme}
                 value={findSelectedOption(groupBy, groupByOptions)}
-                onChange={(selectedOption) => setGroupBy(selectedOption ? selectedOption.value : 'run_count')}
+                onChange={(selectedOption) =>
+                  setGroupBy(
+                    selectedOption ? selectedOption.value : "run_count"
+                  )
+                }
                 options={groupByOptions}
                 placeholder="Select grouping..."
                 isSearchable={false}
@@ -186,7 +220,11 @@ export default function EvaluationScoreChart(testData) {
               <Select
                 theme={customSelectTheme}
                 value={findSelectedOption(viewMetric, viewMetricOptions)}
-                onChange={(selectedOption) => setViewMetric(selectedOption ? selectedOption.value : 'avgScore')}
+                onChange={(selectedOption) =>
+                  setViewMetric(
+                    selectedOption ? selectedOption.value : "avgScore"
+                  )
+                }
                 options={viewMetricOptions}
                 placeholder="Select metric..."
                 isSearchable={false}
@@ -207,14 +245,8 @@ export default function EvaluationScoreChart(testData) {
                 margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
-                <XAxis
-                  dataKey="name"
-                  tick={{ fill: '#2c3e50' }}
-                />
-                <YAxis
-                  domain={getYAxisDomain()}
-                  tick={{ fill: '#2c3e50' }}
-                />
+                <XAxis dataKey="name" tick={{ fill: "#2c3e50" }} />
+                <YAxis domain={getYAxisDomain()} tick={{ fill: "#2c3e50" }} />
                 <Tooltip content={<CustomTooltip />} />
                 <Legend />
                 <Bar
@@ -231,7 +263,10 @@ export default function EvaluationScoreChart(testData) {
         <div className="section_without_border !mb-0 !pb-0">
           <div className="stats flex flex-wrap gap-4">
             {data.map((item) => (
-              <div className="stat-card p-4 bg-white rounded shadow" key={item.name}>
+              <div
+                className="stat-card p-4 bg-white rounded shadow"
+                key={item.name}
+              >
                 <div className="stat-label font-bold">{item.name}</div>
                 <div className="stat-value text-2xl">{item.avgScore}</div>
                 <div className="stat-label text-sm">Average Score</div>
@@ -246,7 +281,9 @@ export default function EvaluationScoreChart(testData) {
                   <div>RAG Database: {item.rag_database}</div>
                   <div>
                     {item.options.map((option, index) => (
-                      <p key={index} style={{ margin: 0 }}>{option.data}</p>
+                      <p key={index} style={{ margin: 0 }}>
+                        {option.data}
+                      </p>
                     ))}
                   </div>
                 </div>

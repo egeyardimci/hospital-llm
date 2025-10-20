@@ -24,11 +24,11 @@ function ChatMessage({ message }) {
 
   return (
     <div className={`chat-message ${messageClass}`}>
-      <div className="message-avatar">
-        {avatarLabel}
-      </div>
-      <div className="message-content" dangerouslySetInnerHTML={{ __html: content }}>
-      </div>
+      <div className="message-avatar">{avatarLabel}</div>
+      <div
+        className="message-content"
+        dangerouslySetInnerHTML={{ __html: content }}
+      ></div>
     </div>
   );
 }

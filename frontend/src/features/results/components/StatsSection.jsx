@@ -1,14 +1,20 @@
 function StatsSection({ data }) {
   // Calculate stats
   const totalTests = data.length;
-  const uniqueModels = [...new Set(data.map(item => item.llm))].length;
+  const uniqueModels = [...new Set(data.map((item) => item.llm))].length;
 
   const avgChunkSize = data.length
-    ? Math.round(data.reduce((sum, item) => sum + (item.chunk_size || 0), 0) / data.length)
+    ? Math.round(
+        data.reduce((sum, item) => sum + (item.chunk_size || 0), 0) /
+          data.length
+      )
     : 0;
 
   const avgVectorCount = data.length
-    ? Math.round(data.reduce((sum, item) => sum + (item.similar_vector_count || 0), 0) / data.length)
+    ? Math.round(
+        data.reduce((sum, item) => sum + (item.similar_vector_count || 0), 0) /
+          data.length
+      )
     : 0;
 
   return (

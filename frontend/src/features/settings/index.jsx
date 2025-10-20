@@ -8,7 +8,7 @@ const Settings = () => {
     email: 'john.doe@example.com',
     role: 'Researcher',
     department: 'AI Research Lab',
-    joinDate: '2024-01-15'
+    joinDate: '2024-01-15',
   });
   const [editedInfo, setEditedInfo] = useState({ ...userInfo });
 
@@ -44,7 +44,9 @@ const Settings = () => {
           <input
             type="text"
             value={editedInfo.name}
-            onChange={(e) => setEditedInfo({ ...editedInfo, name: e.target.value })}
+            onChange={(e) =>
+              setEditedInfo({ ...editedInfo, name: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -55,7 +57,9 @@ const Settings = () => {
           <input
             type="email"
             value={editedInfo.email}
-            onChange={(e) => setEditedInfo({ ...editedInfo, email: e.target.value })}
+            onChange={(e) =>
+              setEditedInfo({ ...editedInfo, email: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -66,7 +70,9 @@ const Settings = () => {
           <input
             type="text"
             value={editedInfo.role}
-            onChange={(e) => setEditedInfo({ ...editedInfo, role: e.target.value })}
+            onChange={(e) =>
+              setEditedInfo({ ...editedInfo, role: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -77,7 +83,9 @@ const Settings = () => {
           <input
             type="text"
             value={editedInfo.department}
-            onChange={(e) => setEditedInfo({ ...editedInfo, department: e.target.value })}
+            onChange={(e) =>
+              setEditedInfo({ ...editedInfo, department: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -123,7 +131,9 @@ const Settings = () => {
         </div>
         <div>
           <span className="font-medium text-gray-700">Member Since:</span>
-          <span className="ml-2 text-gray-600">{new Date(userInfo.joinDate).toLocaleDateString()}</span>
+          <span className="ml-2 text-gray-600">
+            {new Date(userInfo.joinDate).toLocaleDateString()}
+          </span>
         </div>
       </div>
 
@@ -146,7 +156,9 @@ const Settings = () => {
         <UserCircle color="#002776" size={92} />
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Settings</h1>
-          <p className="text-gray-600">Manage your account and application preferences</p>
+          <p className="text-gray-600">
+            Manage your account and application preferences
+          </p>
         </div>
       </div>
 
@@ -155,7 +167,9 @@ const Settings = () => {
         <div className="bg-white rounded-lg shadow p-6">
           <div className="flex items-center gap-2 mb-6">
             <User size={20} className="text-primary" />
-            <h2 className="text-lg font-semibold text-gray-800">Profile Information</h2>
+            <h2 className="text-lg font-semibold text-gray-800">
+              Profile Information
+            </h2>
           </div>
 
           {isEditingProfile ? <ProfileForm /> : <ProfileDisplay />}
@@ -163,13 +177,18 @@ const Settings = () => {
 
         {/* Account Actions Section */}
         <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-800 mb-6">Account Actions</h2>
+          <h2 className="text-lg font-semibold text-gray-800 mb-6">
+            Account Actions
+          </h2>
 
           <div className="space-y-4">
             <div className="bg-gray-50 rounded-md">
-              <h3 className="font-medium text-gray-800 mb-2">Session Management</h3>
+              <h3 className="font-medium text-gray-800 mb-2">
+                Session Management
+              </h3>
               <p className="text-sm text-gray-600 mb-4">
-                Log out from your current session. You will need to sign in again to access the application.
+                Log out from your current session. You will need to sign in
+                again to access the application.
               </p>
               <button
                 onClick={handleLogout}
@@ -184,7 +203,9 @@ const Settings = () => {
 
         {/* Application Info Section */}
         <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-800 mb-6">Application Information</h2>
+          <h2 className="text-lg font-semibold text-gray-800 mb-6">
+            Application Information
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>

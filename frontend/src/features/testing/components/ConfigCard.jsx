@@ -1,6 +1,6 @@
 import { Edit, Play, Trash2 } from "lucide-react";
 import { useState } from "react";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppSelector } from "../../../hooks/useAppSelector";
 
 const ConfigCard = ({ config, handleDelete, handleEdit, handleRun }) => {
   const [isRunning, setIsRunning] = useState(false);

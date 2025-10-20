@@ -1,8 +1,8 @@
 import { Save, Trash2, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppSelector } from "../../../hooks/useAppSelector";
 import Select from 'react-select'
-import { customSelectTheme } from "../../constants";
+import { customSelectTheme } from "../../../constants";
 
 const ConfigForm = ({ formConfig, setFormConfig, onSave, onCancel }) => {
   const [newOption, setNewOption] = useState({ name: null, is_enabled: true, data: null });

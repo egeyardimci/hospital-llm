@@ -1,4 +1,4 @@
-import ResultCard from '../../../components/ui/ResultCard';
+import ResultCard from './ResultCard';
 
 function ResultsContainer({ data }) {
   if (data.length === 0) {
@@ -14,7 +14,11 @@ function ResultsContainer({ data }) {
   return (
     <div id="results-container">
       {data.map((item, index) => (
-        <ResultCard key={item.testId || `test-${index}`} item={item} index={index} />
+        <ResultCard
+          key={item.testId || `test-${index}`}
+          item={item}
+          index={index}
+        />
       ))}
     </div>
   );

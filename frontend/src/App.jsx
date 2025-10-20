@@ -2,17 +2,12 @@ import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { useAppDispatch } from './hooks/useAppDispatch';
-import { useAppSelector } from './hooks/useAppSelector';
 import { fetchResults } from './store/slices/resultsSlice';
 import { setFilterOptions } from './store/slices/filtersSlice';
 import { extractFilterOptions } from './utils/filterUtils';
 import { TABS } from './constants';
 import './styles/tailwind.css';
-import StatsSection from './features/dashboard/components/StatsSection';
-import FiltersSection from './features/results/components/FiltersSection';
-import ResultsContainer from './features/results/components/ResultsContainer';
-import ChatbotTab from './features/chat/components/ChatbotTab';
-import EvaluationScoreChart from './features/dashboard/components/DataGraph';
+import ChatbotTab from './features/chat';
 import Header from './components/ui/Header';
 import LeftPanel from './components/ui/LeftPanel';
 import Testing from './features/testing';
@@ -26,12 +21,13 @@ import { fetchSystemPrompts } from './store/slices/systemPromptsSlice';
 import { fetchQABatches } from './store/slices/qaBatchSlice';
 import { fetchConfig } from './store/slices/configSlice';
 import { fetchVectorDBs } from './store/slices/vectordbSlice';
-import { ToastContainer } from './components/ui/Toast';
 import { fetchRuns } from './store/slices/runsSlice';
+import ResultsTab from './features/results';
+import VisualizationDashboard from './features/visualization-dashboard';
+import ToastContainer from './components/ui/Toasts';
 
 function AppContent() {
   const dispatch = useAppDispatch();
-  const { filteredData, loading } = useAppSelector(state => state.results);
   const [activeTab, setActiveTab] = useState(TABS.CHATBOT);
 
   useEffect(() => {
@@ -57,26 +53,21 @@ function AppContent() {
   }, [dispatch]);
 
   return (
-    <div className="h-screen flex flex-col"> {/* Full viewport height container */}
+    <div className="h-screen flex flex-col">
+      {' '}
+      {/* Full viewport height container */}
       <Header />
-      <div className="flex flex-1 min-h-0"> {/* Remaining space after header */}
+      <div className="flex flex-1 min-h-0">
+        {' '}
+        {/* Remaining space after header */}
         <LeftPanel activeTab={activeTab} setActiveTab={setActiveTab} />
         <div className="flex-1 p-4 overflow-y-scroll">
-
           {activeTab === TABS.RESULTS ? (
-            <>
-              <FiltersSection />
-              <StatsSection data={filteredData} />
-              {loading ? (
-                <div className="loading">Loading results...</div>
-              ) : (
-                <ResultsContainer data={filteredData} />
-              )}
-            </>
+            <ResultsTab />
           ) : activeTab === TABS.CHATBOT ? (
             <ChatbotTab />
           ) : activeTab === TABS.DATA ? (
-            <EvaluationScoreChart testData={filteredData} />
+            <VisualizationDashboard />
           ) : activeTab === TABS.TEST_CONFIGURATOR ? (
             <Testing />
           ) : activeTab === TABS.VECTORDB_EDITOR ? (

@@ -8,22 +8,29 @@ function ResultCard({ item, index }) {
   const [showError, setShowError] = useState(false);
   const [showEvaluation, setShowEvaluation] = useState(false);
 
-  const tests = useAppSelector(state => state.tests.tests);
-  const test = tests.find(t => t.test_id === item.test_id) || {};
+  const tests = useAppSelector((state) => state.tests.tests);
+  const test = tests.find((t) => t.test_id === item.test_id) || {};
 
-  const qaBatches = useAppSelector(state => state.qaBatches.qaBatches);
-  const qaBatch = qaBatches.find(batch => batch._id === test.qa_batch) || {}.title || "N/A";
+  const qaBatches = useAppSelector((state) => state.qaBatches.qaBatches);
+  const qaBatch =
+    qaBatches.find((batch) => batch._id === test.qa_batch) || {}.title || 'N/A';
 
   // Detect language (simple heuristic)
-  const isTurkish = /[çğıöşüÇĞİÖŞÜ]/.test(item.query) || /türk/i.test(item.query);
-  const hasError = item.error !== undefined && item.error !== null && item.error !== '';
+  const isTurkish =
+    /[çğıöşüÇĞİÖŞÜ]/.test(item.query) || /türk/i.test(item.query);
+  const hasError =
+    item.error !== undefined && item.error !== null && item.error !== '';
 
   return (
     <div className="card">
       <div className="card-header">
         <div>
-          <span className="test-id">{`Test ID: ${item.test_id || `Test-${index + 1}`}`}</span>
-          <span className="test-id">{`Run Count: ${item.run_count || "N/A"}`}</span>
+          <span className="test-id">{`Test ID: ${
+            item.test_id || `Test-${index + 1}`
+          }`}</span>
+          <span className="test-id">{`Run Count: ${
+            item.run_count || 'N/A'
+          }`}</span>
           {isTurkish && <span className="language-badge">Turkish</span>}
         </div>
         <span className="model-badge">{item.llm}</span>
@@ -43,7 +50,7 @@ function ResultCard({ item, index }) {
               <span>Expected Answer</span>
             </div>
             <div className="section-content">
-              {item.expected_answer || "No expected answer provided"}
+              {item.expected_answer || 'No expected answer provided'}
             </div>
           </div>
 
@@ -51,7 +58,10 @@ function ResultCard({ item, index }) {
             <div className="section-title">
               <span>Actual Response</span>
             </div>
-            <div className="section-content" dangerouslySetInnerHTML={{ __html: item.response }}></div>
+            <div
+              className="section-content"
+              dangerouslySetInnerHTML={{ __html: item.response }}
+            ></div>
           </div>
         </div>
 
@@ -67,7 +77,14 @@ function ResultCard({ item, index }) {
             </button>
           </div>
           <div className={`section-content ${showEvaluation ? '' : 'hidden'}`}>
-            {"General evaluation: " + item.evaluation + " \nScore: " + item.evaluation_score + "\nChunk evaluation: " + item.chunk_evaluation + "\nScore: " + item.chunk_evaluation_score || "No evaluation data available"}
+            {'General evaluation: ' +
+              item.evaluation +
+              ' \nScore: ' +
+              item.evaluation_score +
+              '\nChunk evaluation: ' +
+              item.chunk_evaluation +
+              '\nScore: ' +
+              item.chunk_evaluation_score || 'No evaluation data available'}
           </div>
         </div>
 
@@ -98,9 +115,10 @@ function ResultCard({ item, index }) {
           </div>
           <div className={`section-content ${showChunks ? '' : 'hidden'}`}>
             <ol>
-              {item.retrieved_chunks && item.retrieved_chunks.map((chunk, i) => (
-                <li key={i}>{chunk}</li>
-              ))}
+              {item.retrieved_chunks &&
+                item.retrieved_chunks.map((chunk, i) => (
+                  <li key={i}>{chunk}</li>
+                ))}
             </ol>
           </div>
         </div>
@@ -120,7 +138,9 @@ function ResultCard({ item, index }) {
             {item.options && item.options.length > 0 ? (
               <ul>
                 {item.options.map((option, i) => (
-                  <li key={i}>{option.name}: {option.data}</li>
+                  <li key={i}>
+                    {option.name}: {option.data}
+                  </li>
                 ))}
               </ul>
             ) : (
@@ -130,7 +150,7 @@ function ResultCard({ item, index }) {
         </div>
 
         {/* Options Section */}
-        {hasError &&
+        {hasError && (
           <div className="section">
             <div className="section-title">
               <span>Error</span>
@@ -145,7 +165,7 @@ function ResultCard({ item, index }) {
               {item.error}
             </div>
           </div>
-        }
+        )}
 
         <div className="meta-info">
           <div className="meta-item">
@@ -154,19 +174,21 @@ function ResultCard({ item, index }) {
           </div>
           <div className="meta-item">
             <span className="meta-label">Chunk Size</span>
-            <span className="meta-value">{item.chunk_size || "N/A"}</span>
+            <span className="meta-value">{item.chunk_size || 'N/A'}</span>
           </div>
           <div className="meta-item">
             <span className="meta-label">Chunk Overlap</span>
-            <span className="meta-value">{item.chunk_overlap || "N/A"}</span>
+            <span className="meta-value">{item.chunk_overlap || 'N/A'}</span>
           </div>
           <div className="meta-item">
             <span className="meta-label">Similar Vector Count</span>
-            <span className="meta-value">{item.similar_vector_count || "N/A"}</span>
+            <span className="meta-value">
+              {item.similar_vector_count || 'N/A'}
+            </span>
           </div>
           <div className="meta-item">
             <span className="meta-label">QA Batch</span>
-            <span className="meta-value">{qaBatch.title || "N/A"}</span>
+            <span className="meta-value">{qaBatch.title || 'N/A'}</span>
           </div>
           <div className="meta-item">
             <span className="meta-label">Timestamp</span>

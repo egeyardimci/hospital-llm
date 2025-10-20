@@ -1,22 +1,42 @@
 import { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, Save, X, HelpCircle, Search, ArrowLeft, Layers } from 'lucide-react';
+import {
+  Plus,
+  Edit,
+  Trash2,
+  Save,
+  X,
+  HelpCircle,
+  Search,
+  ArrowLeft,
+  Layers,
+} from 'lucide-react';
 import Select from 'react-select';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useDispatch } from 'react-redux';
 import { addQA, deleteQA, updateQA, fetchQA } from '../../store/slices/qaSlice';
-import { addQABatch, deleteQABatch, updateQABatch, fetchQABatches } from '../../store/slices/qaBatchSlice';
+import {
+  addQABatch,
+  deleteQABatch,
+  updateQABatch,
+  fetchQABatches,
+} from '../../store/slices/qaBatchSlice';
 import { customSelectTheme } from '../../constants';
 import { toast } from '../../utils/toast';
 
 // Q&A Pairs Component
 const QAPairsEditor = () => {
-  const qaPairs = useAppSelector(state => state.qa.qaPairs);
-  const qaBatches = useAppSelector(state => state.qaBatches.qaBatches);
+  const qaPairs = useAppSelector((state) => state.qa.qaPairs);
+  const qaBatches = useAppSelector((state) => state.qaBatches.qaBatches);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredQaPairs, setFilteredQaPairs] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
-  const [newQaPair, setNewQaPair] = useState({ query: '', answer: '', batch_id: '', path: '' });
+  const [newQaPair, setNewQaPair] = useState({
+    query: '',
+    answer: '',
+    batch_id: '',
+    path: '',
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,15 +48,22 @@ const QAPairsEditor = () => {
     if (searchTerm.trim() === '') {
       setFilteredQaPairs(qaPairs);
     } else {
-      const filtered = qaPairs.filter(pair => {
+      const filtered = qaPairs.filter((pair) => {
         // Find the associated batch for this QA pair
-        const associatedBatch = qaBatches.find(batch => batch._id === pair.batch_id);
-        const batchTitle = associatedBatch ? associatedBatch.title.toLowerCase() : '';
+        const associatedBatch = qaBatches.find(
+          (batch) => batch._id === pair.batch_id
+        );
+        const batchTitle = associatedBatch
+          ? associatedBatch.title.toLowerCase()
+          : '';
 
-        return pair.query.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        return (
+          pair.query.toLowerCase().includes(searchTerm.toLowerCase()) ||
           pair.answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          (pair.path && pair.path.toLowerCase().includes(searchTerm.toLowerCase())) ||
-          batchTitle.includes(searchTerm.toLowerCase());
+          (pair.path &&
+            pair.path.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          batchTitle.includes(searchTerm.toLowerCase())
+        );
       });
       setFilteredQaPairs(filtered);
     }
@@ -46,7 +73,7 @@ const QAPairsEditor = () => {
     setIsCreating(true);
     setEditingId(null);
     setNewQaPair({ query: '', answer: '', batch_id: '', path: '' });
-  }
+  };
 
   const handleSave = async (data) => {
     try {
@@ -54,7 +81,7 @@ const QAPairsEditor = () => {
         await dispatch(updateQA({ ...data, _id: editingId })).unwrap();
         toast.success('Q&A pair updated successfully');
       } else {
-        await dispatch(addQA({ ...data, _id: "" })).unwrap();
+        await dispatch(addQA({ ...data, _id: '' })).unwrap();
         toast.success('Q&A pair created successfully');
       }
       setIsCreating(false);
@@ -63,7 +90,7 @@ const QAPairsEditor = () => {
     } catch (error) {
       toast.error(`Failed to save Q&A pair: ${error}`);
     }
-  }
+  };
 
   const handleDelete = async (qaPair) => {
     try {
@@ -72,7 +99,7 @@ const QAPairsEditor = () => {
     } catch (error) {
       toast.error(`Failed to delete Q&A pair: ${error}`);
     }
-  }
+  };
 
   const QaForm = ({ qaPair, onSave, onCancel }) => {
     const [formData, setFormData] = useState(qaPair);
@@ -80,14 +107,16 @@ const QAPairsEditor = () => {
     // Create options for batch selector
     const batchOptions = [
       { value: '', label: 'No batch selected' },
-      ...qaBatches.map(batch => ({
+      ...qaBatches.map((batch) => ({
         value: batch._id,
-        label: batch.title
-      }))
+        label: batch.title,
+      })),
     ];
 
     // Find selected batch option
-    const selectedBatch = batchOptions.find(option => option.value === formData.batch_id) || batchOptions[0];
+    const selectedBatch =
+      batchOptions.find((option) => option.value === formData.batch_id) ||
+      batchOptions[0];
 
     return (
       <div className="bg-white rounded-lg shadow p-6 mb-4 border-2 border-blue-200">
@@ -99,7 +128,9 @@ const QAPairsEditor = () => {
             theme={customSelectTheme}
             options={batchOptions}
             value={selectedBatch}
-            onChange={(option) => setFormData({ ...formData, batch_id: option.value })}
+            onChange={(option) =>
+              setFormData({ ...formData, batch_id: option.value })
+            }
             placeholder="Select a batch (optional)..."
             className="w-full"
             isClearable
@@ -113,7 +144,9 @@ const QAPairsEditor = () => {
           </label>
           <textarea
             value={formData.query}
-            onChange={(e) => setFormData({ ...formData, query: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, query: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows={3}
             placeholder="Enter your question..."
@@ -126,7 +159,9 @@ const QAPairsEditor = () => {
           </label>
           <textarea
             value={formData.answer}
-            onChange={(e) => setFormData({ ...formData, answer: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, answer: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows={4}
             placeholder="Enter the expected answer..."
@@ -135,7 +170,10 @@ const QAPairsEditor = () => {
 
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Path <span className="text-gray-500 text-xs">(for tracing expected answer finding)</span>
+            Path{' '}
+            <span className="text-gray-500 text-xs">
+              (for tracing expected answer finding)
+            </span>
           </label>
           <input
             value={formData.path || ''}
@@ -168,7 +206,9 @@ const QAPairsEditor = () => {
 
   const QaCard = ({ pair }) => {
     // Find the batch for this Q&A pair
-    const associatedBatch = qaBatches.find(batch => batch._id === pair.batch_id);
+    const associatedBatch = qaBatches.find(
+      (batch) => batch._id === pair.batch_id
+    );
 
     return (
       <div className="bg-white rounded-lg shadow p-6 mb-4">
@@ -188,14 +228,19 @@ const QAPairsEditor = () => {
           </div>
           <div className="flex">
             <button
-              onClick={() => { setEditingId(pair._id); setIsCreating(false); }}
+              onClick={() => {
+                setEditingId(pair._id);
+                setIsCreating(false);
+              }}
               className="p-2 text-yellow-500 hover:text-yellow-700"
               title="Edit"
             >
               <Edit size={16} />
             </button>
             <button
-              onClick={() => { handleDelete(pair) }}
+              onClick={() => {
+                handleDelete(pair);
+              }}
               className="p-2 text-danger-dark hover:text-danger"
               title="Delete"
             >
@@ -297,10 +342,14 @@ const QAPairsEditor = () => {
           <div className="text-center py-12 bg-white rounded-lg shadow">
             <HelpCircle size={48} className="mx-auto text-gray-400 mb-4" />
             <p className="text-gray-500 text-lg mb-2">
-              {searchTerm ? 'No Q&A pairs match your search' : 'No Q&A pairs found'}
+              {searchTerm
+                ? 'No Q&A pairs match your search'
+                : 'No Q&A pairs found'}
             </p>
             <p className="text-gray-400 text-sm">
-              {searchTerm ? 'Try a different search term' : 'Create your first Q&A pair to get started'}
+              {searchTerm
+                ? 'Try a different search term'
+                : 'Create your first Q&A pair to get started'}
             </p>
           </div>
         )}
@@ -311,7 +360,7 @@ const QAPairsEditor = () => {
 
 // QA Batches Component
 const QABatchesEditor = () => {
-  const qaBatches = useAppSelector(state => state.qaBatches.qaBatches);
+  const qaBatches = useAppSelector((state) => state.qaBatches.qaBatches);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredQABatches, setFilteredQABatches] = useState([]);
   const [editingId, setEditingId] = useState(null);
@@ -327,9 +376,10 @@ const QABatchesEditor = () => {
     if (searchTerm.trim() === '') {
       setFilteredQABatches(qaBatches);
     } else {
-      const filtered = qaBatches.filter(batch =>
-        batch.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        batch.description.toLowerCase().includes(searchTerm.toLowerCase())
+      const filtered = qaBatches.filter(
+        (batch) =>
+          batch.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          batch.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredQABatches(filtered);
     }
@@ -339,7 +389,7 @@ const QABatchesEditor = () => {
     setIsCreating(true);
     setEditingId(null);
     setNewQABatch({ title: '', description: '' });
-  }
+  };
 
   const handleSave = async (data) => {
     try {
@@ -347,7 +397,7 @@ const QABatchesEditor = () => {
         await dispatch(updateQABatch({ ...data, _id: editingId })).unwrap();
         toast.success('QA batch updated successfully');
       } else {
-        await dispatch(addQABatch({ ...data, _id: "" })).unwrap();
+        await dispatch(addQABatch({ ...data, _id: '' })).unwrap();
         toast.success('QA batch created successfully');
       }
       setIsCreating(false);
@@ -356,7 +406,7 @@ const QABatchesEditor = () => {
     } catch (error) {
       toast.error(`Failed to save QA batch: ${error}`);
     }
-  }
+  };
 
   const handleDelete = async (qaBatch) => {
     try {
@@ -365,7 +415,7 @@ const QABatchesEditor = () => {
     } catch (error) {
       toast.error(`Failed to delete QA batch: ${error}`);
     }
-  }
+  };
 
   const QABatchForm = ({ qaBatch, onSave, onCancel }) => {
     const [formData, setFormData] = useState(qaBatch);
@@ -378,7 +428,9 @@ const QABatchesEditor = () => {
           </label>
           <input
             value={formData.title}
-            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter batch title..."
           />
@@ -390,7 +442,9 @@ const QABatchesEditor = () => {
           </label>
           <textarea
             value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, description: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows={4}
             placeholder="Enter batch description..."
@@ -429,14 +483,19 @@ const QABatchesEditor = () => {
           </div>
           <div className="flex">
             <button
-              onClick={() => { setEditingId(batch._id); setIsCreating(false); }}
+              onClick={() => {
+                setEditingId(batch._id);
+                setIsCreating(false);
+              }}
               className="p-2 text-yellow-500 hover:text-yellow-700"
               title="Edit"
             >
               <Edit size={16} />
             </button>
             <button
-              onClick={() => { handleDelete(batch) }}
+              onClick={() => {
+                handleDelete(batch);
+              }}
               className="p-2 text-danger-dark hover:text-danger"
               title="Delete"
             >
@@ -530,10 +589,14 @@ const QABatchesEditor = () => {
           <div className="text-center py-12 bg-white rounded-lg shadow">
             <Layers size={48} className="mx-auto text-gray-400 mb-4" />
             <p className="text-gray-500 text-lg mb-2">
-              {searchTerm ? 'No QA batches match your search' : 'No QA batches found'}
+              {searchTerm
+                ? 'No QA batches match your search'
+                : 'No QA batches found'}
             </p>
             <p className="text-gray-400 text-sm">
-              {searchTerm ? 'Try a different search term' : 'Create your first QA batch to get started'}
+              {searchTerm
+                ? 'Try a different search term'
+                : 'Create your first QA batch to get started'}
             </p>
           </div>
         )}
@@ -562,7 +625,9 @@ const QaEditor = () => {
               className="flex flex-col items-center p-6 bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-300 rounded-lg transition-all duration-200 min-w-[200px]"
             >
               <HelpCircle size={48} color="#002776" className="mb-3" />
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Q&A Pairs</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                Q&A Pairs
+              </h3>
               <p className="text-sm text-gray-600 text-center">
                 Manage individual question and answer pairs for testing
               </p>
@@ -573,7 +638,9 @@ const QaEditor = () => {
               className="flex flex-col items-center p-6 bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-300 rounded-lg transition-all duration-200 min-w-[200px]"
             >
               <Layers size={48} color="#002776" className="mb-3" />
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">QA Batches</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                QA Batches
+              </h3>
               <p className="text-sm text-gray-600 text-center">
                 Organize Q&A content into batches with titles and descriptions
               </p>
@@ -588,7 +655,17 @@ const QaEditor = () => {
         <>
           <div className="absolute top-4 left-4">
             <div className="space-y-2">
-              <button onClick={() => setSelectedOption(null)} className="flex items-center justify-center w-11 h-11 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200 group" > <ArrowLeft size={20} style={{ color: '#002776' }} className="group-hover:scale-110 transition-transform" /> </button>
+              <button
+                onClick={() => setSelectedOption(null)}
+                className="flex items-center justify-center w-11 h-11 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200 group"
+              >
+                {' '}
+                <ArrowLeft
+                  size={20}
+                  style={{ color: '#002776' }}
+                  className="group-hover:scale-110 transition-transform"
+                />{' '}
+              </button>
             </div>
           </div>
           <QAPairsEditor />
@@ -601,7 +678,17 @@ const QaEditor = () => {
         <>
           <div className="absolute top-4 left-4">
             <div className="space-y-2">
-              <button onClick={() => setSelectedOption(null)} className="flex items-center justify-center w-11 h-11 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200 group" > <ArrowLeft size={20} style={{ color: '#002776' }} className="group-hover:scale-110 transition-transform" /> </button>
+              <button
+                onClick={() => setSelectedOption(null)}
+                className="flex items-center justify-center w-11 h-11 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200 group"
+              >
+                {' '}
+                <ArrowLeft
+                  size={20}
+                  style={{ color: '#002776' }}
+                  className="group-hover:scale-110 transition-transform"
+                />{' '}
+              </button>
             </div>
           </div>
           <QABatchesEditor />
@@ -613,9 +700,7 @@ const QaEditor = () => {
   return (
     <div className="page flex flex-col relative">
       {/* Main content area */}
-      <div className="flex-1 p-6">
-        {renderContent()}
-      </div>
+      <div className="flex-1 p-6">{renderContent()}</div>
     </div>
   );
 };

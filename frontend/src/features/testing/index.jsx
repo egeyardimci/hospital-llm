@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { Plus, Settings } from 'lucide-react';
 import { useAppSelector } from '../../hooks/useAppSelector';
-import ConfigCard from './ConfigCard';
-import ConfigForm from './ConfigForm';
 import { useDispatch } from 'react-redux';
-import { addTest, deleteTest, runTest, updateTest } from '../../store/slices/testsSlice';
+import ConfigCard from './components/ConfigCard';
+import ConfigForm from './components/ConfigForm';
+import {
+  addTest,
+  deleteTest,
+  runTest,
+  updateTest,
+} from '../../store/slices/testsSlice';
 import { toast } from '../../utils/toast';
 
 const Testing = () => {
-  const testConfigs = useAppSelector(state => state.tests.tests)
+  const testConfigs = useAppSelector((state) => state.tests.tests);
   const [isCreating, setIsCreating] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const dispatch = useDispatch();
@@ -16,7 +21,7 @@ const Testing = () => {
   const [newConfig, setNewConfig] = useState();
 
   const handleCreate = () => {
-    const nextId = Math.max(...testConfigs.map(c => c.test_id), 0) + 1;
+    const nextId = Math.max(...testConfigs.map((c) => c.test_id), 0) + 1;
     setNewConfig({
       _id: '',
       test_description: '',
@@ -29,7 +34,7 @@ const Testing = () => {
       qa_batch: '',
       options: [],
       test_id: nextId,
-      rag_database : ''
+      rag_database: '',
     });
     setIsCreating(true);
   };
@@ -87,7 +92,9 @@ const Testing = () => {
       <div className="flex-1 p-6">
         <div className="flex flex-col items-center space-y-6">
           <Settings color="#002776" size={92} />
-          <h3 className="text-xl font-semibold text-gray-800">Configure Test Settings</h3>
+          <h3 className="text-xl font-semibold text-gray-800">
+            Configure Test Settings
+          </h3>
           <p className="text-gray-600 text-center max-w-md">
             Create and manage your AI test configurations
           </p>
@@ -95,8 +102,12 @@ const Testing = () => {
           <div className="w-full">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h2 className="text-2xl font-bold text-gray-800">Test Configurations</h2>
-                <p className="text-gray-600">Manage your AI test configurations</p>
+                <h2 className="text-2xl font-bold text-gray-800">
+                  Test Configurations
+                </h2>
+                <p className="text-gray-600">
+                  Manage your AI test configurations
+                </p>
               </div>
               <button
                 onClick={handleCreate}
@@ -118,7 +129,7 @@ const Testing = () => {
             )}
 
             <div className="space-y-4">
-              {testConfigs.map((config) => (
+              {testConfigs.map((config) =>
                 editingId === config.test_id ? (
                   <ConfigForm
                     key={config.test_id}
@@ -129,15 +140,25 @@ const Testing = () => {
                     setFormConfig={setNewConfig}
                   />
                 ) : (
-                  <ConfigCard key={config.test_id} config={config} handleDelete={handleDelete} handleEdit={handleEdit} handleRun={handleRun} />
+                  <ConfigCard
+                    key={config.test_id}
+                    config={config}
+                    handleDelete={handleDelete}
+                    handleEdit={handleEdit}
+                    handleRun={handleRun}
+                  />
                 )
-              ))}
+              )}
             </div>
 
             {testConfigs.length === 0 && !isCreating && (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No test configurations found</p>
-                <p className="text-gray-400 text-sm">Create your first configuration to get started</p>
+                <p className="text-gray-500 text-lg">
+                  No test configurations found
+                </p>
+                <p className="text-gray-400 text-sm">
+                  Create your first configuration to get started
+                </p>
               </div>
             )}
           </div>

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { CheckCircle, XCircle, Info, X } from 'lucide-react';
 import { useDispatch } from 'react-redux';
-import { removeToast } from '../../../store/slices/toastSlice';
+import { removeToast } from '../../../../store/slices/toastSlice';
 
 const Toast = ({ toast }) => {
   const dispatch = useDispatch();
@@ -19,7 +19,8 @@ const Toast = ({ toast }) => {
   };
 
   const getToastStyles = () => {
-    const baseStyles = "flex items-center p-4 mb-3 rounded-lg shadow-lg max-w-sm w-full transform transition-all duration-300 ease-in-out";
+    const baseStyles =
+      'flex items-center p-4 mb-3 rounded-lg shadow-lg max-w-sm w-full transform transition-all duration-300 ease-in-out';
 
     switch (toast.type) {
       case 'success':
@@ -47,12 +48,8 @@ const Toast = ({ toast }) => {
 
   return (
     <div className={getToastStyles()}>
-      <div className="flex-shrink-0 mr-3">
-        {getIcon()}
-      </div>
-      <div className="flex-1 text-sm font-medium">
-        {toast.message}
-      </div>
+      <div className="flex-shrink-0 mr-3">{getIcon()}</div>
+      <div className="flex-1 text-sm font-medium">{toast.message}</div>
       <button
         onClick={handleClose}
         className="flex-shrink-0 ml-3 p-1 rounded-full hover:bg-gray-200 transition-colors duration-200"

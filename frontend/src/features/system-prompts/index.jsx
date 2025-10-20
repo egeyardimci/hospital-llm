@@ -2,25 +2,35 @@ import { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Save, X, Settings, Search } from 'lucide-react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useDispatch } from 'react-redux';
-import { addSystemPrompt, deleteSystemPrompt, updateSystemPrompt } from '../../store/slices/systemPromptsSlice';
+import {
+  addSystemPrompt,
+  deleteSystemPrompt,
+  updateSystemPrompt,
+} from '../../store/slices/systemPromptsSlice';
 import { toast } from '../../utils/toast';
 
 const SystemPrompts = () => {
-  const systemPrompts = useAppSelector(state => state.systemPrompts.systemPrompts);
+  const systemPrompts = useAppSelector(
+    (state) => state.systemPrompts.systemPrompts
+  );
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredSystemPrompts, setFilteredSystemPrompts] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
-  const [newSystemPrompt, setNewSystemPrompt] = useState({ title: '', content: '' });
+  const [newSystemPrompt, setNewSystemPrompt] = useState({
+    title: '',
+    content: '',
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
       setFilteredSystemPrompts(systemPrompts);
     } else {
-      const filtered = systemPrompts.filter(prompt =>
-        prompt.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        prompt.content.toLowerCase().includes(searchTerm.toLowerCase())
+      const filtered = systemPrompts.filter(
+        (prompt) =>
+          prompt.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          prompt.content.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredSystemPrompts(filtered);
     }
@@ -30,15 +40,17 @@ const SystemPrompts = () => {
     setIsCreating(true);
     setEditingId(null);
     setNewSystemPrompt({ title: '', content: '' });
-  }
+  };
 
   const handleSave = async (data) => {
     try {
       if (editingId !== null) {
-        await dispatch(updateSystemPrompt({ ...data, _id: editingId })).unwrap();
+        await dispatch(
+          updateSystemPrompt({ ...data, _id: editingId })
+        ).unwrap();
         toast.success('System prompt updated successfully');
       } else {
-        await dispatch(addSystemPrompt({ ...data, _id: "" })).unwrap();
+        await dispatch(addSystemPrompt({ ...data, _id: '' })).unwrap();
         toast.success('System prompt created successfully');
       }
       setIsCreating(false);
@@ -47,7 +59,7 @@ const SystemPrompts = () => {
     } catch (error) {
       toast.error(`Failed to save system prompt: ${error}`);
     }
-  }
+  };
 
   const handleDelete = async (systemPrompt) => {
     try {
@@ -56,7 +68,7 @@ const SystemPrompts = () => {
     } catch (error) {
       toast.error(`Failed to delete system prompt: ${error}`);
     }
-  }
+  };
 
   const SystemPromptForm = ({ systemPrompt, onSave, onCancel }) => {
     const [formData, setFormData] = useState(systemPrompt);
@@ -70,7 +82,9 @@ const SystemPrompts = () => {
           <input
             type="text"
             value={formData.title}
-            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter system prompt title..."
           />
@@ -82,7 +96,9 @@ const SystemPrompts = () => {
           </label>
           <textarea
             value={formData.content}
-            onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, content: e.target.value })
+            }
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows={6}
             placeholder="Enter the system prompt content..."
@@ -111,7 +127,6 @@ const SystemPrompts = () => {
   };
 
   const SystemPromptCard = ({ prompt }) => {
-
     return (
       <div className="bg-white rounded-lg shadow p-6 mb-4">
         <div className="flex justify-between items-start mb-4">
@@ -122,14 +137,19 @@ const SystemPrompts = () => {
           </div>
           <div className="flex">
             <button
-              onClick={() => { setEditingId(prompt._id); setIsCreating(false); }}
+              onClick={() => {
+                setEditingId(prompt._id);
+                setIsCreating(false);
+              }}
               className="p-2 text-yellow-500 hover:text-yellow-700"
               title="Edit"
             >
               <Edit size={16} />
             </button>
             <button
-              onClick={() => { handleDelete(prompt) }}
+              onClick={() => {
+                handleDelete(prompt);
+              }}
               className="p-2 text-danger-dark hover:text-danger"
               title="Delete"
             >
@@ -156,8 +176,12 @@ const SystemPrompts = () => {
       <div className="flex flex-col items-center space-y-6 m-6">
         <Settings color="#002776" size={92} />
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">System Prompts</h1>
-          <p className="text-gray-600">Manage system prompts for AI conversations</p>
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">
+            System Prompts
+          </h1>
+          <p className="text-gray-600">
+            Manage system prompts for AI conversations
+          </p>
         </div>
         <button
           onClick={handleCreateNew}
@@ -181,7 +205,8 @@ const SystemPrompts = () => {
           />
         </div>
         <div className="mt-2 text-sm text-gray-600">
-          Showing {filteredSystemPrompts.length} of {systemPrompts.length} system prompts
+          Showing {filteredSystemPrompts.length} of {systemPrompts.length}{' '}
+          system prompts
         </div>
       </div>
 
@@ -218,10 +243,14 @@ const SystemPrompts = () => {
         <div className="text-center py-12 bg-white rounded-lg shadow">
           <Settings size={48} className="mx-auto text-gray-400 mb-4" />
           <p className="text-gray-500 text-lg mb-2">
-            {searchTerm ? 'No system prompts match your search' : 'No system prompts found'}
+            {searchTerm
+              ? 'No system prompts match your search'
+              : 'No system prompts found'}
           </p>
           <p className="text-gray-400 text-sm">
-            {searchTerm ? 'Try a different search term' : 'Create your first system prompt to get started'}
+            {searchTerm
+              ? 'Try a different search term'
+              : 'Create your first system prompt to get started'}
           </p>
         </div>
       )}
