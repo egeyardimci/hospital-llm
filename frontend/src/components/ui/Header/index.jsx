@@ -5,7 +5,7 @@ function Header() {
         <div>
           <span className="text-2xl text-white font-bold">SGK</span>
           <span className="text-2xl text-white font-medium">
-            Compliance Verification Tool
+            &nbsp;Compliance Verification Tool
           </span>
         </div>
         <img src="/sabanci.svg" alt="Logo" className="h-12 inline-block mr-4" />
