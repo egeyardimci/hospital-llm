@@ -42,6 +42,7 @@ ALIBABA_NLP_GTE_MULTILINGUAL_RERANKER_BASE = "Alibaba-NLP/gte-multilingual-reran
 
 # Options for LLM
 CROSS_ENCODER_OPTION = "CE"
+SELF_RAG_OPTION = "SELF_RAG"
 
 # RAG DB Options
 VECTOR_DB_OPTION = "VectorDB"

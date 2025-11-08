@@ -1,7 +1,22 @@
 
 from sentence_transformers import CrossEncoder
+from backend.common.config import CROSS_ENCODER_K
 from backend.utils.logger import get_logger
+from backend.ai.testing.models import TestOption
 logger = get_logger()
+
+def use_cross_encoder(cross_encoder_option:TestOption, query, retrieved_chunks):
+    cross_encoder_model_name = cross_encoder_option.data
+    top_k = CROSS_ENCODER_K
+
+    retrieved_chunks_cross_encoded = rerank_with_cross_encoder(
+        query,
+        retrieved_chunks,
+        cross_encoder_model_name,
+        top_k
+    )
+
+    return retrieved_chunks_cross_encoded
 
 def rerank_with_cross_encoder(query, retrieved_chunks, cross_encoder_model_name, top_k=None):
     """
