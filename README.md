@@ -24,6 +24,7 @@ hospital-llm/
 ### Tech Stack
 
 **Backend:**
+
 - FastAPI for REST API
 - MongoDB for data persistence
 - ChromaDB for vector storage
@@ -33,6 +34,7 @@ hospital-llm/
 - Sentence Transformers for embeddings
 
 **Frontend:**
+
 - React 18 with Vite
 - Redux Toolkit for state management
 - Tailwind CSS for styling
@@ -49,15 +51,23 @@ hospital-llm/
 - Groq API key
 - (Optional) Neo4j instance for graph database features
 
+### Deployment Options
+
+1. **Docker Deployment** (Recommended for production) - See [deployment/DEPLOYMENT.md](deployment/DEPLOYMENT.md)
+2. **Hugging Face Spaces** - See [deployment/DEPLOYMENT.md](deployment/DEPLOYMENT.md)
+3. **Local Development** - Instructions below
+
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd hospital-llm
    ```
 
 2. **Set up the backend**
+
    ```bash
    cd backend
    pip install -r requirements.txt
@@ -66,6 +76,7 @@ hospital-llm/
 3. **Configure environment variables**
 
    Create `backend/.env` file:
+
    ```env
    GROQ_API_KEY=gsk_your_api_key
    MONGO_DB_URI=mongodb+srv://your_mongodb_uri
@@ -86,12 +97,14 @@ hospital-llm/
 ### Running the Application
 
 **Terminal 1 - Start Backend:**
+
 ```bash
 cd backend
 uvicorn backend.web.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 **Terminal 2 - Start Frontend:**
+
 ```bash
 cd frontend
 npm run dev
@@ -104,6 +117,7 @@ The API will be available at `http://localhost:8000`
 ## Core Features
 
 ### 1. Test Configuration
+
 - Define test cases with specific LLM and embedding model combinations
 - Configure chunking parameters (size, overlap)
 - Select RAG database type (Vector, Graph, or Hybrid)
@@ -111,29 +125,34 @@ The API will be available at `http://localhost:8000`
 - Associate Q&A batches with test cases
 
 ### 2. Q&A Management
+
 - Create and manage question-answer pairs
 - Organize into batches for systematic testing
 - Import/export Q&A data
 
 ### 3. Test Execution
+
 - Run tests via UI or CLI
 - Automatic evaluation using LLM-as-a-judge
 - Results stored with detailed metadata
 - Each test run assigned a unique `run_count` for grouping
 
 ### 4. Results Analysis
+
 - Filter results by LLM, embedding model, run count, etc.
 - View detailed evaluation scores and reasoning
 - Compare retrieved chunks across different configurations
 - Export results for further analysis
 
 ### 5. Data Visualization
+
 - Group results by run count, LLM, embedding model, or other parameters
 - View average scores and chunk evaluation scores
 - Interactive charts with detailed tooltips
 - Statistical summaries by configuration
 
 ### 6. Interactive Chat
+
 - Real-time Q&A with document context
 - Configurable LLM and retrieval settings
 - View retrieved chunks and sources
@@ -141,18 +160,22 @@ The API will be available at `http://localhost:8000`
 ## Key Concepts
 
 ### Run Count System
+
 The `run_count` is a global counter that groups all tests executed together in a single batch. This allows:
+
 - Tracking different experimental runs
 - Comparing configurations across runs
 - Historical analysis of test evolution
 - Filtering dashboard data by specific runs
 
 ### RAG Database Modes
+
 - **VectorDB**: Traditional semantic search using ChromaDB with configurable embeddings
 - **GraphDB**: Knowledge graph queries using Neo4j for structured information retrieval
 - **HybridDB**: Combination of vector and graph approaches (experimental)
 
 ### Evaluation Metrics
+
 - **Response Score**: LLM-as-judge evaluation of the generated answer quality (0-5 scale)
 - **Chunk Score**: LLM-as-judge evaluation of retrieved chunk relevance (0-5 scale)
 - Both include reasoning for transparency
@@ -160,19 +183,77 @@ The `run_count` is a global counter that groups all tests executed together in a
 ## Running Tests
 
 ### Via Web UI
+
 1. Navigate to "Test Configurator" tab
 2. Create or select a test case
 3. Click "Run Test"
 4. Monitor progress and view results in "Results" tab
 
 ### Via Command Line
+
 ```bash
 # Run a specific test by test_id
 python -m backend.ai.testing.main <test_id>
 ```
 
+## Docker Deployment
+
+### Quick Docker Run
+
+```bash
+# Build the image from deployment directory
+docker build -f deployment/Dockerfile -t hospital-llm .
+
+# Run with environment variables
+docker run -p 7860:7860 \
+  -e GROQ_API_KEY="your_groq_api_key" \
+  -e MONGO_DB_URI="your_mongodb_uri" \
+  -e NEO4J_URI="your_neo4j_uri" \
+  -e NEO4J_USERNAME="neo4j" \
+  -e NEO4J_PASSWORD="your_password" \
+  -e NEO4J_DATABASE="neo4j" \
+  -e AURA_INSTANCEID="your_instance_id" \
+  -e AURA_INSTANCENAME="your_instance_name" \
+  hospital-llm
+
+docker run -p 7860:7860 `
+  -e GROQ_API_KEY="your_groq_api_key" `
+  -e MONGO_DB_URI="your_mongodb_uri" `
+  -e NEO4J_URI="your_neo4j_uri" `
+  -e NEO4J_USERNAME="neo4j" `
+  -e NEO4J_PASSWORD="your_password" `
+  -e NEO4J_DATABASE="neo4j" `
+  -e AURA_INSTANCEID="your_instance_id" `
+  -e AURA_INSTANCENAME="your_instance_name" `
+  hospital-llm
+```
+
+### Using Docker Compose
+
+```bash
+# Navigate to deployment directory
+cd deployment
+
+# Copy environment template
+cp .env.example .env
+
+# Edit .env with your credentials
+nano .env
+
+# Start all services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+```
+
+Access the application at `http://localhost:7860`
+
+For complete Docker and Hugging Face Spaces deployment instructions, see [deployment/DEPLOYMENT.md](deployment/DEPLOYMENT.md)
+
 ## Project Documentation
 
+- See [deployment/DEPLOYMENT.md](deployment/DEPLOYMENT.md) for Docker and Hugging Face Spaces deployment
 - See [backend/README.md](backend/README.md) for backend-specific documentation
 - See [frontend/README.md](frontend/README.md) for frontend-specific documentation
 - See [CLAUDE.md](CLAUDE.md) for detailed architecture and development guidance
@@ -180,6 +261,7 @@ python -m backend.ai.testing.main <test_id>
 ## Development
 
 ### Backend Development
+
 ```bash
 cd backend
 # Start with auto-reload
@@ -187,6 +269,7 @@ uvicorn backend.web.main:app --reload
 ```
 
 ### Frontend Development
+
 ```bash
 cd frontend
 # Development server with hot reload
@@ -202,45 +285,52 @@ npm run build
 ## API Documentation
 
 Once the backend is running, visit:
+
 - Swagger UI: `http://localhost:8000/docs`
 - ReDoc: `http://localhost:8000/redoc`
 
 ## Environment Variables
 
 ### Backend (.env in backend/)
-| Variable | Description | Required |
-|----------|-------------|----------|
-| GROQ_API_KEY | Groq API key for LLM access | Yes |
-| MONGO_DB_URI | MongoDB connection string | Yes |
-| NEO4J_URI | Neo4j database URI | No* |
-| NEO4J_USERNAME | Neo4j username | No* |
-| NEO4J_PASSWORD | Neo4j password | No* |
-| NEO4J_DATABASE | Neo4j database name | No* |
 
-*Required only if using GraphDB or HybridDB modes
+| Variable       | Description                 | Required |
+| -------------- | --------------------------- | -------- |
+| GROQ_API_KEY   | Groq API key for LLM access | Yes      |
+| MONGO_DB_URI   | MongoDB connection string   | Yes      |
+| NEO4J_URI      | Neo4j database URI          | No\*     |
+| NEO4J_USERNAME | Neo4j username              | No\*     |
+| NEO4J_PASSWORD | Neo4j password              | No\*     |
+| NEO4J_DATABASE | Neo4j database name         | No\*     |
+
+\*Required only if using GraphDB or HybridDB modes
 
 ### Frontend
+
 API endpoint is configured in `frontend/src/constants/index.js` (default: `http://127.0.0.1:8000`)
 
 ## Troubleshooting
 
 ### Backend won't start
+
 - Verify MongoDB connection string in `.env`
 - Check if port 8000 is available
 - Ensure all dependencies are installed: `pip install -r requirements.txt`
 
 ### Frontend won't start
+
 - Verify Node.js version (16+)
 - Clear node_modules and reinstall: `rm -rf node_modules && npm install`
 - Check if port 5173 is available
 
 ### Tests failing
+
 - Verify GROQ_API_KEY is valid
 - Check MongoDB connection and required collections exist
 - Ensure vector database is initialized (if using VectorDB mode)
 - For GraphDB mode, verify Neo4j connection
 
 ### No data in dashboard
+
 - Dashboard only shows tests with `run_count` field
 - Run some tests to generate data
 - Check that backend is running and accessible
