@@ -1,1 +1,1 @@
-#Directory to store KG scripts
+# Directory to store KG scripts

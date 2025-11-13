@@ -1,0 +1,5 @@
+pymupdf
+groq==0.4.2
+langchain==0.1.0
+langchain-groq==0.0.1
+chromadb==0.4.22
