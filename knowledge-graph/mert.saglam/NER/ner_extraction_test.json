@@ -1,0 +1,3990 @@
+{
+  "entities": [
+    {
+      "text": "SUT",
+      "type": "Belge",
+      "start_pos": 82,
+      "end_pos": 85,
+      "context": "SUT belgesi",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "SGK",
+      "type": "Kurum",
+      "start_pos": 0,
+      "end_pos": 0,
+      "context": "SGK tarafından",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Kurum",
+      "type": "Kurum",
+      "start_pos": 147,
+      "end_pos": 152,
+      "context": "Kurumca",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+      "type": "Kanun",
+      "start_pos": 853,
+      "end_pos": 915,
+      "context": "5510 sayılı Kanun",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun",
+      "type": "Kanun",
+      "start_pos": 1113,
+      "end_pos": 1190,
+      "context": "5502 sayılı Kanun",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Genel Sağlık Sigortası Uygulamaları Yönetmeliği",
+      "type": "Yönetmelik",
+      "start_pos": 1214,
+      "end_pos": 1261,
+      "context": "Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Sağlık Hizmetleri Fiyatlandırma Komisyonu",
+      "type": "Komisyon",
+      "start_pos": 734,
+      "end_pos": 775,
+      "context": "Sağlık Hizmetleri Fiyatlandırma Komisyonunca",
+      "properties": {},
+      "confidence": 0.75
+    },
+    {
+      "text": "MEDULA",
+      "type": "Sistem",
+      "start_pos": 0,
+      "end_pos": 0,
+      "context": "MEDULA sistemi",
+      "properties": {},
+      "confidence": 0.95
+    },
+    {
+      "text": "TSM",
+      "type": "Sistem",
+      "start_pos": 1650,
+      "end_pos": 1653,
+      "context": "TSM",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "ASM",
+      "type": "Sistem",
+      "start_pos": 1680,
+      "end_pos": 1683,
+      "context": "ASM",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "L1",
+      "type": "Sistem",
+      "start_pos": 1715,
+      "end_pos": 1717,
+      "context": "L1 laboratuvarı",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "L2",
+      "type": "Sistem",
+      "start_pos": 1720,
+      "end_pos": 1722,
+      "context": "L2 laboratuvarı",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "112",
+      "type": "Sistem",
+      "start_pos": 1746,
+      "end_pos": 1749,
+      "context": "112 Acil sağlık hizmeti birimleri",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "E2",
+      "type": "Sistem",
+      "start_pos": 2084,
+      "end_pos": 2086,
+      "context": "E2 entegre ilçe devlet hastanesi",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "E3",
+      "type": "Sistem",
+      "start_pos": 2090,
+      "end_pos": 2092,
+      "context": "E3 entegre ilçe devlet hastanesi",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun",
+      "type": "Kanun",
+      "start_pos": 2349,
+      "end_pos": 2398,
+      "context": "6197 sayılı Kanun",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Sağlık Bakanlığı",
+      "type": "Kurum",
+      "start_pos": 2705,
+      "end_pos": 2721,
+      "context": "Sağlık Bakanlığına bağlı",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Eğitim ve araştırma hastanesi",
+      "type": "Sistem",
+      "start_pos": 2556,
+      "end_pos": 2585,
+      "context": "Eğitim ve araştırma hastanesi olmayan",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "Eczacılar ve Eczaneler Hakkında Kanun",
+      "type": "Kanun",
+      "start_pos": 2356,
+      "end_pos": 2393,
+      "context": "18/12/1953 tarihli ve 6197 sayılı",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Özel poliklinikler",
+      "type": "Varlık",
+      "start_pos": 2245,
+      "end_pos": 2263,
+      "context": "Özel poliklinikler",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
+      "type": "Varlık",
+      "start_pos": 2264,
+      "end_pos": 2321,
+      "context": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Eczaneler",
+      "type": "Varlık",
+      "start_pos": 2369,
+      "end_pos": 2378,
+      "context": "18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren eczaneler",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "İkinci basamak sağlık hizmeti sunucuları",
+      "type": "Sistem",
+      "start_pos": 2455,
+      "end_pos": 2495,
+      "context": "İkinci basamak sağlık hizmeti sunucuları",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "Entegre ilçe hastanesi",
+      "type": "Sistem",
+      "start_pos": 2677,
+      "end_pos": 2699,
+      "context": "Entegre ilçe hastanesi (E1)",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri",
+      "type": "Varlık",
+      "start_pos": 2705,
+      "end_pos": 2760,
+      "context": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri",
+      "type": "Varlık",
+      "start_pos": 2761,
+      "end_pos": 2813,
+      "context": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Kamu kurumlarına ait hastaneler",
+      "type": "Varlık",
+      "start_pos": 2761,
+      "end_pos": 2792,
+      "context": "Kamu kurumlarına ait hastaneler, tıp merkezleri ve dal merkezleri",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Özel hastaneler",
+      "type": "Varlık",
+      "start_pos": 3187,
+      "end_pos": 3202,
+      "context": "Özel hastaneler (ÖH)",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Özel tıp merkezleri",
+      "type": "Varlık",
+      "start_pos": 3208,
+      "end_pos": 3227,
+      "context": "Özel tıp merkezleri ve dal merkezleri",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri",
+      "type": "Sistem",
+      "start_pos": 3659,
+      "end_pos": 3744,
+      "context": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri (U1)",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "Tıp Fakülteleri Bulunan Vakıf Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri",
+      "type": "Sistem",
+      "start_pos": 3753,
+      "end_pos": 3837,
+      "context": "Tıp Fakülteleri Bulunan Vakıf Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri (U2)",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "Optisyenlik müesseseleri",
+      "type": "Varlık",
+      "start_pos": 4336,
+      "end_pos": 4360,
+      "context": "Optisyenlik müesseseleri",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "type": "Varlık",
+      "start_pos": 4364,
+      "end_pos": 4400,
+      "context": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "ÖH",
+      "type": "Kanun",
+      "start_pos": 4237,
+      "end_pos": 4239,
+      "context": "",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "5510",
+      "type": "Kanun",
+      "start_pos": 5390,
+      "end_pos": 5394,
+      "context": "5510 sayılı Kanunun",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "RG",
+      "type": "Belge",
+      "start_pos": 4808,
+      "end_pos": 4810,
+      "context": "RG- 16/03/2023-32134/1 md.",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Optisyenlik müesseseleri",
+      "type": "Kurum",
+      "start_pos": 4333,
+      "end_pos": 4357,
+      "context": "Optisyenlik müesseseleri",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "type": "Kurum",
+      "start_pos": 4361,
+      "end_pos": 4397,
+      "context": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Kaplıcalar",
+      "type": "Kurum",
+      "start_pos": 4401,
+      "end_pos": 4411,
+      "context": "Kaplıcalar",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+      "type": "Kurum",
+      "start_pos": 4415,
+      "end_pos": 4484,
+      "context": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Sözleşmeli sağlık hizmeti sunucuları",
+      "type": "Kurum",
+      "start_pos": 4977,
+      "end_pos": 5013,
+      "context": "Sözleşmeli sağlık hizmeti sunucularına",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Ayakta veya yatarak tanı ve tedavi hizmeti sunan",
+      "type": "Durum",
+      "start_pos": 4928,
+      "end_pos": 4976,
+      "context": "Ayakta veya yatarak tanı ve tedavi hizmeti sunan",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Acil haller",
+      "type": "Durum",
+      "start_pos": 6501,
+      "end_pos": 6512,
+      "context": "Acil haller dışında",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Özel sevk kurallarına tabi olan",
+      "type": "Durum",
+      "start_pos": 5200,
+      "end_pos": 5231,
+      "context": "Özel sevk kurallarına tabi olan",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "112 Komuta Kontrol Merkezi",
+      "type": "Sistem",
+      "start_pos": 7761,
+      "end_pos": 7787,
+      "context": "112 Komuta Kontrol Merkezi koordinasyonunda",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Kronik Hemodiyaliz Tedavi Programı",
+      "type": "Program",
+      "start_pos": 8317,
+      "end_pos": 8351,
+      "context": "Kronik hemodiyaliz tedavisi programı için yapılacak sevkler",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Radyoterapi Merkezi",
+      "type": "Sistem",
+      "start_pos": 8123,
+      "end_pos": 8142,
+      "context": "radyoterapi merkezi bulunmaması halinde",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Hemodiyaliz Merkezi",
+      "type": "Sistem",
+      "start_pos": 8417,
+      "end_pos": 8436,
+      "context": "bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları",
+      "type": "Kurum",
+      "start_pos": 6521,
+      "end_pos": 6563,
+      "context": "Sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Hasta Kabul İşlemleri",
+      "type": "Prosedür",
+      "start_pos": 6862,
+      "end_pos": 6883,
+      "context": "Hasta kabul işlemleri",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Hasta Sevk İşlemleri",
+      "type": "Prosedür",
+      "start_pos": 6862,
+      "end_pos": 6882,
+      "context": "Hasta sevk işlemleri",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Tedavi",
+      "type": "Durum",
+      "start_pos": 6340,
+      "end_pos": 6346,
+      "context": "tedavinin sağlanamaması halinde",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Nakil",
+      "type": "Durum",
+      "start_pos": 6316,
+      "end_pos": 6316,
+      "context": "hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Sevk Belgesi",
+      "type": "Belge",
+      "start_pos": 8695,
+      "end_pos": 8707,
+      "context": "sevk belgesinin yenilenmesi",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "112 Komuta Kontrol Merkezi",
+      "type": "Kurum",
+      "start_pos": 9070,
+      "end_pos": 9096,
+      "context": "112 Komuta Kontrol Merkezi koordinasyonunda",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Kronik Hemodiyaliz Tedavi Programı",
+      "type": "Sistem",
+      "start_pos": 9626,
+      "end_pos": 9660,
+      "context": "kronik hemodiyaliz tedavisi programı için yapılacak sevkler",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Sağlık Hizmeti Sunucusu",
+      "type": "Kurum",
+      "start_pos": 8512,
+      "end_pos": 8535,
+      "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Özel Sağlık Hizmeti Sunucusu",
+      "type": "Kurum",
+      "start_pos": 9169,
+      "end_pos": 9197,
+      "context": "özel sağlık hizmeti sunucularına",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "İl",
+      "type": "Durum",
+      "start_pos": 8482,
+      "end_pos": 8482,
+      "context": "aynı il içindeki resmi sağlık hizmeti sunucularında",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Yerleşim Yeri",
+      "type": "Durum",
+      "start_pos": 8796,
+      "end_pos": 8809,
+      "context": "aynı yerleşim yerinde",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Tedavi",
+      "type": "Sistem",
+      "start_pos": 9155,
+      "end_pos": 9161,
+      "context": "tedavinin sağlanabileceği",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Yatış",
+      "type": "Sistem",
+      "start_pos": 8482,
+      "end_pos": 8482,
+      "context": "uygun yoğun bakım yatağının bulunmaması",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Çağrı Evrakı",
+      "type": "Belge",
+      "start_pos": 12055,
+      "end_pos": 12067,
+      "context": "Çağrı evrakı düzenlenmek suretiyle tedavi veya kontrol amaçlı çağrılanların müracaatları",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Hasta Müracaatları",
+      "type": "Durum",
+      "start_pos": 11092,
+      "end_pos": 11110,
+      "context": "Hasta müracaatları",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Trafik Kazası",
+      "type": "Durum",
+      "start_pos": 11166,
+      "end_pos": 11179,
+      "context": "Trafik kazası nedeniyle yapılan müracaatlar",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Akkiz İmmün Yetmezlik Sendromu",
+      "type": "Durum",
+      "start_pos": 11055,
+      "end_pos": 11085,
+      "context": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Hiperbarik Oksijen Tedavisi",
+      "type": "Durum",
+      "start_pos": 11112,
+      "end_pos": 11139,
+      "context": "Hiperbarik oksijen tedavisi için yapılan müracaatlar",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Acil Servis",
+      "type": "Sistem",
+      "start_pos": 11211,
+      "end_pos": 11222,
+      "context": "Acil servis müracaatları",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Konsültasyon",
+      "type": "Durum",
+      "start_pos": 11722,
+      "end_pos": 11734,
+      "context": "konsültasyon istemi hariç",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Sağlık Hizmetleri Alım Sözleşmesi",
+      "type": "Belge",
+      "start_pos": 12770,
+      "end_pos": 12803,
+      "context": "Sağlık Hizmetleri Alım Sözleşmesi imzalanan sağlık hizmeti sunucularınca",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Hasta Nakil Belgesi",
+      "type": "Belge",
+      "start_pos": 12702,
+      "end_pos": 12721,
+      "context": "Bu durumda, naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Kronik Hemodiyaliz Tedavi Programı",
+      "type": "Durum",
+      "start_pos": 13376,
+      "end_pos": 13410,
+      "context": "Kronik hemodiyaliz tedavisi programı için aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularına",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Radyoterapi Tedavisi",
+      "type": "Durum",
+      "start_pos": 14014,
+      "end_pos": 14034,
+      "context": "Radyoterapi tedavisi için aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Diyaliz Tedavisi",
+      "type": "Durum",
+      "start_pos": 13387,
+      "end_pos": 13403,
+      "context": "Diyaliz tedavisinin yapılamaması halinde ise yerleşim yeri dışındaki Sağlık Bakanlığı sağlık hizmeti sunucularına sevk edilebilir",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Organ Nakli",
+      "type": "Durum",
+      "start_pos": 14860,
+      "end_pos": 14871,
+      "context": "Organ, doku ve kök hücre nakline ilişkin; sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller ve devam tedavileri için yapılan müracaatlar",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Belediyelere Ait Sağlık Hizmeti Sunucuları",
+      "type": "Kurum",
+      "start_pos": 14573,
+      "end_pos": 14615,
+      "context": "Belediyelere ait sağlık hizmeti sunucularınca",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Resmi Sağlık Hizmeti Sunucuları",
+      "type": "Kurum",
+      "start_pos": 12941,
+      "end_pos": 12972,
+      "context": "Resmi sağlık hizmeti sunucularınca",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Özel Sağlık Hizmeti Sunucuları",
+      "type": "Kurum",
+      "start_pos": 13193,
+      "end_pos": 13223,
+      "context": "Özel sağlık hizmeti sunucularınca",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Sağlık Bakanlığı Sağlık Hizmeti Sunucuları",
+      "type": "Kurum",
+      "start_pos": 12770,
+      "end_pos": 12812,
+      "context": "Sağlık Bakanlığı sağlık hizmeti sunucularınca",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Hasta Sevk Formu",
+      "type": "Belge",
+      "start_pos": 17284,
+      "end_pos": 17300,
+      "context": "SUT eki “Hasta Sevk Formu” (EK-2/F) ile",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Söz konusu durum",
+      "type": "Durum",
+      "start_pos": 16511,
+      "end_pos": 16527,
+      "context": "Söz konusu durum nedeniyle yapıldığının Kurum inceleme birimlerince kabul edilmesi gerekmektedir",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Kurum bilgi işlem sistemi",
+      "type": "Sistem",
+      "start_pos": 17189,
+      "end_pos": 17214,
+      "context": "Kurum bilgi işlem sistemi üzerinden elektronik olarak düzenlenmesi sağlanıncaya kadar",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "112 Komuta Kontrol Merkezi",
+      "type": "Durum",
+      "start_pos": 17975,
+      "end_pos": 18001,
+      "context": "112 Komuta Kontrol Merkezi koordinasyonunu gösterir belge",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Fatura",
+      "type": "Belge",
+      "start_pos": 17829,
+      "end_pos": 17835,
+      "context": "fatura ekinde",
+      "properties": {},
+      "confidence": 0.6
+    },
+    {
+      "text": " Çağrı evrakı",
+      "type": "Belge",
+      "start_pos": 18033,
+      "end_pos": 18046,
+      "context": "çağrı evrakı gibi",
+      "properties": {},
+      "confidence": 0.5
+    },
+    {
+      "text": "Kurum sağlık yardımları",
+      "type": "Sistem",
+      "start_pos": 19422,
+      "end_pos": 19445,
+      "context": "Kurum sağlık yardımlarından yararlandırılan kişiler",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "MEDULA-Hastane",
+      "type": "Sistem",
+      "start_pos": 21596,
+      "end_pos": 21610,
+      "context": "MEDULA-Hastane sistemi",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "MEDULA-Optik",
+      "type": "Sistem",
+      "start_pos": 21612,
+      "end_pos": 21624,
+      "context": "MEDULA-Optik sistemi",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "MEDULA-Eczane",
+      "type": "Sistem",
+      "start_pos": 21626,
+      "end_pos": 21639,
+      "context": "MEDULA-Eczane sistemi",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "YUPASS",
+      "type": "Sistem",
+      "start_pos": 21800,
+      "end_pos": 21806,
+      "context": "YUPASS sistemi",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "5510 sayılı Kanun",
+      "type": "Kanun",
+      "start_pos": 23160,
+      "end_pos": 23177,
+      "context": "5510 sayılı Kanuna göre",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "T.C. Kimlik Numarası",
+      "type": "Belge",
+      "start_pos": 21669,
+      "end_pos": 21689,
+      "context": "T.C. Kimlik Numarası ile",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Yurtdışı Provizyon Aktivasyon ve Sağlık Sistemi",
+      "type": "Sistem",
+      "start_pos": 21751,
+      "end_pos": 21798,
+      "context": "Yurtdışı Provizyon Aktivasyon ve Sağlık Sistemi numarası ile",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Hasta Takip Numarası",
+      "type": "Belge",
+      "start_pos": 21821,
+      "end_pos": 21841,
+      "context": "Hasta Takip Numarası/provizyon",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Prim Ödeme Gün Sayısı",
+      "type": "Belge",
+      "start_pos": 22251,
+      "end_pos": 22272,
+      "context": "Prim Ödeme Gün Sayısı'nın yetersiz olması",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Acil Hal",
+      "type": "Durum",
+      "start_pos": 22735,
+      "end_pos": 22743,
+      "context": "Acil hal nedeniyle",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "İş Kazası ile Meslek Hastalığı Hali",
+      "type": "Durum",
+      "start_pos": 22750,
+      "end_pos": 22785,
+      "context": "İş kazası ile meslek hastalığı hali nedeniyle",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Bildirimi Zorunlu Bulaşıcı Hastalık",
+      "type": "Durum",
+      "start_pos": 22803,
+      "end_pos": 22838,
+      "context": "Bildirimi zorunlu bulaşıcı hastalık nedeniyle",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Kişiye Yönelik Koruyucu Sağlık Hizmeti",
+      "type": "Durum",
+      "start_pos": 22840,
+      "end_pos": 22878,
+      "context": "Kişiye yönelik koruyucu sağlık hizmeti nedeniyle",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Analık Hali",
+      "type": "Durum",
+      "start_pos": 22880,
+      "end_pos": 22891,
+      "context": "Analık hali nedeniyle",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Afet ve Savaş ile Grev ve Lokavt Hali",
+      "type": "Durum",
+      "start_pos": 22898,
+      "end_pos": 22935,
+      "context": "Afet ve savaş ile grev ve lokavt hali nedeniyle",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "18 Yaş Altı Çocuklar",
+      "type": "Durum",
+      "start_pos": 22937,
+      "end_pos": 22957,
+      "context": "18 yaş altı çocuklar nedeniyle",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Tıbben Başkasının Bakımına Muhtaç Kişiler",
+      "type": "Durum",
+      "start_pos": 22959,
+      "end_pos": 23000,
+      "context": "Tıbben başkasının bakımına muhtaç kişiler nedeniyle",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Madde Bağımlılığı Tedavisine Yönelik Sağlık Hizmetleri",
+      "type": "Durum",
+      "start_pos": 23101,
+      "end_pos": 23155,
+      "context": "Madde bağımlılığı tedavisine yönelik sağlık hizmetleri nedeniyle",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Engelli Sağlık Kurulu Raporu",
+      "type": "Belge",
+      "start_pos": 25115,
+      "end_pos": 25143,
+      "context": "Engelli Sağlık Kurulu Raporu",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Tıbben başkasının bakımına muhtaç kişi",
+      "type": "Durum",
+      "start_pos": 24890,
+      "end_pos": 24928,
+      "context": "Tıbben başkasının bakımına muhtaç kişi",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Yönetmelikler",
+      "type": "Belge",
+      "start_pos": 25069,
+      "end_pos": 25082,
+      "context": "Yönetmelikler",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Engelliler Hakkında Kanun",
+      "type": "Kanun",
+      "start_pos": 25002,
+      "end_pos": 25027,
+      "context": "Engelliler Hakkında Kanun",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Basbakanlık Genelgeleri",
+      "type": "Belge",
+      "start_pos": 23481,
+      "end_pos": 23481,
+      "context": "Basbakanlık Genelgeleri",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "3294",
+      "type": "Kanun",
+      "start_pos": 29022,
+      "end_pos": 29026,
+      "context": "3294 sayılı Sosyal Yardımlaşma ve Dayanışmayı Teşvik Kanunu",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Sosyal Yardımlaşma ve Dayanışmayı Teşvik Kanunu",
+      "type": "Kanun",
+      "start_pos": 29034,
+      "end_pos": 29081,
+      "context": "Sosyal Yardımlaşma ve Dayanışmayı Teşvik Kanunu hükümlerine göre",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Genel Sağlık Sigortası",
+      "type": "Durum",
+      "start_pos": 27714,
+      "end_pos": 27736,
+      "context": "genel sağlık sigortalısı",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Katılım Payı",
+      "type": "Varlık",
+      "start_pos": 27640,
+      "end_pos": 27652,
+      "context": "katılım payı",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Aile Hekimliği",
+      "type": "Sistem",
+      "start_pos": 27977,
+      "end_pos": 27991,
+      "context": "aile hekimleri",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Eğitim ve Araştırma Hastaneleri",
+      "type": "Sistem",
+      "start_pos": 29827,
+      "end_pos": 29858,
+      "context": "eğitim ve araştırma hastaneleri",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Semt Poliklinikleri",
+      "type": "Sistem",
+      "start_pos": 29884,
+      "end_pos": 29903,
+      "context": "semt poliklinikleri",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Üçüncü Basamak Hastaneleri",
+      "type": "Sistem",
+      "start_pos": 29941,
+      "end_pos": 29967,
+      "context": "üçüncü basamak hastane olarak basamaklandırılan",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Sosyal Yardımlaşma ve Dayanışmayı Teşvik Vakıfları",
+      "type": "Kurum",
+      "start_pos": 29034,
+      "end_pos": 29084,
+      "context": "sosyal yardımlaşma ve dayanışma vakıflarınca",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Kuzey Kıbrıs Türk Cumhuriyeti",
+      "type": "Durum",
+      "start_pos": 31102,
+      "end_pos": 31131,
+      "context": "Kuzey Kıbrıs Türk Cumhuriyeti’nde",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Eczaneler",
+      "type": "Sistem",
+      "start_pos": 31066,
+      "end_pos": 31075,
+      "context": "Eczanelerce",
+      "properties": {},
+      "confidence": 0.6
+    },
+    {
+      "text": "Hekim",
+      "type": "Durum",
+      "start_pos": 30086,
+      "end_pos": 30091,
+      "context": "Hekim ve diş hekimi muayenesi",
+      "properties": {},
+      "confidence": 0.5
+    },
+    {
+      "text": "Diş Hekimi",
+      "type": "Durum",
+      "start_pos": 30652,
+      "end_pos": 30662,
+      "context": "Hekim ve diş hekimi muayenesi",
+      "properties": {},
+      "confidence": 0.5
+    },
+    {
+      "text": "Üniversite Hastaneleri",
+      "type": "Kurum",
+      "start_pos": 30129,
+      "end_pos": 30151,
+      "context": "Devlet/vakıf üniversite hastaneleri",
+      "properties": {},
+      "confidence": 0.4
+    },
+    {
+      "text": "Tıp Fakültesi",
+      "type": "Kurum",
+      "start_pos": 30179,
+      "end_pos": 30192,
+      "context": "Tıp fakülteleri bulunan Devlet üniversiteleri",
+      "properties": {},
+      "confidence": 0.4
+    },
+    {
+      "text": "Sağlık Uygulama ve Araştırma Merkezi",
+      "type": "Kurum",
+      "start_pos": 29801,
+      "end_pos": 29837,
+      "context": "Sağlık uygulama ve araştırma merkezlerinde",
+      "properties": {},
+      "confidence": 0.4
+    },
+    {
+      "text": "İkinci Basamak Hastane",
+      "type": "Kurum",
+      "start_pos": 30396,
+      "end_pos": 30418,
+      "context": "İkinci ve üçüncü basamak hastane olarak basamaklandırılan Sağlık Bakanlığına bağlı hastanelerde",
+      "properties": {},
+      "confidence": 0.3
+    },
+    {
+      "text": "Üçüncü Basamak Hastane",
+      "type": "Kurum",
+      "start_pos": 29940,
+      "end_pos": 29962,
+      "context": "İkinci ve üçüncü basamak hastane olarak basamaklandırılan Sağlık Bakanlığına bağlı hastanelerde",
+      "properties": {},
+      "confidence": 0.3
+    },
+    {
+      "text": "Aile Hekimi",
+      "type": "Durum",
+      "start_pos": 30573,
+      "end_pos": 30584,
+      "context": "Sağlık hizmeti sunucularına sevk edilerek yapılan hekim ve diş hekimi muayenesi",
+      "properties": {},
+      "confidence": 0.2
+    },
+    {
+      "text": "Eğitim ve Araştırma Hastanesi",
+      "type": "Kurum",
+      "start_pos": 29826,
+      "end_pos": 29855,
+      "context": "Sağlık Bakanlığına bağlı eğitim ve araştırma hastaneleri",
+      "properties": {},
+      "confidence": 0.2
+    },
+    {
+      "text": "Reçete",
+      "type": "Belge",
+      "start_pos": 32166,
+      "end_pos": 32172,
+      "context": "yatan hasta reçeteleri",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "Eczane",
+      "type": "Kurum",
+      "start_pos": 32499,
+      "end_pos": 32505,
+      "context": "eczanelerce kişilerden tahsil edilir",
+      "properties": {},
+      "confidence": 0.82
+    },
+    {
+      "text": "Kurumca belirlenen kronik hastalıklar",
+      "type": "Durum",
+      "start_pos": 33076,
+      "end_pos": 33113,
+      "context": "Kurumca belirlenen kronik hastalıklar hariç olmak üzere",
+      "properties": {},
+      "confidence": 0.89
+    },
+    {
+      "text": "Elektronik sevk formu",
+      "type": "Sistem",
+      "start_pos": 33170,
+      "end_pos": 33191,
+      "context": "elektronik sevk formu ile sevk edilen hastalar",
+      "properties": {},
+      "confidence": 0.86
+    },
+    {
+      "text": "Gelir ve Aylık",
+      "type": "Durum",
+      "start_pos": 33514,
+      "end_pos": 33528,
+      "context": "Kurumdan gelir ve aylık alanlar",
+      "properties": {},
+      "confidence": 0.84
+    },
+    {
+      "text": "Hasta Katılım Payından Muaf İlaçlar Listesi",
+      "type": "Belge",
+      "start_pos": 34366,
+      "end_pos": 34409,
+      "context": "Kurumun resmi internet sitesinde yayınlanan “Hasta Katılım Payından Muaf İlaçlar Listesi”nde",
+      "properties": {},
+      "confidence": 0.91
+    },
+    {
+      "text": "www.sgk.gov.tr",
+      "type": "İnternet Sitesi",
+      "start_pos": 34338,
+      "end_pos": 34352,
+      "context": "Kurumun resmi internet sitesinde (www.sgk.gov.tr)",
+      "properties": {},
+      "confidence": 0.87
+    },
+    {
+      "text": "EK-4/D",
+      "type": "Belge",
+      "start_pos": 34417,
+      "end_pos": 34423,
+      "context": "Hasta Katılım Payından Muaf İlaçlar Listesi",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "EK-2/Ç",
+      "type": "Belge",
+      "start_pos": 35210,
+      "end_pos": 35216,
+      "context": "Diş Tedavileri Puan Listesi",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Diş Tedavileri Puan Listesi",
+      "type": "Belge",
+      "start_pos": 35176,
+      "end_pos": 35203,
+      "context": "EK-2/Ç",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "SUT",
+      "type": "Sistem",
+      "start_pos": 35167,
+      "end_pos": 35170,
+      "context": "SUT eki",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "RG- 05/08/2015- 29436/ 1 md.",
+      "type": "Belge",
+      "start_pos": 35394,
+      "end_pos": 35422,
+      "context": "Yürürlük: 05/08/2015",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "RG- 28/12/2018-30639/ 2 md.",
+      "type": "Belge",
+      "start_pos": 36013,
+      "end_pos": 36040,
+      "context": "Yürürlük: 15/01/2019",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "RG- 25/08/2022- 31934/ 6-d md.",
+      "type": "Belge",
+      "start_pos": 36591,
+      "end_pos": 36621,
+      "context": "Yürürlük: 03/09/2022",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Kurumla sözleşmeli optisyenlik müessesesi",
+      "type": "Sistem",
+      "start_pos": 36379,
+      "end_pos": 36420,
+      "context": "Kurumla sözleşmeli optisyenlik müessesesi",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "Kurumla sözleşmeli eczaneler",
+      "type": "Sistem",
+      "start_pos": 34778,
+      "end_pos": 34806,
+      "context": "Kurumla sözleşmeli eczaneler",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "MEDULA sistemi",
+      "type": "Sistem",
+      "start_pos": 34178,
+      "end_pos": 34178,
+      "context": "MEDULA sistemi",
+      "properties": {},
+      "confidence": 0.95
+    },
+    {
+      "text": "Ek:RG- 28/12/2018- 30639/ 2 md.",
+      "type": "Belge",
+      "start_pos": 36421,
+      "end_pos": 36452,
+      "context": "Ek:RG- 28/12/2018- 30639/ 2 md. Yürürlük: 15/01/2019",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Değişik: RG- 25/08/2022- 31934/ 6-d md.",
+      "type": "Belge",
+      "start_pos": 36581,
+      "end_pos": 36620,
+      "context": "Değişik: RG- 25/08/2022- 31934/ 6-d md. Yürürlük: 03/09/2022",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "SUT'un 1.8.1 maddesinde",
+      "type": "Belge",
+      "start_pos": 36343,
+      "end_pos": 36343,
+      "context": "SUT’un 1.8.1, 1.8.2 ve 1.8.3 maddelerinde tanımlanan katılım payları alınmaz",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "SUT'un 1.8.2 maddesinde",
+      "type": "Belge",
+      "start_pos": 36343,
+      "end_pos": 36343,
+      "context": "SUT’un 1.8.1, 1.8.2 ve 1.8.3 maddelerinde tanımlanan katılım payları alınmaz",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "SUT'un 1.8.3 maddesinde",
+      "type": "Belge",
+      "start_pos": 36343,
+      "end_pos": 36343,
+      "context": "SUT’un 1.8.1, 1.8.2 ve 1.8.3 maddelerinde tanımlanan katılım payları alınmaz",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "5510 sayılı Kanunun 75 inci maddesinde",
+      "type": "Kanun",
+      "start_pos": 38378,
+      "end_pos": 38416,
+      "context": "5510 sayılı Kanunun 75 inci maddesinde yer alan afet ve savaş hali nedeniyle sağlanan sağlık hizmetleri için SUT’un 1.8.1, 1.8.2 ve 1.8.3 maddelerinde tanımlanan katılım payları alınmaz",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "5510 sayılı Kanunun 94 üncü maddesinde",
+      "type": "Kanun",
+      "start_pos": 38569,
+      "end_pos": 38607,
+      "context": "5510 sayılı Kanunun 94 üncü maddesinde tanımlanan kontrol muayenelerinden SUT’un 1.8.1 maddesinde tanımlanan katılım payı alınmaz",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "Halk Sağlığı Genel Müdürlüğü",
+      "type": "Kurum",
+      "start_pos": 39294,
+      "end_pos": 39322,
+      "context": "Halk Sağlığı Genel Müdürlüğü Mikrobiyoloji Referans laboratuvarları",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "SUT Eki",
+      "type": "Belge",
+      "start_pos": 38731,
+      "end_pos": 38738,
+      "context": "SUT Eki ‘Ayakta Tedavide Hekim ve Diş Hekimi Muayenesi Katılım Payı Alınmayacak Kronik Hastalıklar Listesi’",
+      "properties": {},
+      "confidence": 0.95
+    },
+    {
+      "text": "EK-1/A",
+      "type": "Belge",
+      "start_pos": 39798,
+      "end_pos": 39804,
+      "context": "EK-1/A Listesinde",
+      "properties": {},
+      "confidence": 0.95
+    },
+    {
+      "text": "EK-2/B",
+      "type": "Belge",
+      "start_pos": 38778,
+      "end_pos": 38784,
+      "context": "EK-2/B Listesinde",
+      "properties": {},
+      "confidence": 0.95
+    },
+    {
+      "text": "Değişik",
+      "type": "Durum",
+      "start_pos": 39142,
+      "end_pos": 39149,
+      "context": "Değişik: RG- 25/08/2022- 31934/ 6-e md. Yürürlük: 03/09/2022",
+      "properties": {},
+      "confidence": 0.9
+    },
+    {
+      "text": "Kanun",
+      "type": "Kanun",
+      "start_pos": 40911,
+      "end_pos": 40916,
+      "context": "3292 sayılı Vatani Hizmet Tertibi Aylıklarının Bağlanması Hakkında Kanun",
+      "properties": {},
+      "confidence": 0.85
+    },
+    {
+      "text": "Emniyet Genel Müdürlüğü",
+      "type": "Kurum",
+      "start_pos": 42165,
+      "end_pos": 42188,
+      "context": "Emniyet Genel Müdürlüğü hesabına okuyan",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Türk Silahlı Kuvvetleri",
+      "type": "Kurum",
+      "start_pos": 42434,
+      "end_pos": 42457,
+      "context": "Türk Silahlı Kuvvetleri hesabına okuyan",
+      "properties": {},
+      "confidence": 0.8
+    },
+    {
+      "text": "Polis akademisi",
+      "type": "Sistem",
+      "start_pos": 42117,
+      "end_pos": 42132,
+      "context": "Polis akademisi ile fakülte ve yüksekokullarda",
+      "properties": {},
+      "confidence": 0.7
+    },
+    {
+      "text": "Harp okulları",
+      "type": "Sistem",
+      "start_pos": 42388,
+      "end_pos": 42401,
+      "context": "Harp okulları ile fakülte ve yüksekokullarda",
+      "properties": {},
+      "confidence": 0.7
+    }
+  ],
+  "relations": [
+    {
+      "entity1": "ÖH",
+      "entity2": "Kanun",
+      "relation_type": "oluşturur",
+      "context": "Kanun",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "5510",
+      "entity2": "Kanun",
+      "relation_type": "oluşturur",
+      "context": "Kanun",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "Kurum",
+      "relation_type": "oluşturur",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Sistem",
+      "relation_type": "oluşturur",
+      "context": "Sistem",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "RG",
+      "entity2": "Belge",
+      "relation_type": "oluşturur",
+      "context": "Belge",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum",
+      "entity2": "Kurum",
+      "relation_type": "eşit",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Optisyenlik müesseseleri",
+      "entity2": "Kurum",
+      "relation_type": "oluşturur",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "entity2": "Kurum",
+      "relation_type": "oluşturur",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kaplıcalar",
+      "entity2": "Kurum",
+      "relation_type": "oluşturur",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+      "entity2": "Kurum",
+      "relation_type": "oluşturur",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık Bakanlığı",
+      "entity2": "Kurum",
+      "relation_type": "oluşturur",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sözleşmeli sağlık hizmeti sunucuları",
+      "entity2": "Kurum",
+      "relation_type": "oluşturur",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Ayakta veya yatarak tanı ve tedavi hizmeti sunan",
+      "entity2": "Durum",
+      "relation_type": "oluşturur",
+      "context": "Durum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Acil haller",
+      "entity2": "Durum",
+      "relation_type": "oluşturur",
+      "context": "Durum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Özel sevk kurallarına tabi olan",
+      "entity2": "Durum",
+      "relation_type": "oluşturur",
+      "context": "Durum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "MEDULA",
+      "relation_type": "yönetilir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kanun",
+      "entity2": "5510",
+      "relation_type": "yönetilir",
+      "context": "Kanun",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum",
+      "entity2": "SGK",
+      "relation_type": "yönetilir",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sistem",
+      "entity2": "MEDULA",
+      "relation_type": "yönetilir",
+      "context": "Sistem",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Belge",
+      "entity2": "RG",
+      "relation_type": "yönetilir",
+      "context": "Belge",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum",
+      "entity2": "Kurum",
+      "relation_type": "yönetilir",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum",
+      "entity2": "Optisyenlik müesseseleri",
+      "relation_type": "yönetilir",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum",
+      "entity2": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "relation_type": "yönetilir",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum",
+      "entity2": "Kaplıcalar",
+      "relation_type": "yönetilir",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum",
+      "entity2": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+      "relation_type": "yönetilir",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetilir",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum",
+      "entity2": "Sözleşmeli sağlık hizmeti sunucuları",
+      "relation_type": "yönetilir",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Durum",
+      "entity2": "Ayakta veya yatarak tanı ve tedavi hizmeti sunan",
+      "relation_type": "yönetilir",
+      "context": "Durum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Durum",
+      "entity2": "Acil haller",
+      "relation_type": "yönetilir",
+      "context": "Durum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Durum",
+      "entity2": "Özel sevk kurallarına tabi olan",
+      "relation_type": "yönetilir",
+      "context": "Durum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık Bakanlığı",
+      "entity2": "MEDULA",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "112 Komuta Kontrol Merkezi",
+      "entity2": "MEDULA",
+      "relation_type": "yönetir",
+      "context": "112 Komuta Kontrol Merkezi tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Radyoterapi Merkezi",
+      "entity2": "MEDULA",
+      "relation_type": "yönetir",
+      "context": "Radyoterapi Merkezi tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Hemodiyaliz Merkezi",
+      "entity2": "MEDULA",
+      "relation_type": "yönetir",
+      "context": "Hemodiyaliz Merkezi tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık Bakanlığı",
+      "entity2": "SGK",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetilir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık Bakanlığı",
+      "entity2": "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetilir",
+      "context": "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Acil Haller",
+      "entity2": "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları",
+      "relation_type": "yönetir",
+      "context": "Acil Haller için",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları",
+      "entity2": "Acil Haller",
+      "relation_type": "yönetilir",
+      "context": "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık Bakanlığı",
+      "entity2": "Kronik Hemodiyaliz Tedavi Programı",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kronik Hemodiyaliz Tedavi Programı",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetilir",
+      "context": "Kronik Hemodiyaliz Tedavi Programı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Hasta Kabul İşlemleri",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık Bakanlığı",
+      "entity2": "Hasta Kabul İşlemleri",
+      "relation_type": "yönetilir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Hasta Sevk İşlemleri",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık Bakanlığı",
+      "entity2": "Hasta Sevk İşlemleri",
+      "relation_type": "yönetilir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Tedavi",
+      "entity2": "Hasta Kabul İşlemleri",
+      "relation_type": "yönetir",
+      "context": "Tedavi için",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Hasta Kabul İşlemleri",
+      "entity2": "Tedavi",
+      "relation_type": "yönetilir",
+      "context": "Hasta Kabul İşlemleri tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Nakil",
+      "entity2": "Hasta Sevk İşlemleri",
+      "relation_type": "yönetir",
+      "context": "Nakil için",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Hasta Sevk İşlemleri",
+      "entity2": "Nakil",
+      "relation_type": "yönetilir",
+      "context": "Hasta Sevk İşlemleri tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sevk Belgesi",
+      "entity2": "Hasta Sevk İşlemleri",
+      "relation_type": "yönetir",
+      "context": "Sevk Belgesi için",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Hasta Sevk İşlemleri",
+      "entity2": "Sevk Belgesi",
+      "relation_type": "yönetilir",
+      "context": "Hasta Sevk İşlemleri tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "112 Komuta Kontrol Merkezi",
+      "relation_type": "yönetir",
+      "context": "MEDULA tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Hemodiyaliz Merkezi",
+      "relation_type": "yönetir",
+      "context": "MEDULA tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Diyaliz Tedavisi",
+      "relation_type": "yönetir",
+      "context": "MEDULA tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Radyoterapi Tedavisi",
+      "relation_type": "yönetir",
+      "context": "MEDULA tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Kronik Hemodiyaliz Tedavi Programı",
+      "relation_type": "yönetir",
+      "context": "MEDULA tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Organ Nakli",
+      "relation_type": "yönetir",
+      "context": "MEDULA tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Akkiz İmmün Yetmezlik Sendromu",
+      "relation_type": "yönetir",
+      "context": "MEDULA tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "112 Komuta Kontrol Merkezi",
+      "entity2": "Hasta Nakil Belgesi",
+      "relation_type": "koordinatör",
+      "context": "112 Komuta Kontrol Merkezi tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık Hizmetleri Alım Sözleşmesi",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sevk Belgesi",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "RG",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "SUT",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Trafik Kazası",
+      "entity2": "Sağlık Bakanlığı",
+      "relation_type": "yönetir",
+      "context": "Sağlık Bakanlığı tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "SGK",
+      "relation_type": "yönetilir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "112 Komuta Kontrol Merkezi",
+      "relation_type": "koordinasyon",
+      "context": "112 Komuta Kontrol Merkezi koordinasyonunda",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Resmi sağlık hizmeti sunucuları",
+      "relation_type": "yönetilir",
+      "context": "Resmi sağlık hizmeti sunucularında",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Özel sağlık hizmeti sunucuları",
+      "relation_type": "yönetilir",
+      "context": "Özel sağlık hizmeti sunucularında",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "SUT",
+      "relation_type": "yönetilir",
+      "context": "SUT’un 2.3 maddesi hükümleri doğrultusunda",
+      "confidence": 0.7,
+      "properties": {}
+    },
+    {
+      "entity1": "MEDULA",
+      "entity2": "Hasta Sevk Formu",
+      "relation_type": "yaratılır",
+      "context": "SUT’un 1.5.1.A-2 ve 1.5.1.B-2 maddelerine uygun olarak düzenlenen sevk belgesi",
+      "confidence": 0.7,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "Resmi sağlık hizmeti sunucuları",
+      "relation_type": "yönetir",
+      "context": "Resmi sağlık hizmeti sunucularında",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "Özel sağlık hizmeti sunucuları",
+      "relation_type": "yönetir",
+      "context": "Özel sağlık hizmeti sunucularında",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "112 Komuta Kontrol Merkezi",
+      "entity2": "MEDULA",
+      "relation_type": "koordinasyon",
+      "context": "112 Komuta Kontrol Merkezi koordinasyonunda",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Resmi sağlık hizmeti sunucuları",
+      "entity2": "MEDULA",
+      "relation_type": "yönetilir",
+      "context": "Resmi sağlık hizmeti sunucularında",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Özel sağlık hizmeti sunucuları",
+      "entity2": "MEDULA",
+      "relation_type": "yönetilir",
+      "context": "Özel sağlık hizmeti sunucularında",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "SUT",
+      "entity2": "MEDULA",
+      "relation_type": "yönetilir",
+      "context": "SUT’un 2.3 maddesi hükümleri doğrultusunda",
+      "confidence": 0.7,
+      "properties": {}
+    },
+    {
+      "entity1": "Hasta Sevk Formu",
+      "entity2": "MEDULA",
+      "relation_type": "yaratılır",
+      "context": "SUT’un 1.5.1.A-2 ve 1.5.1.B-2 maddelerine uygun olarak düzenlenen sevk belgesi",
+      "confidence": 0.7,
+      "properties": {}
+    },
+    {
+      "entity1": "Hiperbarik oksijen tedavisi",
+      "entity2": "MEDULA",
+      "relation_type": "yönetilir",
+      "context": "Hiperbarik oksijen tedavisi için yapılan müracaatlar",
+      "confidence": 0.6,
+      "properties": {}
+    },
+    {
+      "entity1": "Trafik kazası",
+      "entity2": "MEDULA",
+      "relation_type": "yönetilir",
+      "context": "Trafik kazası nedeniyle yapılan müracaatlar",
+      "confidence": 0.6,
+      "properties": {}
+    },
+    {
+      "entity1": "Acil servis",
+      "entity2": "MEDULA",
+      "relation_type": "yönetilir",
+      "context": "Acil servis müracaatları",
+      "confidence": 0.6,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum bilgi işlem sistemi",
+      "entity2": "MEDULA",
+      "relation_type": "yönetilir",
+      "context": "Kurum bilgi işlem sistemi",
+      "confidence": 0.5,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "MEDULA",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "SUT",
+      "relation_type": "referans alır",
+      "context": "SUT eki",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "Hasta Sevk Formu",
+      "relation_type": "referans alır",
+      "context": "SUT eki",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "Fatura",
+      "relation_type": "referans alır",
+      "context": "fatura ekinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "Çağrı evrakı",
+      "relation_type": "referans alır",
+      "context": "fatura ekinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "Kurum bilgi işlem sistemi",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "SGK",
+      "entity2": "Kurum sağlık yardımları",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "112 Komuta Kontrol Merkezi",
+      "entity2": "SGK",
+      "relation_type": "referans alır",
+      "context": "fatura ekinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık Bakanlığı",
+      "entity2": "Sağlık hizmeti sunucusu",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık hizmeti sunucusu",
+      "entity2": "SGK",
+      "relation_type": "yönetilir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık hizmeti sunucusu",
+      "entity2": "Kurum bilgi işlem sistemi",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Sağlık hizmeti sunucusu",
+      "entity2": "Kurum sağlık yardımları",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "SUT",
+      "entity2": "Hasta Sevk Formu",
+      "relation_type": "referans alır",
+      "context": "SUT eki",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "SUT",
+      "entity2": "Fatura",
+      "relation_type": "referans alır",
+      "context": "fatura ekinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "SUT",
+      "entity2": "Çağrı evrakı",
+      "relation_type": "referans alır",
+      "context": "fatura ekinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Hasta Sevk Formu",
+      "entity2": "SGK",
+      "relation_type": "referans alır",
+      "context": "SUT eki",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Hasta Sevk Formu",
+      "entity2": "SUT",
+      "relation_type": "referans verir",
+      "context": "SUT eki",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Fatura",
+      "entity2": "SGK",
+      "relation_type": "referans alır",
+      "context": "fatura ekinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Fatura",
+      "entity2": "SUT",
+      "relation_type": "referans verir",
+      "context": "fatura ekinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Çağrı evrakı",
+      "entity2": "SGK",
+      "relation_type": "referans alır",
+      "context": "fatura ekinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Çağrı evrakı",
+      "entity2": "SUT",
+      "relation_type": "referans verir",
+      "context": "fatura ekinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum bilgi işlem sistemi",
+      "entity2": "SGK",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum bilgi işlem sistemi",
+      "entity2": "Sağlık hizmeti sunucusu",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum bilgi işlem sistemi",
+      "entity2": "Kurum sağlık yardımları",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum sağlık yardımları",
+      "entity2": "SGK",
+      "relation_type": "yönetilir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum sağlık yardımları",
+      "entity2": "Kurum bilgi işlem sistemi",
+      "relation_type": "yönetir",
+      "context": "SGK tarafından",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "5510",
+      "entity2": "SGK",
+      "relation_type": "ilgili",
+      "context": "Kanuna göre",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Engelli Sağlık Kurulu Raporu",
+      "entity2": "SGK",
+      "relation_type": "ilgili",
+      "context": "Belge",
+      "confidence": 0.7,
+      "properties": {}
+    },
+    {
+      "entity1": "Analık hali",
+      "entity2": "5510",
+      "relation_type": "ilgili",
+      "context": "Kanun bakımından",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Tıbben başkasının bakımına muhtaç kişi",
+      "entity2": "SGK",
+      "relation_type": "ilgili",
+      "context": "Kurum",
+      "confidence": 0.7,
+      "properties": {}
+    },
+    {
+      "entity1": "Acil hal",
+      "entity2": "SGK",
+      "relation_type": "yönetilir",
+      "context": "Başbakanlık Genelgeleri doğrultusunda",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Yönetmelikler",
+      "entity2": "SGK",
+      "relation_type": "ilgili",
+      "context": "Kurum",
+      "confidence": 0.7,
+      "properties": {}
+    },
+    {
+      "entity1": "Engelliler Hakkında Kanun",
+      "entity2": "SGK",
+      "relation_type": "ilgili",
+      "context": "Kanun",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Basbakanlık Genelgeleri",
+      "entity2": "SGK",
+      "relation_type": "yönetilir",
+      "context": "Genelgeleri doğrultusunda",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurum bilgi işlem sistemi",
+      "entity2": "SGK",
+      "relation_type": "yönetilir",
+      "context": "Kurum",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "5510",
+      "entity2": "Kanun",
+      "relation_type": "ilgili",
+      "context": "5510 sayılı Kanun",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "SUT",
+      "entity2": "Belge",
+      "relation_type": "ilgili",
+      "context": "SUT’un 4.1.2 - Yatarak tedavilerde reçetelerin düzenlenmesi başlıklı maddesinde",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Reçete",
+      "entity2": "Belge",
+      "relation_type": "ilgili",
+      "context": "yatan hasta reçeteleri",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Eczane",
+      "entity2": "Kurum",
+      "relation_type": "ilgili",
+      "context": "eczaneye ilk müracaatında",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Kurumca",
+      "entity2": "Kronik Hastalıklar",
+      "relation_type": "belirlenir",
+      "context": "Kurumca belirlenen kronik hastalıklar",
+      "confidence": 0.9,
+      "properties": {}
+    },
+    {
+      "entity1": "Elektronik Sevk Formu",
+      "entity2": "Sistem",
+      "relation_type": "ilgili",
+      "context": "elektronik sevk formu ile sevk edilen hastalar",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Gelir ve Aylık",
+      "entity2": "Durum",
+      "relation_type": "ilgili",
+      "context": "Gelir ve Aylık",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "Hasta Katılım Payından Muaf İlaçlar Listesi",
+      "entity2": "Belge",
+      "relation_type": "ilgili",
+      "context": "Hasta Katılım Payından Muaf İlaçlar Listesi",
+      "confidence": 0.8,
+      "properties": {}
+    },
+    {
+      "entity1": "www.sgk.gov.tr",
+      "entity2": "İnternet Sitesi",
+      "relation_type": "ilgili",
+      "context": "www.sgk.gov.tr",
+      "confidence": 0.8,
+      "properties": {}
+    }
+  ],
+  "entities_by_type": {
+    "Belge": [
+      {
+        "text": "SUT",
+        "type": "Belge",
+        "start_pos": 82,
+        "end_pos": 85,
+        "context": "SUT belgesi",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "RG",
+        "type": "Belge",
+        "start_pos": 4808,
+        "end_pos": 4810,
+        "context": "RG- 16/03/2023-32134/1 md.",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Sevk Belgesi",
+        "type": "Belge",
+        "start_pos": 8695,
+        "end_pos": 8707,
+        "context": "sevk belgesinin yenilenmesi",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Çağrı Evrakı",
+        "type": "Belge",
+        "start_pos": 12055,
+        "end_pos": 12067,
+        "context": "Çağrı evrakı düzenlenmek suretiyle tedavi veya kontrol amaçlı çağrılanların müracaatları",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Sağlık Hizmetleri Alım Sözleşmesi",
+        "type": "Belge",
+        "start_pos": 12770,
+        "end_pos": 12803,
+        "context": "Sağlık Hizmetleri Alım Sözleşmesi imzalanan sağlık hizmeti sunucularınca",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Hasta Nakil Belgesi",
+        "type": "Belge",
+        "start_pos": 12702,
+        "end_pos": 12721,
+        "context": "Bu durumda, naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Hasta Sevk Formu",
+        "type": "Belge",
+        "start_pos": 17284,
+        "end_pos": 17300,
+        "context": "SUT eki “Hasta Sevk Formu” (EK-2/F) ile",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Fatura",
+        "type": "Belge",
+        "start_pos": 17829,
+        "end_pos": 17835,
+        "context": "fatura ekinde",
+        "properties": {},
+        "confidence": 0.6
+      },
+      {
+        "text": " Çağrı evrakı",
+        "type": "Belge",
+        "start_pos": 18033,
+        "end_pos": 18046,
+        "context": "çağrı evrakı gibi",
+        "properties": {},
+        "confidence": 0.5
+      },
+      {
+        "text": "T.C. Kimlik Numarası",
+        "type": "Belge",
+        "start_pos": 21669,
+        "end_pos": 21689,
+        "context": "T.C. Kimlik Numarası ile",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Hasta Takip Numarası",
+        "type": "Belge",
+        "start_pos": 21821,
+        "end_pos": 21841,
+        "context": "Hasta Takip Numarası/provizyon",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Prim Ödeme Gün Sayısı",
+        "type": "Belge",
+        "start_pos": 22251,
+        "end_pos": 22272,
+        "context": "Prim Ödeme Gün Sayısı'nın yetersiz olması",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Engelli Sağlık Kurulu Raporu",
+        "type": "Belge",
+        "start_pos": 25115,
+        "end_pos": 25143,
+        "context": "Engelli Sağlık Kurulu Raporu",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Yönetmelikler",
+        "type": "Belge",
+        "start_pos": 25069,
+        "end_pos": 25082,
+        "context": "Yönetmelikler",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "Basbakanlık Genelgeleri",
+        "type": "Belge",
+        "start_pos": 23481,
+        "end_pos": 23481,
+        "context": "Basbakanlık Genelgeleri",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "Reçete",
+        "type": "Belge",
+        "start_pos": 32166,
+        "end_pos": 32172,
+        "context": "yatan hasta reçeteleri",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "Hasta Katılım Payından Muaf İlaçlar Listesi",
+        "type": "Belge",
+        "start_pos": 34366,
+        "end_pos": 34409,
+        "context": "Kurumun resmi internet sitesinde yayınlanan “Hasta Katılım Payından Muaf İlaçlar Listesi”nde",
+        "properties": {},
+        "confidence": 0.91
+      },
+      {
+        "text": "EK-4/D",
+        "type": "Belge",
+        "start_pos": 34417,
+        "end_pos": 34423,
+        "context": "Hasta Katılım Payından Muaf İlaçlar Listesi",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "EK-2/Ç",
+        "type": "Belge",
+        "start_pos": 35210,
+        "end_pos": 35216,
+        "context": "Diş Tedavileri Puan Listesi",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Diş Tedavileri Puan Listesi",
+        "type": "Belge",
+        "start_pos": 35176,
+        "end_pos": 35203,
+        "context": "EK-2/Ç",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "RG- 05/08/2015- 29436/ 1 md.",
+        "type": "Belge",
+        "start_pos": 35394,
+        "end_pos": 35422,
+        "context": "Yürürlük: 05/08/2015",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "RG- 28/12/2018-30639/ 2 md.",
+        "type": "Belge",
+        "start_pos": 36013,
+        "end_pos": 36040,
+        "context": "Yürürlük: 15/01/2019",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "RG- 25/08/2022- 31934/ 6-d md.",
+        "type": "Belge",
+        "start_pos": 36591,
+        "end_pos": 36621,
+        "context": "Yürürlük: 03/09/2022",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Ek:RG- 28/12/2018- 30639/ 2 md.",
+        "type": "Belge",
+        "start_pos": 36421,
+        "end_pos": 36452,
+        "context": "Ek:RG- 28/12/2018- 30639/ 2 md. Yürürlük: 15/01/2019",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Değişik: RG- 25/08/2022- 31934/ 6-d md.",
+        "type": "Belge",
+        "start_pos": 36581,
+        "end_pos": 36620,
+        "context": "Değişik: RG- 25/08/2022- 31934/ 6-d md. Yürürlük: 03/09/2022",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "SUT'un 1.8.1 maddesinde",
+        "type": "Belge",
+        "start_pos": 36343,
+        "end_pos": 36343,
+        "context": "SUT’un 1.8.1, 1.8.2 ve 1.8.3 maddelerinde tanımlanan katılım payları alınmaz",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "SUT'un 1.8.2 maddesinde",
+        "type": "Belge",
+        "start_pos": 36343,
+        "end_pos": 36343,
+        "context": "SUT’un 1.8.1, 1.8.2 ve 1.8.3 maddelerinde tanımlanan katılım payları alınmaz",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "SUT'un 1.8.3 maddesinde",
+        "type": "Belge",
+        "start_pos": 36343,
+        "end_pos": 36343,
+        "context": "SUT’un 1.8.1, 1.8.2 ve 1.8.3 maddelerinde tanımlanan katılım payları alınmaz",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "SUT Eki",
+        "type": "Belge",
+        "start_pos": 38731,
+        "end_pos": 38738,
+        "context": "SUT Eki ‘Ayakta Tedavide Hekim ve Diş Hekimi Muayenesi Katılım Payı Alınmayacak Kronik Hastalıklar Listesi’",
+        "properties": {},
+        "confidence": 0.95
+      },
+      {
+        "text": "EK-1/A",
+        "type": "Belge",
+        "start_pos": 39798,
+        "end_pos": 39804,
+        "context": "EK-1/A Listesinde",
+        "properties": {},
+        "confidence": 0.95
+      },
+      {
+        "text": "EK-2/B",
+        "type": "Belge",
+        "start_pos": 38778,
+        "end_pos": 38784,
+        "context": "EK-2/B Listesinde",
+        "properties": {},
+        "confidence": 0.95
+      }
+    ],
+    "Kurum": [
+      {
+        "text": "SGK",
+        "type": "Kurum",
+        "start_pos": 0,
+        "end_pos": 0,
+        "context": "SGK tarafından",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Kurum",
+        "type": "Kurum",
+        "start_pos": 147,
+        "end_pos": 152,
+        "context": "Kurumca",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Sağlık Bakanlığı",
+        "type": "Kurum",
+        "start_pos": 2705,
+        "end_pos": 2721,
+        "context": "Sağlık Bakanlığına bağlı",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Optisyenlik müesseseleri",
+        "type": "Kurum",
+        "start_pos": 4333,
+        "end_pos": 4357,
+        "context": "Optisyenlik müesseseleri",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Tıbbi cihaz ve malzeme tedarikçileri",
+        "type": "Kurum",
+        "start_pos": 4361,
+        "end_pos": 4397,
+        "context": "Tıbbi cihaz ve malzeme tedarikçileri",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Kaplıcalar",
+        "type": "Kurum",
+        "start_pos": 4401,
+        "end_pos": 4411,
+        "context": "Kaplıcalar",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+        "type": "Kurum",
+        "start_pos": 4415,
+        "end_pos": 4484,
+        "context": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Sözleşmeli sağlık hizmeti sunucuları",
+        "type": "Kurum",
+        "start_pos": 4977,
+        "end_pos": 5013,
+        "context": "Sözleşmeli sağlık hizmeti sunucularına",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları",
+        "type": "Kurum",
+        "start_pos": 6521,
+        "end_pos": 6563,
+        "context": "Sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "112 Komuta Kontrol Merkezi",
+        "type": "Kurum",
+        "start_pos": 9070,
+        "end_pos": 9096,
+        "context": "112 Komuta Kontrol Merkezi koordinasyonunda",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Sağlık Hizmeti Sunucusu",
+        "type": "Kurum",
+        "start_pos": 8512,
+        "end_pos": 8535,
+        "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Özel Sağlık Hizmeti Sunucusu",
+        "type": "Kurum",
+        "start_pos": 9169,
+        "end_pos": 9197,
+        "context": "özel sağlık hizmeti sunucularına",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Belediyelere Ait Sağlık Hizmeti Sunucuları",
+        "type": "Kurum",
+        "start_pos": 14573,
+        "end_pos": 14615,
+        "context": "Belediyelere ait sağlık hizmeti sunucularınca",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Resmi Sağlık Hizmeti Sunucuları",
+        "type": "Kurum",
+        "start_pos": 12941,
+        "end_pos": 12972,
+        "context": "Resmi sağlık hizmeti sunucularınca",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Özel Sağlık Hizmeti Sunucuları",
+        "type": "Kurum",
+        "start_pos": 13193,
+        "end_pos": 13223,
+        "context": "Özel sağlık hizmeti sunucularınca",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Sağlık Bakanlığı Sağlık Hizmeti Sunucuları",
+        "type": "Kurum",
+        "start_pos": 12770,
+        "end_pos": 12812,
+        "context": "Sağlık Bakanlığı sağlık hizmeti sunucularınca",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Sosyal Yardımlaşma ve Dayanışmayı Teşvik Vakıfları",
+        "type": "Kurum",
+        "start_pos": 29034,
+        "end_pos": 29084,
+        "context": "sosyal yardımlaşma ve dayanışma vakıflarınca",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "Üniversite Hastaneleri",
+        "type": "Kurum",
+        "start_pos": 30129,
+        "end_pos": 30151,
+        "context": "Devlet/vakıf üniversite hastaneleri",
+        "properties": {},
+        "confidence": 0.4
+      },
+      {
+        "text": "Tıp Fakültesi",
+        "type": "Kurum",
+        "start_pos": 30179,
+        "end_pos": 30192,
+        "context": "Tıp fakülteleri bulunan Devlet üniversiteleri",
+        "properties": {},
+        "confidence": 0.4
+      },
+      {
+        "text": "Sağlık Uygulama ve Araştırma Merkezi",
+        "type": "Kurum",
+        "start_pos": 29801,
+        "end_pos": 29837,
+        "context": "Sağlık uygulama ve araştırma merkezlerinde",
+        "properties": {},
+        "confidence": 0.4
+      },
+      {
+        "text": "İkinci Basamak Hastane",
+        "type": "Kurum",
+        "start_pos": 30396,
+        "end_pos": 30418,
+        "context": "İkinci ve üçüncü basamak hastane olarak basamaklandırılan Sağlık Bakanlığına bağlı hastanelerde",
+        "properties": {},
+        "confidence": 0.3
+      },
+      {
+        "text": "Üçüncü Basamak Hastane",
+        "type": "Kurum",
+        "start_pos": 29940,
+        "end_pos": 29962,
+        "context": "İkinci ve üçüncü basamak hastane olarak basamaklandırılan Sağlık Bakanlığına bağlı hastanelerde",
+        "properties": {},
+        "confidence": 0.3
+      },
+      {
+        "text": "Eğitim ve Araştırma Hastanesi",
+        "type": "Kurum",
+        "start_pos": 29826,
+        "end_pos": 29855,
+        "context": "Sağlık Bakanlığına bağlı eğitim ve araştırma hastaneleri",
+        "properties": {},
+        "confidence": 0.2
+      },
+      {
+        "text": "Eczane",
+        "type": "Kurum",
+        "start_pos": 32499,
+        "end_pos": 32505,
+        "context": "eczanelerce kişilerden tahsil edilir",
+        "properties": {},
+        "confidence": 0.82
+      },
+      {
+        "text": "Halk Sağlığı Genel Müdürlüğü",
+        "type": "Kurum",
+        "start_pos": 39294,
+        "end_pos": 39322,
+        "context": "Halk Sağlığı Genel Müdürlüğü Mikrobiyoloji Referans laboratuvarları",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Emniyet Genel Müdürlüğü",
+        "type": "Kurum",
+        "start_pos": 42165,
+        "end_pos": 42188,
+        "context": "Emniyet Genel Müdürlüğü hesabına okuyan",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Türk Silahlı Kuvvetleri",
+        "type": "Kurum",
+        "start_pos": 42434,
+        "end_pos": 42457,
+        "context": "Türk Silahlı Kuvvetleri hesabına okuyan",
+        "properties": {},
+        "confidence": 0.8
+      }
+    ],
+    "Kanun": [
+      {
+        "text": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+        "type": "Kanun",
+        "start_pos": 853,
+        "end_pos": 915,
+        "context": "5510 sayılı Kanun",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun",
+        "type": "Kanun",
+        "start_pos": 1113,
+        "end_pos": 1190,
+        "context": "5502 sayılı Kanun",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun",
+        "type": "Kanun",
+        "start_pos": 2349,
+        "end_pos": 2398,
+        "context": "6197 sayılı Kanun",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "Eczacılar ve Eczaneler Hakkında Kanun",
+        "type": "Kanun",
+        "start_pos": 2356,
+        "end_pos": 2393,
+        "context": "18/12/1953 tarihli ve 6197 sayılı",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "ÖH",
+        "type": "Kanun",
+        "start_pos": 4237,
+        "end_pos": 4239,
+        "context": "",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "5510",
+        "type": "Kanun",
+        "start_pos": 5390,
+        "end_pos": 5394,
+        "context": "5510 sayılı Kanunun",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "5510 sayılı Kanun",
+        "type": "Kanun",
+        "start_pos": 23160,
+        "end_pos": 23177,
+        "context": "5510 sayılı Kanuna göre",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Engelliler Hakkında Kanun",
+        "type": "Kanun",
+        "start_pos": 25002,
+        "end_pos": 25027,
+        "context": "Engelliler Hakkında Kanun",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "3294",
+        "type": "Kanun",
+        "start_pos": 29022,
+        "end_pos": 29026,
+        "context": "3294 sayılı Sosyal Yardımlaşma ve Dayanışmayı Teşvik Kanunu",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Sosyal Yardımlaşma ve Dayanışmayı Teşvik Kanunu",
+        "type": "Kanun",
+        "start_pos": 29034,
+        "end_pos": 29081,
+        "context": "Sosyal Yardımlaşma ve Dayanışmayı Teşvik Kanunu hükümlerine göre",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "5510 sayılı Kanunun 75 inci maddesinde",
+        "type": "Kanun",
+        "start_pos": 38378,
+        "end_pos": 38416,
+        "context": "5510 sayılı Kanunun 75 inci maddesinde yer alan afet ve savaş hali nedeniyle sağlanan sağlık hizmetleri için SUT’un 1.8.1, 1.8.2 ve 1.8.3 maddelerinde tanımlanan katılım payları alınmaz",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "5510 sayılı Kanunun 94 üncü maddesinde",
+        "type": "Kanun",
+        "start_pos": 38569,
+        "end_pos": 38607,
+        "context": "5510 sayılı Kanunun 94 üncü maddesinde tanımlanan kontrol muayenelerinden SUT’un 1.8.1 maddesinde tanımlanan katılım payı alınmaz",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "Kanun",
+        "type": "Kanun",
+        "start_pos": 40911,
+        "end_pos": 40916,
+        "context": "3292 sayılı Vatani Hizmet Tertibi Aylıklarının Bağlanması Hakkında Kanun",
+        "properties": {},
+        "confidence": 0.85
+      }
+    ],
+    "Yönetmelik": [
+      {
+        "text": "Genel Sağlık Sigortası Uygulamaları Yönetmeliği",
+        "type": "Yönetmelik",
+        "start_pos": 1214,
+        "end_pos": 1261,
+        "context": "Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri",
+        "properties": {},
+        "confidence": 0.7
+      }
+    ],
+    "Komisyon": [
+      {
+        "text": "Sağlık Hizmetleri Fiyatlandırma Komisyonu",
+        "type": "Komisyon",
+        "start_pos": 734,
+        "end_pos": 775,
+        "context": "Sağlık Hizmetleri Fiyatlandırma Komisyonunca",
+        "properties": {},
+        "confidence": 0.75
+      }
+    ],
+    "Sistem": [
+      {
+        "text": "MEDULA",
+        "type": "Sistem",
+        "start_pos": 0,
+        "end_pos": 0,
+        "context": "MEDULA sistemi",
+        "properties": {},
+        "confidence": 0.95
+      },
+      {
+        "text": "TSM",
+        "type": "Sistem",
+        "start_pos": 1650,
+        "end_pos": 1653,
+        "context": "TSM",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "ASM",
+        "type": "Sistem",
+        "start_pos": 1680,
+        "end_pos": 1683,
+        "context": "ASM",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "L1",
+        "type": "Sistem",
+        "start_pos": 1715,
+        "end_pos": 1717,
+        "context": "L1 laboratuvarı",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "L2",
+        "type": "Sistem",
+        "start_pos": 1720,
+        "end_pos": 1722,
+        "context": "L2 laboratuvarı",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "112",
+        "type": "Sistem",
+        "start_pos": 1746,
+        "end_pos": 1749,
+        "context": "112 Acil sağlık hizmeti birimleri",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "E2",
+        "type": "Sistem",
+        "start_pos": 2084,
+        "end_pos": 2086,
+        "context": "E2 entegre ilçe devlet hastanesi",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "E3",
+        "type": "Sistem",
+        "start_pos": 2090,
+        "end_pos": 2092,
+        "context": "E3 entegre ilçe devlet hastanesi",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "Eğitim ve araştırma hastanesi",
+        "type": "Sistem",
+        "start_pos": 2556,
+        "end_pos": 2585,
+        "context": "Eğitim ve araştırma hastanesi olmayan",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "İkinci basamak sağlık hizmeti sunucuları",
+        "type": "Sistem",
+        "start_pos": 2455,
+        "end_pos": 2495,
+        "context": "İkinci basamak sağlık hizmeti sunucuları",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "Entegre ilçe hastanesi",
+        "type": "Sistem",
+        "start_pos": 2677,
+        "end_pos": 2699,
+        "context": "Entegre ilçe hastanesi (E1)",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri",
+        "type": "Sistem",
+        "start_pos": 3659,
+        "end_pos": 3744,
+        "context": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri (U1)",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "Tıp Fakülteleri Bulunan Vakıf Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri",
+        "type": "Sistem",
+        "start_pos": 3753,
+        "end_pos": 3837,
+        "context": "Tıp Fakülteleri Bulunan Vakıf Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri (U2)",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "112 Komuta Kontrol Merkezi",
+        "type": "Sistem",
+        "start_pos": 7761,
+        "end_pos": 7787,
+        "context": "112 Komuta Kontrol Merkezi koordinasyonunda",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Radyoterapi Merkezi",
+        "type": "Sistem",
+        "start_pos": 8123,
+        "end_pos": 8142,
+        "context": "radyoterapi merkezi bulunmaması halinde",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Hemodiyaliz Merkezi",
+        "type": "Sistem",
+        "start_pos": 8417,
+        "end_pos": 8436,
+        "context": "bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Kronik Hemodiyaliz Tedavi Programı",
+        "type": "Sistem",
+        "start_pos": 9626,
+        "end_pos": 9660,
+        "context": "kronik hemodiyaliz tedavisi programı için yapılacak sevkler",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Tedavi",
+        "type": "Sistem",
+        "start_pos": 9155,
+        "end_pos": 9161,
+        "context": "tedavinin sağlanabileceği",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Yatış",
+        "type": "Sistem",
+        "start_pos": 8482,
+        "end_pos": 8482,
+        "context": "uygun yoğun bakım yatağının bulunmaması",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Acil Servis",
+        "type": "Sistem",
+        "start_pos": 11211,
+        "end_pos": 11222,
+        "context": "Acil servis müracaatları",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Kurum bilgi işlem sistemi",
+        "type": "Sistem",
+        "start_pos": 17189,
+        "end_pos": 17214,
+        "context": "Kurum bilgi işlem sistemi üzerinden elektronik olarak düzenlenmesi sağlanıncaya kadar",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Kurum sağlık yardımları",
+        "type": "Sistem",
+        "start_pos": 19422,
+        "end_pos": 19445,
+        "context": "Kurum sağlık yardımlarından yararlandırılan kişiler",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "MEDULA-Hastane",
+        "type": "Sistem",
+        "start_pos": 21596,
+        "end_pos": 21610,
+        "context": "MEDULA-Hastane sistemi",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "MEDULA-Optik",
+        "type": "Sistem",
+        "start_pos": 21612,
+        "end_pos": 21624,
+        "context": "MEDULA-Optik sistemi",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "MEDULA-Eczane",
+        "type": "Sistem",
+        "start_pos": 21626,
+        "end_pos": 21639,
+        "context": "MEDULA-Eczane sistemi",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "YUPASS",
+        "type": "Sistem",
+        "start_pos": 21800,
+        "end_pos": 21806,
+        "context": "YUPASS sistemi",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Yurtdışı Provizyon Aktivasyon ve Sağlık Sistemi",
+        "type": "Sistem",
+        "start_pos": 21751,
+        "end_pos": 21798,
+        "context": "Yurtdışı Provizyon Aktivasyon ve Sağlık Sistemi numarası ile",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Aile Hekimliği",
+        "type": "Sistem",
+        "start_pos": 27977,
+        "end_pos": 27991,
+        "context": "aile hekimleri",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Eğitim ve Araştırma Hastaneleri",
+        "type": "Sistem",
+        "start_pos": 29827,
+        "end_pos": 29858,
+        "context": "eğitim ve araştırma hastaneleri",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Semt Poliklinikleri",
+        "type": "Sistem",
+        "start_pos": 29884,
+        "end_pos": 29903,
+        "context": "semt poliklinikleri",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "Üçüncü Basamak Hastaneleri",
+        "type": "Sistem",
+        "start_pos": 29941,
+        "end_pos": 29967,
+        "context": "üçüncü basamak hastane olarak basamaklandırılan",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Eczaneler",
+        "type": "Sistem",
+        "start_pos": 31066,
+        "end_pos": 31075,
+        "context": "Eczanelerce",
+        "properties": {},
+        "confidence": 0.6
+      },
+      {
+        "text": "Elektronik sevk formu",
+        "type": "Sistem",
+        "start_pos": 33170,
+        "end_pos": 33191,
+        "context": "elektronik sevk formu ile sevk edilen hastalar",
+        "properties": {},
+        "confidence": 0.86
+      },
+      {
+        "text": "SUT",
+        "type": "Sistem",
+        "start_pos": 35167,
+        "end_pos": 35170,
+        "context": "SUT eki",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Kurumla sözleşmeli optisyenlik müessesesi",
+        "type": "Sistem",
+        "start_pos": 36379,
+        "end_pos": 36420,
+        "context": "Kurumla sözleşmeli optisyenlik müessesesi",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "Kurumla sözleşmeli eczaneler",
+        "type": "Sistem",
+        "start_pos": 34778,
+        "end_pos": 34806,
+        "context": "Kurumla sözleşmeli eczaneler",
+        "properties": {},
+        "confidence": 0.85
+      },
+      {
+        "text": "MEDULA sistemi",
+        "type": "Sistem",
+        "start_pos": 34178,
+        "end_pos": 34178,
+        "context": "MEDULA sistemi",
+        "properties": {},
+        "confidence": 0.95
+      },
+      {
+        "text": "Polis akademisi",
+        "type": "Sistem",
+        "start_pos": 42117,
+        "end_pos": 42132,
+        "context": "Polis akademisi ile fakülte ve yüksekokullarda",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "Harp okulları",
+        "type": "Sistem",
+        "start_pos": 42388,
+        "end_pos": 42401,
+        "context": "Harp okulları ile fakülte ve yüksekokullarda",
+        "properties": {},
+        "confidence": 0.7
+      }
+    ],
+    "Varlık": [
+      {
+        "text": "Özel poliklinikler",
+        "type": "Varlık",
+        "start_pos": 2245,
+        "end_pos": 2263,
+        "context": "Özel poliklinikler",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
+        "type": "Varlık",
+        "start_pos": 2264,
+        "end_pos": 2321,
+        "context": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Eczaneler",
+        "type": "Varlık",
+        "start_pos": 2369,
+        "end_pos": 2378,
+        "context": "18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren eczaneler",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri",
+        "type": "Varlık",
+        "start_pos": 2705,
+        "end_pos": 2760,
+        "context": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri",
+        "type": "Varlık",
+        "start_pos": 2761,
+        "end_pos": 2813,
+        "context": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Kamu kurumlarına ait hastaneler",
+        "type": "Varlık",
+        "start_pos": 2761,
+        "end_pos": 2792,
+        "context": "Kamu kurumlarına ait hastaneler, tıp merkezleri ve dal merkezleri",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Özel hastaneler",
+        "type": "Varlık",
+        "start_pos": 3187,
+        "end_pos": 3202,
+        "context": "Özel hastaneler (ÖH)",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Özel tıp merkezleri",
+        "type": "Varlık",
+        "start_pos": 3208,
+        "end_pos": 3227,
+        "context": "Özel tıp merkezleri ve dal merkezleri",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Optisyenlik müesseseleri",
+        "type": "Varlık",
+        "start_pos": 4336,
+        "end_pos": 4360,
+        "context": "Optisyenlik müesseseleri",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Tıbbi cihaz ve malzeme tedarikçileri",
+        "type": "Varlık",
+        "start_pos": 4364,
+        "end_pos": 4400,
+        "context": "Tıbbi cihaz ve malzeme tedarikçileri",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Katılım Payı",
+        "type": "Varlık",
+        "start_pos": 27640,
+        "end_pos": 27652,
+        "context": "katılım payı",
+        "properties": {},
+        "confidence": 0.9
+      }
+    ],
+    "Durum": [
+      {
+        "text": "Ayakta veya yatarak tanı ve tedavi hizmeti sunan",
+        "type": "Durum",
+        "start_pos": 4928,
+        "end_pos": 4976,
+        "context": "Ayakta veya yatarak tanı ve tedavi hizmeti sunan",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Acil haller",
+        "type": "Durum",
+        "start_pos": 6501,
+        "end_pos": 6512,
+        "context": "Acil haller dışında",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Özel sevk kurallarına tabi olan",
+        "type": "Durum",
+        "start_pos": 5200,
+        "end_pos": 5231,
+        "context": "Özel sevk kurallarına tabi olan",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Tedavi",
+        "type": "Durum",
+        "start_pos": 6340,
+        "end_pos": 6346,
+        "context": "tedavinin sağlanamaması halinde",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Nakil",
+        "type": "Durum",
+        "start_pos": 6316,
+        "end_pos": 6316,
+        "context": "hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "İl",
+        "type": "Durum",
+        "start_pos": 8482,
+        "end_pos": 8482,
+        "context": "aynı il içindeki resmi sağlık hizmeti sunucularında",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Yerleşim Yeri",
+        "type": "Durum",
+        "start_pos": 8796,
+        "end_pos": 8809,
+        "context": "aynı yerleşim yerinde",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Hasta Müracaatları",
+        "type": "Durum",
+        "start_pos": 11092,
+        "end_pos": 11110,
+        "context": "Hasta müracaatları",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Trafik Kazası",
+        "type": "Durum",
+        "start_pos": 11166,
+        "end_pos": 11179,
+        "context": "Trafik kazası nedeniyle yapılan müracaatlar",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Akkiz İmmün Yetmezlik Sendromu",
+        "type": "Durum",
+        "start_pos": 11055,
+        "end_pos": 11085,
+        "context": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Hiperbarik Oksijen Tedavisi",
+        "type": "Durum",
+        "start_pos": 11112,
+        "end_pos": 11139,
+        "context": "Hiperbarik oksijen tedavisi için yapılan müracaatlar",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Konsültasyon",
+        "type": "Durum",
+        "start_pos": 11722,
+        "end_pos": 11734,
+        "context": "konsültasyon istemi hariç",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Kronik Hemodiyaliz Tedavi Programı",
+        "type": "Durum",
+        "start_pos": 13376,
+        "end_pos": 13410,
+        "context": "Kronik hemodiyaliz tedavisi programı için aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularına",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Radyoterapi Tedavisi",
+        "type": "Durum",
+        "start_pos": 14014,
+        "end_pos": 14034,
+        "context": "Radyoterapi tedavisi için aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Diyaliz Tedavisi",
+        "type": "Durum",
+        "start_pos": 13387,
+        "end_pos": 13403,
+        "context": "Diyaliz tedavisinin yapılamaması halinde ise yerleşim yeri dışındaki Sağlık Bakanlığı sağlık hizmeti sunucularına sevk edilebilir",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Organ Nakli",
+        "type": "Durum",
+        "start_pos": 14860,
+        "end_pos": 14871,
+        "context": "Organ, doku ve kök hücre nakline ilişkin; sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller ve devam tedavileri için yapılan müracaatlar",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Söz konusu durum",
+        "type": "Durum",
+        "start_pos": 16511,
+        "end_pos": 16527,
+        "context": "Söz konusu durum nedeniyle yapıldığının Kurum inceleme birimlerince kabul edilmesi gerekmektedir",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "112 Komuta Kontrol Merkezi",
+        "type": "Durum",
+        "start_pos": 17975,
+        "end_pos": 18001,
+        "context": "112 Komuta Kontrol Merkezi koordinasyonunu gösterir belge",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "Acil Hal",
+        "type": "Durum",
+        "start_pos": 22735,
+        "end_pos": 22743,
+        "context": "Acil hal nedeniyle",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "İş Kazası ile Meslek Hastalığı Hali",
+        "type": "Durum",
+        "start_pos": 22750,
+        "end_pos": 22785,
+        "context": "İş kazası ile meslek hastalığı hali nedeniyle",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Bildirimi Zorunlu Bulaşıcı Hastalık",
+        "type": "Durum",
+        "start_pos": 22803,
+        "end_pos": 22838,
+        "context": "Bildirimi zorunlu bulaşıcı hastalık nedeniyle",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Kişiye Yönelik Koruyucu Sağlık Hizmeti",
+        "type": "Durum",
+        "start_pos": 22840,
+        "end_pos": 22878,
+        "context": "Kişiye yönelik koruyucu sağlık hizmeti nedeniyle",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Analık Hali",
+        "type": "Durum",
+        "start_pos": 22880,
+        "end_pos": 22891,
+        "context": "Analık hali nedeniyle",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Afet ve Savaş ile Grev ve Lokavt Hali",
+        "type": "Durum",
+        "start_pos": 22898,
+        "end_pos": 22935,
+        "context": "Afet ve savaş ile grev ve lokavt hali nedeniyle",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "18 Yaş Altı Çocuklar",
+        "type": "Durum",
+        "start_pos": 22937,
+        "end_pos": 22957,
+        "context": "18 yaş altı çocuklar nedeniyle",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Tıbben Başkasının Bakımına Muhtaç Kişiler",
+        "type": "Durum",
+        "start_pos": 22959,
+        "end_pos": 23000,
+        "context": "Tıbben başkasının bakımına muhtaç kişiler nedeniyle",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Madde Bağımlılığı Tedavisine Yönelik Sağlık Hizmetleri",
+        "type": "Durum",
+        "start_pos": 23101,
+        "end_pos": 23155,
+        "context": "Madde bağımlılığı tedavisine yönelik sağlık hizmetleri nedeniyle",
+        "properties": {},
+        "confidence": 0.9
+      },
+      {
+        "text": "Tıbben başkasının bakımına muhtaç kişi",
+        "type": "Durum",
+        "start_pos": 24890,
+        "end_pos": 24928,
+        "context": "Tıbben başkasının bakımına muhtaç kişi",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Genel Sağlık Sigortası",
+        "type": "Durum",
+        "start_pos": 27714,
+        "end_pos": 27736,
+        "context": "genel sağlık sigortalısı",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Kuzey Kıbrıs Türk Cumhuriyeti",
+        "type": "Durum",
+        "start_pos": 31102,
+        "end_pos": 31131,
+        "context": "Kuzey Kıbrıs Türk Cumhuriyeti’nde",
+        "properties": {},
+        "confidence": 0.7
+      },
+      {
+        "text": "Hekim",
+        "type": "Durum",
+        "start_pos": 30086,
+        "end_pos": 30091,
+        "context": "Hekim ve diş hekimi muayenesi",
+        "properties": {},
+        "confidence": 0.5
+      },
+      {
+        "text": "Diş Hekimi",
+        "type": "Durum",
+        "start_pos": 30652,
+        "end_pos": 30662,
+        "context": "Hekim ve diş hekimi muayenesi",
+        "properties": {},
+        "confidence": 0.5
+      },
+      {
+        "text": "Aile Hekimi",
+        "type": "Durum",
+        "start_pos": 30573,
+        "end_pos": 30584,
+        "context": "Sağlık hizmeti sunucularına sevk edilerek yapılan hekim ve diş hekimi muayenesi",
+        "properties": {},
+        "confidence": 0.2
+      },
+      {
+        "text": "Kurumca belirlenen kronik hastalıklar",
+        "type": "Durum",
+        "start_pos": 33076,
+        "end_pos": 33113,
+        "context": "Kurumca belirlenen kronik hastalıklar hariç olmak üzere",
+        "properties": {},
+        "confidence": 0.89
+      },
+      {
+        "text": "Gelir ve Aylık",
+        "type": "Durum",
+        "start_pos": 33514,
+        "end_pos": 33528,
+        "context": "Kurumdan gelir ve aylık alanlar",
+        "properties": {},
+        "confidence": 0.84
+      },
+      {
+        "text": "Değişik",
+        "type": "Durum",
+        "start_pos": 39142,
+        "end_pos": 39149,
+        "context": "Değişik: RG- 25/08/2022- 31934/ 6-e md. Yürürlük: 03/09/2022",
+        "properties": {},
+        "confidence": 0.9
+      }
+    ],
+    "Program": [
+      {
+        "text": "Kronik Hemodiyaliz Tedavi Programı",
+        "type": "Program",
+        "start_pos": 8317,
+        "end_pos": 8351,
+        "context": "Kronik hemodiyaliz tedavisi programı için yapılacak sevkler",
+        "properties": {},
+        "confidence": 0.8
+      }
+    ],
+    "Prosedür": [
+      {
+        "text": "Hasta Kabul İşlemleri",
+        "type": "Prosedür",
+        "start_pos": 6862,
+        "end_pos": 6883,
+        "context": "Hasta kabul işlemleri",
+        "properties": {},
+        "confidence": 0.8
+      },
+      {
+        "text": "Hasta Sevk İşlemleri",
+        "type": "Prosedür",
+        "start_pos": 6862,
+        "end_pos": 6882,
+        "context": "Hasta sevk işlemleri",
+        "properties": {},
+        "confidence": 0.8
+      }
+    ],
+    "İnternet Sitesi": [
+      {
+        "text": "www.sgk.gov.tr",
+        "type": "İnternet Sitesi",
+        "start_pos": 34338,
+        "end_pos": 34352,
+        "context": "Kurumun resmi internet sitesinde (www.sgk.gov.tr)",
+        "properties": {},
+        "confidence": 0.87
+      }
+    ]
+  },
+  "statistics": {
+    "total_entities": 163,
+    "total_relations": 126,
+    "unique_entity_types": 11,
+    "entity_types": [
+      "Belge",
+      "Durum",
+      "Kanun",
+      "Komisyon",
+      "Kurum",
+      "Program",
+      "Prosedür",
+      "Sistem",
+      "Varlık",
+      "Yönetmelik",
+      "İnternet Sitesi"
+    ]
+  }
+}
