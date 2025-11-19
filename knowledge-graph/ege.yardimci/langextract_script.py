@@ -224,7 +224,7 @@ for page in reader.pages:
 print(f"Total PDF length: {len(full_text):,} characters")
 
 # Take first 4000 characters as requested
-text_chunk = full_text[100000:104000]
+text_chunk = full_text[100000:115000]
 print(f"Processing chunk of {len(text_chunk):,} characters")
 
 # Process the text chunk
@@ -234,7 +234,7 @@ result = lx.extract(
     text_or_documents=text_chunk,
     prompt_description=prompt,
     examples=examples,
-    model_id="gpt-4o",  # Automatically selects OpenAI provider
+    model_id="gpt-5.1",  # Automatically selects OpenAI provider
     api_key=OPEN_AI_API_KEY,
     fence_output=True,
     use_schema_constraints=False
