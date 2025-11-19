@@ -10,6 +10,7 @@ load_dotenv(override=True)
 # Set your API key here or via environment variable LANGEXTRACT_API_KEY
 # You can get a free Gemini API key from: https://aistudio.google.com/app/apikey
 OPEN_AI_API_KEY = os.getenv("OPEN_AI_API_KEY")  # Option 2: Directly set your API key here
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 if not OPEN_AI_API_KEY:
     print("ERROR: Please set your Gemini API key!")
@@ -223,8 +224,8 @@ for page in reader.pages:
 
 print(f"Total PDF length: {len(full_text):,} characters")
 
-# Take first 4000 characters as requested
-text_chunk = full_text[100000:115000]
+
+text_chunk = full_text[100000:110000]
 print(f"Processing chunk of {len(text_chunk):,} characters")
 
 # Process the text chunk
@@ -234,8 +235,8 @@ result = lx.extract(
     text_or_documents=text_chunk,
     prompt_description=prompt,
     examples=examples,
-    model_id="gpt-5.1",  # Automatically selects OpenAI provider
-    api_key=OPEN_AI_API_KEY,
+    model_id="gemini-3-pro-preview",  # Automatically selects OpenAI provider
+    api_key=GEMINI_API_KEY,
     fence_output=True,
     use_schema_constraints=False
 )
