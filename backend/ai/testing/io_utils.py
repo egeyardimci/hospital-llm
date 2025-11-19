@@ -89,9 +89,13 @@ def load_existing_test_results():
     documents = list(collection.find())
     return documents
 
-def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: str ,retrieved_chunks: list[Document] ,evaluation: JudgeOutput ,chunk_evaluation: JudgeOutput, run_count: int, error: str = ""):
+def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: str ,retrieved_chunks: list[Document] ,evaluation: JudgeOutput ,chunk_evaluation: JudgeOutput, run_count: int, error: str = "", retrieval_metrics: dict = None, generation_metrics: dict = None):
     """
     Add a test result to the existing results.
+
+    Args:
+        retrieval_metrics: Optional dict containing retrieval quality metrics (RAGAs context metrics, etc.)
+        generation_metrics: Optional dict containing generation quality metrics (RAGAs, ROUGE, BLEU, etc.)
     """
     # Store results in a dictionary
     result = {
@@ -116,7 +120,9 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
         "chunk_evaluation_reasoning": chunk_evaluation.reasoning if chunk_evaluation is not None else '',
         "run_count" : run_count,
         "rag_database": test_case.rag_database,
-        "error": error if error else ''
+        "error": error if error else '',
+        "retrieval_metrics": retrieval_metrics or {},
+        "generation_metrics": generation_metrics or {}
         }
 
     collection = GLOBAL_MONGO_DB_CLIENT.get_results_collection()

@@ -40,3 +40,6 @@ test_cases.json
 queries_expected_answers.json
 
 results.json
+
+wordnet
+omw-1.4

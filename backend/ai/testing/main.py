@@ -14,6 +14,8 @@ from backend.common.constants import HYBRID_DB_OPTION, VECTOR_DB_OPTION, GRAPH_D
 import sys
 
 from backend.utils.logger import get_logger
+from backend.ai.llm.evaluation.RetrievalMetrics import RetrievalMetrics
+from backend.ai.llm.evaluation.GenerationMetrics import GenerationMetricsLLM, TraditionalGenerationMetrics
 
 # Load environment variables
 
@@ -29,6 +31,15 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db:
     rag_metadata: None | dict = None
     error_message: str = ''
 
+    # Initialize metrics calculators
+    retrieval_metrics = RetrievalMetrics()
+    generation_metrics_llm = GenerationMetricsLLM()
+    traditional_gen_metrics = TraditionalGenerationMetrics()
+
+     # Initialize metric results
+    retrieval_metrics_results = {}
+    generation_metrics_results = {}
+
     try:
         rag: RagResponse = rag_invoke(
             test_case.llm_name,
@@ -41,10 +52,23 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db:
         )
         rag_response = rag.content
         rag_metadata = rag.metadata
+
+        # Calculate retrieval metrics
+        retrieved_chunk_texts = [chunk.page_content for chunk in rag_metadata["retrieved_chunks"]]
+
+        # Context metrics using Sentence Transformers
+        context_metrics = retrieval_metrics.context_metrics(
+            query=query_expeced_answer["query"],
+            answer=rag_response,
+            contexts=retrieved_chunk_texts,
+            ground_truth=query_expeced_answer["answer"]
+        )
+        retrieval_metrics_results.update(context_metrics)
+        
     except Exception as e:
         error_message = (f"RAG system error: {e}")
         logger.error(error_message)
-        add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count, error_message)
+        add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count, error_message, retrieval_metrics_results, generation_metrics_results)
         return
 
     try:
@@ -55,13 +79,52 @@ def run_test(test_case:TestCase, query_expeced_answer, run_count:int, vector_db:
             rag_metadata["retrieved_chunks"]
         )
 
+        # Calculate generation metrics
+        retrieved_chunk_texts = [chunk.page_content for chunk in rag_metadata["retrieved_chunks"]]
+
+        # Semantic generation metrics (Sentence Transformers)
+        gen_metrics = generation_metrics_llm.generation_metrics(
+            query=query_expeced_answer["query"],
+            answer=rag_response,
+            contexts=retrieved_chunk_texts,
+            ground_truth=query_expeced_answer["answer"]
+        )
+        generation_metrics_results.update(gen_metrics)
+
+        # Traditional generation metrics (ROUGE, BLEU, METEOR, BERTScore)
+        rouge = traditional_gen_metrics.rouge_scores(
+            prediction=rag_response,
+            reference=query_expeced_answer["answer"]
+        )
+        generation_metrics_results.update(rouge)
+
+        bleu = traditional_gen_metrics.bleu_score(
+            prediction=rag_response,
+            reference=query_expeced_answer["answer"]
+        )
+        generation_metrics_results['bleu'] = bleu
+
+        # METEOR score (better than BLEU for semantic similarity)
+        meteor = traditional_gen_metrics.meteor_score(
+            prediction=rag_response,
+            reference=query_expeced_answer["answer"]
+        )
+        generation_metrics_results['meteor'] = meteor
+
+        # BERTScore (semantic similarity using transformers)
+        bert = traditional_gen_metrics.bert_score(
+            prediction=rag_response,
+            reference=query_expeced_answer["answer"]
+        )
+        generation_metrics_results.update(bert)
+
     except Exception as e:
         error_message = (f"LLM judge evaluation error: {e}")
         logger.error(error_message)
-        add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count, error_message)
+        add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count, error_message, retrieval_metrics_results, generation_metrics_results)
         return
 
-    add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count, error_message)
+    add_test_result(test_case,query_expeced_answer, rag_response, rag_metadata["retrieved_chunks"],evaluation,chunk_evaluation, run_count, error_message, retrieval_metrics_results, generation_metrics_results)
 
 def run_test_case_by_test_id(test_id):
     load_dotenv(override=True)
