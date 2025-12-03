@@ -136,11 +136,11 @@ EXAMPLES = [
             ),
             lx.data.Extraction(
                 extraction_class="paragraph",
-                extraction_text="Bu durumda SUT eki EK-2/A Listesinde yer alan tutarlar faturalandırılamaz",
+                extraction_text="hizmet başına ödeme yöntemi ile faturalandırılır. Bu durumda SUT eki EK-2/A Listesinde yer alan tutarlar faturalandırılamaz.",
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
-                    "identifier": "billing_rule_1",
-                    "content": "Bu durumda SUT eki EK-2/A Listesinde yer alan tutarlar faturalandırılamaz",
+                    "identifier": "rule",
+                    "content": "hizmet başına ödeme yöntemi ile faturalandırılır. Bu durumda SUT eki EK-2/A Listesinde yer alan tutarlar faturalandırılamaz.",
                 }
             ),
         ]
@@ -522,29 +522,25 @@ EXAMPLES = [
         text=textwrap.dedent("""\
             1.5.1.A-2 - Hasta sevk işlemleri
             (1) Tedavinin sağlanamaması halinde;
-            a) Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri 
-            içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna 
-            yapılabilir.
+            a) Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir.
             b) İkinci basamak sağlık hizmeti sunucularınca;
-            1) Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü 
-            basamak sağlık hizmeti sunucusuna sevk edilebilir.
-            2) Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının 
-            bulunmaması halinde özel sağlık hizmeti sunucularına sevk edilebilir."""),
+            1) Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir.
+            2) Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması halinde özel sağlık hizmeti sunucularına sevk edilebilir."""),
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
                 extraction_class="level-4-title",
                 extraction_text="1.5.1.A-2 - Hasta sevk işlemleri",
                 attributes={
-                    "identifier": "1.5.1.A-2",
                     "parent-identifier": "1.5.1.A",
-                    "content": "1.5.1.A-2 - Hasta sevk işlemleri",
+                    "identifier": "1.5.1.A-2",
+                    "content": "Hasta sevk işlemleri",
                 }
             ),
             # Extract the general condition/scope
             lx.data.Extraction(
                 extraction_class="paragraph",
-                extraction_text="Tedavinin sağlanamaması halinde",
+                extraction_text="(1) Tedavinin sağlanamaması halinde",
                 attributes={
                     "parent-identifier": "1.5.1.A-2",
                     "identifier": "(1)",
@@ -554,29 +550,38 @@ EXAMPLES = [
             # Referral rules as articles
             lx.data.Extraction(
                 extraction_class="article",
-                extraction_text="Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir",
+                extraction_text="a) Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir",
                 attributes={
-                    "parent-identifier": "1.5.1.A-2-(1)",
+                    "parent-identifier": "1.5.1.A-2",
                     "identifier": "a)",
                     "content": "Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir",
                 }
             ),
             lx.data.Extraction(
                 extraction_class="article",
-                extraction_text="Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir",
+                extraction_text="b) Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir",
                 attributes={
-                    "parent-identifier": "1.5.1.A-2-(1)",
-                    "identifier": "b)-1)",
+                    "parent-identifier": "1.5.1.A-2",
+                    "identifier": "b)",
                     "content": "Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir",
                 }
             ),
             lx.data.Extraction(
                 extraction_class="article",
-                extraction_text="resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması halinde özel sağlık hizmeti sunucularına sevk edilebilir",
+                extraction_text="1) Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir.",
                 attributes={
-                    "parent-identifier": "1.5.1.A-2-(1)",
-                    "identifier": "b)-2)",
-                    "content": "resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması halinde özel sağlık hizmeti sunucularına sevk edilebilir",
+                    "parent-identifier": "1.5.1.A-2",
+                    "identifier": "1)",
+                    "content": "Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir.",
+                }
+            ),
+            lx.data.Extraction(
+                extraction_class="article",
+                extraction_text="2) Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması halinde özel sağlık hizmeti sunucularına sevk edilebilir.",
+                attributes={
+                    "parent-identifier": "1.5.1.A-2",
+                    "identifier": "2)",
+                    "content": "Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması halinde özel sağlık hizmeti sunucularına sevk edilebilir.",
                 }
             ),
         ]
@@ -588,11 +593,8 @@ EXAMPLES = [
     lx.data.ExampleData(
         text=textwrap.dedent("""\
             1.9.1 - İlave ücret alınması
-            (1) Özel sağlık hizmeti sunucuları tarafından SUT eki EK-2/B ve EK-2/C 
-            listelerinde yer alan işlemler için Kurumca belirlenen bedelin iki katına 
-            kadar ilave ücret alınabilir.
-            (2) Otelcilik hizmetleri hariç olmak üzere, özel sağlık hizmeti sunucularında 
-            acil hallerde verilen sağlık hizmetleri için ilave ücret alınamaz."""),
+            (1) Özel sağlık hizmeti sunucuları tarafından SUT eki EK-2/B ve EK-2/C listelerinde yer alan işlemler için Kurumca belirlenen bedelin iki katına kadar ilave ücret alınabilir.
+            (2) Otelcilik hizmetleri hariç olmak üzere, özel sağlık hizmeti sunucularında acil hallerde verilen sağlık hizmetleri için ilave ücret alınamaz."""),
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
@@ -601,66 +603,27 @@ EXAMPLES = [
                 attributes={
                     "identifier": "1.9.1",
                     "parent-identifier": "1.9",
-                    "content": "1.9.1 - İlave ücret alınması",
+                    "content": "İlave ücret alınması",
                 }
             ),
             # Extract the scope
             lx.data.Extraction(
                 extraction_class="paragraph",
-                extraction_text="Özel sağlık hizmeti sunucuları tarafından",
+                extraction_text="(1) Özel sağlık hizmeti sunucuları tarafından SUT eki EK-2/B ve EK-2/C listelerinde yer alan işlemler için Kurumca belirlenen bedelin iki katına kadar ilave ücret alınabilir.",
                 attributes={
                     "parent-identifier": "1.9.1",
                     "identifier": "(1)",
-                    "content": "Özel sağlık hizmeti sunucuları tarafından",
+                    "content": "Özel sağlık hizmeti sunucuları tarafından SUT eki EK-2/B ve EK-2/C listelerinde yer alan işlemler için Kurumca belirlenen bedelin iki katına kadar ilave ücret alınabilir.",
                 }
             ),
             # Additional fee rules as articles
             lx.data.Extraction(
                 extraction_class="paragraph",
-                extraction_text="acil hallerde verilen sağlık hizmetleri için ilave ücret alınamaz",
+                extraction_text="(2) Otelcilik hizmetleri hariç olmak üzere, özel sağlık hizmeti sunucularında acil hallerde verilen sağlık hizmetleri için ilave ücret alınamaz.",
                 attributes={
                     "parent-identifier": "1.9.1",
                     "identifier": "(2)",
-                    "content": "acil hallerde verilen sağlık hizmetleri için ilave ücret alınamaz",
-                }
-            ),
-        ]
-    ),
-
-    # ==========================================================================
-    # Example 10: Procedure codes and specific medical procedures
-    # ==========================================================================
-    lx.data.ExampleData(
-        text=textwrap.dedent("""2.2.1.B-1 (11) - Özel sağlık hizmet sunucularında SUT eki EK-2/B Listesindeki 700610 kodlu "Transözefajiyal ekokardiyografi" ve 700611 kodlu "Transözefajiyal ekokardiyografi, çocuk" işlemlerinin yapılması durumunda her bir işlem için muayene sayısından bir muayene sayısı düşülerek yeni günlük muayene sayısı hesaplanır."""),
-        extractions=[
-            # Extract the scope/context
-            lx.data.Extraction(
-                extraction_class="paragraph",
-                extraction_text="Özel sağlık hizmet sunucularında",
-                attributes={
-                    "parent-identifier": "2.2.1.B-1",
-                    "identifier": "(11)",
-                    "content": "Özel sağlık hizmet sunucularında SUT eki EK-2/B Listesindeki 700610 kodlu "Transözefajiyal ekokardiyografi" ve 700611 kodlu Transözefajiyal ekokardiyografi, çocuk işlemlerinin yapılması durumunda her bir işlem için muayene sayısından bir muayene sayısı düşülerek yeni günlük muayene sayısı hesaplanır.",
-                }
-            ),
-        ]
-    ),
-
-    # ==========================================================================
-    # Example 11: Daily examination limits
-    # ==========================================================================
-    lx.data.ExampleData(
-        text=textwrap.dedent("""\
-            2.2.1.B-1 (11) - Ayaktan başvurularda ikinci ve üçüncü basamak özel sağlık hizmeti sunucuları için günlük muayene sınırı acil servis/polikliniğe başvurular hariç olmak üzere, sağlık hizmeti sunucusundaki sözleşme kapsamında çalışan hekimlerin çalışma saatlerinin 6 ile çarpılması ile bulunur. Her bir hekim için günlük muayene sayısı her halükarda 60'ı geçemez. Acil servis/polikliniğine başvurularda ise bir acil servis doktoru için günlük muayene sayısı 90'ı geçemez."""),
-        extractions=[
-            # Extract the scope
-            lx.data.Extraction(
-                extraction_class="paragraph",
-                extraction_text="Ayaktan başvurularda ikinci ve üçüncü basamak özel sağlık hizmeti sunucuları için",
-                attributes={
-                    "parent-identifier": "2.2.1.B-1",
-                    "identifier": "(11)",
-                    "content": "Ayaktan başvurularda ikinci ve üçüncü basamak özel sağlık hizmeti sunucuları için günlük muayene sınırı acil servis/polikliniğe başvurular hariç olmak üzere, sağlık hizmeti sunucusundaki sözleşme kapsamında çalışan hekimlerin çalışma saatlerinin 6 ile çarpılması ile bulunur. Her bir hekim için günlük muayene sayısı her halükarda 60'ı geçemez. Acil servis/polikliniğine başvurularda ise bir acil servis doktoru için günlük muayene sayısı 90'ı geçemez.",
+                    "content": "Otelcilik hizmetleri hariç olmak üzere, özel sağlık hizmeti sunucularında acil hallerde verilen sağlık hizmetleri için ilave ücret alınamaz.",
                 }
             ),
         ]
