@@ -26,14 +26,13 @@ EXAMPLES = [
             "hizmet başına ödeme yöntemi" ile faturalandırılır. Bu durumda SUT eki EK-2/A 
             Listesinde yer alan tutarlar faturalandırılamaz."""),
         extractions=[
-            # FIRST: Extract the section header
             lx.data.Extraction(
                 extraction_class="level-3-title",
                 extraction_text="2.2.1.B - İkinci ve üçüncü basamak sağlık kurumları ",
                 attributes={
                     "parent-identifier": "2.2.1",
                     "identifier": "2.2.1.B",
-                    "content": "Hizmet başına ödeme yöntemi ile faturalandırılacak ayakta tedaviler",
+                    "content": "2.2.1.B - İkinci ve üçüncü basamak sağlık kurumları ",
                 }
             ),
             lx.data.Extraction(
@@ -42,27 +41,25 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1.B",
                     "identifier": "2.2.1.B-2",
-                    "content": "Hizmet başına ödeme yöntemi ile faturalandırılacak ayakta tedaviler",
+                    "content": "2.2.1.B-2 - Hizmet başına ödeme yöntemi ile faturalandırılacak ayakta tedaviler",
                 }
             ),
-            # Extract the scope/applicability
             lx.data.Extraction(
                 extraction_class="paragraph",
                 extraction_text="(2) İkinci ve üçüncü basamak sağlık hizmeti sunucularında",
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "(2)",
-                    "content": "İkinci ve üçüncü basamak sağlık hizmeti sunucularında",
+                    "content": "(2) İkinci ve üçüncü basamak sağlık hizmeti sunucularında",
                 }
             ),
-            # THEN: Each service with parent_section link
             lx.data.Extraction(
                 extraction_class="article",
                 extraction_text="a) Acil sağlık hizmetleri",
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "a)",
-                    "content": "Acil sağlık hizmetleri",
+                    "content": "a) Acil sağlık hizmetleri",
                 }
             ),
             lx.data.Extraction(
@@ -71,8 +68,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "b)",
-                    "content": "İş kazasına yönelik sağlanan sağlık hizmetleri",
-                    "service_type": "occupational_accident",
+                    "content": "b) İş kazasına yönelik sağlanan sağlık hizmetleri",
                 }
             ),
             lx.data.Extraction(
@@ -81,7 +77,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "c)",
-                    "content": "Meslek hastalıkları hastanelerince sağlanan meslek hastalığına yönelik sağlık hizmetleri",
+                    "content": "c) Meslek hastalıkları hastanelerince sağlanan meslek hastalığına yönelik sağlık hizmetleri",
                 }
             ),
             lx.data.Extraction(
@@ -90,7 +86,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "ç)",
-                    "content": "MEDULA'da tedavi tipi onkolojik tedavi olarak seçilmiş hastalıklar ile ilgili tüm işlemler",
+                    "content": "ç) MEDULA'da tedavi tipi onkolojik tedavi olarak seçilmiş hastalıklar ile ilgili tüm işlemler",
                 }
             ),
             lx.data.Extraction(
@@ -99,7 +95,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "d)",
-                    "content": "Organ ve doku nakline ilişkin donöre yapılan hazırlık tetkik ve tahlilleri",
+                    "content": "d) Organ ve doku nakline ilişkin donöre yapılan hazırlık tetkik ve tahlilleri",
                 }
             ),
             lx.data.Extraction(
@@ -108,7 +104,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "e)",
-                    "content": "Diş tedavilerine yönelik işlemler",
+                    "content": "e) Diş tedavilerine yönelik işlemler",
                 }
             ),
             lx.data.Extraction(
@@ -117,7 +113,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "f)",
-                    "content": "Kurum birimlerince sevk belgesi düzenlenmek suretiyle sevk edilen kişilere sunulan sağlık hizmetleri",
+                    "content": "f) Kurum birimlerince sevk belgesi düzenlenmek suretiyle sevk edilen kişilere sunulan sağlık hizmetleri",
                 }
             ),
             lx.data.Extraction(
@@ -126,7 +122,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "g)",
-                    "content": "Enjeksiyon/pansuman",
+                    "content": "g) Enjeksiyon/pansuman",
                 }
             ),
             lx.data.Extraction(
@@ -135,18 +131,16 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "ğ)",
-                    "content": "Alkol, madde bağımlılığı tedavisi",
+                    "content": "ğ) Alkol, madde bağımlılığı tedavisi",
                 }
             ),
-            # Extract the billing prohibition rule
             lx.data.Extraction(
-                extraction_class="billing_exception",
+                extraction_class="paragraph",
                 extraction_text="Bu durumda SUT eki EK-2/A Listesinde yer alan tutarlar faturalandırılamaz",
                 attributes={
                     "parent-identifier": "2.2.1.B-2",
                     "identifier": "billing_rule_1",
                     "content": "Bu durumda SUT eki EK-2/A Listesinde yer alan tutarlar faturalandırılamaz",
-                    "reference": "EK-2/A",
                 }
             ),
         ]
@@ -175,7 +169,7 @@ EXAMPLES = [
                 extraction_text="1.4 - Sağlık hizmeti sunucuları",
                 attributes={
                     "identifier": "1.4",
-                    "content": "Sağlık hizmeti sunucuları",
+                    "content": "1.4 - Sağlık hizmeti sunucuları",
                 }
             ),
             lx.data.Extraction(
@@ -184,7 +178,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4",
                     "identifier": "1.4.1",
-                    "content": "Birinci basamak sağlık hizmeti sunucuları",
+                    "content": "1.4.1- Birinci basamak sağlık hizmeti sunucuları",
                 }
             ),
             lx.data.Extraction(
@@ -193,7 +187,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4.1",
                     "identifier": "1.4.1.A",
-                    "content": "Birinci basamak resmi sağlık hizmeti sunucuları",
+                    "content": "1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları",
                 }
             ),
             # Institution entries under 1.4.1.A
@@ -203,7 +197,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4.1.A",
                     "identifier": "1)",
-                    "content": "Toplum sağlığı merkezi (TSM)",
+                    "content": "1) Toplum sağlığı merkezi (TSM)",
                 }
             ),
             lx.data.Extraction(
@@ -212,7 +206,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4.1.A",
                     "identifier": "2)",
-                    "content": "Aile sağlığı merkezi (ASM)",
+                    "content": "2) Aile sağlığı merkezi (ASM)",
                 }
             ),
             lx.data.Extraction(
@@ -221,7 +215,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4.1.A",
                     "identifier": "3)",
-                    "content": "112 Acil sağlık hizmeti birimleri",
+                    "content": "3) 112 Acil sağlık hizmeti birimleri",
                 }
             ),
             lx.data.Extraction(
@@ -230,7 +224,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4.1.A",
                     "identifier": "4)",
-                    "content": "Üniversiteler bünyesindeki mediko-sosyal birimler",
+                    "content": "4) Üniversiteler bünyesindeki mediko-sosyal birimler",
                 }
             ),
             # Sub-section for private providers
@@ -240,7 +234,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4.1",
                     "identifier": "1.4.1.B",
-                    "content": "Birinci basamak özel sağlık hizmeti sunucuları",
+                    "content": "1.4.1.B - Birinci basamak özel sağlık hizmeti sunucuları",
                 }
             ),
             # Institution entries under 1.4.1.B
@@ -250,7 +244,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4.1.B",
                     "identifier": "1)",
-                    "content": "Evde bakım merkezleri veya birimler",
+                    "content": "1) Evde bakım merkezleri veya birimler",
                 }
             ),
             lx.data.Extraction(
@@ -259,7 +253,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4.1.B",
                     "identifier": "2)",
-                    "content": "Özel poliklinikler",
+                    "content": "2) Özel poliklinikler",
                 }
             ),
             lx.data.Extraction(
@@ -268,7 +262,7 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "1.4.1.B",
                     "identifier": "3)",
-                    "content": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
+                    "content": "3) Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
                 }
             ),
         ]
@@ -289,17 +283,17 @@ EXAMPLES = [
                 attributes={
                     "parent-identifier": "2.2.1",
                     "identifier": "2.2.1.A",
-                    "content": "Birinci basamak sağlık kuruluşları",
+                    "content": "2.2.1.A - Birinci basamak sağlık kuruluşları",
                 }
             ),
             # Extract the scope
             lx.data.Extraction(
-                extraction_class="scope",
+                extraction_class="paragraph",
                 extraction_text="(1) Birinci basamak sağlık kuruluşlarındaki ayakta tedavilerde, her başvuru için 11 (onbir) TL ödeme yapılır. Hastanın diğer bir sağlık kurumuna sevk edilmesi halinde ise sadece 5 (beş) TL ödeme yapılır.",
                 attributes={
                     "parent-identifier": "2.2.1.A",
                     "identifier": "(1)",
-                    "content": "Birinci basamak sağlık kuruluşlarındaki ayakta tedavilerde, her başvuru için 11 (onbir) TL ödeme yapılır. Hastanın diğer bir sağlık kurumuna sevk edilmesi halinde ise sadece 5 (beş) TL ödeme yapılır.",
+                    "content": "(1) Birinci basamak sağlık kuruluşlarındaki ayakta tedavilerde, her başvuru için 11 (onbir) TL ödeme yapılır. Hastanın diğer bir sağlık kurumuna sevk edilmesi halinde ise sadece 5 (beş) TL ödeme yapılır.",
                 }
             ),
         ]
@@ -319,65 +313,22 @@ EXAMPLES = [
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
-                extraction_class="leafsection-title",
+                extraction_class="level-4-title",
                 extraction_text="2.2.1.B-1 - Ayakta tedavilerde ödeme uygulaması",
                 attributes={
+                    "parent-identifier": "2.2.1.B",
                     "identifier": "2.2.1.B-1",
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "title": "Ayakta tedavilerde ödeme uygulaması",
-                    "care_setting": "ayakta tedavi",
+                    "content": "2.2.1.B-1 - Ayakta tedavilerde ödeme uygulaması",
                 }
             ),
             # Extract the scope/condition
             lx.data.Extraction(
-                extraction_class="scope",
-                extraction_text="Hastanın aynı sağlık hizmeti sunucusuna, acil servise başvuruları hariç olmak üzere ayaktan başvurduğu gün dâhil, 10 (on) gün içindeki aynı uzmanlık dalına diğer ayaktan başvurularında",
+                extraction_class="paragraph",
+                extraction_text="(2) Hastanın aynı sağlık hizmeti sunucusuna, acil servise başvuruları hariç olmak üzere ayaktan başvurduğu gün dâhil, 10 (on) gün içindeki aynı uzmanlık dalına diğer ayaktan başvurularında; sadece SUT eki EK-2/A-2 Listesinde yer alan işlemlerin bedelleri faturalandırılabilecek olup SUT eki EK-2/A Listesinde yer alan tutar faturalandırılamaz.",
                 attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "2",
-                    "time_window": "10 gün",
-                    "time_window_start": "ayaktan başvurulan gün dahil",
-                    "scope_detail": "aynı uzmanlık dalı",
-                    "provider_scope": "aynı sağlık hizmeti sunucusu",
-                    "exception": "acil servis başvuruları",
-                }
-            ),
-            # Billing rules as articles
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="SUT eki EK-2/A-2 Listesinde yer alan işlemlerin bedelleri faturalandırılabilecek",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "2",
-                    "type": "billing_rule",
-                    "content": "SUT eki EK-2/A-2 Listesinde yer alan işlemlerin bedelleri faturalandırılabilecek",
-                    "list_reference": "EK-2/A-2",
-                    "billing_status": "billable",
-                    "condition": "10 gün içinde tekrar başvuru",
-                }
-            ),
-            lx.data.Extraction(
-                extraction_class="billing_exception",
-                extraction_text="SUT eki EK-2/A Listesinde yer alan tutar faturalandırılamaz",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "2",
-                    "rule_type": "prohibition",
-                    "content": "SUT eki EK-2/A Listesinde yer alan tutar faturalandırılamaz",
-                    "list_reference": "EK-2/A",
-                    "condition": "10 gün içinde tekrar başvuru",
+                    "parent-identifier": "2.2.1.B-1",
+                    "identifier": "(2)",
+                    "content": "Hastanın aynı sağlık hizmeti sunucusuna, acil servise başvuruları hariç olmak üzere ayaktan başvurduğu gün dâhil, 10 (on) gün içindeki aynı uzmanlık dalına diğer ayaktan başvurularında; sadece SUT eki EK-2/A-2 Listesinde yer alan işlemlerin bedelleri faturalandırılabilecek olup SUT eki EK-2/A Listesinde yer alan tutar faturalandırılamaz.",
                 }
             ),
         ]
@@ -389,39 +340,30 @@ EXAMPLES = [
     lx.data.ExampleData(
         text=textwrap.dedent("""\
             1.8.1 - Ayakta tedavide hekim ve diş hekimi muayenesi katılım payı
-            (1) Ayakta tedavide hekim ve diş hekimi muayenesi için kişilerden 
-            aşağıda belirtilen tutarlarda katılım payı alınır.
+            (1) Ayakta tedavide hekim ve diş hekimi muayenesi için kişilerden aşağıda belirtilen tutarlarda katılım payı alınır.
             a) Birinci basamak sağlık hizmeti sunucularında: 2 (iki) TL,
             b) İkinci ve üçüncü basamak resmi sağlık hizmeti sunucularında: 6 (altı) TL,
             c) Özel sağlık hizmeti sunucularında: 15 (onbeş) TL.
-            (2) Birinci basamak sağlık hizmeti sunucuları muayeneleri, kronik hastalıklar, 
-            sevkli hastalar ve acil haller hariç olmak üzere 10 gün içerisinde aynı 
-            uzmanlık dalında farklı sağlık hizmeti sunucusuna yapılan başvurularda 
-            katılım payı tutarları 5 TL artırılarak tahsil edilir."""),
+            (2) Birinci basamak sağlık hizmeti sunucuları muayeneleri, kronik hastalıklar, sevkli hastalar ve acil haller hariç olmak üzere 10 gün içerisinde aynı uzmanlık dalında farklı sağlık hizmeti sunucusuna yapılan başvurularda katılım payı tutarları 5 TL artırılarak tahsil edilir."""),
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
-                extraction_class="subsection-title",
+                extraction_class="level-3-title",
                 extraction_text="1.8.1 - Ayakta tedavide hekim ve diş hekimi muayenesi katılım payı",
                 attributes={
                     "identifier": "1.8.1",
-                    "main_section": "1.8",
-                    "subsection": "1",
-                    "title": "Ayakta tedavide hekim ve diş hekimi muayenesi katılım payı",
-                    "care_setting": "ayakta tedavi",
-                    "topic": "co_payment",
+                    "parent-identifier": "1.8",
+                    "content": "Ayakta tedavide hekim ve diş hekimi muayenesi katılım payı",
                 }
             ),
             # Extract the scope
             lx.data.Extraction(
-                extraction_class="scope",
-                extraction_text="Ayakta tedavide hekim ve diş hekimi muayenesi için kişilerden",
+                extraction_class="paragraph",
+                extraction_text="(1) Ayakta tedavide hekim ve diş hekimi muayenesi için kişilerden aşağıda belirtilen tutarlarda katılım payı alınır.",
                 attributes={
-                    "main_section": "1.8",
-                    "subsection": "1",
-                    "paragraph": "1",
-                    "care_setting": "ayakta tedavi",
-                    "service_type": "hekim ve diş hekimi muayenesi",
+                    "parent-identifier": "1.8.1",
+                    "identifier": "(1)",
+                    "content": "Ayakta tedavide hekim ve diş hekimi muayenesi için kişilerden aşağıda belirtilen tutarlarda katılım payı alınır.",
                 }
             ),
             # Co-payment rules as articles
@@ -429,63 +371,37 @@ EXAMPLES = [
                 extraction_class="article",
                 extraction_text="Birinci basamak sağlık hizmeti sunucularında: 2 (iki) TL",
                 attributes={
-                    "main_section": "1.8",
-                    "subsection": "1",
-                    "paragraph": "1",
-                    "item": "a",
-                    "type": "co_payment_rule",
+                    "parent-identifier": "1.8.1",
+                    "identifier": "a)",
                     "content": "Birinci basamak sağlık hizmeti sunucularında: 2 (iki) TL",
-                    "healthcare_level": "birinci basamak",
-                    "amount": 2,
-                    "currency": "TL",
                 }
             ),
             lx.data.Extraction(
                 extraction_class="article",
                 extraction_text="İkinci ve üçüncü basamak resmi sağlık hizmeti sunucularında: 6 (altı) TL",
                 attributes={
-                    "main_section": "1.8",
-                    "subsection": "1",
-                    "paragraph": "1",
-                    "item": "b",
-                    "type": "co_payment_rule",
+                    "parent-identifier": "1.8.1",
+                    "identifier": "b)",
                     "content": "İkinci ve üçüncü basamak resmi sağlık hizmeti sunucularında: 6 (altı) TL",
-                    "healthcare_level": ["ikinci basamak", "üçüncü basamak"],
-                    "ownership": "resmi",
-                    "amount": 6,
-                    "currency": "TL",
                 }
             ),
             lx.data.Extraction(
                 extraction_class="article",
                 extraction_text="Özel sağlık hizmeti sunucularında: 15 (onbeş) TL",
                 attributes={
-                    "main_section": "1.8",
-                    "subsection": "1",
-                    "paragraph": "1",
-                    "item": "c",
-                    "type": "co_payment_rule",
+                    "parent-identifier": "1.8.1",
+                    "identifier": "c)",
                     "content": "Özel sağlık hizmeti sunucularında: 15 (onbeş) TL",
-                    "ownership": "özel",
-                    "amount": 15,
-                    "currency": "TL",
                 }
             ),
             # Surcharge rule
             lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="10 gün içerisinde aynı uzmanlık dalında farklı sağlık hizmeti sunucusuna yapılan başvurularda katılım payı tutarları 5 TL artırılarak tahsil edilir",
+                extraction_class="paragraph",
+                extraction_text="10 gün içerisinde aynı uzmanlık dalında farklı sağlık hizmeti sunucusuna yapılan başvurularda katılım payı tutarları 5 TL artırılarak tahsil edilir.",
                 attributes={
-                    "main_section": "1.8",
-                    "subsection": "1",
-                    "paragraph": "2",
-                    "type": "co_payment_surcharge",
-                    "content": "10 gün içerisinde aynı uzmanlık dalında farklı sağlık hizmeti sunucusuna yapılan başvurularda katılım payı tutarları 5 TL artırılarak tahsil edilir",
-                    "surcharge_amount": 5,
-                    "currency": "TL",
-                    "time_window": "10 gün",
-                    "scope_detail": "aynı uzmanlık dalı",
-                    "exceptions": ["birinci basamak muayeneleri", "kronik hastalıklar", "sevkli hastalar", "acil haller"],
+                    "parent-identifier": "1.8.1",
+                    "identifier": "(2)",
+                    "content": "10 gün içerisinde aynı uzmanlık dalında farklı sağlık hizmeti sunucusuna yapılan başvurularda katılım payı tutarları 5 TL artırılarak tahsil edilir.",
                 }
             ),
         ]
@@ -508,66 +424,41 @@ EXAMPLES = [
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
-                extraction_class="subsection-title",
+                extraction_class="level-2-title",
                 extraction_text="3.3.4 - Greftler",
                 attributes={
                     "identifier": "3.3.4",
-                    "main_section": "3.3",
-                    "subsection": "4",
-                    "title": "Greftler",
-                    "category": "tıbbi malzeme",
+                    "parent-identifier": "3.3",
+                    "content": "Greftler",
                 }
             ),
             # Extract the scope/coverage condition
             lx.data.Extraction(
-                extraction_class="scope",
-                extraction_text="Aşağıdaki deri taklitleri (yedekleri) sadece yanık tedavisinde kullanılması halinde ödenir",
+                extraction_class="paragraph",
+                extraction_text="(9) Aşağıdaki deri taklitleri (yedekleri) sadece yanık tedavisinde kullanılması halinde ödenir",
                 attributes={
-                    "main_section": "3.3",
-                    "subsection": "4",
-                    "paragraph": "9",
-                    "item_category": "deri taklitleri (yedekleri)",
-                    "usage_condition": "yanık tedavisi",
-                    "coverage_status": "conditional",
+                    "parent-identifier": "3.3.4",
+                    "identifier": "(9)",
+                    "content": "Aşağıdaki deri taklitleri (yedekleri) sadece yanık tedavisinde kullanılması halinde ödenir",
                 }
             ),
             # Medical items as articles
             lx.data.Extraction(
                 extraction_class="article",
-                extraction_text="Dermis iskeleti: dermisin tam kat hasar gördüğü üçüncü derece yanık bölgelerinin tedavisinde, %40'ı (0-12 yaş için %20) geçen yanıklarda sağlık kurulu raporu ile Kurumca karşılanır",
+                extraction_text="a) Dermis iskeleti: dermisin tam kat hasar gördüğü üçüncü derece yanık bölgelerinin tedavisinde, %40'ı (0-12 yaş için %20) geçen yanıklarda sağlık kurulu raporu ile Kurumca karşılanır",
                 attributes={
-                    "main_section": "3.3",
-                    "subsection": "4",
-                    "paragraph": "9",
-                    "item": "a",
-                    "type": "medical_item",
-                    "content": "Dermis iskeleti",
-                    "indication": "üçüncü derece yanık",
-                    "indication_detail": "dermisin tam kat hasar gördüğü bölge",
-                    "threshold_adult": ">%40 vücut yüzeyi",
-                    "threshold_pediatric": ">%20 vücut yüzeyi",
-                    "pediatric_age_range": "0-12 yaş",
-                    "document_requirement": "sağlık kurulu raporu",
-                    "payer": "Kurum",
+                    "parent-identifier": "3.3.4",
+                    "identifier": "a)",
+                    "content": "Dermis iskeleti: dermisin tam kat hasar gördüğü üçüncü derece yanık bölgelerinin tedavisinde, %40'ı (0-12 yaş için %20) geçen yanıklarda sağlık kurulu raporu ile Kurumca karşılanır",
                 }
             ),
             lx.data.Extraction(
                 extraction_class="article",
-                extraction_text="Deri benzerleri: en az derin ikinci derece yanıkların tedavisinde, yüz, boyun, el, ayak, perine, eklem bölgelerini içeren veya %40'ı (0-12 yaş için %20) geçen yanıklarda sağlık kurulu raporu ile Kurumca karşılanır",
+                extraction_text="b) Deri benzerleri: en az derin ikinci derece yanıkların tedavisinde, yüz, boyun, el, ayak, perine, eklem bölgelerini içeren veya %40'ı (0-12 yaş için %20) geçen yanıklarda sağlık kurulu raporu ile Kurumca karşılanır",
                 attributes={
-                    "main_section": "3.3",
-                    "subsection": "4",
-                    "paragraph": "9",
-                    "item": "b",
-                    "type": "medical_item",
-                    "content": "Deri benzerleri",
-                    "indication": "en az derin ikinci derece yanık",
-                    "body_areas": ["yüz", "boyun", "el", "ayak", "perine", "eklem"],
-                    "threshold_adult": ">%40 vücut yüzeyi",
-                    "threshold_pediatric": ">%20 vücut yüzeyi",
-                    "pediatric_age_range": "0-12 yaş",
-                    "document_requirement": "sağlık kurulu raporu",
-                    "payer": "Kurum",
+                    "parent-identifier": "3.3.4",
+                    "identifier": "b)",
+                    "content": "Deri benzerleri: en az derin ikinci derece yanıkların tedavisinde, yüz, boyun, el, ayak, perine, eklem bölgelerini içeren veya %40'ı (0-12 yaş için %20) geçen yanıklarda sağlık kurulu raporu ile Kurumca karşılanır",
                 }
             ),
         ]
@@ -579,85 +470,46 @@ EXAMPLES = [
     lx.data.ExampleData(
         text=textwrap.dedent("""\
             4.1.4 - Reçetelere yazılabilecek ilaç miktarı
-            (1) Ayaktan tedavide, bir reçeteye en fazla dört kalem ve her kalem ilaçtan 
-            bir kutunun miktarı kadar ilaç yazılabilir.
-            (2) Kronik hastalıklarda üç aya kadar tedavi dozunda ilaç yazılabilir. Ancak 
-            tedaviye yeni başlanan hastalarda ilk reçete en fazla bir aylık dozda düzenlenir.
+            (1) Ayaktan tedavide, bir reçeteye en fazla dört kalem ve her kalem ilaçtan bir kutunun miktarı kadar ilaç yazılabilir.
+            (2) Kronik hastalıklarda üç aya kadar tedavi dozunda ilaç yazılabilir. Ancak tedaviye yeni başlanan hastalarda ilk reçete en fazla bir aylık dozda düzenlenir.
             (3) Ayakta tedavide antibiyotikler için en fazla 10 günlük doz yazılabilir."""),
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
-                extraction_class="subsection-title",
+                extraction_class="level-2-title",
                 extraction_text="4.1.4 - Reçetelere yazılabilecek ilaç miktarı",
                 attributes={
                     "identifier": "4.1.4",
-                    "main_section": "4.1",
-                    "subsection": "4",
-                    "title": "Reçetelere yazılabilecek ilaç miktarı",
-                    "topic": "prescription_limits",
+                    "parent-identifier": "4.1",
+                    "content": "Reçetelere yazılabilecek ilaç miktarı",
                 }
             ),
             # Prescription rules as articles
             lx.data.Extraction(
                 extraction_class="article",
-                extraction_text="bir reçeteye en fazla dört kalem ve her kalem ilaçtan bir kutunun miktarı kadar ilaç yazılabilir",
+                extraction_text="(1) Ayaktan tedavide, bir reçeteye en fazla dört kalem ve her kalem ilaçtan bir kutunun miktarı kadar ilaç yazılabilir.",
                 attributes={
-                    "main_section": "4.1",
-                    "subsection": "4",
-                    "paragraph": "1",
-                    "type": "prescription_rule",
+                    "parent-identifier": "4.1.4",
+                    "identifier": "(1)",
                     "content": "bir reçeteye en fazla dört kalem ve her kalem ilaçtan bir kutunun miktarı kadar ilaç yazılabilir",
-                    "care_setting": "ayaktan tedavi",
-                    "max_items_per_prescription": 4,
-                    "max_quantity_per_item": "1 kutu",
-                    "rule_type": "quantity_limit",
                 }
             ),
             lx.data.Extraction(
                 extraction_class="article",
-                extraction_text="Kronik hastalıklarda üç aya kadar tedavi dozunda ilaç yazılabilir",
+                extraction_text="(2) Kronik hastalıklarda üç aya kadar tedavi dozunda ilaç yazılabilir. Ancak tedaviye yeni başlanan hastalarda ilk reçete en fazla bir aylık dozda düzenlenir.",
                 attributes={
-                    "main_section": "4.1",
-                    "subsection": "4",
-                    "paragraph": "2",
-                    "type": "prescription_rule",
-                    "content": "Kronik hastalıklarda üç aya kadar tedavi dozunda ilaç yazılabilir",
-                    "condition": "kronik hastalık",
-                    "max_duration": "3 ay",
-                    "max_duration_days": 90,
-                    "rule_type": "duration_limit",
+                    "parent-identifier": "4.1.4",
+                    "identifier": "(2)",
+                    "content": "Kronik hastalıklarda üç aya kadar tedavi dozunda ilaç yazılabilir. Ancak tedaviye yeni başlanan hastalarda ilk reçete en fazla bir aylık dozda düzenlenir.",
                 }
             ),
             lx.data.Extraction(
                 extraction_class="article",
-                extraction_text="tedaviye yeni başlanan hastalarda ilk reçete en fazla bir aylık dozda düzenlenir",
+                extraction_text="(3) Ayakta tedavide antibiyotikler için en fazla 10 günlük doz yazılabilir.",
                 attributes={
-                    "main_section": "4.1",
-                    "subsection": "4",
-                    "paragraph": "2",
-                    "type": "prescription_rule",
-                    "content": "tedaviye yeni başlanan hastalarda ilk reçete en fazla bir aylık dozda düzenlenir",
-                    "condition": "tedaviye yeni başlama",
-                    "max_duration": "1 ay",
-                    "max_duration_days": 30,
-                    "applies_to": "ilk reçete",
-                    "rule_type": "duration_limit",
-                }
-            ),
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="antibiyotikler için en fazla 10 günlük doz yazılabilir",
-                attributes={
-                    "main_section": "4.1",
-                    "subsection": "4",
-                    "paragraph": "3",
-                    "type": "prescription_rule",
-                    "content": "antibiyotikler için en fazla 10 günlük doz yazılabilir",
-                    "care_setting": "ayakta tedavi",
-                    "drug_category": "antibiyotik",
-                    "max_duration": "10 gün",
-                    "max_duration_days": 10,
-                    "rule_type": "duration_limit",
+                    "parent-identifier": "4.1.4",
+                    "identifier": "(3)",
+                    "content": "Ayakta tedavide antibiyotikler için en fazla 10 günlük doz yazılabilir.",
                 }
             ),
         ]
@@ -681,29 +533,22 @@ EXAMPLES = [
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
-                extraction_class="leafsection-title",
+                extraction_class="level-4-title",
                 extraction_text="1.5.1.A-2 - Hasta sevk işlemleri",
                 attributes={
                     "identifier": "1.5.1.A-2",
-                    "main_section": "1.5",
-                    "subsection": "1",
-                    "subsubsection": "A",
-                    "leafsection": "2",
-                    "title": "Hasta sevk işlemleri",
-                    "topic": "patient_referral",
+                    "parent-identifier": "1.5.1.A",
+                    "content": "1.5.1.A-2 - Hasta sevk işlemleri",
                 }
             ),
             # Extract the general condition/scope
             lx.data.Extraction(
-                extraction_class="scope",
+                extraction_class="paragraph",
                 extraction_text="Tedavinin sağlanamaması halinde",
                 attributes={
-                    "main_section": "1.5",
-                    "subsection": "1",
-                    "subsubsection": "A",
-                    "leafsection": "2",
-                    "paragraph": "1",
-                    "condition": "tedavinin sağlanamaması",
+                    "parent-identifier": "1.5.1.A-2",
+                    "identifier": "(1)",
+                    "content": "Tedavinin sağlanamaması halinde",
                 }
             ),
             # Referral rules as articles
@@ -711,55 +556,27 @@ EXAMPLES = [
                 extraction_class="article",
                 extraction_text="Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir",
                 attributes={
-                    "main_section": "1.5",
-                    "subsection": "1",
-                    "subsubsection": "A",
-                    "leafsection": "2",
-                    "paragraph": "1",
-                    "item": "a",
-                    "type": "referral_rule",
+                    "parent-identifier": "1.5.1.A-2-(1)",
+                    "identifier": "a)",
                     "content": "Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir",
-                    "referring_level": "birinci basamak",
-                    "target_levels": ["ikinci basamak", "üçüncü basamak"],
-                    "target_authority": "Sağlık Bakanlığı",
-                    "geographic_scope": "aynı yerleşim yeri",
                 }
             ),
             lx.data.Extraction(
                 extraction_class="article",
                 extraction_text="Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir",
                 attributes={
-                    "main_section": "1.5",
-                    "subsection": "1",
-                    "subsubsection": "A",
-                    "leafsection": "2",
-                    "paragraph": "1",
-                    "item": "b-1",
-                    "type": "referral_rule",
+                    "parent-identifier": "1.5.1.A-2-(1)",
+                    "identifier": "b)-1)",
                     "content": "Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir",
-                    "referring_level": "ikinci basamak",
-                    "target_levels": ["ikinci basamak", "üçüncü basamak"],
-                    "target_authority": "Sağlık Bakanlığı",
-                    "geographic_scope": "aynı yerleşim yeri",
                 }
             ),
             lx.data.Extraction(
                 extraction_class="article",
                 extraction_text="resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması halinde özel sağlık hizmeti sunucularına sevk edilebilir",
                 attributes={
-                    "main_section": "1.5",
-                    "subsection": "1",
-                    "subsubsection": "A",
-                    "leafsection": "2",
-                    "paragraph": "1",
-                    "item": "b-2",
-                    "type": "referral_rule",
+                    "parent-identifier": "1.5.1.A-2-(1)",
+                    "identifier": "b)-2)",
                     "content": "resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması halinde özel sağlık hizmeti sunucularına sevk edilebilir",
-                    "referring_level": "ikinci basamak",
-                    "condition": "resmi sunucularda uygun yoğun bakım yatağı bulunmaması",
-                    "target_ownership": "özel",
-                    "service_type": "yoğun bakım",
-                    "exception_type": "capacity_based",
                 }
             ),
         ]
@@ -779,55 +596,32 @@ EXAMPLES = [
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
-                extraction_class="subsection-title",
+                extraction_class="level-3-title",
                 extraction_text="1.9.1 - İlave ücret alınması",
                 attributes={
                     "identifier": "1.9.1",
-                    "main_section": "1.9",
-                    "subsection": "1",
-                    "title": "İlave ücret alınması",
-                    "topic": "additional_fee",
+                    "parent-identifier": "1.9",
+                    "content": "1.9.1 - İlave ücret alınması",
                 }
             ),
             # Extract the scope
             lx.data.Extraction(
-                extraction_class="scope",
+                extraction_class="paragraph",
                 extraction_text="Özel sağlık hizmeti sunucuları tarafından",
                 attributes={
-                    "main_section": "1.9",
-                    "subsection": "1",
-                    "paragraph": "1",
-                    "provider_type": "özel sağlık hizmeti sunucuları",
+                    "parent-identifier": "1.9.1",
+                    "identifier": "(1)",
+                    "content": "Özel sağlık hizmeti sunucuları tarafından",
                 }
             ),
             # Additional fee rules as articles
             lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="SUT eki EK-2/B ve EK-2/C listelerinde yer alan işlemler için Kurumca belirlenen bedelin iki katına kadar ilave ücret alınabilir",
-                attributes={
-                    "main_section": "1.9",
-                    "subsection": "1",
-                    "paragraph": "1",
-                    "type": "additional_fee_rule",
-                    "content": "SUT eki EK-2/B ve EK-2/C listelerinde yer alan işlemler için Kurumca belirlenen bedelin iki katına kadar ilave ücret alınabilir",
-                    "fee_limit": "2x",
-                    "fee_base": "Kurumca belirlenen bedel",
-                    "applicable_lists": ["EK-2/B", "EK-2/C"],
-                    "rule_type": "permitted_with_limit",
-                }
-            ),
-            lx.data.Extraction(
-                extraction_class="billing_exception",
+                extraction_class="paragraph",
                 extraction_text="acil hallerde verilen sağlık hizmetleri için ilave ücret alınamaz",
                 attributes={
-                    "main_section": "1.9",
-                    "subsection": "1",
-                    "paragraph": "2",
-                    "rule_type": "prohibition",
+                    "parent-identifier": "1.9.1",
+                    "identifier": "(2)",
                     "content": "acil hallerde verilen sağlık hizmetleri için ilave ücret alınamaz",
-                    "condition": "acil hal",
-                    "exception": "otelcilik hizmetleri",
-                    "provider_type": "özel sağlık hizmeti sunucuları",
                 }
             ),
         ]
@@ -837,81 +631,16 @@ EXAMPLES = [
     # Example 10: Procedure codes and specific medical procedures
     # ==========================================================================
     lx.data.ExampleData(
-        text=textwrap.dedent("""\
-            2.2.1.B-1 (11) - Özel sağlık hizmet sunucularında SUT eki EK-2/B Listesindeki 
-            700610 kodlu "Transözefajiyal ekokardiyografi" ve 700611 kodlu "Transözefajiyal 
-            ekokardiyografi, çocuk" işlemlerinin yapılması durumunda her bir işlem için 
-            muayene sayısından bir muayene sayısı düşülerek yeni günlük muayene sayısı 
-            hesaplanır."""),
+        text=textwrap.dedent("""2.2.1.B-1 (11) - Özel sağlık hizmet sunucularında SUT eki EK-2/B Listesindeki 700610 kodlu "Transözefajiyal ekokardiyografi" ve 700611 kodlu "Transözefajiyal ekokardiyografi, çocuk" işlemlerinin yapılması durumunda her bir işlem için muayene sayısından bir muayene sayısı düşülerek yeni günlük muayene sayısı hesaplanır."""),
         extractions=[
             # Extract the scope/context
             lx.data.Extraction(
-                extraction_class="scope",
+                extraction_class="paragraph",
                 extraction_text="Özel sağlık hizmet sunucularında",
                 attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "11",
-                    "provider_type": "özel sağlık hizmeti sunucuları",
-                }
-            ),
-            # Billing rule as article
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="her bir işlem için muayene sayısından bir muayene sayısı düşülerek yeni günlük muayene sayısı hesaplanır",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "11",
-                    "type": "billing_rule",
-                    "content": "her bir işlem için muayene sayısından bir muayene sayısı düşülerek yeni günlük muayene sayısı hesaplanır",
-                    "rule_type": "quota_adjustment",
-                    "adjustment": "-1 muayene sayısı",
-                    "per": "her bir işlem",
-                    "affected_metric": "günlük muayene sayısı",
-                }
-            ),
-            # Medical procedures as articles
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="700610 kodlu Transözefajiyal ekokardiyografi",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "11",
-                    "type": "medical_procedure",
-                    "content": "Transözefajiyal ekokardiyografi",
-                    "code": "700610",
-                    "list_reference": "EK-2/B",
-                    "specialty": "kardiyoloji",
-                    "modality": "ekokardiyografi",
-                    "approach": "transözefajiyal",
-                    "patient_group": "adult",
-                }
-            ),
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="700611 kodlu Transözefajiyal ekokardiyografi, çocuk",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "11",
-                    "type": "medical_procedure",
-                    "content": "Transözefajiyal ekokardiyografi, çocuk",
-                    "code": "700611",
-                    "list_reference": "EK-2/B",
-                    "specialty": "pediatrik kardiyoloji",
-                    "modality": "ekokardiyografi",
-                    "approach": "transözefajiyal",
-                    "patient_group": "pediatric",
+                    "parent-identifier": "2.2.1.B-1",
+                    "identifier": "(11)",
+                    "content": "Özel sağlık hizmet sunucularında SUT eki EK-2/B Listesindeki 700610 kodlu "Transözefajiyal ekokardiyografi" ve 700611 kodlu Transözefajiyal ekokardiyografi, çocuk işlemlerinin yapılması durumunda her bir işlem için muayene sayısından bir muayene sayısı düşülerek yeni günlük muayene sayısı hesaplanır.",
                 }
             ),
         ]
@@ -922,161 +651,16 @@ EXAMPLES = [
     # ==========================================================================
     lx.data.ExampleData(
         text=textwrap.dedent("""\
-            2.2.1.B-1 (11) - Ayaktan başvurularda ikinci ve üçüncü basamak özel sağlık 
-            hizmeti sunucuları için günlük muayene sınırı acil servis/polikliniğe başvurular 
-            hariç olmak üzere, sağlık hizmeti sunucusundaki sözleşme kapsamında çalışan 
-            hekimlerin çalışma saatlerinin 6 ile çarpılması ile bulunur. Her bir hekim için 
-            günlük muayene sayısı her halükarda 60'ı geçemez. Acil servis/polikliniğine 
-            başvurularda ise bir acil servis doktoru için günlük muayene sayısı 90'ı geçemez."""),
+            2.2.1.B-1 (11) - Ayaktan başvurularda ikinci ve üçüncü basamak özel sağlık hizmeti sunucuları için günlük muayene sınırı acil servis/polikliniğe başvurular hariç olmak üzere, sağlık hizmeti sunucusundaki sözleşme kapsamında çalışan hekimlerin çalışma saatlerinin 6 ile çarpılması ile bulunur. Her bir hekim için günlük muayene sayısı her halükarda 60'ı geçemez. Acil servis/polikliniğine başvurularda ise bir acil servis doktoru için günlük muayene sayısı 90'ı geçemez."""),
         extractions=[
             # Extract the scope
             lx.data.Extraction(
-                extraction_class="scope",
+                extraction_class="paragraph",
                 extraction_text="Ayaktan başvurularda ikinci ve üçüncü basamak özel sağlık hizmeti sunucuları için",
                 attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "11",
-                    "scopes": ["ikinci basamak", "üçüncü basamak"],
-                    "provider_type": "özel sağlık hizmeti sunucuları",
-                    "care_setting": "ayaktan başvuru",
-                }
-            ),
-            # Quota/limit rules as articles
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="günlük muayene sınırı sözleşme kapsamında çalışan hekimlerin çalışma saatlerinin 6 ile çarpılması ile bulunur",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "11",
-                    "type": "quota_rule",
-                    "content": "günlük muayene sınırı sözleşme kapsamında çalışan hekimlerin çalışma saatlerinin 6 ile çarpılması ile bulunur",
-                    "calculation_formula": "çalışma saati × 6",
-                    "exception": "acil servis/poliklinik başvuruları",
-                }
-            ),
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="Her bir hekim için günlük muayene sayısı her halükarda 60'ı geçemez",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "11",
-                    "type": "limit",
-                    "content": "Her bir hekim için günlük muayene sayısı her halükarda 60'ı geçemez",
-                    "limit_type": "absolute_maximum",
-                    "metric": "günlük muayene sayısı",
-                    "max_value": 60,
-                    "per": "hekim",
-                    "context": "genel poliklinik",
-                }
-            ),
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="Acil servis/polikliniğine başvurularda bir acil servis doktoru için günlük muayene sayısı 90'ı geçemez",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "11",
-                    "type": "limit",
-                    "content": "Acil servis/polikliniğine başvurularda bir acil servis doktoru için günlük muayene sayısı 90'ı geçemez",
-                    "limit_type": "absolute_maximum",
-                    "metric": "günlük muayene sayısı",
-                    "max_value": 90,
-                    "per": "acil servis doktoru",
-                    "context": "acil servis/poliklinik",
-                }
-            ),
-        ]
-    ),
-
-    # ==========================================================================
-    # Example 12: Inpatient to outpatient transition rules
-    # ==========================================================================
-    lx.data.ExampleData(
-        text=textwrap.dedent("""\
-            2.2.1.B-1 (4) - Hastanın aynı sağlık hizmeti sunucusunda aynı uzmanlık dalına 
-            ayaktan başvurusu sonrasında aynı gün "yatarak tedavi" kapsamında, SUT eki 
-            EK-2/C Listesinde yer alan bir işlem yapılması halinde bu işlem ile birlikte 
-            ayaktan yapılan işlemler bu maddenin birinci fıkrasındaki hükümlere göre 
-            faturalandırılır. Ancak "yatarak tedavi" kapsamında hizmet başına ödeme yöntemi 
-            ile bir işlem yapılması durumunda SUT eki EK-2/A Listesinde yer alan tutarlar 
-            faturalandırılmayacak olup ayaktan başvurular da hizmet başına ödeme yöntemine 
-            göre faturalandırılacaktır."""),
-        extractions=[
-            # Extract the scope/context
-            lx.data.Extraction(
-                extraction_class="scope",
-                extraction_text="Hastanın aynı sağlık hizmeti sunucusunda aynı uzmanlık dalına ayaktan başvurusu sonrasında aynı gün yatarak tedavi kapsamında",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "4",
-                    "provider_scope": "aynı sağlık hizmeti sunucusu",
-                    "specialty_scope": "aynı uzmanlık dalı",
-                    "time_scope": "aynı gün",
-                    "transition": "ayaktan başvuru → yatarak tedavi",
-                }
-            ),
-            # Billing rules as articles
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="SUT eki EK-2/C Listesinde yer alan bir işlem yapılması halinde bu işlem ile birlikte ayaktan yapılan işlemler bu maddenin birinci fıkrasındaki hükümlere göre faturalandırılır",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "4",
-                    "type": "billing_rule",
-                    "content": "SUT eki EK-2/C Listesinde yer alan bir işlem yapılması halinde bu işlem ile birlikte ayaktan yapılan işlemler bu maddenin birinci fıkrasındaki hükümlere göre faturalandırılır",
-                    "scenario": "EK-2/C listesi işlemi",
-                    "inpatient_billing": "EK-2/C listesi üzerinden",
-                    "outpatient_billing": "birinci fıkra hükümlerine göre",
-                    "list_reference": "EK-2/C",
-                }
-            ),
-            lx.data.Extraction(
-                extraction_class="article",
-                extraction_text="yatarak tedavi kapsamında hizmet başına ödeme yöntemi ile bir işlem yapılması durumunda ayaktan başvurular da hizmet başına ödeme yöntemine göre faturalandırılacaktır",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "4",
-                    "type": "billing_rule",
-                    "content": "yatarak tedavi kapsamında hizmet başına ödeme yöntemi ile bir işlem yapılması durumunda ayaktan başvurular da hizmet başına ödeme yöntemine göre faturalandırılacaktır",
-                    "scenario": "hizmet başına ödeme işlemi",
-                    "condition": "yatarak tedavide hizmet başına ödeme yöntemi kullanılması",
-                    "outpatient_billing": "hizmet başına ödeme yöntemi",
-                    "payment_method": "hizmet başına ödeme",
-                }
-            ),
-            lx.data.Extraction(
-                extraction_class="billing_exception",
-                extraction_text="SUT eki EK-2/A Listesinde yer alan tutarlar faturalandırılmayacak",
-                attributes={
-                    "main_section": "2.2",
-                    "subsection": "1",
-                    "subsubsection": "B",
-                    "leafsection": "1",
-                    "paragraph": "4",
-                    "rule_type": "prohibition",
-                    "content": "SUT eki EK-2/A Listesinde yer alan tutarlar faturalandırılmayacak",
-                    "list_reference": "EK-2/A",
-                    "condition": "yatarak tedavide hizmet başına ödeme yöntemi kullanılması",
+                    "parent-identifier": "2.2.1.B-1",
+                    "identifier": "(11)",
+                    "content": "Ayaktan başvurularda ikinci ve üçüncü basamak özel sağlık hizmeti sunucuları için günlük muayene sınırı acil servis/polikliniğe başvurular hariç olmak üzere, sağlık hizmeti sunucusundaki sözleşme kapsamında çalışan hekimlerin çalışma saatlerinin 6 ile çarpılması ile bulunur. Her bir hekim için günlük muayene sayısı her halükarda 60'ı geçemez. Acil servis/polikliniğine başvurularda ise bir acil servis doktoru için günlük muayene sayısı 90'ı geçemez.",
                 }
             ),
         ]

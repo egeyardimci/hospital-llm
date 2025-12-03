@@ -12,6 +12,10 @@ load_dotenv(override=True)
 # You can get a free Gemini API key from: https://aistudio.google.com/app/apikey
 AI_API_KEY = os.getenv("AI_API_KEY")  # Option 2: Directly set your API key here
 AI_MODEL = os.getenv("AI_MODEL")
+if not AI_MODEL:
+    # Warn the user and provide a sensible default for quick testing.
+    print("Warning: environment variable AI_MODEL is not set. Defaulting to 'gpt-5-mini'.")
+    AI_MODEL = "gpt-5-mini"
 print(f"Using AI Model: {AI_MODEL}")
 
 
@@ -22,53 +26,6 @@ prompt = textwrap.dedent("""\
     ## TASK
     Extract structured entities from Turkish healthcare regulatory text, preserving document hierarchy and regulatory relationships.
 
-    ## EXTRACTION CLASSES
-
-    ### 1. Section Headers (extract in hierarchical order)
-    - `section-title`: Top-level sections (e.g., "1.4 - Sağlık hizmeti sunucuları")
-    - `subsection-title`: Second-level sections (e.g., "1.4.1 - Birinci basamak...")
-    - `subsubsection-title`: Third-level sections (e.g., "1.4.1.A - ...")
-    - `leafsection-title`: Fourth-level sections (e.g., "2.2.1.B-2 - ...")
-    
-    Required attributes: `identifier`, `title`, `main_section`, `subsection`, `subsubsection`, `leafsection` (as applicable)
-    Optional attributes: `healthcare_level`, `ownership`, `care_setting`, `payment_method`, `topic`
-
-    ### 2. Scope
-    - `scope`: Defines applicability context (provider types, healthcare levels, conditions)
-    
-    Required attributes: `main_section`, `subsection`, `paragraph`
-    Optional attributes: `scopes` (array), `provider_type`, `care_setting`, `condition`, `time_window`, `exception`
-
-    ### 3. Articles (main content items)
-    - `article`: Individual regulations, services, institutions, rules, or items
-    
-    Required attributes:
-    - `main_section`, `subsection`, `paragraph`
-    - `type`
-    - `content`
-
-    ### 4. Billing Exceptions
-    - `billing_exception`: Prohibitions or restrictions on billing
-    
-    Required attributes: `main_section`, `subsection`, `rule_type` ("prohibition"), `content`
-    Optional attributes: `list_reference`, `condition`, `exception`
-
-    ## EXTRACTION RULES
-
-    1. **Exact Text**: Use exact text from input for `extraction_text`. Do not paraphrase or summarize.
-    2. **Order**: Extract entities in order of appearance in the document.
-    3. **No Overlap**: Extraction spans should not overlap.
-    4. **Hierarchy First**: Always extract section headers before their contents.
-    5. **Complete Attributes**: Provide all applicable attributes to maximize context.
-
-    ## TURKISH HEALTHCARE TERMINOLOGY
-
-    - Basamak levels: birinci (primary), ikinci (secondary), üçüncü (tertiary)
-    - Ownership: resmi (public), özel (private)
-    - Care settings: ayakta tedavi (outpatient), yatarak tedavi (inpatient)
-    - Payment: hizmet başına ödeme (fee-for-service), katılım payı (co-payment), ilave ücret (additional fee)
-    - Lists: EK-2/A, EK-2/B, EK-2/C (appendix price/procedure lists)
-    - Kurum: SGK (Social Security Institution)
     """)
 
 # Extract text from PDF
@@ -99,8 +56,8 @@ result = lx.extract(
     text_or_documents=text_chunk,
     prompt_description=prompt,
     examples=examples,
-    model_id=AI_MODEL,
-    api_key=AI_API_KEY,
+    model_id="gemini-2.5-flash",
+    api_key=os.getenv("GEMINI_API_KEY"),
     fence_output=True,
     use_schema_constraints=False
 )
