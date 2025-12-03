@@ -486,7 +486,7 @@ EXAMPLES = [
             ),
             # Prescription rules as articles
             lx.data.Extraction(
-                extraction_class="article",
+                extraction_class="paragraph",
                 extraction_text="(1) Ayaktan tedavide, bir reçeteye en fazla dört kalem ve her kalem ilaçtan bir kutunun miktarı kadar ilaç yazılabilir.",
                 attributes={
                     "parent-identifier": "4.1.4",
@@ -495,7 +495,7 @@ EXAMPLES = [
                 }
             ),
             lx.data.Extraction(
-                extraction_class="article",
+                extraction_class="paragraph",
                 extraction_text="(2) Kronik hastalıklarda üç aya kadar tedavi dozunda ilaç yazılabilir. Ancak tedaviye yeni başlanan hastalarda ilk reçete en fazla bir aylık dozda düzenlenir.",
                 attributes={
                     "parent-identifier": "4.1.4",
@@ -504,7 +504,7 @@ EXAMPLES = [
                 }
             ),
             lx.data.Extraction(
-                extraction_class="article",
+                extraction_class="paragraph",
                 extraction_text="(3) Ayakta tedavide antibiyotikler için en fazla 10 günlük doz yazılabilir.",
                 attributes={
                     "parent-identifier": "4.1.4",
@@ -596,7 +596,7 @@ EXAMPLES = [
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
-                extraction_class="level-3-title",
+                extraction_class="level-2-title",
                 extraction_text="1.9.1 - İlave ücret alınması",
                 attributes={
                     "identifier": "1.9.1",
