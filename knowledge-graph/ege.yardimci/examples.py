@@ -348,7 +348,7 @@ EXAMPLES = [
         extractions=[
             # FIRST: Extract the section header
             lx.data.Extraction(
-                extraction_class="level-3-title",
+                extraction_class="level-2-title",
                 extraction_text="1.8.1 - Ayakta tedavide hekim ve diş hekimi muayenesi katılım payı",
                 attributes={
                     "identifier": "1.8.1",
