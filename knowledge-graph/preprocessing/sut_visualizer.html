@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUT Document Tree Visualizer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #00d4ff, #7b68ee, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .doc-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, #7b68ee, #00d4ff);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .doc-title {
+            color: #888;
+            font-size: 1rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #7b68ee);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-box input {
+            padding: 12px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            font-size: 1rem;
+            width: 350px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .search-box input::placeholder {
+            color: #666;
+        }
+
+        .search-results-info {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .search-results-info .count {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tree-container {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            max-height: 70vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tree-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .tree-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .tree-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .tree-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 212, 255, 0.5);
+        }
+
+        .tree-node {
+            margin-left: 0;
+        }
+
+        .tree-node .children {
+            margin-left: 20px;
+            border-left: 2px solid rgba(255, 255, 255, 0.08);
+            padding-left: 15px;
+        }
+
+        .node-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 14px;
+            margin: 4px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .node-content:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .node-content.expanded-view {
+            background: rgba(0, 212, 255, 0.08);
+            border-color: rgba(0, 212, 255, 0.2);
+        }
+
+        .node-content.highlight {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: rgba(255, 215, 0, 0.4);
+            animation: pulse 1s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+            50% { box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.2); }
+        }
+
+        .toggle-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #00d4ff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+        }
+
+        .toggle-btn.collapsed::before {
+            content: '+';
+        }
+
+        .toggle-btn.expanded::before {
+            content: '−';
+        }
+
+        .toggle-btn.leaf {
+            visibility: hidden;
+        }
+
+        .node-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .node-id {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.85rem;
+            padding: 3px 10px;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.4), rgba(0, 212, 255, 0.4));
+            border-radius: 6px;
+            color: #fff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .node-title {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* Paragraphs */
+        .paragraphs-container {
+            margin-top: 12px;
+            display: none;
+        }
+
+        .paragraphs-container.visible {
+            display: block;
+        }
+
+        .paragraph {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin: 8px 0;
+            border-left: 3px solid #00d4ff;
+        }
+
+        .paragraph-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .paragraph-id {
+            font-family: monospace;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 4px;
+            color: #00d4ff;
+        }
+
+        .paragraph-content {
+            font-size: 0.9rem;
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* Items */
+        .items-container {
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 2px solid rgba(139, 195, 74, 0.3);
+        }
+
+        .item {
+            background: rgba(139, 195, 74, 0.08);
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin: 6px 0;
+        }
+
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .item-id {
+            font-family: monospace;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            background: rgba(139, 195, 74, 0.3);
+            border-radius: 4px;
+            color: #8bc34a;
+            font-weight: 600;
+        }
+
+        .item-content {
+            font-size: 0.85rem;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Sub Items */
+        .sub-items-container {
+            margin-top: 8px;
+            padding-left: 12px;
+            border-left: 2px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .sub-item {
+            background: rgba(255, 193, 7, 0.08);
+            border-radius: 5px;
+            padding: 8px 10px;
+            margin: 4px 0;
+        }
+
+        .sub-item-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .sub-item-id {
+            font-family: monospace;
+            font-size: 0.7rem;
+            padding: 1px 6px;
+            background: rgba(255, 193, 7, 0.3);
+            border-radius: 3px;
+            color: #ffc107;
+            font-weight: 600;
+        }
+
+        .sub-item-content {
+            font-size: 0.8rem;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        /* Content (direct section content) */
+        .section-content {
+            margin-top: 10px;
+            padding: 12px;
+            background: rgba(156, 39, 176, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #9c27b0;
+            font-size: 0.9rem;
+            color: #ccc;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .section-content.visible {
+            display: block;
+        }
+
+        /* Section-level items (simple string array) */
+        .section-items-container {
+            margin-top: 10px;
+            display: none;
+            padding: 10px;
+            background: rgba(76, 175, 80, 0.08);
+            border-radius: 8px;
+            border-left: 3px solid #4caf50;
+        }
+
+        .section-items-container.visible {
+            display: block;
+        }
+
+        .section-item {
+            display: flex;
+            gap: 8px;
+            padding: 6px 0;
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .section-item-num {
+            color: #4caf50;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .section-item-text {
+            color: #bbb;
+        }
+
+        .badge.has-items {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+
+        /* Amendments */
+        .amendments-container {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .amendments-container.visible {
+            display: block;
+        }
+
+        .amendment {
+            font-size: 0.8rem;
+            color: #ff9800;
+            padding: 6px 10px;
+            background: rgba(255, 152, 0, 0.1);
+            border-radius: 5px;
+            margin: 4px 0;
+            border-left: 3px solid #ff9800;
+        }
+
+        /* Meta badges */
+        .node-meta {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .badge.has-content {
+            background: rgba(156, 39, 176, 0.2);
+            color: #ce93d8;
+        }
+
+        .badge.has-paragraphs {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+        }
+
+        .badge.has-amendments {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+        }
+
+        .badge.has-subsections {
+            background: rgba(233, 30, 99, 0.2);
+            color: #f48fb1;
+        }
+
+        .expand-details-btn {
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: #aaa;
+            cursor: pointer;
+            margin-left: auto;
+            transition: all 0.2s;
+        }
+
+        .expand-details-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .file-input-wrapper {
+            text-align: center;
+            padding: 50px;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-input-wrapper:hover {
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .file-input-wrapper input {
+            display: none;
+        }
+
+        .file-input-wrapper p {
+            color: #666;
+            margin-top: 15px;
+        }
+
+        #drop-zone.dragover {
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .nav-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.9);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.1);
+            background: #00d4ff;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            .search-box input { width: 100%; }
+            .stats { gap: 10px; }
+            .stat-item { padding: 8px 12px; }
+            .node-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="doc-type" id="doc-type">SUT</div>
+            <h1>📄 SUT Document Visualizer</h1>
+            <div class="doc-title" id="doc-subtitle">Sağlık Uygulama Tebliği</div>
+        </header>
+
+        <div id="drop-zone" class="file-input-wrapper">
+            <input type="file" id="file-input" accept=".json">
+            <button class="btn-primary" onclick="document.getElementById('file-input').click()">
+                📁 Load JSON File
+            </button>
+            <p>or drag and drop your sut_out.json file here</p>
+        </div>
+
+        <div id="main-content" class="hidden">
+            <div class="stats" id="stats"></div>
+
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search sections, paragraphs, items...">
+                <button class="btn-secondary" onclick="clearSearch()">Clear</button>
+            </div>
+            
+            <div class="search-results-info" id="search-results-info"></div>
+
+            <div class="controls">
+                <button class="btn-primary" onclick="expandAll()">➕ Expand All</button>
+                <button class="btn-primary" onclick="collapseAll()">➖ Collapse All</button>
+                <button class="btn-secondary" onclick="expandToLevel(1)">Level 1</button>
+                <button class="btn-secondary" onclick="expandToLevel(2)">Level 2</button>
+                <button class="btn-secondary" onclick="expandToLevel(3)">Level 3</button>
+                <button class="btn-secondary" onclick="toggleAllDetails(true)">📖 Show All Details</button>
+                <button class="btn-secondary" onclick="toggleAllDetails(false)">📕 Hide All Details</button>
+            </div>
+
+            <div class="tree-container" id="tree-container"></div>
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-btn" onclick="scrollToTop()" title="Scroll to top">↑</button>
+        <button class="nav-btn" onclick="scrollToBottom()" title="Scroll to bottom">↓</button>
+    </div>
+
+    <script>
+        let treeData = null;
+        let stats = { sections: 0, paragraphs: 0, items: 0, amendments: 0, maxDepth: 0 };
+
+        // File handling
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file) loadFile(file);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) loadFile(file);
+        });
+
+        function loadFile(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    treeData = data;
+                    initializeTree(data);
+                } catch (err) {
+                    alert('Error parsing JSON file: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function initializeTree(data) {
+            document.getElementById('drop-zone').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+
+            if (data.document_type) {
+                document.getElementById('doc-type').textContent = data.document_type;
+            }
+            if (data.title) {
+                document.getElementById('doc-subtitle').textContent = data.title;
+            }
+
+            // Calculate stats
+            stats = { sections: 0, paragraphs: 0, items: 0, amendments: 0, maxDepth: 0 };
+            calculateStats(data.sections, 0);
+
+            document.getElementById('stats').innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${stats.sections}</div>
+                    <div class="stat-label">Sections</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${stats.maxDepth + 1}</div>
+                    <div class="stat-label">Max Depth</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${stats.paragraphs}</div>
+                    <div class="stat-label">Paragraphs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${stats.items}</div>
+                    <div class="stat-label">Items</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${stats.amendments}</div>
+                    <div class="stat-label">Amendments</div>
+                </div>
+            `;
+
+            renderTree(data.sections);
+        }
+
+        function calculateStats(sections, depth) {
+            if (!sections) return;
+            sections.forEach(section => {
+                stats.sections++;
+                stats.maxDepth = Math.max(stats.maxDepth, depth);
+                
+                // Count section-level items
+                if (section.items) {
+                    stats.items += section.items.length;
+                }
+                
+                if (section.paragraphs) {
+                    section.paragraphs.forEach(p => {
+                        stats.paragraphs++;
+                        if (p.items) {
+                            p.items.forEach(item => {
+                                stats.items++;
+                                if (item.sub_items) stats.items += item.sub_items.length;
+                            });
+                        }
+                    });
+                }
+                
+                if (section.amendments) stats.amendments += section.amendments.length;
+                if (section.subsections) calculateStats(section.subsections, depth + 1);
+            });
+        }
+
+        function renderTree(sections) {
+            const container = document.getElementById('tree-container');
+            container.innerHTML = '';
+            sections.forEach((section, index) => {
+                container.appendChild(createNodeElement(section, `node-${index}`, 0));
+            });
+        }
+
+        function createNodeElement(section, id, depth) {
+            const div = document.createElement('div');
+            div.className = 'tree-node';
+            div.id = id;
+            div.dataset.depth = depth;
+
+            const hasSubsections = section.subsections && section.subsections.length > 0;
+            const hasContent = section.content && section.content.trim();
+            const hasParagraphs = section.paragraphs && section.paragraphs.length > 0;
+            const hasItems = section.items && section.items.length > 0;
+            const hasAmendments = section.amendments && section.amendments.length > 0;
+            const hasDetails = hasContent || hasParagraphs || hasItems || hasAmendments;
+
+            const content = document.createElement('div');
+            content.className = 'node-content';
+
+            // Toggle button
+            const toggleBtn = document.createElement('button');
+            toggleBtn.className = `toggle-btn ${hasSubsections ? 'expanded' : 'leaf'}`;
+            if (hasSubsections) {
+                toggleBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    toggleNode(div, toggleBtn);
+                };
+            }
+            content.appendChild(toggleBtn);
+
+            // Node info
+            const info = document.createElement('div');
+            info.className = 'node-info';
+
+            // Header
+            const header = document.createElement('div');
+            header.className = 'node-header';
+
+            if (section.id) {
+                const idBadge = document.createElement('span');
+                idBadge.className = 'node-id';
+                idBadge.textContent = section.id;
+                header.appendChild(idBadge);
+            }
+
+            const title = document.createElement('span');
+            title.className = 'node-title';
+            const titleText = section.title || '[No title]';
+            title.textContent = titleText.length > 120 ? titleText.substring(0, 120) + '...' : titleText;
+            title.title = titleText;
+            header.appendChild(title);
+
+            // Expand details button
+            if (hasDetails) {
+                const expandBtn = document.createElement('button');
+                expandBtn.className = 'expand-details-btn';
+                expandBtn.textContent = '▼ Details';
+                expandBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    toggleDetails(div, expandBtn);
+                };
+                header.appendChild(expandBtn);
+            }
+
+            info.appendChild(header);
+
+            // Meta badges
+            const meta = document.createElement('div');
+            meta.className = 'node-meta';
+
+            if (hasContent) {
+                const badge = document.createElement('span');
+                badge.className = 'badge has-content';
+                badge.textContent = '📝 Content';
+                meta.appendChild(badge);
+            }
+
+            if (hasParagraphs) {
+                const badge = document.createElement('span');
+                badge.className = 'badge has-paragraphs';
+                badge.textContent = `¶ ${section.paragraphs.length} paragraphs`;
+                meta.appendChild(badge);
+            }
+
+            if (hasAmendments) {
+                const badge = document.createElement('span');
+                badge.className = 'badge has-amendments';
+                badge.textContent = `⚖ ${section.amendments.length} amendments`;
+                meta.appendChild(badge);
+            }
+
+            if (hasItems) {
+                const badge = document.createElement('span');
+                badge.className = 'badge has-items';
+                badge.textContent = `• ${section.items.length} items`;
+                meta.appendChild(badge);
+            }
+
+            if (hasSubsections) {
+                const badge = document.createElement('span');
+                badge.className = 'badge has-subsections';
+                badge.textContent = `📁 ${section.subsections.length} subsections`;
+                meta.appendChild(badge);
+            }
+
+            info.appendChild(meta);
+
+            // Section content (direct)
+            if (hasContent) {
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'section-content';
+                contentDiv.textContent = section.content;
+                info.appendChild(contentDiv);
+            }
+
+            // Section-level items (simple string array)
+            if (hasItems) {
+                const itemsDiv = document.createElement('div');
+                itemsDiv.className = 'section-items-container';
+                
+                section.items.forEach((item, idx) => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'section-item';
+                    
+                    const itemNum = document.createElement('span');
+                    itemNum.className = 'section-item-num';
+                    itemNum.textContent = `${idx + 1})`;
+                    itemEl.appendChild(itemNum);
+                    
+                    const itemText = document.createElement('span');
+                    itemText.className = 'section-item-text';
+                    itemText.textContent = item;
+                    itemEl.appendChild(itemText);
+                    
+                    itemsDiv.appendChild(itemEl);
+                });
+                
+                info.appendChild(itemsDiv);
+            }
+
+            // Paragraphs
+            if (hasParagraphs) {
+                const paragraphsDiv = document.createElement('div');
+                paragraphsDiv.className = 'paragraphs-container';
+                
+                section.paragraphs.forEach(para => {
+                    const paraEl = document.createElement('div');
+                    paraEl.className = 'paragraph';
+                    
+                    const paraHeader = document.createElement('div');
+                    paraHeader.className = 'paragraph-header';
+                    
+                    if (para.id) {
+                        const paraId = document.createElement('span');
+                        paraId.className = 'paragraph-id';
+                        paraId.textContent = `¶ ${para.id}`;
+                        paraHeader.appendChild(paraId);
+                    }
+                    paraEl.appendChild(paraHeader);
+                    
+                    if (para.content) {
+                        const paraContent = document.createElement('div');
+                        paraContent.className = 'paragraph-content';
+                        paraContent.textContent = para.content;
+                        paraEl.appendChild(paraContent);
+                    }
+                    
+                    // Items within paragraph
+                    if (para.items && para.items.length > 0) {
+                        const itemsDiv = document.createElement('div');
+                        itemsDiv.className = 'items-container';
+                        
+                        para.items.forEach(item => {
+                            const itemEl = document.createElement('div');
+                            itemEl.className = 'item';
+                            
+                            const itemHeader = document.createElement('div');
+                            itemHeader.className = 'item-header';
+                            
+                            if (item.id) {
+                                const itemId = document.createElement('span');
+                                itemId.className = 'item-id';
+                                itemId.textContent = item.id;
+                                itemHeader.appendChild(itemId);
+                            }
+                            itemEl.appendChild(itemHeader);
+                            
+                            if (item.content) {
+                                const itemContent = document.createElement('div');
+                                itemContent.className = 'item-content';
+                                itemContent.textContent = item.content;
+                                itemEl.appendChild(itemContent);
+                            }
+                            
+                            // Sub-items
+                            if (item.sub_items && item.sub_items.length > 0) {
+                                const subItemsDiv = document.createElement('div');
+                                subItemsDiv.className = 'sub-items-container';
+                                
+                                item.sub_items.forEach(subItem => {
+                                    const subItemEl = document.createElement('div');
+                                    subItemEl.className = 'sub-item';
+                                    
+                                    const subItemHeader = document.createElement('div');
+                                    subItemHeader.className = 'sub-item-header';
+                                    
+                                    if (subItem.id) {
+                                        const subItemId = document.createElement('span');
+                                        subItemId.className = 'sub-item-id';
+                                        subItemId.textContent = subItem.id;
+                                        subItemHeader.appendChild(subItemId);
+                                    }
+                                    subItemEl.appendChild(subItemHeader);
+                                    
+                                    if (subItem.content) {
+                                        const subItemContent = document.createElement('div');
+                                        subItemContent.className = 'sub-item-content';
+                                        subItemContent.textContent = subItem.content;
+                                        subItemEl.appendChild(subItemContent);
+                                    }
+                                    
+                                    subItemsDiv.appendChild(subItemEl);
+                                });
+                                
+                                itemEl.appendChild(subItemsDiv);
+                            }
+                            
+                            itemsDiv.appendChild(itemEl);
+                        });
+                        
+                        paraEl.appendChild(itemsDiv);
+                    }
+                    
+                    paragraphsDiv.appendChild(paraEl);
+                });
+                
+                info.appendChild(paragraphsDiv);
+            }
+
+            // Amendments
+            if (hasAmendments) {
+                const amendmentsDiv = document.createElement('div');
+                amendmentsDiv.className = 'amendments-container';
+                section.amendments.forEach(amendment => {
+                    const amendEl = document.createElement('div');
+                    amendEl.className = 'amendment';
+                    amendEl.textContent = amendment;
+                    amendmentsDiv.appendChild(amendEl);
+                });
+                info.appendChild(amendmentsDiv);
+            }
+
+            content.appendChild(info);
+            div.appendChild(content);
+
+            // Subsections
+            if (hasSubsections) {
+                const childrenDiv = document.createElement('div');
+                childrenDiv.className = 'children';
+                section.subsections.forEach((child, index) => {
+                    childrenDiv.appendChild(createNodeElement(child, `${id}-${index}`, depth + 1));
+                });
+                div.appendChild(childrenDiv);
+            }
+
+            return div;
+        }
+
+        function toggleNode(nodeDiv, toggleBtn) {
+            const children = nodeDiv.querySelector(':scope > .children');
+            if (children) {
+                children.classList.toggle('hidden');
+                toggleBtn.classList.toggle('collapsed');
+                toggleBtn.classList.toggle('expanded');
+            }
+        }
+
+        function toggleDetails(nodeDiv, btn) {
+            const sectionContent = nodeDiv.querySelector(':scope > .node-content .section-content');
+            const sectionItems = nodeDiv.querySelector(':scope > .node-content .section-items-container');
+            const paragraphs = nodeDiv.querySelector(':scope > .node-content .paragraphs-container');
+            const amendments = nodeDiv.querySelector(':scope > .node-content .amendments-container');
+            const nodeContent = nodeDiv.querySelector(':scope > .node-content');
+
+            const isVisible = sectionContent?.classList.contains('visible') || 
+                              sectionItems?.classList.contains('visible') ||
+                              paragraphs?.classList.contains('visible') || 
+                              amendments?.classList.contains('visible');
+
+            if (isVisible) {
+                sectionContent?.classList.remove('visible');
+                sectionItems?.classList.remove('visible');
+                paragraphs?.classList.remove('visible');
+                amendments?.classList.remove('visible');
+                nodeContent?.classList.remove('expanded-view');
+                btn.textContent = '▼ Details';
+            } else {
+                sectionContent?.classList.add('visible');
+                sectionItems?.classList.add('visible');
+                paragraphs?.classList.add('visible');
+                amendments?.classList.add('visible');
+                nodeContent?.classList.add('expanded-view');
+                btn.textContent = '▲ Hide';
+            }
+        }
+
+        function toggleAllDetails(show) {
+            document.querySelectorAll('.section-content, .section-items-container, .paragraphs-container, .amendments-container').forEach(el => {
+                el.classList.toggle('visible', show);
+            });
+            document.querySelectorAll('.node-content').forEach(el => {
+                const hasDetails = el.querySelector('.section-content, .paragraphs-container, .amendments-container');
+                if (hasDetails) {
+                    el.classList.toggle('expanded-view', show);
+                }
+            });
+            document.querySelectorAll('.expand-details-btn').forEach(btn => {
+                btn.textContent = show ? '▲ Hide' : '▼ Details';
+            });
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.children').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                if (!btn.classList.contains('leaf')) {
+                    btn.classList.remove('collapsed');
+                    btn.classList.add('expanded');
+                }
+            });
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.children').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                if (!btn.classList.contains('leaf')) {
+                    btn.classList.add('collapsed');
+                    btn.classList.remove('expanded');
+                }
+            });
+        }
+
+        function expandToLevel(targetLevel) {
+            document.querySelectorAll('.tree-node').forEach(nodeDiv => {
+                const depth = parseInt(nodeDiv.dataset.depth) || 0;
+                const children = nodeDiv.querySelector(':scope > .children');
+                const toggleBtn = nodeDiv.querySelector(':scope > .node-content > .toggle-btn');
+                
+                if (children && toggleBtn) {
+                    if (depth < targetLevel) {
+                        children.classList.remove('hidden');
+                        toggleBtn.classList.remove('collapsed');
+                        toggleBtn.classList.add('expanded');
+                    } else {
+                        children.classList.add('hidden');
+                        toggleBtn.classList.add('collapsed');
+                        toggleBtn.classList.remove('expanded');
+                    }
+                }
+            });
+        }
+
+        // Search
+        const searchInput = document.getElementById('search-input');
+        let searchTimeout;
+
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => performSearch(searchInput.value), 300);
+        });
+
+        function performSearch(query) {
+            document.querySelectorAll('.node-content.highlight').forEach(el => el.classList.remove('highlight'));
+            document.getElementById('search-results-info').textContent = '';
+            if (!query.trim()) return;
+
+            const lowerQuery = query.toLowerCase();
+            let foundCount = 0;
+
+            document.querySelectorAll('.tree-node').forEach(nodeDiv => {
+                const searchableText = nodeDiv.querySelector(':scope > .node-content').textContent.toLowerCase();
+                
+                if (searchableText.includes(lowerQuery)) {
+                    const content = nodeDiv.querySelector(':scope > .node-content');
+                    content.classList.add('highlight');
+                    foundCount++;
+
+                    // Expand parents
+                    let parent = nodeDiv.parentElement;
+                    while (parent) {
+                        if (parent.classList.contains('children')) {
+                            parent.classList.remove('hidden');
+                            const toggleBtn = parent.previousElementSibling?.querySelector('.toggle-btn');
+                            if (toggleBtn) {
+                                toggleBtn.classList.remove('collapsed');
+                                toggleBtn.classList.add('expanded');
+                            }
+                        }
+                        parent = parent.parentElement;
+                    }
+                }
+            });
+
+            document.getElementById('search-results-info').innerHTML = 
+                `Found <span class="count">${foundCount}</span> matching section${foundCount !== 1 ? 's' : ''}`;
+
+            if (foundCount > 0) {
+                document.querySelector('.node-content.highlight')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function clearSearch() {
+            searchInput.value = '';
+            document.querySelectorAll('.node-content.highlight').forEach(el => el.classList.remove('highlight'));
+            document.getElementById('search-results-info').textContent = '';
+        }
+
+        function scrollToTop() {
+            document.getElementById('tree-container').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            const container = document.getElementById('tree-container');
+            container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+        }
+
+        // Auto-load
+        fetch('sut_out.json')
+            .then(res => res.json())
+            .then(data => { treeData = data; initializeTree(data); })
+            .catch(() => console.log('Waiting for file upload'));
+    </script>
+</body>
+</html>
