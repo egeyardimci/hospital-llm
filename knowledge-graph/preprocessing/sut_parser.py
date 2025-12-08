@@ -73,10 +73,11 @@ class SUTParser:
     """Improved parser for SUT regulation documents."""
     
     # Pattern for section headers - handles various formats
-    # Examples: "1.1 - Amaç", "1.4.1.A - Title", "1.4.1- Title"
+    # Examples: "1.1 - Amaç", "1.4.1.A - Title", "2.4.3-A - Title", "1.5.1.A-1 - Title", "4.2.27.D.1 - Title"
     # Must have at least one dot to be a section header (prevents matching 1-, 2-, 3-)
+    # Requires section to be at start of line (after optional whitespace)
     SECTION_PATTERN = re.compile(
-        r'^[\s]*(\d+\.\d+(?:\.\d+)*(?:\.[A-Z])?)[\s]*[-–][\s]*([^\n]+)',
+        r'^[\s]*(\d+\.\d+(?:\.\d+)*(?:[\.-][A-ZÇĞİÖŞÜ])?(?:[.-]\d+)?)[\s]*[-–][\s]*([^\n]+)',
         re.MULTILINE
     )
     
@@ -248,11 +249,31 @@ class SUTParser:
     
     def _get_parent_id(self, section_id: str, existing_ids: set[str]) -> Optional[str]:
         """Find the parent section ID."""
+        # Handle "4.2.27.D.1" -> parent is "4.2.27.D"
+        letter_dot_num_match = re.match(r'^(.+\.[A-ZÇĞİÖŞÜ])\.\d+$', section_id)
+        if letter_dot_num_match:
+            potential_parent = letter_dot_num_match.group(1)
+            if potential_parent in existing_ids:
+                return potential_parent
+        
+        # Handle "1.5.1.A-1" -> parent is "1.5.1.A"
+        letter_dash_num_match = re.match(r'^(.+\.[A-ZÇĞİÖŞÜ])-\d+$', section_id)
+        if letter_dash_num_match:
+            potential_parent = letter_dash_num_match.group(1)
+            if potential_parent in existing_ids:
+                return potential_parent
+        
+        # Handle "2.4.3-A" -> parent is "2.4.3"
+        dash_letter_match = re.match(r'^(.+)-[A-ZÇĞİÖŞÜ]$', section_id)
+        if dash_letter_match:
+            potential_parent = dash_letter_match.group(1)
+            if potential_parent in existing_ids:
+                return potential_parent
+        
         parts = section_id.split('.')
         
         # Handle letter suffixes like "1.4.1.A"
         if parts and parts[-1].isalpha():
-            # Parent would be "1.4.1"
             potential_parent = '.'.join(parts[:-1])
             if potential_parent in existing_ids:
                 return potential_parent
@@ -265,16 +286,50 @@ class SUTParser:
         
         return None
     
+    # Turkish alphabet order for sorting
+    TURKISH_LETTER_ORDER = 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ'
+    
     def _sort_key(self, section_id: str) -> tuple:
         """Generate sort key for proper ordering."""
+        # Handle "4.2.27.D.1" format
+        letter_dot_num_match = re.match(r'^(.+)\.([A-ZÇĞİÖŞÜ])\.(\d+)$', section_id)
+        if letter_dot_num_match:
+            base = letter_dot_num_match.group(1)
+            letter = letter_dot_num_match.group(2)
+            num = int(letter_dot_num_match.group(3))
+            base_key = self._sort_key(base)
+            letter_idx = self.TURKISH_LETTER_ORDER.index(letter) if letter in self.TURKISH_LETTER_ORDER else 0
+            return base_key + ((1, letter_idx, letter), (0, num, ''))
+        
+        # Handle "1.5.1.A-1" format
+        letter_dash_num_match = re.match(r'^(.+)\.([A-ZÇĞİÖŞÜ])-(\d+)$', section_id)
+        if letter_dash_num_match:
+            base = letter_dash_num_match.group(1)
+            letter = letter_dash_num_match.group(2)
+            num = int(letter_dash_num_match.group(3))
+            base_key = self._sort_key(base)
+            letter_idx = self.TURKISH_LETTER_ORDER.index(letter) if letter in self.TURKISH_LETTER_ORDER else 0
+            return base_key + ((1, letter_idx, letter), (0, num, ''))
+        
+        # Handle dash-letter format: "2.4.3-A"
+        dash_letter_match = re.match(r'^(.+)-([A-ZÇĞİÖŞÜ])$', section_id)
+        if dash_letter_match:
+            base = dash_letter_match.group(1)
+            letter = dash_letter_match.group(2)
+            base_key = self._sort_key(base)
+            letter_idx = self.TURKISH_LETTER_ORDER.index(letter) if letter in self.TURKISH_LETTER_ORDER else 0
+            return base_key + ((1, letter_idx, letter),)
+        
         parts = []
         for part in section_id.split('.'):
             if part.isdigit():
                 parts.append((0, int(part), ''))
+            elif len(part) == 1 and part.upper() in self.TURKISH_LETTER_ORDER:
+                idx = self.TURKISH_LETTER_ORDER.index(part.upper())
+                parts.append((1, idx, part))
             elif part.isalpha():
                 parts.append((1, 0, part))
             else:
-                # Mixed like "1A" - shouldn't happen in SUT but handle it
                 parts.append((2, 0, part))
         return tuple(parts)
     
@@ -355,37 +410,25 @@ def parse_sut_file(filepath: str, output_path: Optional[str] = None) -> dict:
 
 # Test with sample
 if __name__ == "__main__":
-    sample_text = """1.4.1 - Birinci basamak sağlık hizmeti sunucuları
+    sample_text = """4.2.27 - Trombosit düşüklüğü tedavisi
+4.2.27.D - Eltrombopag, romiplostim kullanım ilkeleri
+4.2.27.D.1 - İmmün trombositopenik purpura endikasyonunda eltrombopag kullanım ilkeleri
+(1) Diğer tedavilere dirençli hastalarda tedaviye başlanır.
+(2) Başlangıç dozu günde bir kez 50 mg'dır.
+(3) Trombosit sayısının 250.000 üzerine çıkması durumunda tedavi sonlandırılır.
+4.2.27.D.2 - Kazanılmış ağır aplastik anemi endikasyonunda eltrombopag kullanım ilkeleri
+(1) Önceki tedaviye dirençli hastalarda tedaviye başlanır.
+(2) 12 hafta sonunda trombosit sayısı 20.000'in altında ise ilaç kesilir.
+(3) Hematoloji uzman hekimlerince reçete edilir.
+4.2.27.D.3 - İmmün trombositopenik purpura endikasyonunda romiplostim kullanım ilkeleri
+(1) Diğer tedavilere dirençli hastalarda tedaviye başlanır.
+(2) Başlangıç dozu 1 mcg/kg'dir.
+1.4.1 - Birinci basamak sağlık hizmeti sunucuları
 1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları
-1) Bünyesinde birinci basamak sağlık kuruluşu bulunan ilçe sağlık müdürlüğü
-2) Toplum sağlığı merkezi (TSM)
-3) Aile sağlığı merkezi (ASM)
-4) Halk sağlığı laboratuvarı (L1ve L2)
-5) Kurum tabipliği
-6) 112 Acil sağlık hizmeti birimleri
-7) Üniversiteler bünyesindeki mediko-sosyal birimler
-8) Türk Silahlı Kuvvetlerinin birinci basamak sağlık üniteleri
-9) Belediyelere ait poliklinikler
-10) Birinci basamak ayaktan ve yataklı teşhis, tedavi ve rehabilitasyon hizmeti sunan sağlık hizmeti sunucuları entegre ilçe devlet hastaneleridir (E2 ve E3)
-1.4.1.B - Birinci basamak özel sağlık hizmeti sunucuları
-1) Evde bakım merkezleri veya birimler
-2) İşyeri sağlık ve güvenlik hizmeti sunulan birimler
-3) Özel poliklinikler
-4) Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları
-5) Eczaneler
-3.3.10 - Sakral sinir stimülatörleri
-(1) Sakral sinir stimülatörlerinin anal inkontinansta kullanımı:
-a) Eğitim kliniği olan üçüncü basamak resmi sağlık hizmeti sunucularında bedeli karşılanır.
-b) Genel endikasyonlar;
-1) 75 yaşın altındaki hastalarda kullanılmalıdır,
-2) Hasta cihaz hakkında bilgilendirilmelidir.
-(2) Sakral sinir stimülatörlerinin üriner inkontinansta kullanımı:
-a) Üroloji kliniklerince oluşturulacak konsey kararı gerekir.
-b) Genel Endikasyonlar;
-1) 75 yaşın altındaki hastalarda kullanılmalıdır,
-2) Psikiyatri konsültasyonu gereklidir."""
+1) Toplum sağlığı merkezi (TSM)
+2) Aile sağlığı merkezi (ASM)"""
 
     result = parse_sut_document(sample_text)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     
-    result = parse_sut_file("doc.pdf", "sut_out.json")
+    result = parse_sut_file("doc-new.pdf", "sut_out.json")
