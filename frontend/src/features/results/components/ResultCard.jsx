@@ -7,6 +7,7 @@ function ResultCard({ item, index }) {
   const [showOptions, setShowOptions] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showEvaluation, setShowEvaluation] = useState(false);
+  const [showMetrics, setShowMetrics] = useState(false);
 
   const tests = useAppSelector((state) => state.tests.tests);
   const test = tests.find((t) => t.test_id === item.test_id) || {};
@@ -87,6 +88,148 @@ function ResultCard({ item, index }) {
               item.chunk_evaluation_score || 'No evaluation data available'}
           </div>
         </div>
+
+        {/* Advanced Metrics Section */}
+        {(item.retrieval_metrics || item.generation_metrics) && (
+          <div className="section">
+            <div className="section-title">
+              <span>Advanced Metrics</span>
+              <button
+                className="button toggle-button"
+                onClick={() => setShowMetrics(!showMetrics)}
+              >
+                Show/Hide
+              </button>
+            </div>
+            <div className={`section-content ${showMetrics ? '' : 'hidden'}`}>
+              {/* Retrieval Metrics */}
+              {item.retrieval_metrics && Object.keys(item.retrieval_metrics).length > 0 && (
+                <div className="metrics-subsection">
+                  <h4 style={{ fontWeight: 'bold', marginBottom: '8px', color: '#002776' }}>
+                    Retrieval Quality Metrics
+                  </h4>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', marginBottom: '16px' }}>
+                    {item.retrieval_metrics.context_relevancy !== undefined && item.retrieval_metrics.context_relevancy !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#f8f9fa', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>Context Relevancy</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.retrieval_metrics.context_relevancy.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.retrieval_metrics.context_precision !== undefined && item.retrieval_metrics.context_precision !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#f8f9fa', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>Context Precision</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.retrieval_metrics.context_precision.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.retrieval_metrics.context_recall !== undefined && item.retrieval_metrics.context_recall !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#f8f9fa', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>Context Recall</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.retrieval_metrics.context_recall.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Generation Metrics */}
+              {item.generation_metrics && Object.keys(item.generation_metrics).length > 0 && (
+                <div className="metrics-subsection">
+                  <h4 style={{ fontWeight: 'bold', marginBottom: '8px', color: '#002776' }}>
+                    Generation Quality Metrics
+                  </h4>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+                    {item.generation_metrics.faithfulness !== undefined && item.generation_metrics.faithfulness !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#f0f8ff', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>Faithfulness</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.faithfulness.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.generation_metrics.answer_relevancy !== undefined && item.generation_metrics.answer_relevancy !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#f0f8ff', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>Answer Relevancy</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.answer_relevancy.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.generation_metrics.answer_correctness !== undefined && item.generation_metrics.answer_correctness !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#f0f8ff', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>Answer Correctness</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.answer_correctness.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.generation_metrics.answer_similarity !== undefined && item.generation_metrics.answer_similarity !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#f0f8ff', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>Answer Similarity</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.answer_similarity.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.generation_metrics.rouge1 !== undefined && item.generation_metrics.rouge1 !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#fff8f0', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>ROUGE-1</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.rouge1.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.generation_metrics.rouge2 !== undefined && item.generation_metrics.rouge2 !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#fff8f0', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>ROUGE-2</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.rouge2.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.generation_metrics.rougeL !== undefined && item.generation_metrics.rougeL !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#fff8f0', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>ROUGE-L</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.rougeL.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.generation_metrics.bleu !== undefined && item.generation_metrics.bleu !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#fff8f0', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>BLEU</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.bleu.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.generation_metrics.meteor !== undefined && item.generation_metrics.meteor !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#fff0f8', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>METEOR</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.meteor.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                    {item.generation_metrics.bert_f1 !== undefined && item.generation_metrics.bert_f1 !== null && (
+                      <div className="metric-item" style={{ padding: '8px', backgroundColor: '#f8f0ff', borderRadius: '4px' }}>
+                        <div style={{ fontSize: '0.85em', color: '#666' }}>BERTScore F1</div>
+                        <div style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#002776' }}>
+                          {item.generation_metrics.bert_f1.toFixed(3)}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         <div className="section">
           <div className="section-title">
