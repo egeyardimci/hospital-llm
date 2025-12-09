@@ -92,7 +92,7 @@ class SUTParser:
     
     # Patterns for nested content
     PARAGRAPH_MARKER = re.compile(r'^\((\d+)\)\s*(.*)$')  # (1), (2)
-    LETTER_ITEM = re.compile(r'^([a-zçğıöşü])\)\s*(.+)$')  # a), b), ç)
+    LETTER_ITEM = re.compile(r'^([a-zçğıöşü]{1,3})\)\s*(.+)$')  # a), b), ç), aa), bb), aaa), ççç)
     NUMBER_ITEM = re.compile(r'^(\d+)\)\s*(.+)$')  # 1), 2)
     SUB_NUMBER_ITEM = re.compile(r'^(\d+)-\s*(.+)$')  # 1-, 2-
     
@@ -410,19 +410,18 @@ def parse_sut_file(filepath: str, output_path: Optional[str] = None) -> dict:
 
 # Test with sample
 if __name__ == "__main__":
-    sample_text = """4.2.27 - Trombosit düşüklüğü tedavisi
-4.2.27.D - Eltrombopag, romiplostim kullanım ilkeleri
-4.2.27.D.1 - İmmün trombositopenik purpura endikasyonunda eltrombopag kullanım ilkeleri
-(1) Diğer tedavilere dirençli hastalarda tedaviye başlanır.
-(2) Başlangıç dozu günde bir kez 50 mg'dır.
-(3) Trombosit sayısının 250.000 üzerine çıkması durumunda tedavi sonlandırılır.
-4.2.27.D.2 - Kazanılmış ağır aplastik anemi endikasyonunda eltrombopag kullanım ilkeleri
-(1) Önceki tedaviye dirençli hastalarda tedaviye başlanır.
-(2) 12 hafta sonunda trombosit sayısı 20.000'in altında ise ilaç kesilir.
-(3) Hematoloji uzman hekimlerince reçete edilir.
-4.2.27.D.3 - İmmün trombositopenik purpura endikasyonunda romiplostim kullanım ilkeleri
-(1) Diğer tedavilere dirençli hastalarda tedaviye başlanır.
-(2) Başlangıç dozu 1 mcg/kg'dir.
+    sample_text = """4.2.14 - Kanser ilaçları kullanım ilkeleri
+(1) Aşağıdaki ilaçlar belirtilen koşullarda kullanılır:
+a) İlk ilaç açıklaması.
+b) İkinci ilaç açıklaması.
+aa) Çift harfli ilaç açıklaması.
+bb) Başka çift harfli ilaç.
+cc) Üçüncü çift harfli.
+çç) Türkçe çift harf.
+aaa) Üç harfli ilaç açıklaması.
+bbb) Başka üç harfli.
+ccc) Kabozantinib kullanım ilkeleri.
+ççç) Palbosiklib kullanım ilkeleri.
 1.4.1 - Birinci basamak sağlık hizmeti sunucuları
 1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları
 1) Toplum sağlığı merkezi (TSM)
@@ -430,5 +429,5 @@ if __name__ == "__main__":
 
     result = parse_sut_document(sample_text)
     print(json.dumps(result, ensure_ascii=False, indent=2))
-    
-    result = parse_sut_file("doc-new.pdf", "sut_out.json")
+
+    result = parse_sut_file("doc-processed.pdf", "sut_out.json")
