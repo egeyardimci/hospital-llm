@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Improved Parser for Turkish Health Regulation Documents (SUT - Sağlık Uygulama Tebliği)
 Converts hierarchical regulation text into structured JSON with proper nesting.
@@ -73,11 +74,12 @@ class SUTParser:
     """Improved parser for SUT regulation documents."""
     
     # Pattern for section headers - handles various formats
-    # Examples: "1.1 - Amaç", "1.4.1.A - Title", "2.4.3-A - Title", "1.5.1.A-1 - Title", "4.2.27.D.1 - Title"
+    # Examples: "1.1 - Amaç", "1.4.1.A - Title", "2.4.3-A - Title", "1.5.1.A-1 - Title", 
+    #           "4.2.27.D.1 - Title", "2.4.4.İ-1-1 - Title", "4.2.10.C-2.1 - Title"
     # Must have at least one dot to be a section header (prevents matching 1-, 2-, 3-)
     # Requires section to be at start of line (after optional whitespace)
     SECTION_PATTERN = re.compile(
-        r'^[\s]*(\d+\.\d+(?:\.\d+)*(?:[\.-][A-ZÇĞİÖŞÜ])?(?:[.-]\d+)?)[\s]*[-–][\s]*([^\n]+)',
+        r'^[\s]*(\d+\.\d+(?:\.\d+)*(?:[\.-][A-ZÇĞİÖŞÜ])?(?:[.-]\d+)?(?:[.-]\d+)?)[\s]*[-–][\s]*([^\n]+)',
         re.MULTILINE
     )
     
@@ -93,8 +95,8 @@ class SUTParser:
     # Patterns for nested content
     PARAGRAPH_MARKER = re.compile(r'^\((\d+)\)\s*(.*)$')  # (1), (2)
     LETTER_ITEM = re.compile(r'^([a-zçğıöşü]{1,3})\)\s*(.+)$')  # a), b), ç), aa), bb), aaa), ççç)
-    NUMBER_ITEM = re.compile(r'^(\d+)\)\s*(.+)$')  # 1), 2)
-    SUB_NUMBER_ITEM = re.compile(r'^(\d+)-\s*(.+)$')  # 1-, 2-
+    NUMBER_ITEM = re.compile(r'^[\s\t]*(\d+)\)\s*(.+)$')  # 1), 2) - with optional leading whitespace/tabs
+    SUB_NUMBER_ITEM = re.compile(r'^[\s\t]*(\d+)-\s*(.+)$')  # 1-, 2- - with optional leading whitespace/tabs
     
     def __init__(self, text: str):
         self.text = self._normalize_text(text)
@@ -160,6 +162,8 @@ class SUTParser:
         current_letter_item = None
         pending_text = []
         has_paragraph_markers = bool(self.PARAGRAPH_MARKER.search(clean_text))
+        last_direct_item_idx = -1  # Track last direct item for continuation lines
+        found_first_marker = False  # Track if we've found any structural marker yet
         
         i = 0
         while i < len(lines):
@@ -172,10 +176,15 @@ class SUTParser:
             # Check for paragraph marker (1), (2)
             para_match = self.PARAGRAPH_MARKER.match(line)
             if para_match:
+                found_first_marker = True
                 # Save previous paragraph
                 if current_paragraph:
                     if pending_text and current_letter_item:
-                        current_letter_item.content += ' ' + ' '.join(pending_text)
+                        # Append pending text to last sub_item if exists, else to letter item
+                        if current_letter_item.sub_items:
+                            current_letter_item.sub_items[-1].content += ' ' + ' '.join(pending_text)
+                        else:
+                            current_letter_item.content += ' ' + ' '.join(pending_text)
                         pending_text = []
                     paragraphs.append(current_paragraph)
                 
@@ -184,13 +193,19 @@ class SUTParser:
                 current_paragraph = Paragraph(id=para_id, content=para_content)
                 current_letter_item = None
                 pending_text = []
+                last_direct_item_idx = -1
                 continue
             
             # Check for letter item a), b), ç)
             letter_match = self.LETTER_ITEM.match(line)
             if letter_match and current_paragraph:
+                found_first_marker = True
                 if pending_text and current_letter_item:
-                    current_letter_item.content += ' ' + ' '.join(pending_text)
+                    # Append pending text to last sub_item if exists, else to letter item
+                    if current_letter_item.sub_items:
+                        current_letter_item.sub_items[-1].content += ' ' + ' '.join(pending_text)
+                    else:
+                        current_letter_item.content += ' ' + ' '.join(pending_text)
                     pending_text = []
                 
                 letter_id = letter_match.group(1)
@@ -204,8 +219,13 @@ class SUTParser:
             if number_match:
                 # If we have a letter item, add as sub-item
                 if current_letter_item:
+                    found_first_marker = True
                     if pending_text:
-                        current_letter_item.content += ' ' + ' '.join(pending_text)
+                        # Append pending text to last sub_item if exists, else to letter item
+                        if current_letter_item.sub_items:
+                            current_letter_item.sub_items[-1].content += ' ' + ' '.join(pending_text)
+                        else:
+                            current_letter_item.content += ' ' + ' '.join(pending_text)
                         pending_text = []
                     
                     num_id = number_match.group(1)
@@ -213,35 +233,53 @@ class SUTParser:
                     current_letter_item.sub_items.append(SubItem(id=num_id, content=num_content))
                 # If no paragraph markers in document, treat as direct item
                 elif not has_paragraph_markers:
+                    found_first_marker = True
                     num_id = number_match.group(1)
                     num_content = number_match.group(2).strip()
-                    direct_items.append(f"{num_content}")
+                    direct_items.append(num_content)
+                    last_direct_item_idx = len(direct_items) - 1
                 continue
             
             # Check for sub-number item 1-, 2-
             sub_num_match = self.SUB_NUMBER_ITEM.match(line)
             if sub_num_match and current_letter_item and current_letter_item.sub_items:
+                found_first_marker = True
+                if pending_text:
+                    current_letter_item.sub_items[-1].content += ' ' + ' '.join(pending_text)
+                    pending_text = []
                 last_sub = current_letter_item.sub_items[-1]
                 sub_id = sub_num_match.group(1)
                 sub_content = sub_num_match.group(2).strip()
                 last_sub.sub_items.append(SubItem(id=sub_id, content=sub_content))
                 continue
             
-            # Regular text - append to appropriate place
+            # Regular text - append to appropriate place (continuation of previous item)
+            # Skip lines before any marker is found (likely title continuation)
+            if not found_first_marker:
+                continue
+                
             if current_letter_item:
+                # Queue it - will be appended to the right place when next item starts
                 pending_text.append(line)
             elif current_paragraph:
                 if current_paragraph.content:
                     current_paragraph.content += ' ' + line
                 else:
                     current_paragraph.content = line
+            elif last_direct_item_idx >= 0 and direct_items:
+                # Continuation of last direct item (wrapped line)
+                direct_items[last_direct_item_idx] += ' ' + line
             else:
                 intro_content.append(line)
         
-        # Save last paragraph
+        # Save last paragraph and handle any remaining pending text
         if current_paragraph:
             if pending_text and current_letter_item:
-                current_letter_item.content += ' ' + ' '.join(pending_text)
+                # Append pending text to last sub_item if exists, else to letter item
+                if current_letter_item.sub_items:
+                    current_letter_item.sub_items[-1].content += ' ' + ' '.join(pending_text)
+                else:
+                    current_letter_item.content += ' ' + ' '.join(pending_text)
             paragraphs.append(current_paragraph)
         
         content = ' '.join(intro_content) if intro_content else None
@@ -249,6 +287,20 @@ class SUTParser:
     
     def _get_parent_id(self, section_id: str, existing_ids: set[str]) -> Optional[str]:
         """Find the parent section ID."""
+        # Handle "4.2.10.C-2.1" -> parent is "4.2.10.C-2"
+        letter_dash_num_dot_num_match = re.match(r'^(.+\.[A-ZÇĞİÖŞÜ]-\d+)\.\d+$', section_id)
+        if letter_dash_num_dot_num_match:
+            potential_parent = letter_dash_num_dot_num_match.group(1)
+            if potential_parent in existing_ids:
+                return potential_parent
+        
+        # Handle "2.4.4.İ-1-1" -> parent is "2.4.4.İ-1"
+        letter_dash_num_num_match = re.match(r'^(.+\.[A-ZÇĞİÖŞÜ]-\d+)-\d+$', section_id)
+        if letter_dash_num_num_match:
+            potential_parent = letter_dash_num_num_match.group(1)
+            if potential_parent in existing_ids:
+                return potential_parent
+        
         # Handle "4.2.27.D.1" -> parent is "4.2.27.D"
         letter_dot_num_match = re.match(r'^(.+\.[A-ZÇĞİÖŞÜ])\.\d+$', section_id)
         if letter_dot_num_match:
@@ -291,6 +343,28 @@ class SUTParser:
     
     def _sort_key(self, section_id: str) -> tuple:
         """Generate sort key for proper ordering."""
+        # Handle "4.2.10.C-2.1" format (letter-dash-number-dot-number)
+        letter_dash_num_dot_num_match = re.match(r'^(.+)\.([A-ZÇĞİÖŞÜ])-(\d+)\.(\d+)$', section_id)
+        if letter_dash_num_dot_num_match:
+            base = letter_dash_num_dot_num_match.group(1)
+            letter = letter_dash_num_dot_num_match.group(2)
+            num1 = int(letter_dash_num_dot_num_match.group(3))
+            num2 = int(letter_dash_num_dot_num_match.group(4))
+            base_key = self._sort_key(base)
+            letter_idx = self.TURKISH_LETTER_ORDER.index(letter) if letter in self.TURKISH_LETTER_ORDER else 0
+            return base_key + ((1, letter_idx, letter), (0, num1, ''), (0, num2, ''))
+        
+        # Handle "2.4.4.İ-1-1" format (letter-dash-number-dash-number)
+        letter_dash_num_num_match = re.match(r'^(.+)\.([A-ZÇĞİÖŞÜ])-(\d+)-(\d+)$', section_id)
+        if letter_dash_num_num_match:
+            base = letter_dash_num_num_match.group(1)
+            letter = letter_dash_num_num_match.group(2)
+            num1 = int(letter_dash_num_num_match.group(3))
+            num2 = int(letter_dash_num_num_match.group(4))
+            base_key = self._sort_key(base)
+            letter_idx = self.TURKISH_LETTER_ORDER.index(letter) if letter in self.TURKISH_LETTER_ORDER else 0
+            return base_key + ((1, letter_idx, letter), (0, num1, ''), (0, num2, ''))
+        
         # Handle "4.2.27.D.1" format
         letter_dot_num_match = re.match(r'^(.+)\.([A-ZÇĞİÖŞÜ])\.(\d+)$', section_id)
         if letter_dot_num_match:
@@ -410,22 +484,23 @@ def parse_sut_file(filepath: str, output_path: Optional[str] = None) -> dict:
 
 # Test with sample
 if __name__ == "__main__":
-    sample_text = """4.2.14 - Kanser ilaçları kullanım ilkeleri
-(1) Aşağıdaki ilaçlar belirtilen koşullarda kullanılır:
-a) İlk ilaç açıklaması.
-b) İkinci ilaç açıklaması.
-aa) Çift harfli ilaç açıklaması.
-bb) Başka çift harfli ilaç.
-cc) Üçüncü çift harfli.
-çç) Türkçe çift harf.
-aaa) Üç harfli ilaç açıklaması.
-bbb) Başka üç harfli.
-ccc) Kabozantinib kullanım ilkeleri.
-ççç) Palbosiklib kullanım ilkeleri.
-1.4.1 - Birinci basamak sağlık hizmeti sunucuları
-1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları
-1) Toplum sağlığı merkezi (TSM)
-2) Aile sağlığı merkezi (ASM)"""
+    sample_text = """4.2.10 - Metabolizma hastalıkları tedavisi
+4.2.10.C - Mukopolisakkaridoz tedavi esasları
+4.2.10.C-1 - Tanı kriterleri
+(1) Enzim düzeyleri hastalıkla uyumlu olmalıdır.
+(2) İdrar analizi yapılmalıdır.
+4.2.10.C-2 - Enzim tedavisine başlama ve sonlandırma kriterleri
+4.2.10.C-2.1 - Başlama kriterleri
+(1) Yardım almadan hareket edebilen hastalarda tedaviye başlanır.
+(2) 24 ay altındaki hastalarda hareket kriteri aranmaz.
+4.2.10.C-2.2 - Devam kriteri
+(1) Yıllık değerlendirmelerde kriterler korunmuş olmalıdır.
+4.2.10.C-2.3 - Sonlandırma kriteri
+(1) Devam kriterlerini karşılayamayan hastalarda tedavi sonlandırılır.
+4.2.10.C-3 - Rapor ve reçeteleme koşulları
+(1) Üçüncü basamak sağlık hizmeti sunucularında rapor düzenlenir.
+4.2.10.Ç - Pompe Hastalığı tedavi esasları
+(1) Enzim düzeyi hastalıkla uyumlu olmalıdır."""
 
     result = parse_sut_document(sample_text)
     print(json.dumps(result, ensure_ascii=False, indent=2))
