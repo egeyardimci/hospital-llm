@@ -27,7 +27,7 @@ export const API_ENDPOINTS = {
   UPDATE_TEST: `${API_BASE_URL}/tests/update`,
   RUN_TEST: `${API_BASE_URL}/tests/run`,
   FETCH_RUNS: `${API_BASE_URL}/runs`,
-
+  FETCH_DOCUMENT: `${API_BASE_URL}/document`,
 };
 
 export const TABS = {

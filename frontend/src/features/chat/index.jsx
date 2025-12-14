@@ -12,6 +12,7 @@ import { DEFAULT_MODELS, customSelectTheme } from '../../constants';
 import { Dot } from 'lucide-react';
 import { fetchCurrentVectorDB } from '../../store/slices/vectordbSlice';
 import ChatMessage from './components/ChatMessage';
+import DocumentModal from '../results/components/DocumentModal';
 
 function ChatbotTab() {
   const dispatch = useAppDispatch();
@@ -56,6 +57,7 @@ function ChatbotTab() {
 
   return (
     <div className="chatbot-container">
+      <DocumentModal />
       <div className="card-header rounded-t-[8px] h-[60px]">
         <span>SGK Agent</span>
         <span className="model-badge flex align-middle justify-center items-center">

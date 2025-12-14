@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../../hooks/useAppSelector';
+import { openDocumentModal } from '../../../store/slices/documentSlice';
 
 function ResultCard({ item, index }) {
   const [showSystem, setShowSystem] = useState(false);
@@ -9,6 +11,7 @@ function ResultCard({ item, index }) {
   const [showEvaluation, setShowEvaluation] = useState(false);
   const [showMetrics, setShowMetrics] = useState(false);
 
+  const dispatch = useDispatch();
   const tests = useAppSelector((state) => state.tests.tests);
   const test = tests.find((t) => t.test_id === item.test_id) || {};
 
@@ -21,6 +24,69 @@ function ResultCard({ item, index }) {
     /[çğıöşüÇĞİÖŞÜ]/.test(item.query) || /türk/i.test(item.query);
   const hasError =
     item.error !== undefined && item.error !== null && item.error !== '';
+
+  // Parse response text and make bracketed references clickable
+  const renderResponseWithLinks = (text) => {
+    if (!text) return null;
+
+    // Match patterns like [1.8 > 1.8.5 - Title] or [1.8.5 - Title]
+    const bracketRegex = /\[([^\]]+)\]/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = bracketRegex.exec(text)) !== null) {
+      // Add text before the match
+      if (match.index > lastIndex) {
+        parts.push(text.slice(lastIndex, match.index));
+      }
+
+      const bracketContent = match[1];
+      // Extract section ID - look for patterns like "1.8.5" (the most specific/last one)
+      const sectionIdMatch = bracketContent.match(/(\d+(?:\.\d+)+(?:\.[A-Z])?)/g);
+      const sectionId = sectionIdMatch ? sectionIdMatch[sectionIdMatch.length - 1] : null;
+
+      if (sectionId) {
+        parts.push(
+          <span
+            key={match.index}
+            onClick={() => dispatch(openDocumentModal(sectionId))}
+            style={{
+              color: '#002776',
+              backgroundColor: '#e3f2fd',
+              padding: '2px 6px',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: '500',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#bbdefb';
+              e.target.style.textDecoration = 'underline';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#e3f2fd';
+              e.target.style.textDecoration = 'none';
+            }}
+            title={`Click to view section ${sectionId}`}
+          >
+            [{bracketContent}]
+          </span>
+        );
+      } else {
+        parts.push(`[${bracketContent}]`);
+      }
+
+      lastIndex = match.index + match[0].length;
+    }
+
+    // Add remaining text
+    if (lastIndex < text.length) {
+      parts.push(text.slice(lastIndex));
+    }
+
+    return parts;
+  };
 
   return (
     <div className="card">
@@ -57,10 +123,9 @@ function ResultCard({ item, index }) {
             <div className="section-title">
               <span>Actual Response</span>
             </div>
-            <div
-              className="section-content"
-              dangerouslySetInnerHTML={{ __html: item.response }}
-            ></div>
+            <div className="section-content">
+              {renderResponseWithLinks(item.response)}
+            </div>
           </div>
         </div>
 
