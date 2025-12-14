@@ -110,7 +110,7 @@ def add_test_result(test_case: TestCase ,query_expected_answer: dict ,response: 
         "expected_answer": query_expected_answer["answer"],
         "response": response,
         "time_stamp" : str(datetime.datetime.now()),
-        "retrieved_chunks": [chunk.page_content for chunk in retrieved_chunks],
+        "retrieved_chunks": [{"page_content": chunk.page_content, "metadata": chunk.metadata} for chunk in retrieved_chunks],
         "options": [{"name": option.name, "is_enabled": option.is_enabled, "data": option.data} for option in test_case.options],
         "evaluation": evaluation.feedback if evaluation is not None else '',
         "evaluation_score": evaluation.score if evaluation is not None else 0,

@@ -26,6 +26,7 @@ TEST_QUERIES_AND_EXPECTED_ANSWERS_PATH = TESTING_CONFIG_DIR / TEST_QUERIES_AND_E
 
 # Documents Directory
 SGK_DOCUMENT_PATH = DOCUMENTS_DIR / SGK_DOCUMENT_FILE_NAME
+SUT_JSON_PATH = DOCUMENTS_DIR / SUT_JSON_FILE_NAME
 
 
 def construct_db_path(embedding_mode_name, chunk_size, chunk_overlap):

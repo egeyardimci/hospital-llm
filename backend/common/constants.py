@@ -1,5 +1,6 @@
 # File Names
 SGK_DOCUMENT_FILE_NAME = "doc.pdf"
+SUT_JSON_FILE_NAME = "sut_out.json"
 TEST_RESULTS_FILE_NAME = "results.json"
 TEST_CASES_FILE_NAME = "test_cases.json"
 TEST_QUERIES_AND_EXPECTED_ANSWERS_FILE_NAME = "queries_expected_answers.json"
