@@ -8,6 +8,8 @@ from backend.utils.logger import get_logger
 from backend.common.constants import GRAPH_DB_OPTION, VECTOR_DB_OPTION, SELF_RAG_OPTION
 from backend.ai.llm.self_rag.self_rag import use_self_rag
 from backend.ai.llm.cross_encoder import use_cross_encoder
+from typing import List
+from langchain_core.documents import Document
 
 logger = get_logger()
 
@@ -24,7 +26,8 @@ def rag_invoke(llm_name: str, system_prompt: str, db: Chroma|None, similarity_ve
     elif rag_database == VECTOR_DB_OPTION:
         # Use traditional vector database
         logger.info("Using vector database for retrieval")
-        retrieved_chunks = db.similarity_search(query, similarity_vector_k)
+        retrieved_chunks: List[Document] = db.similarity_search(query, similarity_vector_k)
+        logger.info(f"Metadata of first retrieved chunk: {retrieved_chunks[0].metadata if retrieved_chunks else 'No chunks retrieved'}")
         logger.info(f"Retrieved {len(retrieved_chunks)} chunks from vector DB.")
         final_chunks = retrieved_chunks
 
@@ -38,8 +41,15 @@ def rag_invoke(llm_name: str, system_prompt: str, db: Chroma|None, similarity_ve
                 logger.info("Using Self-RAG option.")
                 final_chunks = use_self_rag(option,query,db, k_per_retrieval=similarity_vector_k, final_k=similarity_vector_k)
 
-        # Format context for vector DB
-        context = "\n\n".join([f'Page Number: {chunk.metadata.get("page", "Unknown")}: {chunk.page_content}\n' for chunk in retrieved_chunks])
+        # Format context for vector DB with section metadata
+        def format_chunk(chunk: Document) -> str:
+            meta = chunk.metadata
+            section = meta.get("section_title", "")
+            path = meta.get("parent_path", "")
+            header = f"[{path} - {section}]" if path and section else f"[{section or path}]" if (section or path) else ""
+            return f"{header}\n{chunk.page_content}" if header else chunk.page_content
+
+        context = "\n\n".join([format_chunk(chunk) for chunk in final_chunks])
 
     # Use Groq API for response generation
     llm = ChatGroq(model=llm_name)

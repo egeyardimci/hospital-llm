@@ -26,12 +26,10 @@ function ResultCard({ item, index }) {
     <div className="card">
       <div className="card-header">
         <div>
-          <span className="test-id">{`Test ID: ${
-            item.test_id || `Test-${index + 1}`
-          }`}</span>
-          <span className="test-id">{`Run Count: ${
-            item.run_count || 'N/A'
-          }`}</span>
+          <span className="test-id">{`Test ID: ${item.test_id || `Test-${index + 1}`
+            }`}</span>
+          <span className="test-id">{`Run Count: ${item.run_count || 'N/A'
+            }`}</span>
           {isTurkish && <span className="language-badge">Turkish</span>}
         </div>
         <span className="model-badge">{item.llm}</span>
@@ -248,7 +246,7 @@ function ResultCard({ item, index }) {
 
         <div className="section">
           <div className="section-title">
-            <span>Retrieved Chunks</span>
+            <span>Retrieved Chunks ({item.retrieved_chunks?.length || 0})</span>
             <button
               className="button toggle-button"
               onClick={() => setShowChunks(!showChunks)}
@@ -257,12 +255,211 @@ function ResultCard({ item, index }) {
             </button>
           </div>
           <div className={`section-content ${showChunks ? '' : 'hidden'}`}>
-            <ol>
-              {item.retrieved_chunks &&
-                item.retrieved_chunks.map((chunk, i) => (
-                  <li key={i}>{chunk}</li>
-                ))}
-            </ol>
+            {item.retrieved_chunks && item.retrieved_chunks.length > 0 ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {item.retrieved_chunks.map((chunk, i) => {
+                  // Backwards compatibility: check if chunk is a string (old format) or object (new format)
+                  const isNewFormat = typeof chunk === 'object' && chunk !== null && 'page_content' in chunk;
+
+                  if (!isNewFormat) {
+                    // Old format: chunk is just a string
+                    return (
+                      <div key={i} style={{
+                        border: '1px solid #e0e0e0',
+                        borderRadius: '8px',
+                        padding: '12px',
+                        backgroundColor: '#fafafa'
+                      }}>
+                        <div style={{
+                          fontSize: '0.85em',
+                          color: '#666',
+                          marginBottom: '8px',
+                          fontWeight: 'bold'
+                        }}>
+                          Chunk {i + 1}
+                        </div>
+                        <div style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5' }}>
+                          {chunk}
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // New format: chunk has page_content and metadata
+                  const { page_content, metadata } = chunk;
+
+                  return (
+                    <div key={i} style={{
+                      border: '1px solid #d0d7de',
+                      borderRadius: '8px',
+                      overflow: 'hidden',
+                      backgroundColor: '#fff',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.08)'
+                    }}>
+                      {/* Chunk Header */}
+                      <div style={{
+                        backgroundColor: '#002776',
+                        color: '#fff',
+                        padding: '10px 14px',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                      }}>
+                        <span style={{ fontWeight: 'bold' }}>Chunk {i + 1}</span>
+                        {metadata?.section_id && (
+                          <span style={{
+                            backgroundColor: 'rgba(255,255,255,0.2)',
+                            padding: '2px 8px',
+                            borderRadius: '4px',
+                            fontSize: '0.85em'
+                          }}>
+                            {metadata.section_id}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Metadata Section */}
+                      {metadata && Object.keys(metadata).length > 0 && (
+                        <div style={{
+                          backgroundColor: '#f6f8fa',
+                          padding: '10px 14px',
+                          borderBottom: '1px solid #e0e0e0',
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                          gap: '8px'
+                        }}>
+                          {metadata.section_title && (
+                            <div style={{
+                              backgroundColor: '#e3f2fd',
+                              padding: '4px 10px',
+                              borderRadius: '4px',
+                              fontSize: '0.8em',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px'
+                            }}>
+                              <span style={{ color: '#666' }}>Title:</span>
+                              <span style={{ color: '#1565c0', fontWeight: '500' }}>{metadata.section_title}</span>
+                            </div>
+                          )}
+                          {metadata.content_type && (
+                            <div style={{
+                              backgroundColor: '#e8f5e9',
+                              padding: '4px 10px',
+                              borderRadius: '4px',
+                              fontSize: '0.8em',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px'
+                            }}>
+                              <span style={{ color: '#666' }}>Type:</span>
+                              <span style={{ color: '#2e7d32', fontWeight: '500' }}>{metadata.content_type}</span>
+                            </div>
+                          )}
+                          {metadata.paragraph_id && (
+                            <div style={{
+                              backgroundColor: '#fff3e0',
+                              padding: '4px 10px',
+                              borderRadius: '4px',
+                              fontSize: '0.8em',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px'
+                            }}>
+                              <span style={{ color: '#666' }}>Para:</span>
+                              <span style={{ color: '#e65100', fontWeight: '500' }}>{metadata.paragraph_id}</span>
+                            </div>
+                          )}
+                          {metadata.item_id && (
+                            <div style={{
+                              backgroundColor: '#fce4ec',
+                              padding: '4px 10px',
+                              borderRadius: '4px',
+                              fontSize: '0.8em',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px'
+                            }}>
+                              <span style={{ color: '#666' }}>Item:</span>
+                              <span style={{ color: '#c2185b', fontWeight: '500' }}>{metadata.item_id}</span>
+                            </div>
+                          )}
+                          {metadata.sub_item_id && (
+                            <div style={{
+                              backgroundColor: '#f3e5f5',
+                              padding: '4px 10px',
+                              borderRadius: '4px',
+                              fontSize: '0.8em',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px'
+                            }}>
+                              <span style={{ color: '#666' }}>Sub-item:</span>
+                              <span style={{ color: '#7b1fa2', fontWeight: '500' }}>{metadata.sub_item_id}</span>
+                            </div>
+                          )}
+                          {/* Legacy page metadata for old PDF-based chunks */}
+                          {metadata.page && (
+                            <div style={{
+                              backgroundColor: '#e0e0e0',
+                              padding: '4px 10px',
+                              borderRadius: '4px',
+                              fontSize: '0.8em',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px'
+                            }}>
+                              <span style={{ color: '#666' }}>Page:</span>
+                              <span style={{ color: '#333', fontWeight: '500' }}>{metadata.page}</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Parent Path (if exists) */}
+                      {metadata?.parent_path && (
+                        <div style={{
+                          backgroundColor: '#fffde7',
+                          padding: '8px 14px',
+                          borderBottom: '1px solid #e0e0e0',
+                          fontSize: '0.8em',
+                          color: '#666'
+                        }}>
+                          <span style={{ fontWeight: '500' }}>Path: </span>
+                          <span style={{ color: '#f57f17' }}>{metadata.parent_path}</span>
+                        </div>
+                      )}
+
+                      {/* Amendments (if exists) */}
+                      {metadata?.amendments && (
+                        <div style={{
+                          backgroundColor: '#ffebee',
+                          padding: '8px 14px',
+                          borderBottom: '1px solid #e0e0e0',
+                          fontSize: '0.75em',
+                          color: '#c62828',
+                          fontStyle: 'italic'
+                        }}>
+                          {metadata.amendments}
+                        </div>
+                      )}
+
+                      {/* Content */}
+                      <div style={{
+                        padding: '14px',
+                        lineHeight: '1.6',
+                        whiteSpace: 'pre-wrap',
+                        backgroundColor: '#fff'
+                      }}>
+                        {page_content}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <span style={{ color: '#666', fontStyle: 'italic' }}>No chunks retrieved</span>
+            )}
           </div>
         </div>
 
