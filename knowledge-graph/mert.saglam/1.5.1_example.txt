@@ -1,0 +1,81 @@
+1.5.1 - Özel sevk kurallarına tabi olan kişilerin sağlık hizmeti sunucularına müracaat işlemleri 
+                 (Değişik: RG- 25/03/2017- 30018/ 1 md. Yürürlük: 01/03/2017)   
+               (1) 5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin (Değişik: RG- 09/09/2017- 30175/ 1 md. Yürürlük: 29/04/2017)   (1) ve (3) numaralı alt bentleri ile aynı maddenin onikinci, onüçüncü ve ondördüncü fıkraları gereği genel sağlık sigortası kapsamına alınan kişilerin, ayakta veya yatarak teşhis ve tedavi hizmeti veren sağlık hizmeti sunucularına müracaatlarında MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır. Sorgulama sonucu Kurum bilgisi (Değişik: RG-09/09/2017-30175/1 md. Yürürlük:29/04/2017)   60/c-1 veya 60/c-3 dönen kişiler ile 60 ıncı maddenin onikinci, onüçüncü ve ondördüncü fıkralarında tanımlanan kişilerin müracaat kabul ve sevk işlemleri aşağıdaki şekilde yürütülecektir. Aşağıda belirtilen usul ve esaslara uygun olmayan müracaatlara ilişkin sağlık hizmeti bedelleri Kurumca karşılanmaz.
+(2) Sağlık hizmeti sunucuları tedavilerinin sağlanamaması halinde kişileri, aşağıdaki düzenlemelere göre söz konusu tedavi için doğrudan müracaat hakkı bulunduğu sağlık hizmeti sunucularına sevk de edebilirler. 
+(3) (Değişik: RG-18/01/2016-29597/ 1 md. Yürürlük: 01/11/2015)   Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez. Sözleşmesiz özel sağlık hizmeti sunucularından acil hallerde alınan sağlık hizmetlerinin bedellerinin ödenebilmesi için bu durumun Kurum inceleme birimlerince kabul edilmesi gerekmektedir.
+1.5.1.A - Sağlık Bakanlığı sağlık hizmeti sunucularınca hasta kabul ve sevk işlemleri
+1.5.1.A-1 - Hasta kabul işlemleri
+(1) Doğrudan veya sevkli müracaatlar kabul edilir.
+1.5.1.A-2 - Hasta sevk işlemleri
+(1) Tedavinin sağlanamaması halinde;
+Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir.
+İkinci basamak sağlık hizmeti sunucularınca; 
+Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir. 
+Kişiler, aynı yerleşim yerinde Sağlık Bakanlığı üçüncü basamak sağlık hizmeti sunucusu yoksa aynı yerleşim yerindeki diğer resmi sağlık hizmeti sunucularına veya yerleşim yeri dışındaki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucularına sevk edilebilir.
+Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için özel sağlık hizmeti sunucularına da sevk edilebilir. Bu durumda, naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir.  
+Kişiler, aynı il içindeki resmi sağlık hizmeti sunucularında tedavinin sağlanabileceği radyoterapi merkezi bulunmaması halinde radyoterapi tedavisi için aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir.
+Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler, aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca yoksa müracaat edilen sağlık hizmeti sunucusunca yapılacaktır. Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup sürenin bitiminde sevk belgesinin yenilenmesi gerekmektedir.
+Üçüncü basamak sağlık hizmeti sunucularınca;
+Kişiler, aynı yerleşim yeri içindeki veya dışındaki; Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna veya diğer resmi sağlık hizmeti sunucularına sevk edilebilir. 
+Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için özel sağlık hizmeti sunucularına da sevk edilebilir. Bu durumda, naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir.  
+Kişiler, aynı il içindeki resmi sağlık hizmeti sunucularında tedavinin sağlanabileceği radyoterapi merkezi bulunmaması halinde radyoterapi tedavisi için aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir.
+Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler, aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca yoksa müracaat edilen sağlık hizmeti sunucusunca yapılacaktır. Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup sürenin bitiminde sevk belgesinin yenilenmesi gerekmektedir.
+
+         (Değişik: RG- 25/08/2022- 31934/ 3-a md. Yürürlük: 03/09/2022)
+ 1.5.1.B - Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucularınca hasta kabul ve sevk işlemleri
+1.5.1.B-1 - Hasta kabul işlemleri
+(1) Sağlık Bakanlığı dışındaki üçüncü basamak (Ek: RG- 25/08/2022- 31934/ 3-b md. Yürürlük: 03/09/2022) resmi sağlık hizmeti sunucularınca aşağıda belirtilen müracaatlar kabul edilir. 
+Sevkli müracaatlar
+Sağlık Bakanlığı ikinci ve üçüncü basamak sağlık hizmeti sunucularınca SUT’un 1.5.1.A-2 maddesine uygun olarak düzenlenen sevk belgesi ile müracaat eden hastalar. 
+ Sağlık Bakanlığı dışındaki üçüncü basamak (Ek: RG- 25/08/2022- 31934/ 3-b md. Yürürlük: 03/09/2022) resmi sağlık hizmeti sunucularınca SUT’un 1.5.1.B-2 maddesine uygun olarak düzenlenen sevk belgesi ile müracaat eden hastalar.
+Doğrudan müracaatlar
+Organ, doku ve kök hücre nakline ilişkin; sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller ve devam tedavileri için yapılan müracaatlar.
+Akkiz immün yetmezlik sendrom tanılı hasta müracaatları.
+Hiperbarik oksijen tedavisi için yapılan müracaatlar.
+Trafik kazası nedeniyle yapılan müracaatlar.
+Acil servis müracaatları (SUT’un 2.3 maddesi hükümleri doğrultusunda işlem yürütülür).
+Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi imzalanan Sağlık Bakanlığı dışındaki üçüncü basamak (Ek: RG- 25/08/2022- 31934/ 3-b md. Yürürlük: 03/09/2022) resmi sağlık hizmeti sunucularına yapılan müracaatlar.
+Diğer müracaatlar
+SUT’un 1.5.1.B-1(1)a bendine göre müracaatları kabul edilen hastaların aynı sağlık hizmeti sunucusunda diğer branşlarda da muayene veya tedavisinin gerekli görülmesi durumunda (konsültasyon istemi hariç); branş hekimince aynı sevk belgesi üzerinde gönderilecek branşın belirtilmesi şartıyla ilgili branşa yapılan müracaatlar. Bu durumda Kurum bilgi işlem sistemine yeniden sevk beyanı (hastane içi sevk) girilecektir.
+SUT’un 1.5.1.B-1(1) fıkrasının a ve b bentlerine göre müracaatları kabul edilen hastalardan çağrı evrakı düzenlenmek suretiyle tedavi veya kontrol amaçlı çağrılanların müracaatları. (Bu durumda müracaatın çağrıya istinaden yapıldığına dair Kurum bilgi işlem sistemine beyan girilecektir.) 
+SUT’un 1.5.1.B-1(1) fıkrasının a ve b bentlerine göre müracaatları kabul edilen hastalardan fizik tedavi ve rehabilitasyon tedavisi, hemodiyaliz tedavisi, radyoterapi ve kemoterapi gibi belli bir program dahilinde tedavi gören hastaların tedavi süresi içindeki, ilk sevk belgesine istinaden yapılan müteakip müracaatları. Hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup sürenin bitiminde sevk belgesinin yenilenmesi gerekmektedir.
+1.5.1.B-2 - Hasta sevk işlemleri
+(1) Tedavinin sağlanamaması halinde;
+ Kişiler, Sağlık Bakanlığı sağlık hizmeti sunucularına sevk edilebilir.
+Kişiler, Sağlık Bakanlığı dışındaki üçüncü basamak (Ek: RG- 25/08/2022- 31934/ 3-c md. Yürürlük: 03/09/2022) resmi sağlık hizmeti sunucularına sevk edilebilir.
+Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için özel sağlık hizmeti sunucularına da sevk edilebilir. Bu durumda, naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir.
+Kişiler, kronik hemodiyaliz tedavisi programı için aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularına yoksa diğer resmi sağlık hizmeti sunucularına, yerleşim yeri içinde resmi sağlık hizmeti sunucularınca diyaliz tedavisinin yapılamaması halinde ise yerleşim yeri dışındaki Sağlık Bakanlığı sağlık hizmeti sunucularına sevk edilebilir. Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan hemodiyaliz amaçlı sevkler 3 ay süre ile geçerlidir. 
+Kişiler, aynı il içindeki resmi sağlık hizmeti sunucularında tedavinin sağlanabileceği radyoterapi merkezi bulunmaması halinde radyoterapi tedavisi için aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir.
+1.5.1.C - Sağlık Bakanlığı dışındaki ikinci basamak resmi sağlık hizmeti sunucularınca hasta kabul ve sevk işlemleri
+1.5.1.C-1 - Hasta kabul işlemleri
+(1) Hasta kabul işlemleri yürütümünde aşağıdaki düzenlemelere uyulacaktır. 
+a) Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi imzalanan sağlık hizmeti sunucularınca           (Ek: RG- 18/06/2016- 29746/ 1 md. Yürürlük: 29/06/2016)   (Değişik: RG - 04/02/2018- 30322/ 1 md. Yürürlük: 15/02/2018) ve belediyelere ait sağlık hizmeti sunucularınca;
+Doğrudan veya sevkli müracaatlar kabul edilir.
+b) Diğer resmi sağlık hizmeti sunucularınca;
+Sevkli müracaatlar
+SUT’un 1.5.1.A-2 ve 1.5.1.B-2 maddelerine uygun olarak düzenlenen sevk belgesi ile müracaat eden hastalar. 
+Doğrudan müracaatlar
+Organ, doku ve kök hücre nakline ilişkin; sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller ve devam tedavileri için yapılan müracaatlar.
+Akkiz immün yetmezlik sendrom tanılı hasta müracaatları. 
+Hiperbarik oksijen tedavisi için yapılan müracaatlar.
+çç) Trafik kazası nedeniyle yapılan müracaatlar.
+Acil servis müracaatları (SUT’un 2.3 maddesi hükümleri doğrultusunda işlem yürütülür.)
+1.5.1.C-2 - Hasta sevk işlemleri
+(1) Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için özel sağlık hizmeti sunucularına da sevk edilebilir. Bu durumda, naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir.
+1.5.1.Ç - Özel sağlık hizmeti sunucularınca hasta kabul ve sevk işlemleri
+1.5.1.Ç-1 - Hasta kabul işlemleri
+(1) Hasta kabul işlemleri yürütümünde aşağıdaki düzenlemelere uyulacaktır.
+Sevkli müracaatlar 
+Resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için gönderilen hastalar. Bu durumda, naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir. 
+SUT’un 1.5.1.A-2 ve 1.5.1.B-2 maddelerine uygun olarak düzenlenen sevk belgesi ile radyoterapi tedavisi için sevk edilen hastalar.
+Doğrudan müracaatlar
+(Değişik: RG - 18/01/2016- 29597/ 2 md. Yürürlük: 01/11/2015)            Acil haller nedeniyle yapılan müracaatlar. Hasta müracaatının söz konusu durum nedeniyle yapıldığının Kurum inceleme birimlerince kabul edilmesi gerekmektedir.
+Hiperbarik oksijen tedavisi için yapılan müracaatlar.
+Trafik kazası nedeniyle yapılan müracaatlar. 
+1.5.1.Ç-2 - Hasta sevk işlemleri
+(1) Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için özel sağlık hizmeti sunucularına da sevk edilebilir. Bu durumda, naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir. 
+1.5.1.D - Diğer hükümler
+(1) Sağlık hizmeti sunucularınca sevkler, Kurum bilgi işlem sistemi üzerinden elektronik olarak düzenlenmesi sağlanıncaya kadar SUT eki “Hasta Sevk Formu” (EK-2/F) ile veya bu formda istenilen bilgilerin yer aldığı belge tanzim edilerek yapılacaktır. Düzenlenen sevkin bir örneği hastaya verilecektir. Sevk belgesinde sevk edilen branş ile birlikte sağlık hizmeti sunucusu adı mutlaka yer alacaktır. Kişiler sevk belgesi ile sevkin düzenlendiği tarih dahil 5 işgünü içinde sevk edildikleri sağlık hizmeti sunucusuna müracaat edeceklerdir. 
+(2) Sevkli müracaatı kabul eden sağlık hizmeti sunucusunca, SUT eki EK-2/F veya bu formda istenilen bilgilerin yer aldığı belgenin bir örneği fatura ekinde Kuruma gönderilecektir. Ayrıca SUT’un 1.5 maddesinde hasta müracaatının kabulüne ilişkin düzenleneceği belirtilen diğer belgelerin (112 Komuta Kontrol Merkezi koordinasyonunu gösterir belge, çağrı evrakı gibi) düzenlenme ve takip işlemlerinin Kurum bilgi işlem sistemi üzerinden yapılması sağlanıncaya kadar söz konusu belgelerin bir örneği fatura ekinde Kuruma gönderilecektir.
+(3) Sevklerin, Kurum bilgi işlem sistemi üzerinden elektronik olarak düzenlenmesi uygulamasına geçilmesi halinde yürütülecek işlemler Kurumca ayrıca duyurulur. 
+(4) Kurum gerekli gördüğü hallerde, Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucuları ile sağlık hizmetinin sunulduğu il, sağlık hizmetinin niteliği itibarıyla hayati öneme sahip olup olmaması, sağlık hizmeti ihtiyacının resmi sağlık hizmeti sunucularında karşılanıp karşılanmaması, hizmetin niteliği gibi hususları dikkate alarak özel sağlık hizmeti sunucularına müracaatlara ilişkin ayrıca usul ve esas belirlemeye yetkilidir. 

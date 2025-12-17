@@ -61,9 +61,8 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 INPUT_FILES = {
-    "groq": "ner_test_sgk_groq.json",
-    "openai": "ner_test_sgk_openai.json",
-    "anthropic": "ner_test_sgk_anthropic.json",
+    "openai": "1.5.1_test_openai.json",
+    "anthropic": "1.5.1_test_anthropic.json",
 }
 
 # "rule"  -> pure rule-based ensemble

@@ -883,7 +883,7 @@ class Neo4jLoader:
 
 def main() -> None:
     try:
-        with open("sgk_document.txt", "r", encoding="utf-8") as f:
+        with open("1.5.1_example.txt", "r", encoding="utf-8") as f:
             text = f.read()
         logger.info("Loaded sgk_document.txt (%s characters)", f"{len(text):,}")
     except FileNotFoundError:
@@ -907,7 +907,7 @@ def main() -> None:
 
     extractor.print_summary(results)
 
-    base_name = "ner_test_sgk" if TEST_MODE else "ner_full_sgk"
+    base_name = "1.5.1_test" if TEST_MODE else "ner_full_sgk"
     out_name = f"{base_name}_{provider}.json"
     extractor.save(results, out_name)
 

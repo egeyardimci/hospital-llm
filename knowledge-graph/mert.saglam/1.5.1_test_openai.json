@@ -1,0 +1,1762 @@
+{
+  "entities": [
+    {
+      "text": "5510 sayılı Kanun",
+      "type": "Regulation",
+      "subtype": null,
+      "normalized_form": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+      "aliases": [
+        "5510 Kanunu"
+      ],
+      "attributes": {
+        "role": "legal basis"
+      },
+      "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+    },
+    {
+      "text": "genel sağlık sigortası",
+      "type": "CoverageRule",
+      "subtype": null,
+      "normalized_form": "genel sağlık sigortası",
+      "aliases": [
+        "GSS"
+      ],
+      "attributes": {
+        "scope": "kapsamına alınan kişiler"
+      },
+      "context": "genel sağlık sigortası kapsamına alınan kişilerin, ayakta veya yatarak teşhis"
+    },
+    {
+      "text": "MEDULA sistemi",
+      "type": "InstitutionalSystem",
+      "subtype": "müstahaklık sorgulaması",
+      "normalized_form": "MEDULA sistemi",
+      "aliases": [],
+      "attributes": {
+        "function": "müstahaklık sorgulaması"
+      },
+      "context": "sağlık hizmeti sunucularına müracaatlarında MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır"
+    },
+    {
+      "text": "Kurum",
+      "type": "Institution",
+      "subtype": "SGK",
+      "normalized_form": "Sosyal Güvenlik Kurumu",
+      "aliases": [
+        "SGK"
+      ],
+      "attributes": {
+        "role": "ödeme yapan kurum"
+      },
+      "context": "Aşağıda belirtilen usul ve esaslara uygun olmayan müracaatlara ilişkin sağlık hizmeti bedelleri Kurumca karşılanmaz"
+    },
+    {
+      "text": "sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "sağlık hizmeti sağlayıcıları",
+      "normalized_form": "sağlık hizmeti sunucuları",
+      "aliases": [
+        "hastane",
+        "sağlık kuruluşu"
+      ],
+      "attributes": {
+        "role": "tedavi sağlayıcı"
+      },
+      "context": "Sağlık hizmeti sunucuları tedavilerinin sağlanamaması halinde kişileri"
+    },
+    {
+      "text": "sözleşmesiz özel sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "özel sağlık kuruluşu",
+      "normalized_form": "sözleşmesiz özel sağlık hizmeti sunucuları",
+      "aliases": [
+        "sözleşmesiz özel hastane"
+      ],
+      "attributes": {
+        "contract_status": "sözleşmesiz",
+        "sector": "özel"
+      },
+      "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez"
+    },
+    {
+      "text": "acil haller",
+      "type": "HealthCondition",
+      "subtype": "emergency",
+      "normalized_form": "acil hal",
+      "aliases": [
+        "acil durum"
+      ],
+      "attributes": {
+        "urgency": "yüksek"
+      },
+      "context": "Sözleşmesiz özel sağlık hizmeti sunucularından acil hallerde alınan sağlık hizmetlerinin bedellerinin ödenebilmesi"
+    },
+    {
+      "text": "Sağlık Bakanlığı",
+      "type": "Institution",
+      "subtype": "government ministry",
+      "normalized_form": "Sağlık Bakanlığı",
+      "aliases": [
+        "T.C. Sağlık Bakanlığı"
+      ],
+      "attributes": {
+        "sector": "public",
+        "role": "health ministry"
+      },
+      "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler"
+    },
+    {
+      "text": "hasta kabul işlemleri",
+      "type": "Process",
+      "subtype": "kabul",
+      "normalized_form": "hasta kabul işlemleri",
+      "aliases": [
+        "kabul işlemleri"
+      ],
+      "attributes": {
+        "process_type": "kabul"
+      },
+      "context": "1.5.1.A-1 - Hasta kabul işlemleri (1) Doğrudan veya sevkli müracaatlar kabul edilir"
+    },
+    {
+      "text": "hasta sevk işlemleri",
+      "type": "Process",
+      "subtype": "sevk",
+      "normalized_form": "hasta sevk işlemleri",
+      "aliases": [
+        "sevk işlemleri"
+      ],
+      "attributes": {
+        "process_type": "sevk"
+      },
+      "context": "1.5.1.A-2 - Hasta sevk işlemleri (1) Tedavinin sağlanamaması halinde"
+    },
+    {
+      "text": "birinci basamak sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "birinci basamak sağlık kuruluşu",
+      "normalized_form": "birinci basamak sağlık hizmeti sunucuları",
+      "aliases": [
+        "birinci basamak sağlık kuruluşları"
+      ],
+      "attributes": {
+        "level": "birinci basamak"
+      },
+      "context": "Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir"
+    },
+    {
+      "text": "ikinci basamak sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "ikinci basamak sağlık kuruluşu",
+      "normalized_form": "ikinci basamak sağlık hizmeti sunucuları",
+      "aliases": [
+        "ikinci basamak sağlık kuruluşları"
+      ],
+      "attributes": {
+        "level": "ikinci basamak"
+      },
+      "context": "İkinci basamak sağlık hizmeti sunucularınca; Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir"
+    },
+    {
+      "text": "üçüncü basamak sağlık hizmeti sunucusu",
+      "type": "Institution",
+      "subtype": "healthcare level",
+      "normalized_form": "üçüncü basamak sağlık hizmeti sunucusu",
+      "aliases": [
+        "üçüncü basamak sağlık kuruluşu"
+      ],
+      "attributes": {
+        "level": "tertiary"
+      },
+      "context": "aynı yerleşim yerinde Sağlık Bakanlığı üçüncü basamak sağlık hizmeti sunucusu yoksa"
+    },
+    {
+      "text": "ikinci basamak sağlık hizmeti sunucusu",
+      "type": "Institution",
+      "subtype": "healthcare level",
+      "normalized_form": "ikinci basamak sağlık hizmeti sunucusu",
+      "aliases": [
+        "ikinci basamak sağlık kuruluşu"
+      ],
+      "attributes": {
+        "level": "secondary"
+      },
+      "context": "Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir"
+    },
+    {
+      "text": "resmi sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "public healthcare providers",
+      "normalized_form": "resmi sağlık hizmeti sunucuları",
+      "aliases": [
+        "kamu sağlık kuruluşları"
+      ],
+      "attributes": {
+        "sector": "public"
+      },
+      "context": "aynı yerleşim yerindeki diğer resmi sağlık hizmeti sunucularına veya yerleşim yeri dışındaki Sağlık Bakanlığı"
+    },
+    {
+      "text": "özel sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "private healthcare provider",
+      "normalized_form": "özel sağlık hizmeti sunucuları",
+      "aliases": [
+        "özel sağlık kuruluşları"
+      ],
+      "attributes": {
+        "sector": "private"
+      },
+      "context": "çin özel sağlık hizmeti sunucularına da sevk edilebilir. Bu durumda"
+    },
+    {
+      "text": "yoğun bakım yatağı",
+      "type": "MedicalResource",
+      "subtype": "intensive care",
+      "normalized_form": "yoğun bakım yatağı",
+      "aliases": [
+        "intensive care bed"
+      ],
+      "attributes": {
+        "urgency": "high"
+      },
+      "context": "resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması"
+    },
+    {
+      "text": "112 Komuta Kontrol Merkezi",
+      "type": "Institution",
+      "subtype": "emergency coordination center",
+      "normalized_form": "112 Komuta Kontrol Merkezi",
+      "aliases": [
+        "112 Acil Komuta Merkezi"
+      ],
+      "attributes": {
+        "role": "emergency coordination"
+      },
+      "context": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge"
+    },
+    {
+      "text": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge",
+      "type": "Document",
+      "subtype": "transfer authorization",
+      "normalized_form": "nakil belgesi",
+      "aliases": [
+        "nakil koordinasyon belgesi"
+      ],
+      "attributes": {
+        "purpose": "transfer proof"
+      },
+      "context": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir"
+    },
+    {
+      "text": "radyoterapi merkezi",
+      "type": "Institution",
+      "subtype": "radiotherapy center",
+      "normalized_form": "radyoterapi merkezi",
+      "aliases": [
+        "radyoterapi ünitesi"
+      ],
+      "attributes": {
+        "service": "radiotherapy"
+      },
+      "context": "aynı il içindeki resmi sağlık hizmeti sunucularında tedavinin sağlanabileceği radyoterapi merkezi bulunmaması halinde"
+    },
+    {
+      "text": "kronik hemodiyaliz tedavisi programı",
+      "type": "HealthCondition",
+      "subtype": "chronic treatment",
+      "normalized_form": "kronik hemodiyaliz tedavisi",
+      "aliases": [
+        "hemodiyaliz programı"
+      ],
+      "attributes": {
+        "chronic": "true"
+      },
+      "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler"
+    },
+    {
+      "text": "hemodiyaliz merkezi",
+      "type": "Institution",
+      "subtype": "dialysis center",
+      "normalized_form": "hemodiyaliz merkezi",
+      "aliases": [
+        "diyaliz merkezi"
+      ],
+      "attributes": {
+        "service": "hemodialysis"
+      },
+      "context": "bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca"
+    },
+    {
+      "text": "sevk belgesi",
+      "type": "Document",
+      "subtype": "referral document",
+      "normalized_form": "sevk belgesi",
+      "aliases": [
+        "sevk formu"
+      ],
+      "attributes": {
+        "validity_period": "3 ay"
+      },
+      "context": "sevk belgesinin yenilenmesi gerekmektedir. (Değişik: RG- 25/08/2022- 31934/ 3-a md."
+    },
+    {
+      "text": "3 ay süre",
+      "type": "TimeLimit",
+      "subtype": "validity period",
+      "normalized_form": "3 ay",
+      "aliases": [
+        "üç ay"
+      ],
+      "attributes": {
+        "unit": "ay",
+        "duration": 3
+      },
+      "context": "hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup"
+    },
+    {
+      "text": "kronik hemodiyaliz tedavisi programı",
+      "type": "MedicalProcedure",
+      "subtype": "chronic dialysis treatment",
+      "normalized_form": "kronik hemodiyaliz tedavisi programı",
+      "aliases": [
+        "kronik hemodiyaliz"
+      ],
+      "attributes": {
+        "duration": "chronic"
+      },
+      "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler"
+    },
+    {
+      "text": "RG- 25/08/2022- 31934/ 3-a md.",
+      "type": "Regulation",
+      "subtype": "official gazette amendment",
+      "normalized_form": "Resmi Gazete 25/08/2022, 31934 sayılı, madde 3-a",
+      "aliases": [
+        "RG-25/08/2022-31934/3-a"
+      ],
+      "attributes": {
+        "date": "25/08/2022",
+        "effective_date": "03/09/2022"
+      },
+      "context": "(Değişik: RG- 25/08/2022- 31934/ 3-a md. Yürürlük: 03/09/2022)"
+    },
+    {
+      "text": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "tertiary healthcare providers",
+      "normalized_form": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+      "aliases": [
+        "üçüncü basamak sağlık kuruluşları"
+      ],
+      "attributes": {
+        "level": "tertiary",
+        "sector": "public"
+      },
+      "context": "Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucularınca hasta kabul ve sevk işlemleri"
+    },
+    {
+      "text": "sevkli müracaatlar",
+      "type": "Requirement",
+      "subtype": "referral applications",
+      "normalized_form": "sevkli müracaatlar",
+      "aliases": [
+        "sevk ile müracaat"
+      ],
+      "attributes": {
+        "document_required": "sevk belgesi"
+      },
+      "context": "Sevkli müracaatlar Sağlık Bakanlığı ikinci ve üçüncü basamak sağlık hizmeti sunucularınca"
+    },
+    {
+      "text": "SUT’un 1.5.1.A-2 maddesi",
+      "type": "Regulation",
+      "subtype": "healthcare implementation directive",
+      "normalized_form": "Sağlık Uygulama Tebliği 1.5.1.A-2 maddesi",
+      "aliases": [
+        "SUT 1.5.1.A-2"
+      ],
+      "attributes": {
+        "document": "sevk belgesi düzenleme"
+      },
+      "context": "SUT’un 1.5.1.A-2 maddesine uygun olarak düzenlenen sevk belgesi ile müracaat eden hastalar"
+    },
+    {
+      "text": "Organ, doku ve kök hücre nakline ilişkin",
+      "type": "MedicalProcedure",
+      "subtype": "transplantation",
+      "normalized_form": "organ, doku ve kök hücre nakli",
+      "aliases": [
+        "organ nakli",
+        "kök hücre nakli"
+      ],
+      "attributes": {
+        "procedure_type": "transplant"
+      },
+      "context": "Organ, doku ve kök hücre nakline ilişkin; sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller"
+    },
+    {
+      "text": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları",
+      "type": "HealthCondition",
+      "subtype": "primary immunodeficiency",
+      "normalized_form": "akkiz immün yetmezlik sendromu",
+      "aliases": [
+        "Akkiz immün yetmezlik"
+      ],
+      "attributes": {
+        "condition_type": "immunodeficiency"
+      },
+      "context": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları. Hiperbarik oksijen tedavisi için yapılan müracaatlar"
+    },
+    {
+      "text": "Hiperbarik oksijen tedavisi",
+      "type": "MedicalProcedure",
+      "subtype": "hyperbaric oxygen therapy",
+      "normalized_form": "hiperbarik oksijen tedavisi",
+      "aliases": [
+        "hiperbarik tedavi"
+      ],
+      "attributes": {
+        "therapy_type": "oxygen therapy"
+      },
+      "context": "Hiperbarik oksijen tedavisi için yapılan müracaatlar. Trafik kazası nedeniyle yapılan müracaatlar"
+    },
+    {
+      "text": "Acil servis müracaatları",
+      "type": "Requirement",
+      "subtype": "emergency service applications",
+      "normalized_form": "acil servis müracaatları",
+      "aliases": [
+        "acil başvurular"
+      ],
+      "attributes": {
+        "urgency": "emergency"
+      },
+      "context": "Acil servis müracaatları (SUT’un 2.3 maddesi hükümleri doğrultusunda işlem yürütülür)"
+    },
+    {
+      "text": "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi",
+      "type": "FinancialTerm",
+      "subtype": "contract",
+      "normalized_form": "götürü bedel sözleşmesi",
+      "aliases": [
+        "sabit ücret sözleşmesi"
+      ],
+      "attributes": {
+        "payment_method": "lump sum"
+      },
+      "context": "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi imzalanan Sağlık Bakanlığı dışındaki üçüncü basamak"
+    }
+  ],
+  "relations": [
+    {
+      "subject": "5510 sayılı Kanun",
+      "subject_type": "Regulation",
+      "predicate": "APPLIES_TO",
+      "object": "genel sağlık sigortası",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin ... gereği genel sağlık sigortası kapsamına alınan kişilerin..."
+    },
+    {
+      "subject": "genel sağlık sigortası",
+      "subject_type": "CoverageRule",
+      "predicate": "REQUIRES",
+      "object": "MEDULA sistemi",
+      "object_type": "InstitutionalSystem",
+      "attributes": {
+        "action": "müstahaklık sorgulaması yapılır"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "genel sağlık sigortası kapsamına alınan kişilerin... sağlık hizmeti sunucularına müracaatlarında MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır."
+    },
+    {
+      "subject": "Kurum",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık hizmeti bedelleri",
+      "object_type": "Process",
+      "attributes": {},
+      "conditions": [
+        "acil hallerde"
+      ],
+      "exceptions": [
+        "acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez"
+      ],
+      "temporal": null,
+      "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez. Sözleşmesiz özel sağlık hizmeti sunucularından acil hallerde alınan sağlık hizmetlerinin bedellerinin ödenebilmesi için bu durumun Kur"
+    },
+    {
+      "subject": "Kurum",
+      "subject_type": "Institution",
+      "predicate": "APPROVED_BY",
+      "object": "Kurum inceleme birimleri",
+      "object_type": "Institution",
+      "attributes": {
+        "action": "acil hallerde sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedellerinin ödenebilmesi"
+      },
+      "conditions": [
+        "acil hallerde"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sözleşmesiz özel sağlık hizmeti sunucularından acil hallerde alınan sağlık hizmetlerinin bedellerinin ödenebilmesi için bu durumun Kurum inceleme birimlerince kabul edilmesi gerekmektedir."
+    },
+    {
+      "subject": "sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "TRIGGERS",
+      "object": "hasta sevk işlemleri",
+      "object_type": "Process",
+      "attributes": {
+        "condition": "tedavilerinin sağlanamaması halinde"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık hizmeti sunucuları tedavilerinin sağlanamaması halinde kişileri... sevk de edebilirler."
+    },
+    {
+      "subject": "birinci basamak sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "hasta sevk işlemleri",
+      "object_type": "Process",
+      "attributes": {
+        "destination": "Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna"
+      },
+      "conditions": [
+        "aynı yerleşim yeri içindeki"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir."
+    },
+    {
+      "subject": "ikinci basamak sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "hasta sevk işlemleri",
+      "object_type": "Process",
+      "attributes": {
+        "destination": "diğer resmi sağlık hizmeti sunucularına veya yerleşim yeri dışındaki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucularına"
+      },
+      "conditions": [
+        "aynı yerleşim yerinde Sağlık Bakanlığı üçüncü basamak sağlık hizmeti sunucusu yoksa"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Kişiler, aynı yerleşim yerinde Sağlık Bakanlığı üçüncü basamak sağlık hizmeti sunucusu yoksa aynı yerleşim yerindeki diğer resmi sağlık hizmeti sunucularına veya yerleşim yeri dışındaki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunuc"
+    },
+    {
+      "subject": "Sağlık Bakanlığı",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "sevk belgesi",
+      "object_type": "Document",
+      "attributes": {},
+      "conditions": [
+        "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup sürenin bitiminde sevk belgesinin yenilenmesi gerekmektedir"
+      ],
+      "exceptions": [],
+      "temporal": "3 ay süre",
+      "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup sürenin bitiminde sevk belgesinin yenilenmesi gerekmektedir."
+    },
+    {
+      "subject": "Sağlık Bakanlığı",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "hemodiyaliz merkezi",
+      "object_type": "Institution",
+      "attributes": {
+        "role": "kronik hemodiyaliz tedavisi programı için yapılacak sevklerde öncelikli"
+      },
+      "conditions": [
+        "aynı yerleşim yerinde varsa"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler, aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca yapılacaktır."
+    },
+    {
+      "subject": "Sağlık Bakanlığı",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "resmi sağlık hizmeti sunucuları",
+      "object_type": "Institution",
+      "attributes": {
+        "role": "kronik hemodiyaliz tedavisi programı için yapılacak sevklerde"
+      },
+      "conditions": [
+        "aynı yerleşim yerinde yoksa müracaat edilen sağlık hizmeti sunucusunca yapılacaktır"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler, ... yoksa müracaat edilen sağlık hizmeti sunucusunca yapılacaktır."
+    },
+    {
+      "subject": "ikinci basamak sağlık hizmeti sunucusu",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "sevk belgesi",
+      "object_type": "Document",
+      "attributes": {},
+      "conditions": [
+        "kişiler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir."
+    },
+    {
+      "subject": "üçüncü basamak sağlık hizmeti sunucusu",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "sevk belgesi",
+      "object_type": "Document",
+      "attributes": {},
+      "conditions": [
+        "kişiler aynı yerleşim yeri içindeki veya dışındaki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna veya diğer resmi sağlık hizmeti sunucularına sevk edilebilir"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Üçüncü basamak sağlık hizmeti sunucularınca; Kişiler, aynı yerleşim yeri içindeki veya dışındaki; Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna veya diğer resmi sağlık hizmeti sunucularına sevk edilebilir."
+    },
+    {
+      "subject": "resmi sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge",
+      "object_type": "Document",
+      "attributes": {},
+      "conditions": [
+        "yoğun bakım yatağının bulunmaması",
+        "hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için özel sağlık hizmeti sunucularına da sevk edilebil"
+    },
+    {
+      "subject": "özel sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "yoğun bakım tedavisi",
+      "object_type": "MedicalResource",
+      "attributes": {},
+      "conditions": [
+        "yoğun bakım yatağının bulunmaması",
+        "hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için özel sağlık hizmeti sunucularına da sevk edilebil"
+    },
+    {
+      "subject": "özel sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "radyoterapi tedavisi",
+      "object_type": "MedicalResource",
+      "attributes": {},
+      "conditions": [
+        "aynı il içindeki resmi sağlık hizmeti sunucularında tedavinin sağlanabileceği radyoterapi merkezi bulunmaması halinde"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Kişiler, aynı il içindeki resmi sağlık hizmeti sunucularında tedavinin sağlanabileceği radyoterapi merkezi bulunmaması halinde radyoterapi tedavisi için aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir."
+    },
+    {
+      "subject": "naklin",
+      "subject_type": "MedicalProcedure",
+      "predicate": "ADMINISTERED_BY",
+      "object": "112 Komuta Kontrol Merkezi",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir."
+    },
+    {
+      "subject": "radyoterapi tedavisi",
+      "subject_type": "MedicalProcedure",
+      "predicate": "PERFORMED_AT",
+      "object": "özel sağlık hizmeti sunucuları",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [
+        "aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir"
+      ],
+      "exceptions": [
+        "radyoterapi merkezi bulunmaması halinde"
+      ],
+      "temporal": null,
+      "context": "radyoterapi tedavisi için aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir."
+    },
+    {
+      "subject": "kronik hemodiyaliz tedavisi programı",
+      "subject_type": "MedicalProcedure",
+      "predicate": "REQUIRES",
+      "object": "sevk belgesi",
+      "object_type": "Document",
+      "attributes": {},
+      "conditions": [
+        "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılacak sevkler"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler"
+    },
+    {
+      "subject": "sevkler",
+      "subject_type": "Document",
+      "predicate": "PERFORMED_AT",
+      "object": "Sağlık Bakanlığı sağlık hizmeti sunucuları",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [
+        "aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca yapılacaktır"
+    },
+    {
+      "subject": "sevkler",
+      "subject_type": "Document",
+      "predicate": "PERFORMED_AT",
+      "object": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucuları",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [
+        "bünyesinde hemodiyaliz merkezi bulunmaması halinde"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "yoksa müracaat edilen sağlık hizmeti sunucusunca yapılacaktır"
+    },
+    {
+      "subject": "hemodiyaliz amaçlı sevkler",
+      "subject_type": "Document",
+      "predicate": "MUST_BE_SUBMITTED_WITHIN",
+      "object": "sevk belgesi",
+      "object_type": "Document",
+      "attributes": {},
+      "conditions": [
+        "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan"
+      ],
+      "exceptions": [],
+      "temporal": "3 ay süre ile geçerli",
+      "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup sürenin bitiminde sevk belgesinin yenilenmesi gerekmektedir."
+    },
+    {
+      "subject": "Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES_DOCUMENTATION",
+      "object": "sevk belgesi",
+      "object_type": "Document",
+      "attributes": {},
+      "conditions": [
+        "SUT’un 1.5.1.B-2 maddesine uygun olarak düzenlenen"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucularınca SUT’un 1.5.1.B-2 maddesine uygun olarak düzenlenen sevk belgesi ile müracaat eden hastalar."
+    },
+    {
+      "subject": "Sağlık Bakanlığı ikinci ve üçüncü basamak sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES_DOCUMENTATION",
+      "object": "sevk belgesi",
+      "object_type": "Document",
+      "attributes": {},
+      "conditions": [
+        "SUT’un 1.5.1.A-2 maddesine uygun olarak düzenlenen"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık Bakanlığı ikinci ve üçüncü basamak sağlık hizmeti sunucularınca SUT’un 1.5.1.A-2 maddesine uygun olarak düzenlenen sevk belgesi ile müracaat eden hastalar."
+    },
+    {
+      "subject": "Organ, doku ve kök hücre nakline ilişkin sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller ve devam tedavileri",
+      "subject_type": "MedicalProcedure",
+      "predicate": "PERFORMED_AT",
+      "object": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [
+        "Doğrudan müracaatlar"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Organ, doku ve kök hücre nakline ilişkin; sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller ve devam tedavileri için yapılan müracaatlar."
+    },
+    {
+      "subject": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları",
+      "subject_type": "HealthCondition",
+      "predicate": "APPLIES_TO",
+      "object": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [
+        "Doğrudan müracaatlar"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları."
+    },
+    {
+      "subject": "Hiperbarik oksijen tedavisi",
+      "subject_type": "MedicalProcedure",
+      "predicate": "APPLIES_TO",
+      "object": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [
+        "Doğrudan müracaatlar"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Hiperbarik oksijen tedavisi için yapılan müracaatlar."
+    },
+    {
+      "subject": "Acil servis müracaatları",
+      "subject_type": "Requirement",
+      "predicate": "APPLIES_TO",
+      "object": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [
+        "SUT’un 2.3 maddesi hükümleri doğrultusunda işlem yürütülür"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Acil servis müracaatları (SUT’un 2.3 maddesi hükümleri doğrultusunda işlem yürütülür)."
+    },
+    {
+      "subject": "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi",
+      "subject_type": "FinancialTerm",
+      "predicate": "APPLIES_TO",
+      "object": "Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucuları",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [
+        "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi imzalanan"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi imzalanan Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucularına yapılan müracaatlar."
+    }
+  ],
+  "entities_by_type": {
+    "Regulation": [
+      {
+        "text": "5510 sayılı Kanun",
+        "type": "Regulation",
+        "subtype": null,
+        "normalized_form": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+        "aliases": [
+          "5510 Kanunu"
+        ],
+        "attributes": {
+          "role": "legal basis"
+        },
+        "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+      },
+      {
+        "text": "RG- 25/08/2022- 31934/ 3-a md.",
+        "type": "Regulation",
+        "subtype": "official gazette amendment",
+        "normalized_form": "Resmi Gazete 25/08/2022, 31934 sayılı, madde 3-a",
+        "aliases": [
+          "RG-25/08/2022-31934/3-a"
+        ],
+        "attributes": {
+          "date": "25/08/2022",
+          "effective_date": "03/09/2022"
+        },
+        "context": "(Değişik: RG- 25/08/2022- 31934/ 3-a md. Yürürlük: 03/09/2022)"
+      },
+      {
+        "text": "SUT’un 1.5.1.A-2 maddesi",
+        "type": "Regulation",
+        "subtype": "healthcare implementation directive",
+        "normalized_form": "Sağlık Uygulama Tebliği 1.5.1.A-2 maddesi",
+        "aliases": [
+          "SUT 1.5.1.A-2"
+        ],
+        "attributes": {
+          "document": "sevk belgesi düzenleme"
+        },
+        "context": "SUT’un 1.5.1.A-2 maddesine uygun olarak düzenlenen sevk belgesi ile müracaat eden hastalar"
+      }
+    ],
+    "CoverageRule": [
+      {
+        "text": "genel sağlık sigortası",
+        "type": "CoverageRule",
+        "subtype": null,
+        "normalized_form": "genel sağlık sigortası",
+        "aliases": [
+          "GSS"
+        ],
+        "attributes": {
+          "scope": "kapsamına alınan kişiler"
+        },
+        "context": "genel sağlık sigortası kapsamına alınan kişilerin, ayakta veya yatarak teşhis"
+      }
+    ],
+    "InstitutionalSystem": [
+      {
+        "text": "MEDULA sistemi",
+        "type": "InstitutionalSystem",
+        "subtype": "müstahaklık sorgulaması",
+        "normalized_form": "MEDULA sistemi",
+        "aliases": [],
+        "attributes": {
+          "function": "müstahaklık sorgulaması"
+        },
+        "context": "sağlık hizmeti sunucularına müracaatlarında MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır"
+      }
+    ],
+    "Institution": [
+      {
+        "text": "Kurum",
+        "type": "Institution",
+        "subtype": "SGK",
+        "normalized_form": "Sosyal Güvenlik Kurumu",
+        "aliases": [
+          "SGK"
+        ],
+        "attributes": {
+          "role": "ödeme yapan kurum"
+        },
+        "context": "Aşağıda belirtilen usul ve esaslara uygun olmayan müracaatlara ilişkin sağlık hizmeti bedelleri Kurumca karşılanmaz"
+      },
+      {
+        "text": "sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "sağlık hizmeti sağlayıcıları",
+        "normalized_form": "sağlık hizmeti sunucuları",
+        "aliases": [
+          "hastane",
+          "sağlık kuruluşu"
+        ],
+        "attributes": {
+          "role": "tedavi sağlayıcı"
+        },
+        "context": "Sağlık hizmeti sunucuları tedavilerinin sağlanamaması halinde kişileri"
+      },
+      {
+        "text": "sözleşmesiz özel sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "özel sağlık kuruluşu",
+        "normalized_form": "sözleşmesiz özel sağlık hizmeti sunucuları",
+        "aliases": [
+          "sözleşmesiz özel hastane"
+        ],
+        "attributes": {
+          "contract_status": "sözleşmesiz",
+          "sector": "özel"
+        },
+        "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez"
+      },
+      {
+        "text": "Sağlık Bakanlığı",
+        "type": "Institution",
+        "subtype": "government ministry",
+        "normalized_form": "Sağlık Bakanlığı",
+        "aliases": [
+          "T.C. Sağlık Bakanlığı"
+        ],
+        "attributes": {
+          "sector": "public",
+          "role": "health ministry"
+        },
+        "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler"
+      },
+      {
+        "text": "birinci basamak sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "birinci basamak sağlık kuruluşu",
+        "normalized_form": "birinci basamak sağlık hizmeti sunucuları",
+        "aliases": [
+          "birinci basamak sağlık kuruluşları"
+        ],
+        "attributes": {
+          "level": "birinci basamak"
+        },
+        "context": "Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir"
+      },
+      {
+        "text": "ikinci basamak sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "ikinci basamak sağlık kuruluşu",
+        "normalized_form": "ikinci basamak sağlık hizmeti sunucuları",
+        "aliases": [
+          "ikinci basamak sağlık kuruluşları"
+        ],
+        "attributes": {
+          "level": "ikinci basamak"
+        },
+        "context": "İkinci basamak sağlık hizmeti sunucularınca; Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir"
+      },
+      {
+        "text": "üçüncü basamak sağlık hizmeti sunucusu",
+        "type": "Institution",
+        "subtype": "healthcare level",
+        "normalized_form": "üçüncü basamak sağlık hizmeti sunucusu",
+        "aliases": [
+          "üçüncü basamak sağlık kuruluşu"
+        ],
+        "attributes": {
+          "level": "tertiary"
+        },
+        "context": "aynı yerleşim yerinde Sağlık Bakanlığı üçüncü basamak sağlık hizmeti sunucusu yoksa"
+      },
+      {
+        "text": "ikinci basamak sağlık hizmeti sunucusu",
+        "type": "Institution",
+        "subtype": "healthcare level",
+        "normalized_form": "ikinci basamak sağlık hizmeti sunucusu",
+        "aliases": [
+          "ikinci basamak sağlık kuruluşu"
+        ],
+        "attributes": {
+          "level": "secondary"
+        },
+        "context": "Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir"
+      },
+      {
+        "text": "resmi sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "public healthcare providers",
+        "normalized_form": "resmi sağlık hizmeti sunucuları",
+        "aliases": [
+          "kamu sağlık kuruluşları"
+        ],
+        "attributes": {
+          "sector": "public"
+        },
+        "context": "aynı yerleşim yerindeki diğer resmi sağlık hizmeti sunucularına veya yerleşim yeri dışındaki Sağlık Bakanlığı"
+      },
+      {
+        "text": "özel sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "private healthcare provider",
+        "normalized_form": "özel sağlık hizmeti sunucuları",
+        "aliases": [
+          "özel sağlık kuruluşları"
+        ],
+        "attributes": {
+          "sector": "private"
+        },
+        "context": "çin özel sağlık hizmeti sunucularına da sevk edilebilir. Bu durumda"
+      },
+      {
+        "text": "112 Komuta Kontrol Merkezi",
+        "type": "Institution",
+        "subtype": "emergency coordination center",
+        "normalized_form": "112 Komuta Kontrol Merkezi",
+        "aliases": [
+          "112 Acil Komuta Merkezi"
+        ],
+        "attributes": {
+          "role": "emergency coordination"
+        },
+        "context": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge"
+      },
+      {
+        "text": "radyoterapi merkezi",
+        "type": "Institution",
+        "subtype": "radiotherapy center",
+        "normalized_form": "radyoterapi merkezi",
+        "aliases": [
+          "radyoterapi ünitesi"
+        ],
+        "attributes": {
+          "service": "radiotherapy"
+        },
+        "context": "aynı il içindeki resmi sağlık hizmeti sunucularında tedavinin sağlanabileceği radyoterapi merkezi bulunmaması halinde"
+      },
+      {
+        "text": "hemodiyaliz merkezi",
+        "type": "Institution",
+        "subtype": "dialysis center",
+        "normalized_form": "hemodiyaliz merkezi",
+        "aliases": [
+          "diyaliz merkezi"
+        ],
+        "attributes": {
+          "service": "hemodialysis"
+        },
+        "context": "bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca"
+      },
+      {
+        "text": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "tertiary healthcare providers",
+        "normalized_form": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+        "aliases": [
+          "üçüncü basamak sağlık kuruluşları"
+        ],
+        "attributes": {
+          "level": "tertiary",
+          "sector": "public"
+        },
+        "context": "Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucularınca hasta kabul ve sevk işlemleri"
+      }
+    ],
+    "HealthCondition": [
+      {
+        "text": "acil haller",
+        "type": "HealthCondition",
+        "subtype": "emergency",
+        "normalized_form": "acil hal",
+        "aliases": [
+          "acil durum"
+        ],
+        "attributes": {
+          "urgency": "yüksek"
+        },
+        "context": "Sözleşmesiz özel sağlık hizmeti sunucularından acil hallerde alınan sağlık hizmetlerinin bedellerinin ödenebilmesi"
+      },
+      {
+        "text": "kronik hemodiyaliz tedavisi programı",
+        "type": "HealthCondition",
+        "subtype": "chronic treatment",
+        "normalized_form": "kronik hemodiyaliz tedavisi",
+        "aliases": [
+          "hemodiyaliz programı"
+        ],
+        "attributes": {
+          "chronic": "true"
+        },
+        "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler"
+      },
+      {
+        "text": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları",
+        "type": "HealthCondition",
+        "subtype": "primary immunodeficiency",
+        "normalized_form": "akkiz immün yetmezlik sendromu",
+        "aliases": [
+          "Akkiz immün yetmezlik"
+        ],
+        "attributes": {
+          "condition_type": "immunodeficiency"
+        },
+        "context": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları. Hiperbarik oksijen tedavisi için yapılan müracaatlar"
+      }
+    ],
+    "Process": [
+      {
+        "text": "hasta kabul işlemleri",
+        "type": "Process",
+        "subtype": "kabul",
+        "normalized_form": "hasta kabul işlemleri",
+        "aliases": [
+          "kabul işlemleri"
+        ],
+        "attributes": {
+          "process_type": "kabul"
+        },
+        "context": "1.5.1.A-1 - Hasta kabul işlemleri (1) Doğrudan veya sevkli müracaatlar kabul edilir"
+      },
+      {
+        "text": "hasta sevk işlemleri",
+        "type": "Process",
+        "subtype": "sevk",
+        "normalized_form": "hasta sevk işlemleri",
+        "aliases": [
+          "sevk işlemleri"
+        ],
+        "attributes": {
+          "process_type": "sevk"
+        },
+        "context": "1.5.1.A-2 - Hasta sevk işlemleri (1) Tedavinin sağlanamaması halinde"
+      }
+    ],
+    "MedicalResource": [
+      {
+        "text": "yoğun bakım yatağı",
+        "type": "MedicalResource",
+        "subtype": "intensive care",
+        "normalized_form": "yoğun bakım yatağı",
+        "aliases": [
+          "intensive care bed"
+        ],
+        "attributes": {
+          "urgency": "high"
+        },
+        "context": "resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması"
+      }
+    ],
+    "Document": [
+      {
+        "text": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge",
+        "type": "Document",
+        "subtype": "transfer authorization",
+        "normalized_form": "nakil belgesi",
+        "aliases": [
+          "nakil koordinasyon belgesi"
+        ],
+        "attributes": {
+          "purpose": "transfer proof"
+        },
+        "context": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir"
+      },
+      {
+        "text": "sevk belgesi",
+        "type": "Document",
+        "subtype": "referral document",
+        "normalized_form": "sevk belgesi",
+        "aliases": [
+          "sevk formu"
+        ],
+        "attributes": {
+          "validity_period": "3 ay"
+        },
+        "context": "sevk belgesinin yenilenmesi gerekmektedir. (Değişik: RG- 25/08/2022- 31934/ 3-a md."
+      }
+    ],
+    "TimeLimit": [
+      {
+        "text": "3 ay süre",
+        "type": "TimeLimit",
+        "subtype": "validity period",
+        "normalized_form": "3 ay",
+        "aliases": [
+          "üç ay"
+        ],
+        "attributes": {
+          "unit": "ay",
+          "duration": 3
+        },
+        "context": "hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup"
+      }
+    ],
+    "MedicalProcedure": [
+      {
+        "text": "kronik hemodiyaliz tedavisi programı",
+        "type": "MedicalProcedure",
+        "subtype": "chronic dialysis treatment",
+        "normalized_form": "kronik hemodiyaliz tedavisi programı",
+        "aliases": [
+          "kronik hemodiyaliz"
+        ],
+        "attributes": {
+          "duration": "chronic"
+        },
+        "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler"
+      },
+      {
+        "text": "Organ, doku ve kök hücre nakline ilişkin",
+        "type": "MedicalProcedure",
+        "subtype": "transplantation",
+        "normalized_form": "organ, doku ve kök hücre nakli",
+        "aliases": [
+          "organ nakli",
+          "kök hücre nakli"
+        ],
+        "attributes": {
+          "procedure_type": "transplant"
+        },
+        "context": "Organ, doku ve kök hücre nakline ilişkin; sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller"
+      },
+      {
+        "text": "Hiperbarik oksijen tedavisi",
+        "type": "MedicalProcedure",
+        "subtype": "hyperbaric oxygen therapy",
+        "normalized_form": "hiperbarik oksijen tedavisi",
+        "aliases": [
+          "hiperbarik tedavi"
+        ],
+        "attributes": {
+          "therapy_type": "oxygen therapy"
+        },
+        "context": "Hiperbarik oksijen tedavisi için yapılan müracaatlar. Trafik kazası nedeniyle yapılan müracaatlar"
+      }
+    ],
+    "Requirement": [
+      {
+        "text": "sevkli müracaatlar",
+        "type": "Requirement",
+        "subtype": "referral applications",
+        "normalized_form": "sevkli müracaatlar",
+        "aliases": [
+          "sevk ile müracaat"
+        ],
+        "attributes": {
+          "document_required": "sevk belgesi"
+        },
+        "context": "Sevkli müracaatlar Sağlık Bakanlığı ikinci ve üçüncü basamak sağlık hizmeti sunucularınca"
+      },
+      {
+        "text": "Acil servis müracaatları",
+        "type": "Requirement",
+        "subtype": "emergency service applications",
+        "normalized_form": "acil servis müracaatları",
+        "aliases": [
+          "acil başvurular"
+        ],
+        "attributes": {
+          "urgency": "emergency"
+        },
+        "context": "Acil servis müracaatları (SUT’un 2.3 maddesi hükümleri doğrultusunda işlem yürütülür)"
+      }
+    ],
+    "FinancialTerm": [
+      {
+        "text": "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi",
+        "type": "FinancialTerm",
+        "subtype": "contract",
+        "normalized_form": "götürü bedel sözleşmesi",
+        "aliases": [
+          "sabit ücret sözleşmesi"
+        ],
+        "attributes": {
+          "payment_method": "lump sum"
+        },
+        "context": "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi imzalanan Sağlık Bakanlığı dışındaki üçüncü basamak"
+      }
+    ]
+  },
+  "relations_by_predicate": {
+    "APPLIES_TO": [
+      {
+        "subject": "5510 sayılı Kanun",
+        "subject_type": "Regulation",
+        "predicate": "APPLIES_TO",
+        "object": "genel sağlık sigortası",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin ... gereği genel sağlık sigortası kapsamına alınan kişilerin..."
+      },
+      {
+        "subject": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları",
+        "subject_type": "HealthCondition",
+        "predicate": "APPLIES_TO",
+        "object": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [
+          "Doğrudan müracaatlar"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Akkiz immün yetmezlik sendrom tanılı hasta müracaatları."
+      },
+      {
+        "subject": "Hiperbarik oksijen tedavisi",
+        "subject_type": "MedicalProcedure",
+        "predicate": "APPLIES_TO",
+        "object": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [
+          "Doğrudan müracaatlar"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Hiperbarik oksijen tedavisi için yapılan müracaatlar."
+      },
+      {
+        "subject": "Acil servis müracaatları",
+        "subject_type": "Requirement",
+        "predicate": "APPLIES_TO",
+        "object": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [
+          "SUT’un 2.3 maddesi hükümleri doğrultusunda işlem yürütülür"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Acil servis müracaatları (SUT’un 2.3 maddesi hükümleri doğrultusunda işlem yürütülür)."
+      },
+      {
+        "subject": "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi",
+        "subject_type": "FinancialTerm",
+        "predicate": "APPLIES_TO",
+        "object": "Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucuları",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [
+          "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi imzalanan"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Kurum ile götürü bedel üzerinden sağlık hizmeti alım sözleşmesi imzalanan Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucularına yapılan müracaatlar."
+      }
+    ],
+    "REQUIRES": [
+      {
+        "subject": "genel sağlık sigortası",
+        "subject_type": "CoverageRule",
+        "predicate": "REQUIRES",
+        "object": "MEDULA sistemi",
+        "object_type": "InstitutionalSystem",
+        "attributes": {
+          "action": "müstahaklık sorgulaması yapılır"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "genel sağlık sigortası kapsamına alınan kişilerin... sağlık hizmeti sunucularına müracaatlarında MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır."
+      },
+      {
+        "subject": "Sağlık Bakanlığı",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "sevk belgesi",
+        "object_type": "Document",
+        "attributes": {},
+        "conditions": [
+          "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup sürenin bitiminde sevk belgesinin yenilenmesi gerekmektedir"
+        ],
+        "exceptions": [],
+        "temporal": "3 ay süre",
+        "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup sürenin bitiminde sevk belgesinin yenilenmesi gerekmektedir."
+      },
+      {
+        "subject": "ikinci basamak sağlık hizmeti sunucusu",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "sevk belgesi",
+        "object_type": "Document",
+        "attributes": {},
+        "conditions": [
+          "kişiler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Kişiler, aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna sevk edilebilir."
+      },
+      {
+        "subject": "üçüncü basamak sağlık hizmeti sunucusu",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "sevk belgesi",
+        "object_type": "Document",
+        "attributes": {},
+        "conditions": [
+          "kişiler aynı yerleşim yeri içindeki veya dışındaki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna veya diğer resmi sağlık hizmeti sunucularına sevk edilebilir"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Üçüncü basamak sağlık hizmeti sunucularınca; Kişiler, aynı yerleşim yeri içindeki veya dışındaki; Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna veya diğer resmi sağlık hizmeti sunucularına sevk edilebilir."
+      },
+      {
+        "subject": "resmi sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge",
+        "object_type": "Document",
+        "attributes": {},
+        "conditions": [
+          "yoğun bakım yatağının bulunmaması",
+          "hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için özel sağlık hizmeti sunucularına da sevk edilebil"
+      },
+      {
+        "subject": "kronik hemodiyaliz tedavisi programı",
+        "subject_type": "MedicalProcedure",
+        "predicate": "REQUIRES",
+        "object": "sevk belgesi",
+        "object_type": "Document",
+        "attributes": {},
+        "conditions": [
+          "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılacak sevkler"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler"
+      }
+    ],
+    "COVERS": [
+      {
+        "subject": "Kurum",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık hizmeti bedelleri",
+        "object_type": "Process",
+        "attributes": {},
+        "conditions": [
+          "acil hallerde"
+        ],
+        "exceptions": [
+          "acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez"
+        ],
+        "temporal": null,
+        "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez. Sözleşmesiz özel sağlık hizmeti sunucularından acil hallerde alınan sağlık hizmetlerinin bedellerinin ödenebilmesi için bu durumun Kur"
+      }
+    ],
+    "APPROVED_BY": [
+      {
+        "subject": "Kurum",
+        "subject_type": "Institution",
+        "predicate": "APPROVED_BY",
+        "object": "Kurum inceleme birimleri",
+        "object_type": "Institution",
+        "attributes": {
+          "action": "acil hallerde sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedellerinin ödenebilmesi"
+        },
+        "conditions": [
+          "acil hallerde"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sözleşmesiz özel sağlık hizmeti sunucularından acil hallerde alınan sağlık hizmetlerinin bedellerinin ödenebilmesi için bu durumun Kurum inceleme birimlerince kabul edilmesi gerekmektedir."
+      }
+    ],
+    "TRIGGERS": [
+      {
+        "subject": "sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "TRIGGERS",
+        "object": "hasta sevk işlemleri",
+        "object_type": "Process",
+        "attributes": {
+          "condition": "tedavilerinin sağlanamaması halinde"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık hizmeti sunucuları tedavilerinin sağlanamaması halinde kişileri... sevk de edebilirler."
+      }
+    ],
+    "PERFORMED_AT": [
+      {
+        "subject": "birinci basamak sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "hasta sevk işlemleri",
+        "object_type": "Process",
+        "attributes": {
+          "destination": "Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna"
+        },
+        "conditions": [
+          "aynı yerleşim yeri içindeki"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Birinci basamak sağlık hizmeti sunucularınca; sevkler aynı yerleşim yeri içindeki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucusuna yapılabilir."
+      },
+      {
+        "subject": "ikinci basamak sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "hasta sevk işlemleri",
+        "object_type": "Process",
+        "attributes": {
+          "destination": "diğer resmi sağlık hizmeti sunucularına veya yerleşim yeri dışındaki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunucularına"
+        },
+        "conditions": [
+          "aynı yerleşim yerinde Sağlık Bakanlığı üçüncü basamak sağlık hizmeti sunucusu yoksa"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Kişiler, aynı yerleşim yerinde Sağlık Bakanlığı üçüncü basamak sağlık hizmeti sunucusu yoksa aynı yerleşim yerindeki diğer resmi sağlık hizmeti sunucularına veya yerleşim yeri dışındaki Sağlık Bakanlığı ikinci veya üçüncü basamak sağlık hizmeti sunuc"
+      },
+      {
+        "subject": "Sağlık Bakanlığı",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "hemodiyaliz merkezi",
+        "object_type": "Institution",
+        "attributes": {
+          "role": "kronik hemodiyaliz tedavisi programı için yapılacak sevklerde öncelikli"
+        },
+        "conditions": [
+          "aynı yerleşim yerinde varsa"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler, aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca yapılacaktır."
+      },
+      {
+        "subject": "Sağlık Bakanlığı",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "resmi sağlık hizmeti sunucuları",
+        "object_type": "Institution",
+        "attributes": {
+          "role": "kronik hemodiyaliz tedavisi programı için yapılacak sevklerde"
+        },
+        "conditions": [
+          "aynı yerleşim yerinde yoksa müracaat edilen sağlık hizmeti sunucusunca yapılacaktır"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına kronik hemodiyaliz tedavisi programı için yapılacak sevkler, ... yoksa müracaat edilen sağlık hizmeti sunucusunca yapılacaktır."
+      },
+      {
+        "subject": "özel sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "yoğun bakım tedavisi",
+        "object_type": "MedicalResource",
+        "attributes": {},
+        "conditions": [
+          "yoğun bakım yatağının bulunmaması",
+          "hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Kişiler, resmi sağlık hizmeti sunucularında uygun yoğun bakım yatağının bulunmaması ve hasta naklinin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştirilmesi koşuluyla yoğun bakım tedavisi için özel sağlık hizmeti sunucularına da sevk edilebil"
+      },
+      {
+        "subject": "özel sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "radyoterapi tedavisi",
+        "object_type": "MedicalResource",
+        "attributes": {},
+        "conditions": [
+          "aynı il içindeki resmi sağlık hizmeti sunucularında tedavinin sağlanabileceği radyoterapi merkezi bulunmaması halinde"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Kişiler, aynı il içindeki resmi sağlık hizmeti sunucularında tedavinin sağlanabileceği radyoterapi merkezi bulunmaması halinde radyoterapi tedavisi için aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir."
+      },
+      {
+        "subject": "radyoterapi tedavisi",
+        "subject_type": "MedicalProcedure",
+        "predicate": "PERFORMED_AT",
+        "object": "özel sağlık hizmeti sunucuları",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [
+          "aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir"
+        ],
+        "exceptions": [
+          "radyoterapi merkezi bulunmaması halinde"
+        ],
+        "temporal": null,
+        "context": "radyoterapi tedavisi için aynı il içindeki özel sağlık hizmeti sunucularına sevk edilebilir."
+      },
+      {
+        "subject": "sevkler",
+        "subject_type": "Document",
+        "predicate": "PERFORMED_AT",
+        "object": "Sağlık Bakanlığı sağlık hizmeti sunucuları",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [
+          "aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "aynı yerleşim yerinde varsa bünyesinde hemodiyaliz merkezi bulunan Sağlık Bakanlığı sağlık hizmeti sunucularınca yapılacaktır"
+      },
+      {
+        "subject": "sevkler",
+        "subject_type": "Document",
+        "predicate": "PERFORMED_AT",
+        "object": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucuları",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [
+          "bünyesinde hemodiyaliz merkezi bulunmaması halinde"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "yoksa müracaat edilen sağlık hizmeti sunucusunca yapılacaktır"
+      },
+      {
+        "subject": "Organ, doku ve kök hücre nakline ilişkin sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller ve devam tedavileri",
+        "subject_type": "MedicalProcedure",
+        "predicate": "PERFORMED_AT",
+        "object": "üçüncü basamak resmi sağlık hizmeti sunucuları",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [
+          "Doğrudan müracaatlar"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Organ, doku ve kök hücre nakline ilişkin; sağlık hizmetleri ve naklin yapıldığı sağlık hizmeti sunucusundaki kontroller ve devam tedavileri için yapılan müracaatlar."
+      }
+    ],
+    "ADMINISTERED_BY": [
+      {
+        "subject": "naklin",
+        "subject_type": "MedicalProcedure",
+        "predicate": "ADMINISTERED_BY",
+        "object": "112 Komuta Kontrol Merkezi",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "naklin 112 Komuta Kontrol Merkezi koordinasyonunda gerçekleştiğini gösterir belge yeterli kabul edilecektir."
+      }
+    ],
+    "MUST_BE_SUBMITTED_WITHIN": [
+      {
+        "subject": "hemodiyaliz amaçlı sevkler",
+        "subject_type": "Document",
+        "predicate": "MUST_BE_SUBMITTED_WITHIN",
+        "object": "sevk belgesi",
+        "object_type": "Document",
+        "attributes": {},
+        "conditions": [
+          "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan"
+        ],
+        "exceptions": [],
+        "temporal": "3 ay süre ile geçerli",
+        "context": "Sağlık Bakanlığı dışındaki resmi sağlık hizmeti sunucularına yapılan hemodiyaliz amaçlı sevkler 3 ay süre ile geçerli olup sürenin bitiminde sevk belgesinin yenilenmesi gerekmektedir."
+      }
+    ],
+    "REQUIRES_DOCUMENTATION": [
+      {
+        "subject": "Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES_DOCUMENTATION",
+        "object": "sevk belgesi",
+        "object_type": "Document",
+        "attributes": {},
+        "conditions": [
+          "SUT’un 1.5.1.B-2 maddesine uygun olarak düzenlenen"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık Bakanlığı dışındaki üçüncü basamak resmi sağlık hizmeti sunucularınca SUT’un 1.5.1.B-2 maddesine uygun olarak düzenlenen sevk belgesi ile müracaat eden hastalar."
+      },
+      {
+        "subject": "Sağlık Bakanlığı ikinci ve üçüncü basamak sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES_DOCUMENTATION",
+        "object": "sevk belgesi",
+        "object_type": "Document",
+        "attributes": {},
+        "conditions": [
+          "SUT’un 1.5.1.A-2 maddesine uygun olarak düzenlenen"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık Bakanlığı ikinci ve üçüncü basamak sağlık hizmeti sunucularınca SUT’un 1.5.1.A-2 maddesine uygun olarak düzenlenen sevk belgesi ile müracaat eden hastalar."
+      }
+    ]
+  },
+  "statistics": {
+    "total_entities": 34,
+    "total_relations": 28,
+    "entity_types": 12,
+    "relation_types": 9,
+    "chunks_processed": 3,
+    "processing_time_minutes": 2.243047531445821
+  }
+}

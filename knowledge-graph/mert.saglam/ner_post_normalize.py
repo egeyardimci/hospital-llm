@@ -41,7 +41,7 @@ logger = logging.getLogger(__name__)
 # CONFIG
 # ---------------------------------------------------------------------------
 
-INPUT_FILE = os.getenv("POST_NORMALIZE_INPUT", "ner_ensemble_sgk_rule.json")
+INPUT_FILE = os.getenv("POST_NORMALIZE_INPUT", "ner_ensemble_sgk_llm.json")
 OUTPUT_FILE = os.getenv("POST_NORMALIZE_OUTPUT", "ner_ensemble_sgk_normalized.json")
 
 
