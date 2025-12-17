@@ -1,0 +1,1552 @@
+{
+  "entities": [
+    {
+      "text": "SUT",
+      "type": "Regulation",
+      "subtype": "tebliğ",
+      "normalized_form": "Sağlık Uygulama Tebliği",
+      "aliases": [
+        "Tebliğ"
+      ],
+      "attributes": {
+        "document_type": "tebliğ",
+        "scope": "sağlık hizmetleri finansmanı"
+      },
+      "context": "Tebliğin amacı (bundan sonra SUT olarak ifade edilecektir); sağlık yardımları Sosyal Güvenlik Kurumunca"
+    },
+    {
+      "text": "Sosyal Güvenlik Kurumunca",
+      "type": "Institution",
+      "subtype": "kamu",
+      "normalized_form": "Sosyal Güvenlik Kurumu",
+      "aliases": [
+        "Kurum",
+        "SGK"
+      ],
+      "attributes": {
+        "role": "finansman sağlayıcı",
+        "sector": "kamu"
+      },
+      "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+    },
+    {
+      "text": "iş kazası ile meslek hastalığı",
+      "type": "HealthCondition",
+      "subtype": "occupational",
+      "normalized_form": null,
+      "aliases": [
+        "iş kazası",
+        "meslek hastalığı"
+      ],
+      "attributes": {
+        "category": "mesleki",
+        "coverage": "zorunlu"
+      },
+      "context": "hastalanmaları halinde sağlıklarını kazanmalarını, iş kazası ile meslek hastalığı, hastalık ve analık sonucu tıbben"
+    },
+    {
+      "text": "Sağlık Hizmetleri Fiyatlandırma Komisyonunca",
+      "type": "Institution",
+      "subtype": "komisyon",
+      "normalized_form": "Sağlık Hizmetleri Fiyatlandırma Komisyonu",
+      "aliases": [
+        "Fiyatlandırma Komisyonu"
+      ],
+      "attributes": {
+        "role": "fiyat belirleme",
+        "function": "düzenleyici"
+      },
+      "context": "bu hizmetlere ilişkin Sağlık Hizmetleri Fiyatlandırma Komisyonunca belirlenen Kurumca ödenecek bedellerin bildirilmesidir"
+    },
+    {
+      "text": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+      "type": "Regulation",
+      "subtype": "kanun",
+      "normalized_form": "5510 sayılı Kanun",
+      "aliases": [
+        "5510 sayılı Kanun"
+      ],
+      "attributes": {
+        "law_number": "5510",
+        "type": "kanun"
+      },
+      "context": "(1) 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği"
+    },
+    {
+      "text": "genel sağlık sigortası",
+      "type": "CoverageSystem",
+      "subtype": "sigorta",
+      "normalized_form": "Genel Sağlık Sigortası",
+      "aliases": [
+        "GSS"
+      ],
+      "attributes": {
+        "type": "zorunlu sigorta",
+        "scope": "genel"
+      },
+      "context": "diğer kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler"
+    },
+    {
+      "text": "5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun",
+      "type": "Regulation",
+      "subtype": "kanun",
+      "normalized_form": "5502 sayılı Kanun",
+      "aliases": [
+        "5502 sayılı Kanun"
+      ],
+      "attributes": {
+        "law_number": "5502",
+        "type": "kanun"
+      },
+      "context": "(1) SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun"
+    },
+    {
+      "text": "Toplum sağlığı merkezi",
+      "type": "Institution",
+      "subtype": "birinci_basamak_resmi",
+      "normalized_form": "Toplum Sağlığı Merkezi",
+      "aliases": [
+        "TSM"
+      ],
+      "attributes": {
+        "level": "birinci basamak",
+        "sector": "kamu"
+      },
+      "context": "1) Bünyesinde birinci basamak sağlık kuruluşu bulunan ilçe sağlık müdürlüğü 2) Toplum sağlığı merkezi (TSM) 3) Aile sağlığı merkezi"
+    },
+    {
+      "text": "Aile sağlığı merkezi",
+      "type": "Institution",
+      "subtype": "birinci_basamak_resmi",
+      "normalized_form": "Aile Sağlığı Merkezi",
+      "aliases": [
+        "ASM"
+      ],
+      "attributes": {
+        "level": "birinci basamak",
+        "sector": "kamu"
+      },
+      "context": "2) Toplum sağlığı merkezi (TSM) 3) Aile sağlığı merkezi (ASM) 4) Halk sağlığı laboratuvarı"
+    },
+    {
+      "text": "112 Acil sağlık hizmeti birimleri",
+      "type": "Institution",
+      "subtype": "acil",
+      "normalized_form": "112 Acil Sağlık Hizmeti",
+      "aliases": [
+        "112"
+      ],
+      "attributes": {
+        "level": "birinci basamak",
+        "service_type": "acil",
+        "sector": "kamu"
+      },
+      "context": "5) Kurum tabipliği 6) 112 Acil sağlık hizmeti birimleri 7) Üniversiteler bünyesindeki mediko-sosyal birimler"
+    },
+    {
+      "text": "entegre ilçe devlet hastaneleri",
+      "type": "Institution",
+      "subtype": "birinci_basamak_resmi",
+      "normalized_form": "Entegre İlçe Devlet Hastanesi",
+      "aliases": [
+        "E2",
+        "E3"
+      ],
+      "attributes": {
+        "level": "birinci basamak",
+        "service_type": "ayaktan ve yataklı",
+        "sector": "kamu"
+      },
+      "context": "Birinci basamak ayaktan ve yataklı teşhis, tedavi ve rehabilitasyon hizmeti sunan sağlık hizmeti sunucuları entegre ilçe devlet hastaneleridir (E2 ve E3)"
+    },
+    {
+      "text": "Evde bakım merkezleri veya birimler",
+      "type": "Institution",
+      "subtype": "birinci_basamak_özel",
+      "normalized_form": "Evde Bakım Merkezi",
+      "aliases": [
+        "evde bakım birimi"
+      ],
+      "attributes": {
+        "level": "birinci basamak",
+        "sector": "özel",
+        "service_type": "evde bakım"
+      },
+      "context": "1.4.1.B - Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti"
+    },
+    {
+      "text": "6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun",
+      "type": "Regulation",
+      "subtype": "kanun",
+      "normalized_form": "6197 sayılı Kanun",
+      "aliases": [
+        "Eczacılar ve Eczaneler Kanunu"
+      ],
+      "attributes": {
+        "law_number": "6197",
+        "date": "18/12/1953",
+        "type": "kanun"
+      },
+      "context": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları 18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren"
+    },
+    {
+      "text": "yol, gündelik ve refakatçi giderleri",
+      "type": "FinancialBenefit",
+      "subtype": "ek_ödemeler",
+      "normalized_form": null,
+      "aliases": [
+        "yol gideri",
+        "gündelik",
+        "refakatçi gideri"
+      ],
+      "attributes": {
+        "category": "ek hizmetler",
+        "type": "gider karşılama"
+      },
+      "context": "Kurumca finansmanı sağlanan sağlık hizmetleri, yol, gündelik ve refakatçi giderlerinden yararlanma esas ve usulleri ile bu hizmetlere"
+    },
+    {
+      "text": "basamaklandırılan özel hastaneler",
+      "type": "Institution",
+      "subtype": "tiered_healthcare_provider",
+      "normalized_form": "özel hastane",
+      "aliases": [
+        "ÖH"
+      ],
+      "attributes": {
+        "sector": "private",
+        "classification": "tiered"
+      },
+      "context": "k basamaklandırılan özel hastaneler (ÖH) 1.4.4 - Sağlık hizmeti sunumu"
+    },
+    {
+      "text": "Optisyenlik müesseseleri",
+      "type": "Institution",
+      "subtype": "non_tiered_provider",
+      "normalized_form": "optisyenlik müessesesi",
+      "aliases": [
+        "optisyen"
+      ],
+      "attributes": {
+        "service_type": "optical",
+        "tiered": "false"
+      },
+      "context": "basamaklandırılamayan sağlık hizmeti sunucuları 1) Optisyenlik müesseseleri 2) Tıbbi cihaz"
+    },
+    {
+      "text": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "type": "Institution",
+      "subtype": "supplier",
+      "normalized_form": "tıbbi cihaz tedarikçisi",
+      "aliases": [
+        "tıbbi malzeme tedarikçisi"
+      ],
+      "attributes": {
+        "service_type": "medical_equipment_supply",
+        "tiered": "false"
+      },
+      "context": "1) Optisyenlik müesseseleri 2) Tıbbi cihaz ve malzeme tedarikçileri 3) Kaplıcalar"
+    },
+    {
+      "text": "Kaplıcalar",
+      "type": "Institution",
+      "subtype": "thermal_facility",
+      "normalized_form": "kaplıca",
+      "aliases": [
+        "termal tesis"
+      ],
+      "attributes": {
+        "service_type": "thermal_treatment",
+        "tiered": "false"
+      },
+      "context": "Tıbbi cihaz ve malzeme tedarikçileri 3) Kaplıcalar 4) Beşeri tıbbi"
+    },
+    {
+      "text": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+      "type": "Institution",
+      "subtype": "pharmaceutical_entity",
+      "normalized_form": "beşeri tıbbi ürün tedarikçisi",
+      "aliases": [
+        "ilaç üreticisi",
+        "ilaç tedarikçisi"
+      ],
+      "attributes": {
+        "service_type": "pharmaceutical",
+        "legal_status": "private_legal_entity"
+      },
+      "context": "3) Kaplıcalar 4) Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri ve bunların"
+    },
+    {
+      "text": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+      "type": "Requirement",
+      "subtype": "authorization",
+      "normalized_form": "Sağlık Bakanlığı ruhsatı",
+      "aliases": [
+        "ruhsat",
+        "izin"
+      ],
+      "attributes": {
+        "issuing_authority": "Sağlık Bakanlığı",
+        "type": "license_or_permit"
+      },
+      "context": "1.4.3 numaralı maddelerde yer almayan Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş sağlık hizmet sunumu"
+    },
+    {
+      "text": "MEDULA sistemi",
+      "type": "System",
+      "subtype": "information_system",
+      "normalized_form": "MEDULA",
+      "aliases": [
+        "MEDULA"
+      ],
+      "attributes": {
+        "purpose": "eligibility_verification",
+        "operator": "SGK"
+      },
+      "context": "teşhis ve tedavi hizmeti veren sağlık hizmeti sunucularına müracaatlarında MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır"
+    },
+    {
+      "text": "müstahaklık sorgulaması",
+      "type": "Procedure",
+      "subtype": "administrative",
+      "normalized_form": "müstahaklık sorgulama",
+      "aliases": [
+        "hak sorgulaması"
+      ],
+      "attributes": {
+        "purpose": "eligibility_check",
+        "system": "MEDULA"
+      },
+      "context": "sağlık hizmeti sunucularına müracaatlarında MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır. Sorgulama sonucu Kurum"
+    },
+    {
+      "text": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin",
+      "type": "Regulation",
+      "subtype": "legal_reference",
+      "normalized_form": "5510 sayılı Kanun madde 60/1-c",
+      "aliases": [
+        "5510 sayılı Kanun",
+        "60/c"
+      ],
+      "attributes": {
+        "law_number": "5510",
+        "article": "60",
+        "paragraph": "1",
+        "clause": "c"
+      },
+      "context": "Yürürlük: 01/03/2017) (1) 5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin (Değişik: RG- 09/09/2017"
+    },
+    {
+      "text": "genel sağlık sigortası",
+      "type": "CoverageType",
+      "subtype": "insurance_scheme",
+      "normalized_form": "genel sağlık sigortası",
+      "aliases": [
+        "GSS"
+      ],
+      "attributes": {
+        "coverage_type": "general_health_insurance"
+      },
+      "context": "ondördüncü fıkraları gereği genel sağlık sigortası kapsamına alınan kişilerin, ayakta veya"
+    },
+    {
+      "text": "sevk işlemleri",
+      "type": "Procedure",
+      "subtype": "referral",
+      "normalized_form": "sevk",
+      "aliases": [
+        "sevk",
+        "yönlendirme"
+      ],
+      "attributes": {
+        "type": "referral_process"
+      },
+      "context": "ondördüncü fıkralarında tanımlanan kişilerin müracaat kabul ve sevk işlemleri aşağıdaki şekilde yürütülecektir"
+    },
+    {
+      "text": "Acil haller",
+      "type": "HealthCondition",
+      "subtype": "emergency",
+      "normalized_form": "acil hal",
+      "aliases": [
+        "acil durum"
+      ],
+      "attributes": {
+        "urgency": "emergency"
+      },
+      "context": "(Değişik: RG-18/01/2016-29597/ 1 md. Yürürlük: 01/11/2015) Acil haller dışında sözleşmesiz özel sağlık"
+    },
+    {
+      "text": "sözleşmesiz özel sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "non_contracted_provider",
+      "normalized_form": "sözleşmesiz özel sağlık hizmeti sunucusu",
+      "aliases": [
+        "sözleşmesiz özel hastane"
+      ],
+      "attributes": {
+        "contract_status": "non_contracted",
+        "sector": "private"
+      },
+      "context": "Yürürlük: 01/11/2015) Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri"
+    },
+    {
+      "text": "sözleşmeli sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "contracted_provider",
+      "normalized_form": "sözleşmeli sağlık hizmeti sunucusu",
+      "aliases": [
+        "sözleşmeli hastane"
+      ],
+      "attributes": {
+        "contract_status": "contracted"
+      },
+      "context": "(1) Ayakta veya yatarak tanı ve tedavi hizmeti sunan sözleşmeli sağlık hizmeti sunucularına, sunmuş oldukları sağlık"
+    },
+    {
+      "text": "sağlık hizmeti bedelleri Kurumca ödenmez",
+      "type": "CoverageRule",
+      "subtype": "payment_exclusion",
+      "normalized_form": "Kurum tarafından ödeme yapılmaz",
+      "aliases": [
+        "ödeme yapılmaz",
+        "karşılanmaz"
+      ],
+      "attributes": {
+        "payment_status": "not_covered",
+        "payer": "Kurum"
+      },
+      "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez."
+    }
+  ],
+  "relations": [
+    {
+      "subject": "SUT",
+      "subject_type": "Regulation",
+      "predicate": "ADMINISTERED_BY",
+      "object": "Sosyal Güvenlik Kurumunca",
+      "object_type": "Institution",
+      "attributes": {
+        "scope": "finansman sağlama"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+    },
+    {
+      "subject": "Sosyal Güvenlik Kurumunca",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "iş kazası ile meslek hastalığı",
+      "object_type": "HealthCondition",
+      "attributes": {
+        "coverage_type": "tıbben gerekli görülen sağlık hizmetleri"
+      },
+      "conditions": [
+        "tıbben gerekli görülen"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "iş kazası ile meslek hastalığı, hastalık ve analık sonucu tıbben gerekli görülen sağlık hizmetlerinin karşılanmasını"
+    },
+    {
+      "subject": "Sosyal Güvenlik Kurumunca",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "yol, gündelik ve refakatçi giderleri",
+      "object_type": "FinancialBenefit",
+      "attributes": {
+        "coverage_scope": "Kurumca finansmanı sağlanan"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Kurumca finansmanı sağlanan sağlık hizmetleri, yol, gündelik ve refakatçi giderlerinden yararlanma esas ve usulleri"
+    },
+    {
+      "subject": "Sağlık Hizmetleri Fiyatlandırma Komisyonunca",
+      "subject_type": "Institution",
+      "predicate": "DETERMINES_PRICING",
+      "object": "Sosyal Güvenlik Kurumunca",
+      "object_type": "Institution",
+      "attributes": {
+        "determination_scope": "Kurumca ödenecek bedeller"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "bu hizmetlere ilişkin Sağlık Hizmetleri Fiyatlandırma Komisyonunca belirlenen Kurumca ödenecek bedellerin bildirilmesidir"
+    },
+    {
+      "subject": "genel sağlık sigortası",
+      "subject_type": "CoverageSystem",
+      "predicate": "APPLIES_TO",
+      "object": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+      "object_type": "Regulation",
+      "attributes": {
+        "application_basis": "kanun ve diğer kanunlardaki özel hükümler gereği"
+      },
+      "conditions": [
+        "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler"
+    },
+    {
+      "subject": "SUT",
+      "subject_type": "Regulation",
+      "predicate": "BASED_ON",
+      "object": "5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun",
+      "object_type": "Regulation",
+      "attributes": {
+        "regulation_framework": "dayanak"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir"
+    },
+    {
+      "subject": "SUT",
+      "subject_type": "Regulation",
+      "predicate": "BASED_ON",
+      "object": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+      "object_type": "Regulation",
+      "attributes": {
+        "regulation_framework": "dayanak"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir"
+    },
+    {
+      "subject": "Toplum sağlığı merkezi",
+      "subject_type": "Institution",
+      "predicate": "CLASSIFIED_AS",
+      "object": "SUT",
+      "object_type": "Regulation",
+      "attributes": {
+        "classification": "Birinci basamak resmi sağlık hizmeti sunucusu"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları... 2) Toplum sağlığı merkezi (TSM)"
+    },
+    {
+      "subject": "Aile sağlığı merkezi",
+      "subject_type": "Institution",
+      "predicate": "CLASSIFIED_AS",
+      "object": "SUT",
+      "object_type": "Regulation",
+      "attributes": {
+        "classification": "Birinci basamak resmi sağlık hizmeti sunucusu"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları... 3) Aile sağlığı merkezi (ASM)"
+    },
+    {
+      "subject": "112 Acil sağlık hizmeti birimleri",
+      "subject_type": "Institution",
+      "predicate": "CLASSIFIED_AS",
+      "object": "SUT",
+      "object_type": "Regulation",
+      "attributes": {
+        "classification": "Birinci basamak resmi sağlık hizmeti sunucusu"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları... 6) 112 Acil sağlık hizmeti birimleri"
+    },
+    {
+      "subject": "entegre ilçe devlet hastaneleri",
+      "subject_type": "Institution",
+      "predicate": "CLASSIFIED_AS",
+      "object": "SUT",
+      "object_type": "Regulation",
+      "attributes": {
+        "classification": "Birinci basamak resmi sağlık hizmeti sunucusu",
+        "service_type": "ayaktan ve yataklı teşhis, tedavi ve rehabilitasyon hizmeti"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Birinci basamak ayaktan ve yataklı teşhis, tedavi ve rehabilitasyon hizmeti sunan sağlık hizmeti sunucuları entegre ilçe devlet hastaneleridir (E2 ve E3)"
+    },
+    {
+      "subject": "Evde bakım merkezleri veya birimler",
+      "subject_type": "Institution",
+      "predicate": "CLASSIFIED_AS",
+      "object": "SUT",
+      "object_type": "Regulation",
+      "attributes": {
+        "classification": "Birinci basamak özel sağlık hizmeti sunucusu"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.1.B - Birinci basamak özel sağlık hizmeti sunucuları... Evde bakım merkezleri veya birimler"
+    },
+    {
+      "subject": "6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun",
+      "subject_type": "Regulation",
+      "predicate": "REGULATES",
+      "object": "SUT",
+      "object_type": "Regulation",
+      "attributes": {
+        "regulated_entity": "serbest faaliyet gösteren eczaneler",
+        "classification": "Birinci basamak özel sağlık hizmeti sunucusu"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren eczaneler"
+    },
+    {
+      "subject": "Optisyenlik müesseseleri",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+      "object_type": "Requirement",
+      "attributes": {
+        "classification": "basamaklandırılamayan sağlık hizmeti sunucuları"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Optisyenlik müesseseleri... Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş sağlık hizmet sunumu bakımından basamaklandırılamayan diğer özelleşmiş tanı ve tedavi ve tedarik merkezleri"
+    },
+    {
+      "subject": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+      "object_type": "Requirement",
+      "attributes": {
+        "classification": "basamaklandırılamayan sağlık hizmeti sunucuları"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Tıbbi cihaz ve malzeme tedarikçileri... Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş"
+    },
+    {
+      "subject": "Kaplıcalar",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+      "object_type": "Requirement",
+      "attributes": {
+        "classification": "basamaklandırılamayan sağlık hizmeti sunucuları"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Kaplıcalar... Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş"
+    },
+    {
+      "subject": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+      "object_type": "Requirement",
+      "attributes": {
+        "classification": "basamaklandırılamayan sağlık hizmeti sunucuları"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri... Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş"
+    },
+    {
+      "subject": "sözleşmeli sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "müstahaklık sorgulaması",
+      "object_type": "Procedure",
+      "attributes": {
+        "purpose": "sağlık hizmeti bedellerinin ödenebilmesi"
+      },
+      "conditions": [
+        "ayakta veya yatarak tanı ve tedavi hizmeti sunan"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Ayakta veya yatarak tanı ve tedavi hizmeti sunan sözleşmeli sağlık hizmeti sunucularına, sunmuş oldukları sağlık hizmeti bedellerinin ödenebilmesi için müracaat işlemlerinin... gerçekleştirilmiş olması gerekmektedir"
+    },
+    {
+      "subject": "müstahaklık sorgulaması",
+      "subject_type": "Procedure",
+      "predicate": "PERFORMED_AT",
+      "object": "MEDULA sistemi",
+      "object_type": "System",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır"
+    },
+    {
+      "subject": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin",
+      "subject_type": "Regulation",
+      "predicate": "APPLIES_TO",
+      "object": "genel sağlık sigortası",
+      "object_type": "CoverageType",
+      "attributes": {
+        "covered_groups": "60/c-1, 60/c-3, onikinci, onüçüncü ve ondördüncü fıkralarında tanımlanan kişiler"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin (1) ve (3) numaralı alt bentleri ile aynı maddenin onikinci, onüçüncü ve ondördüncü fıkraları gereği genel sağlık sigortası kapsamına alınan kişilerin"
+    },
+    {
+      "subject": "genel sağlık sigortası",
+      "subject_type": "CoverageType",
+      "predicate": "REQUIRES",
+      "object": "sevk işlemleri",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [
+        "usul ve esaslara uygun olmayan müracaatlara ilişkin"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "müracaat kabul ve sevk işlemleri aşağıdaki şekilde yürütülecektir. Aşağıda belirtilen usul ve esaslara uygun olmayan müracaatlara ilişkin sağlık hizmeti bedelleri Kurumca karşılanmaz"
+    },
+    {
+      "subject": "sözleşmesiz özel sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "EXCLUDES",
+      "object": "sağlık hizmeti bedelleri Kurumca ödenmez",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [
+        "Acil haller"
+      ],
+      "temporal": null,
+      "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez"
+    },
+    {
+      "subject": "Acil haller",
+      "subject_type": "HealthCondition",
+      "predicate": "EXEMPT_FROM",
+      "object": "sağlık hizmeti bedelleri Kurumca ödenmez",
+      "object_type": "CoverageRule",
+      "attributes": {
+        "applies_to": "sözleşmesiz özel sağlık hizmeti sunucuları"
+      },
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez"
+    }
+  ],
+  "entities_by_type": {
+    "Regulation": [
+      {
+        "text": "SUT",
+        "type": "Regulation",
+        "subtype": "tebliğ",
+        "normalized_form": "Sağlık Uygulama Tebliği",
+        "aliases": [
+          "Tebliğ"
+        ],
+        "attributes": {
+          "document_type": "tebliğ",
+          "scope": "sağlık hizmetleri finansmanı"
+        },
+        "context": "Tebliğin amacı (bundan sonra SUT olarak ifade edilecektir); sağlık yardımları Sosyal Güvenlik Kurumunca"
+      },
+      {
+        "text": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+        "type": "Regulation",
+        "subtype": "kanun",
+        "normalized_form": "5510 sayılı Kanun",
+        "aliases": [
+          "5510 sayılı Kanun"
+        ],
+        "attributes": {
+          "law_number": "5510",
+          "type": "kanun"
+        },
+        "context": "(1) 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği"
+      },
+      {
+        "text": "5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun",
+        "type": "Regulation",
+        "subtype": "kanun",
+        "normalized_form": "5502 sayılı Kanun",
+        "aliases": [
+          "5502 sayılı Kanun"
+        ],
+        "attributes": {
+          "law_number": "5502",
+          "type": "kanun"
+        },
+        "context": "(1) SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun"
+      },
+      {
+        "text": "6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun",
+        "type": "Regulation",
+        "subtype": "kanun",
+        "normalized_form": "6197 sayılı Kanun",
+        "aliases": [
+          "Eczacılar ve Eczaneler Kanunu"
+        ],
+        "attributes": {
+          "law_number": "6197",
+          "date": "18/12/1953",
+          "type": "kanun"
+        },
+        "context": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları 18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren"
+      },
+      {
+        "text": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin",
+        "type": "Regulation",
+        "subtype": "legal_reference",
+        "normalized_form": "5510 sayılı Kanun madde 60/1-c",
+        "aliases": [
+          "5510 sayılı Kanun",
+          "60/c"
+        ],
+        "attributes": {
+          "law_number": "5510",
+          "article": "60",
+          "paragraph": "1",
+          "clause": "c"
+        },
+        "context": "Yürürlük: 01/03/2017) (1) 5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin (Değişik: RG- 09/09/2017"
+      }
+    ],
+    "Institution": [
+      {
+        "text": "Sosyal Güvenlik Kurumunca",
+        "type": "Institution",
+        "subtype": "kamu",
+        "normalized_form": "Sosyal Güvenlik Kurumu",
+        "aliases": [
+          "Kurum",
+          "SGK"
+        ],
+        "attributes": {
+          "role": "finansman sağlayıcı",
+          "sector": "kamu"
+        },
+        "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+      },
+      {
+        "text": "Sağlık Hizmetleri Fiyatlandırma Komisyonunca",
+        "type": "Institution",
+        "subtype": "komisyon",
+        "normalized_form": "Sağlık Hizmetleri Fiyatlandırma Komisyonu",
+        "aliases": [
+          "Fiyatlandırma Komisyonu"
+        ],
+        "attributes": {
+          "role": "fiyat belirleme",
+          "function": "düzenleyici"
+        },
+        "context": "bu hizmetlere ilişkin Sağlık Hizmetleri Fiyatlandırma Komisyonunca belirlenen Kurumca ödenecek bedellerin bildirilmesidir"
+      },
+      {
+        "text": "Toplum sağlığı merkezi",
+        "type": "Institution",
+        "subtype": "birinci_basamak_resmi",
+        "normalized_form": "Toplum Sağlığı Merkezi",
+        "aliases": [
+          "TSM"
+        ],
+        "attributes": {
+          "level": "birinci basamak",
+          "sector": "kamu"
+        },
+        "context": "1) Bünyesinde birinci basamak sağlık kuruluşu bulunan ilçe sağlık müdürlüğü 2) Toplum sağlığı merkezi (TSM) 3) Aile sağlığı merkezi"
+      },
+      {
+        "text": "Aile sağlığı merkezi",
+        "type": "Institution",
+        "subtype": "birinci_basamak_resmi",
+        "normalized_form": "Aile Sağlığı Merkezi",
+        "aliases": [
+          "ASM"
+        ],
+        "attributes": {
+          "level": "birinci basamak",
+          "sector": "kamu"
+        },
+        "context": "2) Toplum sağlığı merkezi (TSM) 3) Aile sağlığı merkezi (ASM) 4) Halk sağlığı laboratuvarı"
+      },
+      {
+        "text": "112 Acil sağlık hizmeti birimleri",
+        "type": "Institution",
+        "subtype": "acil",
+        "normalized_form": "112 Acil Sağlık Hizmeti",
+        "aliases": [
+          "112"
+        ],
+        "attributes": {
+          "level": "birinci basamak",
+          "service_type": "acil",
+          "sector": "kamu"
+        },
+        "context": "5) Kurum tabipliği 6) 112 Acil sağlık hizmeti birimleri 7) Üniversiteler bünyesindeki mediko-sosyal birimler"
+      },
+      {
+        "text": "entegre ilçe devlet hastaneleri",
+        "type": "Institution",
+        "subtype": "birinci_basamak_resmi",
+        "normalized_form": "Entegre İlçe Devlet Hastanesi",
+        "aliases": [
+          "E2",
+          "E3"
+        ],
+        "attributes": {
+          "level": "birinci basamak",
+          "service_type": "ayaktan ve yataklı",
+          "sector": "kamu"
+        },
+        "context": "Birinci basamak ayaktan ve yataklı teşhis, tedavi ve rehabilitasyon hizmeti sunan sağlık hizmeti sunucuları entegre ilçe devlet hastaneleridir (E2 ve E3)"
+      },
+      {
+        "text": "Evde bakım merkezleri veya birimler",
+        "type": "Institution",
+        "subtype": "birinci_basamak_özel",
+        "normalized_form": "Evde Bakım Merkezi",
+        "aliases": [
+          "evde bakım birimi"
+        ],
+        "attributes": {
+          "level": "birinci basamak",
+          "sector": "özel",
+          "service_type": "evde bakım"
+        },
+        "context": "1.4.1.B - Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti"
+      },
+      {
+        "text": "basamaklandırılan özel hastaneler",
+        "type": "Institution",
+        "subtype": "tiered_healthcare_provider",
+        "normalized_form": "özel hastane",
+        "aliases": [
+          "ÖH"
+        ],
+        "attributes": {
+          "sector": "private",
+          "classification": "tiered"
+        },
+        "context": "k basamaklandırılan özel hastaneler (ÖH) 1.4.4 - Sağlık hizmeti sunumu"
+      },
+      {
+        "text": "Optisyenlik müesseseleri",
+        "type": "Institution",
+        "subtype": "non_tiered_provider",
+        "normalized_form": "optisyenlik müessesesi",
+        "aliases": [
+          "optisyen"
+        ],
+        "attributes": {
+          "service_type": "optical",
+          "tiered": "false"
+        },
+        "context": "basamaklandırılamayan sağlık hizmeti sunucuları 1) Optisyenlik müesseseleri 2) Tıbbi cihaz"
+      },
+      {
+        "text": "Tıbbi cihaz ve malzeme tedarikçileri",
+        "type": "Institution",
+        "subtype": "supplier",
+        "normalized_form": "tıbbi cihaz tedarikçisi",
+        "aliases": [
+          "tıbbi malzeme tedarikçisi"
+        ],
+        "attributes": {
+          "service_type": "medical_equipment_supply",
+          "tiered": "false"
+        },
+        "context": "1) Optisyenlik müesseseleri 2) Tıbbi cihaz ve malzeme tedarikçileri 3) Kaplıcalar"
+      },
+      {
+        "text": "Kaplıcalar",
+        "type": "Institution",
+        "subtype": "thermal_facility",
+        "normalized_form": "kaplıca",
+        "aliases": [
+          "termal tesis"
+        ],
+        "attributes": {
+          "service_type": "thermal_treatment",
+          "tiered": "false"
+        },
+        "context": "Tıbbi cihaz ve malzeme tedarikçileri 3) Kaplıcalar 4) Beşeri tıbbi"
+      },
+      {
+        "text": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+        "type": "Institution",
+        "subtype": "pharmaceutical_entity",
+        "normalized_form": "beşeri tıbbi ürün tedarikçisi",
+        "aliases": [
+          "ilaç üreticisi",
+          "ilaç tedarikçisi"
+        ],
+        "attributes": {
+          "service_type": "pharmaceutical",
+          "legal_status": "private_legal_entity"
+        },
+        "context": "3) Kaplıcalar 4) Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri ve bunların"
+      },
+      {
+        "text": "sözleşmesiz özel sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "non_contracted_provider",
+        "normalized_form": "sözleşmesiz özel sağlık hizmeti sunucusu",
+        "aliases": [
+          "sözleşmesiz özel hastane"
+        ],
+        "attributes": {
+          "contract_status": "non_contracted",
+          "sector": "private"
+        },
+        "context": "Yürürlük: 01/11/2015) Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri"
+      },
+      {
+        "text": "sözleşmeli sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "contracted_provider",
+        "normalized_form": "sözleşmeli sağlık hizmeti sunucusu",
+        "aliases": [
+          "sözleşmeli hastane"
+        ],
+        "attributes": {
+          "contract_status": "contracted"
+        },
+        "context": "(1) Ayakta veya yatarak tanı ve tedavi hizmeti sunan sözleşmeli sağlık hizmeti sunucularına, sunmuş oldukları sağlık"
+      }
+    ],
+    "HealthCondition": [
+      {
+        "text": "iş kazası ile meslek hastalığı",
+        "type": "HealthCondition",
+        "subtype": "occupational",
+        "normalized_form": null,
+        "aliases": [
+          "iş kazası",
+          "meslek hastalığı"
+        ],
+        "attributes": {
+          "category": "mesleki",
+          "coverage": "zorunlu"
+        },
+        "context": "hastalanmaları halinde sağlıklarını kazanmalarını, iş kazası ile meslek hastalığı, hastalık ve analık sonucu tıbben"
+      },
+      {
+        "text": "Acil haller",
+        "type": "HealthCondition",
+        "subtype": "emergency",
+        "normalized_form": "acil hal",
+        "aliases": [
+          "acil durum"
+        ],
+        "attributes": {
+          "urgency": "emergency"
+        },
+        "context": "(Değişik: RG-18/01/2016-29597/ 1 md. Yürürlük: 01/11/2015) Acil haller dışında sözleşmesiz özel sağlık"
+      }
+    ],
+    "CoverageSystem": [
+      {
+        "text": "genel sağlık sigortası",
+        "type": "CoverageSystem",
+        "subtype": "sigorta",
+        "normalized_form": "Genel Sağlık Sigortası",
+        "aliases": [
+          "GSS"
+        ],
+        "attributes": {
+          "type": "zorunlu sigorta",
+          "scope": "genel"
+        },
+        "context": "diğer kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler"
+      }
+    ],
+    "FinancialBenefit": [
+      {
+        "text": "yol, gündelik ve refakatçi giderleri",
+        "type": "FinancialBenefit",
+        "subtype": "ek_ödemeler",
+        "normalized_form": null,
+        "aliases": [
+          "yol gideri",
+          "gündelik",
+          "refakatçi gideri"
+        ],
+        "attributes": {
+          "category": "ek hizmetler",
+          "type": "gider karşılama"
+        },
+        "context": "Kurumca finansmanı sağlanan sağlık hizmetleri, yol, gündelik ve refakatçi giderlerinden yararlanma esas ve usulleri ile bu hizmetlere"
+      }
+    ],
+    "Requirement": [
+      {
+        "text": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+        "type": "Requirement",
+        "subtype": "authorization",
+        "normalized_form": "Sağlık Bakanlığı ruhsatı",
+        "aliases": [
+          "ruhsat",
+          "izin"
+        ],
+        "attributes": {
+          "issuing_authority": "Sağlık Bakanlığı",
+          "type": "license_or_permit"
+        },
+        "context": "1.4.3 numaralı maddelerde yer almayan Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş sağlık hizmet sunumu"
+      }
+    ],
+    "System": [
+      {
+        "text": "MEDULA sistemi",
+        "type": "System",
+        "subtype": "information_system",
+        "normalized_form": "MEDULA",
+        "aliases": [
+          "MEDULA"
+        ],
+        "attributes": {
+          "purpose": "eligibility_verification",
+          "operator": "SGK"
+        },
+        "context": "teşhis ve tedavi hizmeti veren sağlık hizmeti sunucularına müracaatlarında MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır"
+      }
+    ],
+    "Procedure": [
+      {
+        "text": "müstahaklık sorgulaması",
+        "type": "Procedure",
+        "subtype": "administrative",
+        "normalized_form": "müstahaklık sorgulama",
+        "aliases": [
+          "hak sorgulaması"
+        ],
+        "attributes": {
+          "purpose": "eligibility_check",
+          "system": "MEDULA"
+        },
+        "context": "sağlık hizmeti sunucularına müracaatlarında MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır. Sorgulama sonucu Kurum"
+      },
+      {
+        "text": "sevk işlemleri",
+        "type": "Procedure",
+        "subtype": "referral",
+        "normalized_form": "sevk",
+        "aliases": [
+          "sevk",
+          "yönlendirme"
+        ],
+        "attributes": {
+          "type": "referral_process"
+        },
+        "context": "ondördüncü fıkralarında tanımlanan kişilerin müracaat kabul ve sevk işlemleri aşağıdaki şekilde yürütülecektir"
+      }
+    ],
+    "CoverageType": [
+      {
+        "text": "genel sağlık sigortası",
+        "type": "CoverageType",
+        "subtype": "insurance_scheme",
+        "normalized_form": "genel sağlık sigortası",
+        "aliases": [
+          "GSS"
+        ],
+        "attributes": {
+          "coverage_type": "general_health_insurance"
+        },
+        "context": "ondördüncü fıkraları gereği genel sağlık sigortası kapsamına alınan kişilerin, ayakta veya"
+      }
+    ],
+    "CoverageRule": [
+      {
+        "text": "sağlık hizmeti bedelleri Kurumca ödenmez",
+        "type": "CoverageRule",
+        "subtype": "payment_exclusion",
+        "normalized_form": "Kurum tarafından ödeme yapılmaz",
+        "aliases": [
+          "ödeme yapılmaz",
+          "karşılanmaz"
+        ],
+        "attributes": {
+          "payment_status": "not_covered",
+          "payer": "Kurum"
+        },
+        "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez."
+      }
+    ]
+  },
+  "relations_by_predicate": {
+    "ADMINISTERED_BY": [
+      {
+        "subject": "SUT",
+        "subject_type": "Regulation",
+        "predicate": "ADMINISTERED_BY",
+        "object": "Sosyal Güvenlik Kurumunca",
+        "object_type": "Institution",
+        "attributes": {
+          "scope": "finansman sağlama"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+      }
+    ],
+    "COVERS": [
+      {
+        "subject": "Sosyal Güvenlik Kurumunca",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "iş kazası ile meslek hastalığı",
+        "object_type": "HealthCondition",
+        "attributes": {
+          "coverage_type": "tıbben gerekli görülen sağlık hizmetleri"
+        },
+        "conditions": [
+          "tıbben gerekli görülen"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "iş kazası ile meslek hastalığı, hastalık ve analık sonucu tıbben gerekli görülen sağlık hizmetlerinin karşılanmasını"
+      },
+      {
+        "subject": "Sosyal Güvenlik Kurumunca",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "yol, gündelik ve refakatçi giderleri",
+        "object_type": "FinancialBenefit",
+        "attributes": {
+          "coverage_scope": "Kurumca finansmanı sağlanan"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Kurumca finansmanı sağlanan sağlık hizmetleri, yol, gündelik ve refakatçi giderlerinden yararlanma esas ve usulleri"
+      }
+    ],
+    "DETERMINES_PRICING": [
+      {
+        "subject": "Sağlık Hizmetleri Fiyatlandırma Komisyonunca",
+        "subject_type": "Institution",
+        "predicate": "DETERMINES_PRICING",
+        "object": "Sosyal Güvenlik Kurumunca",
+        "object_type": "Institution",
+        "attributes": {
+          "determination_scope": "Kurumca ödenecek bedeller"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "bu hizmetlere ilişkin Sağlık Hizmetleri Fiyatlandırma Komisyonunca belirlenen Kurumca ödenecek bedellerin bildirilmesidir"
+      }
+    ],
+    "APPLIES_TO": [
+      {
+        "subject": "genel sağlık sigortası",
+        "subject_type": "CoverageSystem",
+        "predicate": "APPLIES_TO",
+        "object": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+        "object_type": "Regulation",
+        "attributes": {
+          "application_basis": "kanun ve diğer kanunlardaki özel hükümler gereği"
+        },
+        "conditions": [
+          "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler"
+      },
+      {
+        "subject": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin",
+        "subject_type": "Regulation",
+        "predicate": "APPLIES_TO",
+        "object": "genel sağlık sigortası",
+        "object_type": "CoverageType",
+        "attributes": {
+          "covered_groups": "60/c-1, 60/c-3, onikinci, onüçüncü ve ondördüncü fıkralarında tanımlanan kişiler"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin (1) ve (3) numaralı alt bentleri ile aynı maddenin onikinci, onüçüncü ve ondördüncü fıkraları gereği genel sağlık sigortası kapsamına alınan kişilerin"
+      }
+    ],
+    "BASED_ON": [
+      {
+        "subject": "SUT",
+        "subject_type": "Regulation",
+        "predicate": "BASED_ON",
+        "object": "5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun",
+        "object_type": "Regulation",
+        "attributes": {
+          "regulation_framework": "dayanak"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir"
+      },
+      {
+        "subject": "SUT",
+        "subject_type": "Regulation",
+        "predicate": "BASED_ON",
+        "object": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+        "object_type": "Regulation",
+        "attributes": {
+          "regulation_framework": "dayanak"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir"
+      }
+    ],
+    "CLASSIFIED_AS": [
+      {
+        "subject": "Toplum sağlığı merkezi",
+        "subject_type": "Institution",
+        "predicate": "CLASSIFIED_AS",
+        "object": "SUT",
+        "object_type": "Regulation",
+        "attributes": {
+          "classification": "Birinci basamak resmi sağlık hizmeti sunucusu"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları... 2) Toplum sağlığı merkezi (TSM)"
+      },
+      {
+        "subject": "Aile sağlığı merkezi",
+        "subject_type": "Institution",
+        "predicate": "CLASSIFIED_AS",
+        "object": "SUT",
+        "object_type": "Regulation",
+        "attributes": {
+          "classification": "Birinci basamak resmi sağlık hizmeti sunucusu"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları... 3) Aile sağlığı merkezi (ASM)"
+      },
+      {
+        "subject": "112 Acil sağlık hizmeti birimleri",
+        "subject_type": "Institution",
+        "predicate": "CLASSIFIED_AS",
+        "object": "SUT",
+        "object_type": "Regulation",
+        "attributes": {
+          "classification": "Birinci basamak resmi sağlık hizmeti sunucusu"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.1.A - Birinci basamak resmi sağlık hizmeti sunucuları... 6) 112 Acil sağlık hizmeti birimleri"
+      },
+      {
+        "subject": "entegre ilçe devlet hastaneleri",
+        "subject_type": "Institution",
+        "predicate": "CLASSIFIED_AS",
+        "object": "SUT",
+        "object_type": "Regulation",
+        "attributes": {
+          "classification": "Birinci basamak resmi sağlık hizmeti sunucusu",
+          "service_type": "ayaktan ve yataklı teşhis, tedavi ve rehabilitasyon hizmeti"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Birinci basamak ayaktan ve yataklı teşhis, tedavi ve rehabilitasyon hizmeti sunan sağlık hizmeti sunucuları entegre ilçe devlet hastaneleridir (E2 ve E3)"
+      },
+      {
+        "subject": "Evde bakım merkezleri veya birimler",
+        "subject_type": "Institution",
+        "predicate": "CLASSIFIED_AS",
+        "object": "SUT",
+        "object_type": "Regulation",
+        "attributes": {
+          "classification": "Birinci basamak özel sağlık hizmeti sunucusu"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.1.B - Birinci basamak özel sağlık hizmeti sunucuları... Evde bakım merkezleri veya birimler"
+      }
+    ],
+    "REGULATES": [
+      {
+        "subject": "6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun",
+        "subject_type": "Regulation",
+        "predicate": "REGULATES",
+        "object": "SUT",
+        "object_type": "Regulation",
+        "attributes": {
+          "regulated_entity": "serbest faaliyet gösteren eczaneler",
+          "classification": "Birinci basamak özel sağlık hizmeti sunucusu"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren eczaneler"
+      }
+    ],
+    "REQUIRES": [
+      {
+        "subject": "Optisyenlik müesseseleri",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+        "object_type": "Requirement",
+        "attributes": {
+          "classification": "basamaklandırılamayan sağlık hizmeti sunucuları"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Optisyenlik müesseseleri... Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş sağlık hizmet sunumu bakımından basamaklandırılamayan diğer özelleşmiş tanı ve tedavi ve tedarik merkezleri"
+      },
+      {
+        "subject": "Tıbbi cihaz ve malzeme tedarikçileri",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+        "object_type": "Requirement",
+        "attributes": {
+          "classification": "basamaklandırılamayan sağlık hizmeti sunucuları"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Tıbbi cihaz ve malzeme tedarikçileri... Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş"
+      },
+      {
+        "subject": "Kaplıcalar",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+        "object_type": "Requirement",
+        "attributes": {
+          "classification": "basamaklandırılamayan sağlık hizmeti sunucuları"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Kaplıcalar... Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş"
+      },
+      {
+        "subject": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş",
+        "object_type": "Requirement",
+        "attributes": {
+          "classification": "basamaklandırılamayan sağlık hizmeti sunucuları"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri... Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş"
+      },
+      {
+        "subject": "sözleşmeli sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "müstahaklık sorgulaması",
+        "object_type": "Procedure",
+        "attributes": {
+          "purpose": "sağlık hizmeti bedellerinin ödenebilmesi"
+        },
+        "conditions": [
+          "ayakta veya yatarak tanı ve tedavi hizmeti sunan"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Ayakta veya yatarak tanı ve tedavi hizmeti sunan sözleşmeli sağlık hizmeti sunucularına, sunmuş oldukları sağlık hizmeti bedellerinin ödenebilmesi için müracaat işlemlerinin... gerçekleştirilmiş olması gerekmektedir"
+      },
+      {
+        "subject": "genel sağlık sigortası",
+        "subject_type": "CoverageType",
+        "predicate": "REQUIRES",
+        "object": "sevk işlemleri",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [
+          "usul ve esaslara uygun olmayan müracaatlara ilişkin"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "müracaat kabul ve sevk işlemleri aşağıdaki şekilde yürütülecektir. Aşağıda belirtilen usul ve esaslara uygun olmayan müracaatlara ilişkin sağlık hizmeti bedelleri Kurumca karşılanmaz"
+      }
+    ],
+    "PERFORMED_AT": [
+      {
+        "subject": "müstahaklık sorgulaması",
+        "subject_type": "Procedure",
+        "predicate": "PERFORMED_AT",
+        "object": "MEDULA sistemi",
+        "object_type": "System",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır"
+      }
+    ],
+    "EXCLUDES": [
+      {
+        "subject": "sözleşmesiz özel sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "EXCLUDES",
+        "object": "sağlık hizmeti bedelleri Kurumca ödenmez",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [
+          "Acil haller"
+        ],
+        "temporal": null,
+        "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez"
+      }
+    ],
+    "EXEMPT_FROM": [
+      {
+        "subject": "Acil haller",
+        "subject_type": "HealthCondition",
+        "predicate": "EXEMPT_FROM",
+        "object": "sağlık hizmeti bedelleri Kurumca ödenmez",
+        "object_type": "CoverageRule",
+        "attributes": {
+          "applies_to": "sözleşmesiz özel sağlık hizmeti sunucuları"
+        },
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez"
+      }
+    ]
+  },
+  "statistics": {
+    "total_entities": 29,
+    "total_relations": 23,
+    "entity_types": 10,
+    "relation_types": 11,
+    "chunks_processed": 3,
+    "processing_time_minutes": 3.0275242884953815
+  }
+}

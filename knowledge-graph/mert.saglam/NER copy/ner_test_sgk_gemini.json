@@ -1,0 +1,254 @@
+{
+  "entities": [
+    {
+      "text": "Tebliğin",
+      "type": "Document",
+      "subtype": "regulation",
+      "normalized_form": "Tebliğ",
+      "aliases": [
+        "SUT"
+      ],
+      "attributes": {},
+      "context": "(1) Tebliğin amacı (bundan sonra SUT olarak ifade edilecektir); sağlık yardımları Sosyal Güvenlik Kurumunca"
+    },
+    {
+      "text": "Sosyal Güvenlik Kurumunca",
+      "type": "Institution",
+      "subtype": "public",
+      "normalized_form": "Sosyal Güvenlik Kurumu",
+      "aliases": [
+        "SGK",
+        "Kurum"
+      ],
+      "attributes": {},
+      "context": "yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan ve kapsam"
+    },
+    {
+      "text": "sağlık hizmetlerinin",
+      "type": "MedicalService",
+      "subtype": "general",
+      "normalized_form": "sağlık hizmeti",
+      "aliases": [],
+      "attributes": {},
+      "context": "analık sonucu tıbben gerekli görülen sağlık hizmetlerinin karşılanmasını, iş göremezlik hallerinin ortadan"
+    },
+    {
+      "text": "iş kazası",
+      "type": "HealthCondition",
+      "subtype": "occupational",
+      "normalized_form": "iş kazası",
+      "aliases": [],
+      "attributes": {},
+      "context": "kazanmalarını, iş kazası ile meslek hastalığı, hastalık ve analık sonucu tıbben gerekli görülen sağlık"
+    },
+    {
+      "text": "Sağlık Hizmetleri Fiyatlandırma Komisyonunca",
+      "type": "Institution",
+      "subtype": "regulatory",
+      "normalized_form": "Sağlık Hizmetleri Fiyatlandırma Komisyonu",
+      "aliases": [],
+      "attributes": {},
+      "context": "hizmetlere ilişkin Sağlık Hizmetleri Fiyatlandırma Komisyonunca belirlenen Kurumca ödenecek bedellerin bildirilmesidir."
+    },
+    {
+      "text": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+      "type": "Regulation",
+      "subtype": "primary law",
+      "normalized_form": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+      "aliases": [
+        "5510 sayılı Kanun"
+      ],
+      "attributes": {},
+      "context": "(1) 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği"
+    },
+    {
+      "text": "genel sağlık sigortasından",
+      "type": "InsuranceScheme",
+      "subtype": "public",
+      "normalized_form": "genel sağlık sigortası",
+      "aliases": [
+        "GSS"
+      ],
+      "attributes": {},
+      "context": "kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler."
+    },
+    {
+      "text": "Birinci basamak özel sağlık hizmeti sunucuları",
+      "type": "HealthcareProviderCategory",
+      "subtype": "Primary Care, Private",
+      "normalized_form": "Birinci basamak özel sağlık hizmeti sunucusu",
+      "aliases": [],
+      "attributes": {
+        "level": "primary",
+        "sector": "private"
+      },
+      "context": ""
+    },
+    {
+      "text": "özel hastaneler (ÖH)",
+      "type": "Institution",
+      "subtype": "hospital",
+      "normalized_form": "özel hastane",
+      "aliases": [
+        "ÖH"
+      ],
+      "attributes": {
+        "sector": "private",
+        "classification": "tiered"
+      },
+      "context": ""
+    }
+  ],
+  "relations": [
+    {
+      "subject": "Sosyal Güvenlik Kurumunca",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık hizmetlerinin",
+      "object_type": "MedicalService",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": ""
+    }
+  ],
+  "entities_by_type": {
+    "Document": [
+      {
+        "text": "Tebliğin",
+        "type": "Document",
+        "subtype": "regulation",
+        "normalized_form": "Tebliğ",
+        "aliases": [
+          "SUT"
+        ],
+        "attributes": {},
+        "context": "(1) Tebliğin amacı (bundan sonra SUT olarak ifade edilecektir); sağlık yardımları Sosyal Güvenlik Kurumunca"
+      }
+    ],
+    "Institution": [
+      {
+        "text": "Sosyal Güvenlik Kurumunca",
+        "type": "Institution",
+        "subtype": "public",
+        "normalized_form": "Sosyal Güvenlik Kurumu",
+        "aliases": [
+          "SGK",
+          "Kurum"
+        ],
+        "attributes": {},
+        "context": "yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan ve kapsam"
+      },
+      {
+        "text": "Sağlık Hizmetleri Fiyatlandırma Komisyonunca",
+        "type": "Institution",
+        "subtype": "regulatory",
+        "normalized_form": "Sağlık Hizmetleri Fiyatlandırma Komisyonu",
+        "aliases": [],
+        "attributes": {},
+        "context": "hizmetlere ilişkin Sağlık Hizmetleri Fiyatlandırma Komisyonunca belirlenen Kurumca ödenecek bedellerin bildirilmesidir."
+      },
+      {
+        "text": "özel hastaneler (ÖH)",
+        "type": "Institution",
+        "subtype": "hospital",
+        "normalized_form": "özel hastane",
+        "aliases": [
+          "ÖH"
+        ],
+        "attributes": {
+          "sector": "private",
+          "classification": "tiered"
+        },
+        "context": ""
+      }
+    ],
+    "MedicalService": [
+      {
+        "text": "sağlık hizmetlerinin",
+        "type": "MedicalService",
+        "subtype": "general",
+        "normalized_form": "sağlık hizmeti",
+        "aliases": [],
+        "attributes": {},
+        "context": "analık sonucu tıbben gerekli görülen sağlık hizmetlerinin karşılanmasını, iş göremezlik hallerinin ortadan"
+      }
+    ],
+    "HealthCondition": [
+      {
+        "text": "iş kazası",
+        "type": "HealthCondition",
+        "subtype": "occupational",
+        "normalized_form": "iş kazası",
+        "aliases": [],
+        "attributes": {},
+        "context": "kazanmalarını, iş kazası ile meslek hastalığı, hastalık ve analık sonucu tıbben gerekli görülen sağlık"
+      }
+    ],
+    "Regulation": [
+      {
+        "text": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+        "type": "Regulation",
+        "subtype": "primary law",
+        "normalized_form": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu",
+        "aliases": [
+          "5510 sayılı Kanun"
+        ],
+        "attributes": {},
+        "context": "(1) 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği"
+      }
+    ],
+    "InsuranceScheme": [
+      {
+        "text": "genel sağlık sigortasından",
+        "type": "InsuranceScheme",
+        "subtype": "public",
+        "normalized_form": "genel sağlık sigortası",
+        "aliases": [
+          "GSS"
+        ],
+        "attributes": {},
+        "context": "kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler."
+      }
+    ],
+    "HealthcareProviderCategory": [
+      {
+        "text": "Birinci basamak özel sağlık hizmeti sunucuları",
+        "type": "HealthcareProviderCategory",
+        "subtype": "Primary Care, Private",
+        "normalized_form": "Birinci basamak özel sağlık hizmeti sunucusu",
+        "aliases": [],
+        "attributes": {
+          "level": "primary",
+          "sector": "private"
+        },
+        "context": ""
+      }
+    ]
+  },
+  "relations_by_predicate": {
+    "COVERS": [
+      {
+        "subject": "Sosyal Güvenlik Kurumunca",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık hizmetlerinin",
+        "object_type": "MedicalService",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": ""
+      }
+    ]
+  },
+  "statistics": {
+    "total_entities": 9,
+    "total_relations": 1,
+    "entity_types": 7,
+    "relation_types": 1,
+    "chunks_processed": 3,
+    "processing_time_minutes": 1.026293937365214
+  }
+}

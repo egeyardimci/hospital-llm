@@ -1,0 +1,2096 @@
+{
+  "entities": [
+    {
+      "text": "Sosyal Güvenlik Kurumunca",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "SGK"
+      ],
+      "attributes": {
+        "role": "healthcare financier"
+      },
+      "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+    },
+    {
+      "text": "Kurum",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "SGK"
+      ],
+      "attributes": {
+        "role": "healthcare financier"
+      },
+      "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+    },
+    {
+      "text": "sağlık yardımları",
+      "type": "CoverageRule",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "scope": "healthcare"
+      },
+      "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+    },
+    {
+      "text": "5510 sayılı Kanun",
+      "type": "Regulation",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "5510 Sayılı Kanun"
+      ],
+      "attributes": {
+        "role": "legislation"
+      },
+      "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+    },
+    {
+      "text": "genel sağlık sigortasından yararlandırılan kişiler",
+      "type": "HealthCondition",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "scope": "healthcare"
+      },
+      "context": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler"
+    },
+    {
+      "text": "SUT",
+      "type": "Regulation",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "type": "regulation"
+      },
+      "context": "SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir."
+    },
+    {
+      "text": "birinci basamak sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "1.4 - Sağlık hizmeti sunucuları"
+    },
+    {
+      "text": "birinci basamak resmi sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "1.4.1- Birinci basamak sağlık hizmeti sunucuları "
+    },
+    {
+      "text": "ilçe sağlık müdürlüğü",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "1) Bünyesinde birinci basamak sağlık kuruluşu bulunan ilçe sağlık müdürlüğü"
+    },
+    {
+      "text": "toplum sağlığı merkezi (TSM)",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "2) Toplum sağlığı merkezi (TSM)"
+    },
+    {
+      "text": "aile sağlığı merkezi (ASM)",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "3) Aile sağlığı merkezi (ASM)"
+    },
+    {
+      "text": "halk sağlığı laboratuvarı (L1ve L2)",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "4) Halk sağlığı laboratuvarı (L1ve L2)"
+    },
+    {
+      "text": "Kurum tabipliği",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "5) Kurum tabipliği"
+    },
+    {
+      "text": "112 Acil sağlık hizmeti birimleri",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "6) 112 Acil sağlık hizmeti birimleri"
+    },
+    {
+      "text": "Evde bakım merkezleri veya birimler",
+      "type": "Institution",
+      "subtype": "home care",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "primary"
+      },
+      "context": "Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler"
+    },
+    {
+      "text": "işyeri sağlık ve güvenlik hizmeti sunulan birimler",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "İşyeri sağlık ve güvenlik hizmeti sunulan birimler"
+    },
+    {
+      "text": "Özel poliklinikler",
+      "type": "Institution",
+      "subtype": "private clinic",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "primary"
+      },
+      "context": "Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti sunulan birimler Özel poliklinikler"
+    },
+    {
+      "text": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
+      "type": "Institution",
+      "subtype": "dental care",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "primary"
+      },
+      "context": "Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti sunulan birimler Özel poliklinikler Ağız ve diş sağlığı hizmeti veren özel sağlık k"
+    },
+    {
+      "text": "eczaneler",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren eczaneler"
+    },
+    {
+      "text": "Birinci basamak özel sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": "primary care",
+      "normalized_form": null,
+      "aliases": [
+        "SGK"
+      ],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "primary"
+      },
+      "context": "Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti sunulan birimler Özel poliklinikler"
+    },
+    {
+      "text": "İşyeri sağlık ve güvenlik hizmeti sunulan birimler",
+      "type": "Institution",
+      "subtype": "occupational health",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "primary"
+      },
+      "context": "Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti sunulan birimler"
+    },
+    {
+      "text": "Eğitim ve araştırma hastanesi olmayan devlet hastaneleri",
+      "type": "Institution",
+      "subtype": "public hospital",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "secondary"
+      },
+      "context": "Eğitim ve araştırma hastanesi olmayan devlet hastaneleri ve dal hastaneleri ile bu hastanelere bağlı semt poliklinikleri"
+    },
+    {
+      "text": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri",
+      "type": "Institution",
+      "subtype": "public dental care",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "secondary"
+      },
+      "context": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri"
+    },
+    {
+      "text": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri",
+      "type": "Institution",
+      "subtype": "public dental hospital",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "secondary"
+      },
+      "context": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri"
+    },
+    {
+      "text": "Sağlık Bakanlığına bağlı eğitim ve araştırma hastaneleri",
+      "type": "Institution",
+      "subtype": "public teaching hospital",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "tertiary"
+      },
+      "context": "Sağlık Bakanlığına bağlı eğitim ve araştırma hastaneleri ile bu hastanelere bağlı semt poliklinikleri"
+    },
+    {
+      "text": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri",
+      "type": "Institution",
+      "subtype": "public teaching hospital",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare",
+        "level": "tertiary"
+      },
+      "context": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri (U1)"
+    },
+    {
+      "text": "Tıbbi laboratuvarlar",
+      "type": "Institution",
+      "subtype": "medical laboratory",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "Kamu kurumlarına ait diyaliz merkezleri, üremeye yardımcı tedavi merkezleri, hiperbarik oksijen tedavi merkezleri, tıbbi laboratuvarlar gibi müstakil olarak ruhsatlandırılan tanı ve tedavi merkezleri."
+    },
+    {
+      "text": "Diyaliz merkezleri",
+      "type": "Institution",
+      "subtype": "dialysis center",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "Kamu kurumlarına ait diyaliz merkezleri, üremeye yardımcı tedavi merkezleri, hiperbarik oksijen tedavi merkezleri, tıbbi laboratuvarlar gibi müstakil olarak ruhsatlandırılan tanı ve tedavi merkezleri."
+    },
+    {
+      "text": "Üremeye yardımcı tedavi merkezleri",
+      "type": "Institution",
+      "subtype": "fertility treatment center",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "Kamu kurumlarına ait diyaliz merkezleri, üremeye yardımcı tedavi merkezleri, hiperbarik oksijen tedavi merkezleri, tıbbi laboratuvarlar gibi müstakil olarak ruhsatlandırılan tanı ve tedavi merkezleri."
+    },
+    {
+      "text": "Hiperbarik oksijen tedavi merkezleri",
+      "type": "Institution",
+      "subtype": "hyperbaric oxygen treatment center",
+      "normalized_form": null,
+      "aliases": [],
+      "attributes": {
+        "sector": "healthcare"
+      },
+      "context": "Kamu kurumlarına ait diyaliz merkezleri, üremeye yardımcı tedavi merkezleri, hiperbarik oksijen tedavi merkezleri, tıbbi laboratuvarlar gibi müstakil olarak ruhsatlandırılan tanı ve tedavi merkezleri."
+    },
+    {
+      "text": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Tıbbi Cihaz ve Malzeme Tedarikçileri"
+      ],
+      "attributes": {
+        "role": "healthcare provider"
+      },
+      "context": "2) Tıbbi cihaz ve malzeme tedarikçileri"
+    },
+    {
+      "text": "Kaplıcalar",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Kaplıcalar"
+      ],
+      "attributes": {
+        "role": "healthcare provider"
+      },
+      "context": "3) Kaplıcalar"
+    },
+    {
+      "text": "beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Beşeri Tıbbi Ürün/Ürün Sunan ve/veya Üreten Özel Hukuk Tüzel Kişileri"
+      ],
+      "attributes": {
+        "role": "healthcare provider"
+      },
+      "context": "4) Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri ve bunların tüzel kişiliği olmayan şubeleri"
+    },
+    {
+      "text": "k basamaklandırılan özel hastaneler (ÖH)",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Özel Hastaneler"
+      ],
+      "attributes": {
+        "role": "healthcare provider"
+      },
+      "context": "k basamaklandırılan özel hastaneler (ÖH) 1.4.4 - Sağlık hizmeti sunumu bakımından"
+    },
+    {
+      "text": "Sağlık Bakanlığı",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Sağlık Bakanlığı"
+      ],
+      "attributes": {
+        "role": "regulatory agency"
+      },
+      "context": "5) Bu maddenin diğer fıkraları ile 1.4.1, 1.4.2, 1.4.3 numaralı maddelerde yer almayan Sağlık Bakanlığınca"
+    },
+    {
+      "text": "Optisyenlik müesseseleri",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Optisyenlik Müesseseleri"
+      ],
+      "attributes": {
+        "role": "healthcare provider"
+      },
+      "context": "2) Tıbbi cihaz ve malzeme tedarikçileri"
+    },
+    {
+      "text": "MEDULA sistemi",
+      "type": "System",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "MEDULA"
+      ],
+      "attributes": {
+        "role": "healthcare management system"
+      },
+      "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+    },
+    {
+      "text": "general sağlık sigortası",
+      "type": "CoverageRule",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Genel Sağlık Sigortası"
+      ],
+      "attributes": {
+        "scope": "health insurance"
+      },
+      "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+    },
+    {
+      "text": "müstahaklık sorgulaması",
+      "type": "MedicalProcedure",
+      "subtype": "eligibility check",
+      "normalized_form": null,
+      "aliases": [
+        "Müstahaklık Sorgulaması"
+      ],
+      "attributes": {
+        "role": "healthcare service"
+      },
+      "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+    },
+    {
+      "text": "Kurum bilgisi",
+      "type": "Document",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Kurum Bilgi"
+      ],
+      "attributes": {
+        "role": "healthcare record"
+      },
+      "context": "Sorgulama sonucu Kurum bilgisi (Değişik: RG-09/09/2017-30175/1 md. Yürürlük:29/04/2017)"
+    },
+    {
+      "text": "acil haller",
+      "type": "HealthCondition",
+      "subtype": "emergency",
+      "normalized_form": null,
+      "aliases": [
+        "Acil Haller"
+      ],
+      "attributes": {
+        "urgency": "high"
+      },
+      "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri"
+    },
+    {
+      "text": "sözleşmesiz özel sağlık hizmeti sunucuları",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları"
+      ],
+      "attributes": {
+        "role": "healthcare provider"
+      },
+      "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri"
+    },
+    {
+      "text": "sözleşmeli özel sağlık kuruluşları",
+      "type": "Institution",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Sözleşmeli Özel Sağlık Kuruluşları"
+      ],
+      "attributes": {
+        "role": "healthcare provider"
+      },
+      "context": "1) Ayakta veya yatarak tanı ve tedavi hizmeti sunan sözleşmeli sağlık hizmeti sunucularına"
+    },
+    {
+      "text": "ayakta veya yatarak tanı ve tedavi hizmeti",
+      "type": "MedicalProcedure",
+      "subtype": null,
+      "normalized_form": null,
+      "aliases": [
+        "Ayakta veya Yatarak Tanı ve Tedavi Hizmeti"
+      ],
+      "attributes": {
+        "role": "healthcare service"
+      },
+      "context": "1) Ayakta veya yatarak tanı ve tedavi hizmeti sunan sözleşmeli sağlık hizmeti sunucularına"
+    }
+  ],
+  "relations": [
+    {
+      "subject": "Sosyal Güvenlik Kurumunca",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [
+        "bundan sonra Kurum olarak ifade edilecektir"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Tebliğin amacı; sağlık yardımları Sosyal Güvenlik Kurumunca karşılanan..."
+    },
+    {
+      "subject": "5510 sayılı Kanun",
+      "subject_type": "Regulation",
+      "predicate": "APPLIES_TO",
+      "object": "genel sağlık sigortasından yararlandırılan kişiler",
+      "object_type": "HealthCondition",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler."
+    },
+    {
+      "subject": "SUT",
+      "subject_type": "Regulation",
+      "predicate": "CREATES",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [
+        "5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir."
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir."
+    },
+    {
+      "subject": "Birinci basamak sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4 - Sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Birinci basamak resmi sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.1- Birinci basamak sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Bünyesinde birinci basamak sağlık kuruluşu bulunan ilçe sağlık müdürlüğü",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1) Bünyesinde birinci basamak sağlık kuruluşu bulunan ilçe sağlık müdürlüğü"
+    },
+    {
+      "subject": "Toplum sağlığı merkezi (TSM)",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "2) Toplum sağlığı merkezi (TSM)"
+    },
+    {
+      "subject": "Aile sağlığı merkezi (ASM)",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "3) Aile sağlığı merkezi (ASM)"
+    },
+    {
+      "subject": "Halk sağlığı laboratuvarı (L1ve L2)",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "4) Halk sağlığı laboratuvarı (L1ve L2)"
+    },
+    {
+      "subject": "Kurum tabipliği",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "5) Kurum tabipliği"
+    },
+    {
+      "subject": "112 Acil sağlık hizmeti birimleri",
+      "subject_type": "Institution",
+      "predicate": "PERFORMED_AT",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "6) 112 Acil sağlık hizmeti birimleri"
+    },
+    {
+      "subject": "Evde bakım merkezleri veya birimler",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Evde bakım merkezleri veya birimler"
+    },
+    {
+      "subject": "İşyeri sağlık ve güvenlik hizmeti sunulan birimler",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "İşyeri sağlık ve güvenlik hizmeti sunulan birimler"
+    },
+    {
+      "subject": "Özel poliklinikler",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Özel poliklinikler"
+    },
+    {
+      "subject": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları"
+    },
+    {
+      "subject": "Eczaneler",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sağlık yardımları",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren eczaneler"
+    },
+    {
+      "subject": "Birinci basamak özel sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "acil hallerde",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [
+        "acil hallerde"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "4.1.B - Birinci basamak özel sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Birinci basamak özel sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "ikinci ve üçüncü basamak sağlık tesislerinde",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [
+        "ikinci ve üçüncü basamak sağlık tesislerinde"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "4.1.B - Birinci basamak özel sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Birinci basamak özel sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "sözleşmeli sağlık hizmeti sunucularında",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [
+        "sözleşmeli sağlık hizmeti sunucularında"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "4.1.B - Birinci basamak özel sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Eğitim ve araştırma hastanesi olmayan devlet hastaneleri",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "ikinci basamak sağlık hizmeti",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.2.A - İkinci basamak resmi sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "ikinci basamak sağlık hizmeti",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.2.A - İkinci basamak resmi sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "ikinci basamak sağlık hizmeti",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.2.A - İkinci basamak resmi sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Özel hastaneler (ÖH)",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "üçüncü basamak sağlık hizmeti",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.2.B - İkinci basamak özel sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Özel tıp merkezleri ve dal merkezleri",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "üçüncü basamak sağlık hizmeti",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.2.B - İkinci basamak özel sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Sağlık Bakanlığına bağlı eğitim ve araştırma hastaneleri",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "üçüncü basamak sağlık hizmeti",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.3.A - Üçüncü basamak resmi sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri (U1)",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "üçüncü basamak sağlık hizmeti",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.3.A - Üçüncü basamak resmi sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Optisyenlik müesseseleri",
+      "subject_type": "Institution",
+      "predicate": "EXEMPT_FROM",
+      "object": "basamaklandırma",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.4 - Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "subject_type": "Institution",
+      "predicate": "EXEMPT_FROM",
+      "object": "basamaklandırma",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.4 - Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Kaplıcalar",
+      "subject_type": "Institution",
+      "predicate": "EXEMPT_FROM",
+      "object": "basamaklandırma",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.4 - Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+      "subject_type": "Institution",
+      "predicate": "EXEMPT_FROM",
+      "object": "basamaklandırma",
+      "object_type": "Procedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "1.4.4 - Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları"
+    },
+    {
+      "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+      "subject_type": "Institution",
+      "predicate": "EXCLUDES",
+      "object": "Optisyenlik müesseseleri",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 1) Optisyenlik müesseseleri"
+    },
+    {
+      "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+      "subject_type": "Institution",
+      "predicate": "EXCLUDES",
+      "object": "Tıbbi cihaz ve malzeme tedarikçileri",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 2) Tıbbi cihaz ve malzeme tedarikçileri"
+    },
+    {
+      "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+      "subject_type": "Institution",
+      "predicate": "EXCLUDES",
+      "object": "Kaplıcalar",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 3) Kaplıcalar"
+    },
+    {
+      "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+      "subject_type": "Institution",
+      "predicate": "EXCLUDES",
+      "object": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 4) Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri"
+    },
+    {
+      "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+      "subject_type": "Institution",
+      "predicate": "EXCLUDES",
+      "object": "Bu maddenin diğer fıkraları ile 1.4.1, 1.4.2, 1.4.3 numaralı maddelerde yer almayan Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş sağlık hizmet sunumu bakımından basamaklandırılamayan diğer özelleşmiş tanı ve tedavi ve tedarik merkezleri.",
+      "object_type": "Institution",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 5) Bu maddenin diğer fıkraları ile 1.4.1, 1.4.2, 1.4.3 numaralı maddelerde yer almayan Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş sağlık hizmet sunumu b"
+    },
+    {
+      "subject": "5510 sayılı Kanun",
+      "subject_type": "Regulation",
+      "predicate": "APPLIES_TO",
+      "object": "general sağlık sigortası",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "5510 sayılı Kanunun 60 ıncı maddesinin onikinci, onüçüncü ve ondördüncü fıkraları"
+    },
+    {
+      "subject": "sözleşmeli sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES",
+      "object": "müstahaklık sorgulaması",
+      "object_type": "MedicalProcedure",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır"
+    },
+    {
+      "subject": "sözleşmeli sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "REQUIRES_DOCUMENTATION",
+      "object": "Kurum bilgisi",
+      "object_type": "Document",
+      "attributes": {},
+      "conditions": [],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Sorgulama sonucu Kurum bilgisi"
+    },
+    {
+      "subject": "sözleşmeli sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "COVERS",
+      "object": "ayakta veya yatarak tanı ve tedavi hizmeti",
+      "object_type": "MedicalProcedure",
+      "attributes": {},
+      "conditions": [
+        "acil haller dışında"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Aşağıda belirtilen usul ve esaslara uygun olmayan müracaatlara ilişkin sağlık hizmeti bedelleri Kurumca karşılanmaz."
+    },
+    {
+      "subject": "sözleşmesiz özel sağlık hizmeti sunucuları",
+      "subject_type": "Institution",
+      "predicate": "EXCLUDES",
+      "object": "general sağlık sigortası",
+      "object_type": "CoverageRule",
+      "attributes": {},
+      "conditions": [
+        "acil haller dışında"
+      ],
+      "exceptions": [],
+      "temporal": null,
+      "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez."
+    }
+  ],
+  "entities_by_type": {
+    "Institution": [
+      {
+        "text": "Sosyal Güvenlik Kurumunca",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "SGK"
+        ],
+        "attributes": {
+          "role": "healthcare financier"
+        },
+        "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+      },
+      {
+        "text": "Kurum",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "SGK"
+        ],
+        "attributes": {
+          "role": "healthcare financier"
+        },
+        "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+      },
+      {
+        "text": "birinci basamak sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "1.4 - Sağlık hizmeti sunucuları"
+      },
+      {
+        "text": "birinci basamak resmi sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "1.4.1- Birinci basamak sağlık hizmeti sunucuları "
+      },
+      {
+        "text": "ilçe sağlık müdürlüğü",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "1) Bünyesinde birinci basamak sağlık kuruluşu bulunan ilçe sağlık müdürlüğü"
+      },
+      {
+        "text": "toplum sağlığı merkezi (TSM)",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "2) Toplum sağlığı merkezi (TSM)"
+      },
+      {
+        "text": "aile sağlığı merkezi (ASM)",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "3) Aile sağlığı merkezi (ASM)"
+      },
+      {
+        "text": "halk sağlığı laboratuvarı (L1ve L2)",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "4) Halk sağlığı laboratuvarı (L1ve L2)"
+      },
+      {
+        "text": "Kurum tabipliği",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "5) Kurum tabipliği"
+      },
+      {
+        "text": "112 Acil sağlık hizmeti birimleri",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "6) 112 Acil sağlık hizmeti birimleri"
+      },
+      {
+        "text": "Evde bakım merkezleri veya birimler",
+        "type": "Institution",
+        "subtype": "home care",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "primary"
+        },
+        "context": "Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler"
+      },
+      {
+        "text": "işyeri sağlık ve güvenlik hizmeti sunulan birimler",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "İşyeri sağlık ve güvenlik hizmeti sunulan birimler"
+      },
+      {
+        "text": "Özel poliklinikler",
+        "type": "Institution",
+        "subtype": "private clinic",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "primary"
+        },
+        "context": "Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti sunulan birimler Özel poliklinikler"
+      },
+      {
+        "text": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
+        "type": "Institution",
+        "subtype": "dental care",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "primary"
+        },
+        "context": "Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti sunulan birimler Özel poliklinikler Ağız ve diş sağlığı hizmeti veren özel sağlık k"
+      },
+      {
+        "text": "eczaneler",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren eczaneler"
+      },
+      {
+        "text": "Birinci basamak özel sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": "primary care",
+        "normalized_form": null,
+        "aliases": [
+          "SGK"
+        ],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "primary"
+        },
+        "context": "Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti sunulan birimler Özel poliklinikler"
+      },
+      {
+        "text": "İşyeri sağlık ve güvenlik hizmeti sunulan birimler",
+        "type": "Institution",
+        "subtype": "occupational health",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "primary"
+        },
+        "context": "Birinci basamak özel sağlık hizmeti sunucuları Evde bakım merkezleri veya birimler İşyeri sağlık ve güvenlik hizmeti sunulan birimler"
+      },
+      {
+        "text": "Eğitim ve araştırma hastanesi olmayan devlet hastaneleri",
+        "type": "Institution",
+        "subtype": "public hospital",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "secondary"
+        },
+        "context": "Eğitim ve araştırma hastanesi olmayan devlet hastaneleri ve dal hastaneleri ile bu hastanelere bağlı semt poliklinikleri"
+      },
+      {
+        "text": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri",
+        "type": "Institution",
+        "subtype": "public dental care",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "secondary"
+        },
+        "context": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri"
+      },
+      {
+        "text": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri",
+        "type": "Institution",
+        "subtype": "public dental hospital",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "secondary"
+        },
+        "context": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri"
+      },
+      {
+        "text": "Sağlık Bakanlığına bağlı eğitim ve araştırma hastaneleri",
+        "type": "Institution",
+        "subtype": "public teaching hospital",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "tertiary"
+        },
+        "context": "Sağlık Bakanlığına bağlı eğitim ve araştırma hastaneleri ile bu hastanelere bağlı semt poliklinikleri"
+      },
+      {
+        "text": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri",
+        "type": "Institution",
+        "subtype": "public teaching hospital",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare",
+          "level": "tertiary"
+        },
+        "context": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri (U1)"
+      },
+      {
+        "text": "Tıbbi laboratuvarlar",
+        "type": "Institution",
+        "subtype": "medical laboratory",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "Kamu kurumlarına ait diyaliz merkezleri, üremeye yardımcı tedavi merkezleri, hiperbarik oksijen tedavi merkezleri, tıbbi laboratuvarlar gibi müstakil olarak ruhsatlandırılan tanı ve tedavi merkezleri."
+      },
+      {
+        "text": "Diyaliz merkezleri",
+        "type": "Institution",
+        "subtype": "dialysis center",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "Kamu kurumlarına ait diyaliz merkezleri, üremeye yardımcı tedavi merkezleri, hiperbarik oksijen tedavi merkezleri, tıbbi laboratuvarlar gibi müstakil olarak ruhsatlandırılan tanı ve tedavi merkezleri."
+      },
+      {
+        "text": "Üremeye yardımcı tedavi merkezleri",
+        "type": "Institution",
+        "subtype": "fertility treatment center",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "Kamu kurumlarına ait diyaliz merkezleri, üremeye yardımcı tedavi merkezleri, hiperbarik oksijen tedavi merkezleri, tıbbi laboratuvarlar gibi müstakil olarak ruhsatlandırılan tanı ve tedavi merkezleri."
+      },
+      {
+        "text": "Hiperbarik oksijen tedavi merkezleri",
+        "type": "Institution",
+        "subtype": "hyperbaric oxygen treatment center",
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "sector": "healthcare"
+        },
+        "context": "Kamu kurumlarına ait diyaliz merkezleri, üremeye yardımcı tedavi merkezleri, hiperbarik oksijen tedavi merkezleri, tıbbi laboratuvarlar gibi müstakil olarak ruhsatlandırılan tanı ve tedavi merkezleri."
+      },
+      {
+        "text": "Tıbbi cihaz ve malzeme tedarikçileri",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Tıbbi Cihaz ve Malzeme Tedarikçileri"
+        ],
+        "attributes": {
+          "role": "healthcare provider"
+        },
+        "context": "2) Tıbbi cihaz ve malzeme tedarikçileri"
+      },
+      {
+        "text": "Kaplıcalar",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Kaplıcalar"
+        ],
+        "attributes": {
+          "role": "healthcare provider"
+        },
+        "context": "3) Kaplıcalar"
+      },
+      {
+        "text": "beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Beşeri Tıbbi Ürün/Ürün Sunan ve/veya Üreten Özel Hukuk Tüzel Kişileri"
+        ],
+        "attributes": {
+          "role": "healthcare provider"
+        },
+        "context": "4) Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri ve bunların tüzel kişiliği olmayan şubeleri"
+      },
+      {
+        "text": "k basamaklandırılan özel hastaneler (ÖH)",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Özel Hastaneler"
+        ],
+        "attributes": {
+          "role": "healthcare provider"
+        },
+        "context": "k basamaklandırılan özel hastaneler (ÖH) 1.4.4 - Sağlık hizmeti sunumu bakımından"
+      },
+      {
+        "text": "Sağlık Bakanlığı",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Sağlık Bakanlığı"
+        ],
+        "attributes": {
+          "role": "regulatory agency"
+        },
+        "context": "5) Bu maddenin diğer fıkraları ile 1.4.1, 1.4.2, 1.4.3 numaralı maddelerde yer almayan Sağlık Bakanlığınca"
+      },
+      {
+        "text": "Optisyenlik müesseseleri",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Optisyenlik Müesseseleri"
+        ],
+        "attributes": {
+          "role": "healthcare provider"
+        },
+        "context": "2) Tıbbi cihaz ve malzeme tedarikçileri"
+      },
+      {
+        "text": "sözleşmesiz özel sağlık hizmeti sunucuları",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Sözleşmesiz Özel Sağlık Hizmeti Sunucuları"
+        ],
+        "attributes": {
+          "role": "healthcare provider"
+        },
+        "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri"
+      },
+      {
+        "text": "sözleşmeli özel sağlık kuruluşları",
+        "type": "Institution",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Sözleşmeli Özel Sağlık Kuruluşları"
+        ],
+        "attributes": {
+          "role": "healthcare provider"
+        },
+        "context": "1) Ayakta veya yatarak tanı ve tedavi hizmeti sunan sözleşmeli sağlık hizmeti sunucularına"
+      }
+    ],
+    "CoverageRule": [
+      {
+        "text": "sağlık yardımları",
+        "type": "CoverageRule",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "scope": "healthcare"
+        },
+        "context": "sağlık yardımları Sosyal Güvenlik Kurumunca (bundan sonra Kurum olarak ifade edilecektir) karşılanan"
+      },
+      {
+        "text": "general sağlık sigortası",
+        "type": "CoverageRule",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Genel Sağlık Sigortası"
+        ],
+        "attributes": {
+          "scope": "health insurance"
+        },
+        "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+      }
+    ],
+    "Regulation": [
+      {
+        "text": "5510 sayılı Kanun",
+        "type": "Regulation",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "5510 Sayılı Kanun"
+        ],
+        "attributes": {
+          "role": "legislation"
+        },
+        "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+      },
+      {
+        "text": "SUT",
+        "type": "Regulation",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "type": "regulation"
+        },
+        "context": "SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir."
+      }
+    ],
+    "HealthCondition": [
+      {
+        "text": "genel sağlık sigortasından yararlandırılan kişiler",
+        "type": "HealthCondition",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [],
+        "attributes": {
+          "scope": "healthcare"
+        },
+        "context": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler"
+      },
+      {
+        "text": "acil haller",
+        "type": "HealthCondition",
+        "subtype": "emergency",
+        "normalized_form": null,
+        "aliases": [
+          "Acil Haller"
+        ],
+        "attributes": {
+          "urgency": "high"
+        },
+        "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri"
+      }
+    ],
+    "System": [
+      {
+        "text": "MEDULA sistemi",
+        "type": "System",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "MEDULA"
+        ],
+        "attributes": {
+          "role": "healthcare management system"
+        },
+        "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+      }
+    ],
+    "MedicalProcedure": [
+      {
+        "text": "müstahaklık sorgulaması",
+        "type": "MedicalProcedure",
+        "subtype": "eligibility check",
+        "normalized_form": null,
+        "aliases": [
+          "Müstahaklık Sorgulaması"
+        ],
+        "attributes": {
+          "role": "healthcare service"
+        },
+        "context": "5510 sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (c) bendinin"
+      },
+      {
+        "text": "ayakta veya yatarak tanı ve tedavi hizmeti",
+        "type": "MedicalProcedure",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Ayakta veya Yatarak Tanı ve Tedavi Hizmeti"
+        ],
+        "attributes": {
+          "role": "healthcare service"
+        },
+        "context": "1) Ayakta veya yatarak tanı ve tedavi hizmeti sunan sözleşmeli sağlık hizmeti sunucularına"
+      }
+    ],
+    "Document": [
+      {
+        "text": "Kurum bilgisi",
+        "type": "Document",
+        "subtype": null,
+        "normalized_form": null,
+        "aliases": [
+          "Kurum Bilgi"
+        ],
+        "attributes": {
+          "role": "healthcare record"
+        },
+        "context": "Sorgulama sonucu Kurum bilgisi (Değişik: RG-09/09/2017-30175/1 md. Yürürlük:29/04/2017)"
+      }
+    ]
+  },
+  "relations_by_predicate": {
+    "COVERS": [
+      {
+        "subject": "Sosyal Güvenlik Kurumunca",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [
+          "bundan sonra Kurum olarak ifade edilecektir"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Tebliğin amacı; sağlık yardımları Sosyal Güvenlik Kurumunca karşılanan..."
+      },
+      {
+        "subject": "Birinci basamak sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4 - Sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Birinci basamak resmi sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.1- Birinci basamak sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Evde bakım merkezleri veya birimler",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Evde bakım merkezleri veya birimler"
+      },
+      {
+        "subject": "İşyeri sağlık ve güvenlik hizmeti sunulan birimler",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "İşyeri sağlık ve güvenlik hizmeti sunulan birimler"
+      },
+      {
+        "subject": "Özel poliklinikler",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Özel poliklinikler"
+      },
+      {
+        "subject": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Ağız ve diş sağlığı hizmeti veren özel sağlık kuruluşları"
+      },
+      {
+        "subject": "Eczaneler",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "18/12/1953 tarihli ve 6197 sayılı Eczacılar ve Eczaneler Hakkında Kanun kapsamında serbest faaliyet gösteren eczaneler"
+      },
+      {
+        "subject": "Birinci basamak özel sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "acil hallerde",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [
+          "acil hallerde"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "4.1.B - Birinci basamak özel sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Birinci basamak özel sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "ikinci ve üçüncü basamak sağlık tesislerinde",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [
+          "ikinci ve üçüncü basamak sağlık tesislerinde"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "4.1.B - Birinci basamak özel sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Birinci basamak özel sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "sözleşmeli sağlık hizmeti sunucularında",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [
+          "sözleşmeli sağlık hizmeti sunucularında"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "4.1.B - Birinci basamak özel sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Eğitim ve araştırma hastanesi olmayan devlet hastaneleri",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "ikinci basamak sağlık hizmeti",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.2.A - İkinci basamak resmi sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Sağlık Bakanlığına bağlı ağız ve diş sağlığı merkezleri",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "ikinci basamak sağlık hizmeti",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.2.A - İkinci basamak resmi sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Kamu kurumlarına ait ağız ve diş sağlığı hastaneleri",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "ikinci basamak sağlık hizmeti",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.2.A - İkinci basamak resmi sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Özel hastaneler (ÖH)",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "üçüncü basamak sağlık hizmeti",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.2.B - İkinci basamak özel sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Özel tıp merkezleri ve dal merkezleri",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "üçüncü basamak sağlık hizmeti",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.2.B - İkinci basamak özel sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Sağlık Bakanlığına bağlı eğitim ve araştırma hastaneleri",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "üçüncü basamak sağlık hizmeti",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.3.A - Üçüncü basamak resmi sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Tıp Fakülteleri Bulunan Devlet Üniversiteleri Sağlık Uygulama ve Araştırma Merkezleri (U1)",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "üçüncü basamak sağlık hizmeti",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.3.A - Üçüncü basamak resmi sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "sözleşmeli sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "COVERS",
+        "object": "ayakta veya yatarak tanı ve tedavi hizmeti",
+        "object_type": "MedicalProcedure",
+        "attributes": {},
+        "conditions": [
+          "acil haller dışında"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Aşağıda belirtilen usul ve esaslara uygun olmayan müracaatlara ilişkin sağlık hizmeti bedelleri Kurumca karşılanmaz."
+      }
+    ],
+    "APPLIES_TO": [
+      {
+        "subject": "5510 sayılı Kanun",
+        "subject_type": "Regulation",
+        "predicate": "APPLIES_TO",
+        "object": "genel sağlık sigortasından yararlandırılan kişiler",
+        "object_type": "HealthCondition",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve diğer kanunlardaki özel hükümler gereği genel sağlık sigortasından yararlandırılan kişiler."
+      },
+      {
+        "subject": "5510 sayılı Kanun",
+        "subject_type": "Regulation",
+        "predicate": "APPLIES_TO",
+        "object": "general sağlık sigortası",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "5510 sayılı Kanunun 60 ıncı maddesinin onikinci, onüçüncü ve ondördüncü fıkraları"
+      }
+    ],
+    "CREATES": [
+      {
+        "subject": "SUT",
+        "subject_type": "Regulation",
+        "predicate": "CREATES",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [
+          "5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir."
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "SUT; 5502 sayılı Sosyal Güvenlik Kurumuna İlişkin Bazı Düzenlemeler Hakkında Kanun, 5510 sayılı Kanun ve Genel Sağlık Sigortası Uygulamaları Yönetmeliği hükümleri çerçevesinde düzenlenmiştir."
+      }
+    ],
+    "PERFORMED_AT": [
+      {
+        "subject": "Bünyesinde birinci basamak sağlık kuruluşu bulunan ilçe sağlık müdürlüğü",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1) Bünyesinde birinci basamak sağlık kuruluşu bulunan ilçe sağlık müdürlüğü"
+      },
+      {
+        "subject": "Toplum sağlığı merkezi (TSM)",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "2) Toplum sağlığı merkezi (TSM)"
+      },
+      {
+        "subject": "Aile sağlığı merkezi (ASM)",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "3) Aile sağlığı merkezi (ASM)"
+      },
+      {
+        "subject": "Halk sağlığı laboratuvarı (L1ve L2)",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "4) Halk sağlığı laboratuvarı (L1ve L2)"
+      },
+      {
+        "subject": "Kurum tabipliği",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "5) Kurum tabipliği"
+      },
+      {
+        "subject": "112 Acil sağlık hizmeti birimleri",
+        "subject_type": "Institution",
+        "predicate": "PERFORMED_AT",
+        "object": "sağlık yardımları",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "6) 112 Acil sağlık hizmeti birimleri"
+      }
+    ],
+    "EXEMPT_FROM": [
+      {
+        "subject": "Optisyenlik müesseseleri",
+        "subject_type": "Institution",
+        "predicate": "EXEMPT_FROM",
+        "object": "basamaklandırma",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.4 - Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Tıbbi cihaz ve malzeme tedarikçileri",
+        "subject_type": "Institution",
+        "predicate": "EXEMPT_FROM",
+        "object": "basamaklandırma",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.4 - Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Kaplıcalar",
+        "subject_type": "Institution",
+        "predicate": "EXEMPT_FROM",
+        "object": "basamaklandırma",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.4 - Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları"
+      },
+      {
+        "subject": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+        "subject_type": "Institution",
+        "predicate": "EXEMPT_FROM",
+        "object": "basamaklandırma",
+        "object_type": "Procedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "1.4.4 - Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları"
+      }
+    ],
+    "EXCLUDES": [
+      {
+        "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+        "subject_type": "Institution",
+        "predicate": "EXCLUDES",
+        "object": "Optisyenlik müesseseleri",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 1) Optisyenlik müesseseleri"
+      },
+      {
+        "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+        "subject_type": "Institution",
+        "predicate": "EXCLUDES",
+        "object": "Tıbbi cihaz ve malzeme tedarikçileri",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 2) Tıbbi cihaz ve malzeme tedarikçileri"
+      },
+      {
+        "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+        "subject_type": "Institution",
+        "predicate": "EXCLUDES",
+        "object": "Kaplıcalar",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 3) Kaplıcalar"
+      },
+      {
+        "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+        "subject_type": "Institution",
+        "predicate": "EXCLUDES",
+        "object": "Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 4) Beşeri tıbbi ürün/ürün sunan ve/veya üreten özel hukuk tüzel kişileri"
+      },
+      {
+        "subject": "k basamaklandırılan özel hastaneler (ÖH)",
+        "subject_type": "Institution",
+        "predicate": "EXCLUDES",
+        "object": "Bu maddenin diğer fıkraları ile 1.4.1, 1.4.2, 1.4.3 numaralı maddelerde yer almayan Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş sağlık hizmet sunumu bakımından basamaklandırılamayan diğer özelleşmiş tanı ve tedavi ve tedarik merkezleri.",
+        "object_type": "Institution",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sağlık hizmeti sunumu bakımından basamaklandırılamayan sağlık hizmeti sunucuları 5) Bu maddenin diğer fıkraları ile 1.4.1, 1.4.2, 1.4.3 numaralı maddelerde yer almayan Sağlık Bakanlığınca ruhsatlandırılmış ve/veya izin verilmiş sağlık hizmet sunumu b"
+      },
+      {
+        "subject": "sözleşmesiz özel sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "EXCLUDES",
+        "object": "general sağlık sigortası",
+        "object_type": "CoverageRule",
+        "attributes": {},
+        "conditions": [
+          "acil haller dışında"
+        ],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Acil haller dışında sözleşmesiz özel sağlık hizmeti sunucularından alınan sağlık hizmeti bedelleri Kurumca ödenmez."
+      }
+    ],
+    "REQUIRES": [
+      {
+        "subject": "sözleşmeli sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES",
+        "object": "müstahaklık sorgulaması",
+        "object_type": "MedicalProcedure",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "MEDULA sistemi üzerinden müstahaklık sorgulaması yapılır"
+      }
+    ],
+    "REQUIRES_DOCUMENTATION": [
+      {
+        "subject": "sözleşmeli sağlık hizmeti sunucuları",
+        "subject_type": "Institution",
+        "predicate": "REQUIRES_DOCUMENTATION",
+        "object": "Kurum bilgisi",
+        "object_type": "Document",
+        "attributes": {},
+        "conditions": [],
+        "exceptions": [],
+        "temporal": null,
+        "context": "Sorgulama sonucu Kurum bilgisi"
+      }
+    ]
+  },
+  "statistics": {
+    "total_entities": 44,
+    "total_relations": 40,
+    "entity_types": 7,
+    "relation_types": 8,
+    "chunks_processed": 3,
+    "processing_time_minutes": 1.8278795282046
+  }
+}
