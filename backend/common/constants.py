@@ -21,18 +21,15 @@ ALLOWED_CORS_ORIGINS = [
 ]
 
 # LLM Models
-DEEPSEEK_R1_DISTILL_LLAMA_70B = "deepseek-r1-distill-llama-70b" 
-LLAMA_3_2_90B_VISION_PREVIEW = "llama-3.2-90b-vision-preview"
 LLAMA_3_3_70B_VERSATILE = "llama-3.3-70b-versatile"
 META_LLAMA_LLAMA_4_MAVERICK_17B_128E_INSTRUCT = "meta-llama/llama-4-maverick-17b-128e-instruct"
-MISTRAL_SABA_24B = "mistral-saba-24b"
 OPENAI_GPT_OSS_120B = "openai/gpt-oss-120b"
+QWEN_QWEN3_32B = "qwen/qwen3-32b"
 
 # Embedding Models
 BAAI_BGE_M3 = "BAAI/bge-m3"
 LABSE = "LaBSE"
 SNOWFLAKE_SNOWFLAKE_ARCTIC_EMBED_L_V2_0 = "Snowflake/snowflake-arctic-embed-l-v2.0"
-EMRECAN_BERT_BASE_TURKISH_CASED_MEAN_NLI_STSB_TR = "emrecan/bert-base-turkish-cased-mean-nli-stsb-tr"
 SENTENCE_TRANSFORMERS_ALL_MPNET_BASE_V2 = "sentence-transformers/all-mpnet-base-v2"
 
 # Cross Encoder Models
