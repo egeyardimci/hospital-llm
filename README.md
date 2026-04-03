@@ -253,10 +253,6 @@ API endpoint is configured in `frontend/src/constants/index.js` (default: `http:
 4. Test your changes thoroughly
 5. Submit a pull request
 
-## License
-
-[Add your license here]
-
 ## Support
 
 For issues, questions, or contributions, please open an issue on the repository.
